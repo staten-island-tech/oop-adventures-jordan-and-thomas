@@ -1,9 +1,73 @@
-<mxfile host="app.diagrams.net" modified="2023-11-15T13:19:53.913Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Safari/605.1.15" version="22.1.1" etag="PEJT4Le8j9mS_Me25FLz" type="github">
+<mxfile host="app.diagrams.net" modified="2023-11-15T13:29:10.867Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Safari/605.1.15" etag="hI7q2sUsDYnzERLUApGe" version="22.1.1" type="github">
   <diagram name="Page-1" id="NYCgYMafiAWhOY5gQajY">
-    <mxGraphModel>
+    <mxGraphModel dx="1320" dy="502984" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="900" pageHeight="501600" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="pAs_w5LwpyLD_c9nKqcG-1" value="Start Game" style="ellipse;whiteSpace=wrap;html=1;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="367" y="36" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="pAs_w5LwpyLD_c9nKqcG-3" value="" style="endArrow=classic;html=1;rounded=0;fontSize=12;startSize=8;endSize=8;curved=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="pAs_w5LwpyLD_c9nKqcG-1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="353" y="241" as="sourcePoint" />
+            <mxPoint x="427" y="200" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pAs_w5LwpyLD_c9nKqcG-4" value="User Picks first Pokémon&amp;nbsp;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="380" y="200" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="pAs_w5LwpyLD_c9nKqcG-5" value="" style="endArrow=classic;html=1;rounded=0;fontSize=12;startSize=8;endSize=8;curved=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="pAs_w5LwpyLD_c9nKqcG-4">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="424" y="292" as="sourcePoint" />
+            <mxPoint x="403" y="358" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pAs_w5LwpyLD_c9nKqcG-6" value="User picks 2nd Pokémon&amp;nbsp;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="358" y="344" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="pAs_w5LwpyLD_c9nKqcG-7" value="" style="endArrow=classic;html=1;rounded=0;fontSize=12;startSize=8;endSize=8;curved=1;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="415" y="414" as="sourcePoint" />
+            <mxPoint x="415" y="482" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pAs_w5LwpyLD_c9nKqcG-8" value="User picks 3rd Pokémon&amp;nbsp;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="371" y="476" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="pAs_w5LwpyLD_c9nKqcG-10" value="" style="endArrow=classic;html=1;rounded=0;fontSize=12;startSize=8;endSize=8;curved=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="pAs_w5LwpyLD_c9nKqcG-8" target="pAs_w5LwpyLD_c9nKqcG-11">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="386" y="665" as="sourcePoint" />
+            <mxPoint x="401" y="614" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pAs_w5LwpyLD_c9nKqcG-11" value="User picks 4th Pokémon&amp;nbsp;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="341" y="584" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="pAs_w5LwpyLD_c9nKqcG-14" value="" style="endArrow=classic;html=1;rounded=0;fontSize=12;startSize=8;endSize=8;curved=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="pAs_w5LwpyLD_c9nKqcG-11" target="pAs_w5LwpyLD_c9nKqcG-15">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="353" y="785" as="sourcePoint" />
+            <mxPoint x="396" y="738" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pAs_w5LwpyLD_c9nKqcG-15" value="User picks 5th Pokémon&amp;nbsp;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="336" y="708" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="pAs_w5LwpyLD_c9nKqcG-16" value="" style="endArrow=classic;html=1;rounded=0;fontSize=12;startSize=8;endSize=8;curved=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="pAs_w5LwpyLD_c9nKqcG-15" target="pAs_w5LwpyLD_c9nKqcG-17">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="384" y="879" as="sourcePoint" />
+            <mxPoint x="389" y="849" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pAs_w5LwpyLD_c9nKqcG-17" value="User picks 6th pokemon" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="329" y="819" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="pAs_w5LwpyLD_c9nKqcG-19" value="Class that adds every gen 1 move to json" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="28" y="145" width="107" height="107" as="geometry" />
+        </mxCell>
+        <mxCell id="pAs_w5LwpyLD_c9nKqcG-20" value="Class that adds every gen 1 pokemon to a json" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="20.5" y="-2" width="122" height="122" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
