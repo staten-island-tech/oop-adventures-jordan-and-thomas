@@ -110,5 +110,49 @@
         "Special Stat": 205,
         "Health Stat": 270,
         "Speed Stat": 165
+    },
+    {
+        "Name": "Charmander",
+        "Types": [
+            "Fire"
+        ],
+        "Learnable Moves": [
+            "Scratch",
+            " Growl",
+            " Ember",
+            " Leer",
+            " Rage",
+            " Slash",
+            " Flamethrower",
+            " Fire Spin",
+            " Mega Punch",
+            " Swords Dance",
+            " Mega Kick",
+            " Toxic",
+            " Body Slam",
+            " Take Down",
+            " Double-Edge",
+            " Submission",
+            " Counter",
+            " Seismic Toss",
+            " Dragon Rage",
+            " Dig",
+            " Mimic",
+            " Double Team",
+            " Reflect",
+            " Bide",
+            " Fire Blast",
+            " Swift",
+            " Skull Bash",
+            " Rest",
+            " Substitute",
+            " Cut",
+            " Strength"
+        ],
+        "Attack Stat": 109,
+        "Defense Stat": 91,
+        "Special Stat": 105,
+        "Health Stat": 188,
+        "Speed Stat": 135
     }
 ]
