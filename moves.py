@@ -14,13 +14,17 @@ class moves():
 name = input("Name of move: ")
 movetype = input("Move type: ")
 cat = input("Move category: ")
-power = input("Move power: ")
-acc = input("Move accuracy: ")
-pp = input("pp: ")
+power = int(input("Move power: "))
+acc = int(input("Move accuracy: "))
+pp = int(input("pp: "))
 effect = input("Move effect: ")
 
 
- 
+with open("data.json", "r") as f:
+    # Serialize the updated Python list to a JSON string
+    data = json.load(f)
+    data.append({"name": name, "type": movetype, "category": cat, "power": power, "accuracy": acc, "PP": pp, "effect": effect})
+    ##Call classes in here
     
   
         
@@ -41,13 +45,7 @@ effect = input("Move effect: ")
     
 #dat.append(variable, variable)
 #Variable = title
-
-
-with open("data.json", "r") as f:
-    # Serialize the updated Python list to a JSON string
-    data = json.load(f)
-    data.append({"name": name, "type": movetype, "category": cat, "power": power, "accuracy": acc, "PP": pp, "effect": effect})
-    ##Call classes in here
+    
     
     
    
