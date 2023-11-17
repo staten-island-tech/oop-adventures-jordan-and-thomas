@@ -17,7 +17,8 @@ cat = input("Move category: ")
 power = int(input("Move power: "))
 acc = int(input("Move accuracy: "))
 pp = int(input("pp: "))
-effect = input("Move effect: ")
+affect = input("Move effect: ")
+effect = affect.split(",")
 
 
 with open("data.json", "r") as f:

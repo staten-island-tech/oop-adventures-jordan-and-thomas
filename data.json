@@ -1,1 +1,256 @@
-[]
+[
+    {
+        "name": "Leech Life",
+        "type": "Bug",
+        "category": "Physical",
+        "power": 20,
+        "accuracy": 100,
+        "PP": 15,
+        "effect": [
+            "HealHalfD"
+        ]
+    },
+    {
+        "name": "Pin Missle",
+        "type": "Bug",
+        "category": "Physical",
+        "power": 14,
+        "accuracy": 85,
+        "PP": 20,
+        "effect": [
+            "HitsManyTimes"
+        ]
+    },
+    {
+        "name": "String Shot",
+        "type": "Bug",
+        "category": "None",
+        "power": 0,
+        "accuracy": 95,
+        "PP": 40,
+        "effect": [
+            "SpeedDown"
+        ]
+    },
+    {
+        "name": "Twineedle",
+        "type": "Bug",
+        "category": "Physical",
+        "power": 25,
+        "accuracy": 100,
+        "PP": 20,
+        "effect": [
+            "HitsTwice",
+            "Poison"
+        ]
+    },
+    {
+        "name": "Dragon Rage",
+        "type": "Dragon",
+        "category": "Special",
+        "power": 0,
+        "accuracy": 100,
+        "PP": 10,
+        "effect": [
+            "Always40D"
+        ]
+    },
+    {
+        "name": "Thunder",
+        "type": "Electric",
+        "category": "Special",
+        "power": 120,
+        "accuracy": 70,
+        "PP": 10,
+        "effect": [
+            "Paralyze"
+        ]
+    },
+    {
+        "name": "Thunder Punch",
+        "type": "Electric",
+        "category": "Physical",
+        "power": 75,
+        "accuracy": 100,
+        "PP": 15,
+        "effect": [
+            "Paralyze"
+        ]
+    },
+    {
+        "name": "Thunder Shock",
+        "type": "Electric",
+        "category": "Special",
+        "power": 40,
+        "accuracy": 100,
+        "PP": 30,
+        "effect": [
+            "Paralyze"
+        ]
+    },
+    {
+        "name": "Thunder Wave",
+        "type": "Electric",
+        "category": "None",
+        "power": 0,
+        "accuracy": 100,
+        "PP": 20,
+        "effect": [
+            "AlwaysParalyze"
+        ]
+    },
+    {
+        "name": "Thunderbolt",
+        "type": "Electric",
+        "category": "Special",
+        "power": 95,
+        "accuracy": 100,
+        "PP": 15,
+        "effect": [
+            "Paralyze"
+        ]
+    },
+    {
+        "name": "Counter",
+        "type": "Fighting",
+        "category": "Physical",
+        "power": 0,
+        "accuracy": 100,
+        "PP": 20,
+        "effect": [
+            "ItCounter"
+        ]
+    },
+    {
+        "name": "Double Kick",
+        "type": "Fighting",
+        "category": "Physical",
+        "power": 30,
+        "accuracy": 100,
+        "PP": 30,
+        "effect": [
+            "HitsTwice"
+        ]
+    },
+    {
+        "name": "High Jump Kick",
+        "type": "Fighting",
+        "category": "Physical",
+        "power": 85,
+        "accuracy": 90,
+        "PP": 20,
+        "effect": [
+            "MissDoD"
+        ]
+    },
+    {
+        "name": "Jump Kick",
+        "type": "Fighting",
+        "category": "Physical",
+        "power": 70,
+        "accuracy": 95,
+        "PP": 25,
+        "effect": [
+            "MissDoLessD"
+        ]
+    },
+    {
+        "name": "Low Kick",
+        "type": "Fighting",
+        "category": "Physical",
+        "power": 50,
+        "accuracy": 90,
+        "PP": 20,
+        "effect": [
+            "13Flinch"
+        ]
+    },
+    {
+        "name": "Rolling Kick",
+        "type": "Fighting",
+        "category": "Physical",
+        "power": 60,
+        "accuracy": 85,
+        "PP": 15,
+        "effect": [
+            "13Flinch"
+        ]
+    },
+    {
+        "name": "Seismic Toss",
+        "type": "Fighting",
+        "category": "Physical",
+        "power": 0,
+        "accuracy": 100,
+        "PP": 20,
+        "effect": [
+            "Seismictoss"
+        ]
+    },
+    {
+        "name": "Submission",
+        "type": "Fighting",
+        "category": "Physical",
+        "power": 80,
+        "accuracy": 80,
+        "PP": 25,
+        "effect": [
+            "14Recoil"
+        ]
+    },
+    {
+        "name": "Ember",
+        "type": "Fire",
+        "category": "Special",
+        "power": 40,
+        "accuracy": 100,
+        "PP": 25,
+        "effect": [
+            "Burn"
+        ]
+    },
+    {
+        "name": "Fire Blast",
+        "type": "Fire",
+        "category": "Special",
+        "power": 120,
+        "accuracy": 85,
+        "PP": 5,
+        "effect": [
+            "13Burn"
+        ]
+    },
+    {
+        "name": "Fire Punch",
+        "type": "Fire",
+        "category": "Physical",
+        "power": 75,
+        "accuracy": 100,
+        "PP": 15,
+        "effect": [
+            "Burn"
+        ]
+    },
+    {
+        "name": "Fire Spin",
+        "type": "Fire",
+        "category": "Special",
+        "power": 15,
+        "accuracy": 70,
+        "PP": 15,
+        "effect": [
+            "Firespin"
+        ]
+    },
+    {
+        "name": "Flamethrower",
+        "type": "Fire",
+        "category": "Special",
+        "power": 95,
+        "accuracy": 100,
+        "PP": 15,
+        "effect": [
+            "Burn"
+        ]
+    }
+]
