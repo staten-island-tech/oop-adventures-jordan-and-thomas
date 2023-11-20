@@ -252,5 +252,269 @@
         "effect": [
             "Burn"
         ]
+    },
+    {
+        "name": "Drill Peck",
+        "type": "Flying",
+        "category": "Physical",
+        "power": 80,
+        "accuracy": 100,
+        "PP": 20,
+        "effect": [
+            "None"
+        ]
+    },
+    {
+        "name": "Fly",
+        "type": "Flying",
+        "category": "Physical",
+        "power": 70,
+        "accuracy": 95,
+        "PP": 15,
+        "effect": [
+            "Flygimmick"
+        ]
+    },
+    {
+        "name": "Mirror Move",
+        "type": "Flying",
+        "category": "None",
+        "power": 0,
+        "accuracy": 100,
+        "PP": 20,
+        "effect": [
+            "Mirrormove"
+        ]
+    },
+    {
+        "name": "Peck",
+        "type": "Flying",
+        "category": "Physical",
+        "power": 35,
+        "accuracy": 100,
+        "PP": 35,
+        "effect": [
+            "None"
+        ]
+    },
+    {
+        "name": "Sky Attack",
+        "type": "Flying",
+        "category": "Physical",
+        "power": 140,
+        "accuracy": 90,
+        "PP": 5,
+        "effect": [
+            "HitsNextTurn"
+        ]
+    },
+    {
+        "name": "Wing Attack",
+        "type": "Flying",
+        "category": "Physical",
+        "power": 35,
+        "accuracy": 100,
+        "PP": 35,
+        "effect": [
+            "None"
+        ]
+    },
+    {
+        "name": "Confuse Ray",
+        "type": "Ghost",
+        "category": "None",
+        "power": 0,
+        "accuracy": 100,
+        "PP": 10,
+        "effect": [
+            "Confuses"
+        ]
+    },
+    {
+        "name": "Lick",
+        "type": "Ghost",
+        "category": "Physical",
+        "power": 20,
+        "accuracy": 100,
+        "PP": 30,
+        "effect": [
+            "13Paralyze"
+        ]
+    },
+    {
+        "name": "Night Shade",
+        "type": "Ghost",
+        "category": "Special",
+        "power": 0,
+        "accuracy": 100,
+        "PP": 15,
+        "effect": [
+            "NightShade"
+        ]
+    },
+    {
+        "name": "Absorb",
+        "type": "Grass",
+        "category": "Special",
+        "power": 20,
+        "accuracy": 100,
+        "PP": 20,
+        "effect": [
+            "HealHalf"
+        ]
+    },
+    {
+        "name": "Leech Seed",
+        "type": "Grass",
+        "category": "None",
+        "power": 0,
+        "accuracy": 90,
+        "PP": 10,
+        "effect": [
+            "LeechSeed"
+        ]
+    },
+    {
+        "name": "Mega Drain",
+        "type": "Grass",
+        "category": "Special",
+        "power": 40,
+        "accuracy": 100,
+        "PP": 10,
+        "effect": [
+            "HealHalf"
+        ]
+    },
+    {
+        "name": "Petal Dance",
+        "type": "Grass",
+        "category": "Special",
+        "power": 70,
+        "accuracy": 100,
+        "PP": 20,
+        "effect": [
+            "PetalDance"
+        ]
+    },
+    {
+        "name": "Razor Leaf",
+        "type": "Grass",
+        "category": "Physical",
+        "power": 55,
+        "accuracy": 95,
+        "PP": 25,
+        "effect": [
+            "HighCrit"
+        ]
+    },
+    {
+        "name": "Sleep Powder",
+        "type": "Grass",
+        "category": "None",
+        "power": 0,
+        "accuracy": 75,
+        "PP": 15,
+        "effect": [
+            "Sleep"
+        ]
+    },
+    {
+        "name": "Solar Beam ",
+        "type": "Grass",
+        "category": "Special",
+        "power": 120,
+        "accuracy": 100,
+        "PP": 10,
+        "effect": [
+            "HitsNextTurn"
+        ]
+    },
+    {
+        "name": "Spore",
+        "type": "Grass",
+        "category": "None",
+        "power": 0,
+        "accuracy": 100,
+        "PP": 15,
+        "effect": [
+            "Sleep"
+        ]
+    },
+    {
+        "name": "Stun Spore",
+        "type": "Grass",
+        "category": "None",
+        "power": 0,
+        "accuracy": 75,
+        "PP": 30,
+        "effect": [
+            "AlwaysParalyze"
+        ]
+    },
+    {
+        "name": "Vine Whip",
+        "type": "Grass",
+        "category": "Physical",
+        "power": 35,
+        "accuracy": 100,
+        "PP": 10,
+        "effect": [
+            "None"
+        ]
+    },
+    {
+        "name": "Bone Club",
+        "type": "Ground",
+        "category": "Physical",
+        "power": 65,
+        "accuracy": 85,
+        "PP": 20,
+        "effect": [
+            "MayFlinch"
+        ]
+    },
+    {
+        "name": "Bonemerang",
+        "type": "Ground",
+        "category": "Physical",
+        "power": 50,
+        "accuracy": 90,
+        "PP": 10,
+        "effect": [
+            "HitsTwice"
+        ]
+    },
+    {
+        "name": "Dig",
+        "type": "Ground",
+        "category": "Physical",
+        "power": 100,
+        "accuracy": 100,
+        "PP": 10,
+        "effect": [
+            "Digs"
+        ]
+    },
+    {
+        "name": "Earthquake",
+        "type": "Ground",
+        "category": "Physical",
+        "power": 100,
+        "accuracy": 100,
+        "PP": 10,
+        "effect": [
+            "DoubleAgainstDig"
+        ]
+    },
+    {
+        "name": "Fissure",
+        "type": "Ground",
+        "category": "Physical",
+        "power": 0,
+        "accuracy": 30,
+        "PP": 5,
+        "effect": [
+            "OHKO"
+        ]
     }
 ]
