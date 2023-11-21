@@ -5,14 +5,16 @@ data = json.load(test)
 class Pokemon():
     def teambuilder():
         playerteam = []
+        pokemonfound = 0
         firstpokemon = input("What pokemon do you want on your team? ")
         for i in range(len(data)):
-            if firstpokemon in (data[i]["Name"]):
+            if firstpokemon == (data[i]["Name"]):
                 playerteam.append(firstpokemon)
+                pokemonfound = 1
                 break
-            else:
-                print("Pokemon not found")
-                firstpokemon = input("Try again ")
-        print(playerteam)
+        if pokemonfound == 0:
+            for i in range(x):
+            firstpokemon = input("try again")      
+        print(playerteam)      
     teambuilder()
             
