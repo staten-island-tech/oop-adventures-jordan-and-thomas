@@ -1,0 +1,18 @@
+import json
+test = open("data.json", encoding="utf8")
+data = json.load(test)
+
+class Pokemon():
+    def teambuilder():
+        playerteam = []
+        firstpokemon = input("What pokemon do you want on your team? ")
+        for i in range(len(data)):
+            if firstpokemon in (data[i]["Name"]):
+                playerteam.append(firstpokemon)
+                break
+            else:
+                print("Pokemon not found")
+                firstpokemon = input("Try again ")
+        print(playerteam)
+    teambuilder()
+            
