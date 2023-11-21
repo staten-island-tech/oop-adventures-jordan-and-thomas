@@ -516,5 +516,379 @@
         "effect": [
             "OHKO"
         ]
+    },
+    {
+        "name": "Aurora Beam",
+        "type": "Ice",
+        "category": "Special",
+        "power": 65,
+        "accuracy": 100,
+        "PP": 20,
+        "effect": [
+            "13AttackDown"
+        ]
+    },
+    {
+        "name": "Blizzard",
+        "type": "Ice",
+        "category": "Special",
+        "power": 120,
+        "accuracy": 90,
+        "PP": 5,
+        "effect": [
+            "Freeze"
+        ]
+    },
+    {
+        "name": "Haze",
+        "type": "Ice",
+        "category": "None",
+        "power": 0,
+        "accuracy": 100,
+        "PP": 30,
+        "effect": [
+            "HazeEffect"
+        ]
+    },
+    {
+        "name": "Ice Beam",
+        "type": "Ice",
+        "category": "Special",
+        "power": 95,
+        "accuracy": 100,
+        "PP": 10,
+        "effect": [
+            "Freeze"
+        ]
+    },
+    {
+        "name": "Ice Punch",
+        "type": "Ice",
+        "category": "Physical",
+        "power": 75,
+        "accuracy": 100,
+        "PP": 15,
+        "effect": [
+            "Freeze"
+        ]
+    },
+    {
+        "name": "Mist",
+        "type": "Ice",
+        "category": "None",
+        "power": 0,
+        "accuracy": 100,
+        "PP": 30,
+        "effect": [
+            "MistEffect"
+        ]
+    },
+    {
+        "name": "Barrage",
+        "type": "Normal",
+        "category": "Physical",
+        "power": 15,
+        "accuracy": 85,
+        "PP": 20,
+        "effect": [
+            "Hits2to5"
+        ]
+    },
+    {
+        "name": "Bide",
+        "type": "Normal",
+        "category": "Physical",
+        "power": 0,
+        "accuracy": 100,
+        "PP": 10,
+        "effect": [
+            "BideEffect"
+        ]
+    },
+    {
+        "name": "Bind",
+        "type": "Normal",
+        "category": "Physical",
+        "power": 15,
+        "accuracy": 75,
+        "PP": 20,
+        "effect": [
+            "BindEffect"
+        ]
+    },
+    {
+        "name": "Bite",
+        "type": "Normal",
+        "category": "Physical",
+        "power": 60,
+        "accuracy": 100,
+        "PP": 25,
+        "effect": [
+            "Flinch"
+        ]
+    },
+    {
+        "name": "Body Slam",
+        "type": "Normal",
+        "category": "Physical",
+        "power": 85,
+        "accuracy": 100,
+        "PP": 15,
+        "effect": [
+            "13Paralyze"
+        ]
+    },
+    {
+        "name": "Comet Punch",
+        "type": "Normal",
+        "category": "Physical",
+        "power": 18,
+        "accuracy": 85,
+        "PP": 15,
+        "effect": [
+            "Hits2to5"
+        ]
+    },
+    {
+        "name": "Constrict",
+        "type": "Normal",
+        "category": "Physical",
+        "power": 10,
+        "accuracy": 100,
+        "PP": 35,
+        "effect": [
+            "1in3SpeedDown"
+        ]
+    },
+    {
+        "name": "Conversion",
+        "type": "Normal",
+        "category": "None",
+        "power": 0,
+        "accuracy": 100,
+        "PP": 30,
+        "effect": [
+            "SwitchTypetoTarget"
+        ]
+    },
+    {
+        "name": "Cut",
+        "type": "Normal",
+        "category": "Physical",
+        "power": 50,
+        "accuracy": 95,
+        "PP": 30,
+        "effect": [
+            "None"
+        ]
+    },
+    {
+        "name": "Defense Curl",
+        "type": "Normal",
+        "category": "None",
+        "power": 0,
+        "accuracy": 100,
+        "PP": 40,
+        "effect": [
+            "DefenseUp"
+        ]
+    },
+    {
+        "name": "Disable",
+        "type": "Normal",
+        "category": "None",
+        "power": 0,
+        "accuracy": 55,
+        "PP": 20,
+        "effect": [
+            "DisableMove"
+        ]
+    },
+    {
+        "name": "Dizzy Punch",
+        "type": "Normal",
+        "category": "Physical",
+        "power": 70,
+        "accuracy": 100,
+        "PP": 10,
+        "effect": [
+            "Confuse"
+        ]
+    },
+    {
+        "name": "Double Slap",
+        "type": "Normal",
+        "category": "Physical",
+        "power": 15,
+        "accuracy": 85,
+        "PP": 10,
+        "effect": [
+            "Hits2to5"
+        ]
+    },
+    {
+        "name": "Double Team",
+        "type": "Normal",
+        "category": "None",
+        "power": 0,
+        "accuracy": 100,
+        "PP": 15,
+        "effect": [
+            "AccuracyDown"
+        ]
+    },
+    {
+        "name": "Double-Edge",
+        "type": "Normal",
+        "category": "Physical",
+        "power": 100,
+        "accuracy": 100,
+        "PP": 15,
+        "effect": [
+            "14DamageBack"
+        ]
+    },
+    {
+        "name": "Egg Bomb",
+        "type": "Normal",
+        "category": "Physical",
+        "power": 100,
+        "accuracy": 75,
+        "PP": 10,
+        "effect": [
+            "None"
+        ]
+    },
+    {
+        "name": "Explosion",
+        "type": "Normal",
+        "category": "Physical",
+        "power": 170,
+        "accuracy": 100,
+        "PP": 5,
+        "effect": [
+            "YouDie"
+        ]
+    },
+    {
+        "name": "Flash",
+        "type": "Normal",
+        "category": "None",
+        "power": 0,
+        "accuracy": 70,
+        "PP": 20,
+        "effect": [
+            "AccuracyDown"
+        ]
+    },
+    {
+        "name": "Focus Energy",
+        "type": "Normal",
+        "category": "None",
+        "power": 0,
+        "accuracy": 100,
+        "PP": 30,
+        "effect": [
+            "CritChanceUp"
+        ]
+    },
+    {
+        "name": "Fury Attack",
+        "type": "Normal",
+        "category": "Physical",
+        "power": 15,
+        "accuracy": 85,
+        "PP": 20,
+        "effect": [
+            "Hits2to5"
+        ]
+    },
+    {
+        "name": "Fury Swipes",
+        "type": "Normal",
+        "category": "Physical",
+        "power": 18,
+        "accuracy": 80,
+        "PP": 15,
+        "effect": [
+            "Hits2to5"
+        ]
+    },
+    {
+        "name": "Glare",
+        "type": "Normal",
+        "category": "None",
+        "power": 0,
+        "accuracy": 75,
+        "PP": 30,
+        "effect": [
+            "AlwaysParalyze"
+        ]
+    },
+    {
+        "name": "Growl",
+        "type": "Normal",
+        "category": "None",
+        "power": 0,
+        "accuracy": 100,
+        "PP": 40,
+        "effect": [
+            "AttackDown"
+        ]
+    },
+    {
+        "name": "Growth",
+        "type": "Normal",
+        "category": "None",
+        "power": 0,
+        "accuracy": 100,
+        "PP": 40,
+        "effect": [
+            "SpecialUp"
+        ]
+    },
+    {
+        "name": "Guillotine",
+        "type": "Normal",
+        "category": "Physical",
+        "power": 0,
+        "accuracy": 30,
+        "PP": 5,
+        "effect": [
+            "OHKO"
+        ]
+    },
+    {
+        "name": "Gust",
+        "type": "Normal",
+        "category": "Physical",
+        "power": 40,
+        "accuracy": 100,
+        "PP": 35,
+        "effect": [
+            "None"
+        ]
+    },
+    {
+        "name": "Harden",
+        "type": "Normal",
+        "category": "None",
+        "power": 0,
+        "accuracy": 100,
+        "PP": 30,
+        "effect": [
+            "DefenseUp"
+        ]
+    },
+    {
+        "name": "Headbutt",
+        "type": "Normal",
+        "category": "Physical",
+        "power": 70,
+        "accuracy": 100,
+        "PP": 15,
+        "effect": [
+            "13Flinch"
+        ]
     }
 ]
