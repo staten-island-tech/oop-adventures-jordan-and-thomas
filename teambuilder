@@ -6,6 +6,7 @@ class Pokemon():
     def teambuilder():
         playerteam = []
         pokemonfound = 0
+        findnewpokemon = 1
         firstpokemon = input("What pokemon do you want on your team? ")
         for i in range(len(data)):
             if firstpokemon == (data[i]["Name"]):
@@ -13,8 +14,17 @@ class Pokemon():
                 pokemonfound = 1
                 break
         if pokemonfound == 0:
-            for i in range(x):
-            firstpokemon = input("try again")      
-        print(playerteam)      
+            for i in range(findnewpokemon):
+                firstpokemon = input("try again ")
+                for i in range(len(data)):
+                    if firstpokemon == (data[i]["Name"]):
+                        playerteam.append(firstpokemon)
+                    else:
+                        findnewpokemon += 1
+        for i in range(len(data)):
+            if firstpokemon == (data[i]["Name"]):
+                print(data[i]["Learnable Moves"])
+                
+              
     teambuilder()
             
