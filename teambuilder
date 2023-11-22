@@ -5,8 +5,11 @@ data = json.load(test)
 class Pokemon():
     def teambuilder():
         playerteam = []
+        firstpokemonmoves = []
         pokemonfound = 0
         findnewpokemon = 1
+        findnewmove1 = 1
+        findnewmove2 = 1
         firstpokemon = input("What pokemon do you want on your team? ")
         for i in range(len(data)):
             if firstpokemon == (data[i]["Name"]):
@@ -24,6 +27,24 @@ class Pokemon():
         for i in range(len(data)):
             if firstpokemon == (data[i]["Name"]):
                 print(data[i]["Learnable Moves"])
+                move11 = input("Choose a learnable move ")
+                firstpokemonmoves.append(move11)
+                move12 = input("Choose a learnable move ")
+                if move12 in firstpokemonmoves:
+                    for i in range(findnewmove1):
+                        move12 = input("Choose a move that you haven't chosen yet ")
+                        if move12 in firstpokemonmoves: 
+                            findnewmove += 1
+                firstpokemonmoves.append(move12)
+                move13 = input("Choose a learnable move ")
+                if move13 in firstpokemonmoves:
+                    for i in range(findnewmove2):
+                        move13 = input("Choose a move that you haven't chosen yet ")
+                        if move13 in firstpokemonmoves: 
+                            findnewmove2 += 1
+                firstpokemonmoves.append(move13)
+
+
                 
               
     teambuilder()
