@@ -193,7 +193,7 @@ class Pokemon():
                             findnewmove12 += 1
                 fourthpokemonmoves.append(move44)
         print(fourthpokemonmoves)
-        teamandmoves = (playerteam(0), firstpokemonmoves, playerteam(1), secondpokemonmoves, playerteam(2), thirdpokemonmoves, playerteam(3), fourthpokemonmoves)
+        teamandmoves = (playerteam[0], firstpokemonmoves, playerteam[1], secondpokemonmoves, playerteam[2], thirdpokemonmoves, playerteam[3], fourthpokemonmoves)
         print(teamandmoves)
     teambuilder()
             
