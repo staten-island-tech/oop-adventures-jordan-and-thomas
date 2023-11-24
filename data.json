@@ -4645,5 +4645,42 @@
         "Special Stat": 105,
         "Health Stat": 200,
         "Speed Stat": 131
+    },
+    {
+        "Name": "Seaking",
+        "Types": [
+            "Water"
+        ],
+        "Learnable Moves": [
+            "Peck",
+            " Tail Whip",
+            " Supersonic",
+            " Horn Attack",
+            " Fury Attack",
+            " Waterfall",
+            " Horn Drill",
+            " Agility",
+            " Toxic",
+            " Take Down",
+            " Double-Edge",
+            " Bubble Beam",
+            " Water Gun",
+            " Ice Beam",
+            " Blizzard",
+            " Hyper Beam",
+            " Rage",
+            " Mimic",
+            " Double Team",
+            " Bide",
+            " Swift",
+            " Skull Bash",
+            " Rest",
+            " Substitute Surf"
+        ],
+        "Attack Stat": 189,
+        "Defense Stat": 135,
+        "Special Stat": 165,
+        "Health Stat": 270,
+        "Speed Stat": 141
     }
 ]
