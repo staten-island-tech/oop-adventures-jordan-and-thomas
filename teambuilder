@@ -112,12 +112,12 @@ class Pokemon():
                         firstpokemonmoves.append(move11)
                         move11found = 1
                         break
-                if pokemonfound1 == 0:
+                if move11found == 0:
                     for i in range(findmove11):
-                    move11 = input("try again ")
-                for i in range(len(data)):
-                    if firstpokemon == (data[i]["Name"]):
-                        playerteam.append(firstpokemon)
+                        move11 = input("try again ")
+                    for i in range(len(data)):
+                        if firstpokemon == (data[i]["Name"]):
+                            playerteam.append(firstpokemon)
                     else:
                         findnewpokemon1 += 1
                 firstpokemonmoves.append(move11)
