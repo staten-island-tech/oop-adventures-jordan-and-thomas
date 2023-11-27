@@ -1374,5 +1374,445 @@
         "effect": [
             "QuarterDHitsYou"
         ]
+    },
+    {
+        "name": "Thrash",
+        "type": "Normal",
+        "category": "Physical",
+        "power": 90,
+        "accuracy": 100,
+        "PP": 20,
+        "effect": [
+            "Outrage"
+        ]
+    },
+    {
+        "name": "Transform",
+        "type": "Normal",
+        "category": "None",
+        "power": 0,
+        "accuracy": 100,
+        "PP": 10,
+        "effect": [
+            "TransformEffect"
+        ]
+    },
+    {
+        "name": "Tri Attack",
+        "type": "Normal",
+        "category": "Special",
+        "power": 80,
+        "accuracy": 100,
+        "PP": 10,
+        "effect": [
+            "TriEffect"
+        ]
+    },
+    {
+        "name": "Vice Grip",
+        "type": "Normal",
+        "category": "Physical",
+        "power": 55,
+        "accuracy": 100,
+        "PP": 30,
+        "effect": [
+            "None"
+        ]
+    },
+    {
+        "name": "Whirlwind",
+        "type": "Normal",
+        "category": "None",
+        "power": 0,
+        "accuracy": 85,
+        "PP": 20,
+        "effect": [
+            "None"
+        ]
+    },
+    {
+        "name": "Wrap",
+        "type": "Normal",
+        "category": "Physical",
+        "power": 15,
+        "accuracy": 85,
+        "PP": 20,
+        "effect": [
+            "WrapEffect"
+        ]
+    },
+    {
+        "name": "Acid",
+        "type": "Poison",
+        "category": "Special",
+        "power": 40,
+        "accuracy": 100,
+        "PP": 30,
+        "effect": [
+            "1in3DefenseDown"
+        ]
+    },
+    {
+        "name": "Acid Armor",
+        "type": "Poison",
+        "category": "None",
+        "power": 0,
+        "accuracy": 100,
+        "PP": 40,
+        "effect": [
+            "DefenseSharpUp"
+        ]
+    },
+    {
+        "name": "Poison Gas",
+        "type": "Poison",
+        "category": "None",
+        "power": 0,
+        "accuracy": 55,
+        "PP": 40,
+        "effect": [
+            "AlwaysPoison"
+        ]
+    },
+    {
+        "name": "Poison Powder",
+        "type": "Poison",
+        "category": "None",
+        "power": 0,
+        "accuracy": 75,
+        "PP": 35,
+        "effect": [
+            "AlwaysPoison"
+        ]
+    },
+    {
+        "name": "Poison Sting",
+        "type": "Poison",
+        "category": "Physical",
+        "power": 15,
+        "accuracy": 100,
+        "PP": 35,
+        "effect": [
+            "1in5Poison"
+        ]
+    },
+    {
+        "name": "Sludge",
+        "type": "Poison",
+        "category": "Special",
+        "power": 65,
+        "accuracy": 100,
+        "PP": 20,
+        "effect": [
+            "Poison"
+        ]
+    },
+    {
+        "name": "Smog",
+        "type": "Poison",
+        "category": "Special",
+        "power": 20,
+        "accuracy": 70,
+        "PP": 20,
+        "effect": [
+            "Poison"
+        ]
+    },
+    {
+        "name": "Toxic",
+        "type": "Poison",
+        "category": "None",
+        "power": 0,
+        "accuracy": 85,
+        "PP": 10,
+        "effect": [
+            "ToxicEffect"
+        ]
+    },
+    {
+        "name": "Agility",
+        "type": "Psychic",
+        "category": "None",
+        "power": 0,
+        "accuracy": 100,
+        "PP": 30,
+        "effect": [
+            "SpeedSharpUp"
+        ]
+    },
+    {
+        "name": "Amnesia",
+        "type": "Psychic",
+        "category": "None",
+        "power": 0,
+        "accuracy": 100,
+        "PP": 20,
+        "effect": [
+            "SpecialSharpUp"
+        ]
+    },
+    {
+        "name": "Barrier",
+        "type": "Psychic",
+        "category": "None",
+        "power": 0,
+        "accuracy": 100,
+        "PP": 30,
+        "effect": [
+            "DefenseSharpUp"
+        ]
+    },
+    {
+        "name": "Confusion",
+        "type": "Psychic",
+        "category": "Special",
+        "power": 50,
+        "accuracy": 100,
+        "PP": 25,
+        "effect": [
+            "1in10Confuse"
+        ]
+    },
+    {
+        "name": "Dream Eater",
+        "type": "Psychic",
+        "category": "Special",
+        "power": 100,
+        "accuracy": 100,
+        "PP": 15,
+        "effect": [
+            "DreamEatEffect"
+        ]
+    },
+    {
+        "name": "Hypnosis",
+        "type": "Psychic",
+        "category": "None",
+        "power": 0,
+        "accuracy": 60,
+        "PP": 20,
+        "effect": [
+            "Sleep"
+        ]
+    },
+    {
+        "name": "Kinesis",
+        "type": "Psychic",
+        "category": "None",
+        "power": 0,
+        "accuracy": 80,
+        "PP": 15,
+        "effect": [
+            "AccuracyDown"
+        ]
+    },
+    {
+        "name": "Light Screen",
+        "type": "Psychic",
+        "category": "None",
+        "power": 0,
+        "accuracy": 100,
+        "PP": 30,
+        "effect": [
+            "LightScreenEffect"
+        ]
+    },
+    {
+        "name": "Meditate",
+        "type": "Psychic",
+        "category": "None",
+        "power": 0,
+        "accuracy": 100,
+        "PP": 40,
+        "effect": [
+            "AttackUp"
+        ]
+    },
+    {
+        "name": "Psybeam",
+        "type": "Psychic",
+        "category": "Special",
+        "power": 65,
+        "accuracy": 100,
+        "PP": 20,
+        "effect": [
+            "1in10Confuse"
+        ]
+    },
+    {
+        "name": "Psychic",
+        "type": "Psychic",
+        "category": "Special",
+        "power": 90,
+        "accuracy": 100,
+        "PP": 10,
+        "effect": [
+            "1in3SpecialDown"
+        ]
+    },
+    {
+        "name": "Psywave",
+        "type": "Psychic",
+        "category": "Special",
+        "power": 0,
+        "accuracy": 80,
+        "PP": 15,
+        "effect": [
+            "PsywaveEffect"
+        ]
+    },
+    {
+        "name": "Reflect",
+        "type": "Psychic",
+        "category": "None",
+        "power": 0,
+        "accuracy": 100,
+        "PP": 20,
+        "effect": [
+            "ReflectEffect"
+        ]
+    },
+    {
+        "name": "Rest",
+        "type": "Psychic",
+        "category": "None",
+        "power": 0,
+        "accuracy": 100,
+        "PP": 10,
+        "effect": [
+            "FullRestore"
+        ]
+    },
+    {
+        "name": "Teleport",
+        "type": "Psychic",
+        "category": "None",
+        "power": 0,
+        "accuracy": 0,
+        "PP": 0,
+        "effect": [
+            "None"
+        ]
+    },
+    {
+        "name": "Rock Slide",
+        "type": "Rock",
+        "category": "Physical",
+        "power": 75,
+        "accuracy": 90,
+        "PP": 10,
+        "effect": [
+            "None"
+        ]
+    },
+    {
+        "name": "Rock Throw",
+        "type": "Rock",
+        "category": "Physical",
+        "power": 50,
+        "accuracy": 65,
+        "PP": 15,
+        "effect": [
+            "None"
+        ]
+    },
+    {
+        "name": "Bubble",
+        "type": "Water",
+        "category": "Special",
+        "power": 20,
+        "accuracy": 100,
+        "PP": 30,
+        "effect": [
+            "1in3SpeedDown"
+        ]
+    },
+    {
+        "name": "Bubble Beam",
+        "type": "Water",
+        "category": "Special",
+        "power": 65,
+        "accuracy": 100,
+        "PP": 20,
+        "effect": [
+            "1in3SpeedDown"
+        ]
+    },
+    {
+        "name": "Clamp",
+        "type": "Water",
+        "category": "Physical",
+        "power": 35,
+        "accuracy": 75,
+        "PP": 10,
+        "effect": [
+            "WrapEffect"
+        ]
+    },
+    {
+        "name": "Crabhammer",
+        "type": "Water",
+        "category": "Physical",
+        "power": 90,
+        "accuracy": 85,
+        "PP": 10,
+        "effect": [
+            "HighCrit"
+        ]
+    },
+    {
+        "name": "Hydro Pump",
+        "type": "Water",
+        "category": "Special",
+        "power": 120,
+        "accuracy": 80,
+        "PP": 5,
+        "effect": [
+            "None"
+        ]
+    },
+    {
+        "name": "Surf",
+        "type": "Water",
+        "category": "Special",
+        "power": 95,
+        "accuracy": 100,
+        "PP": 15,
+        "effect": [
+            "None"
+        ]
+    },
+    {
+        "name": "Water Gun",
+        "type": "Water",
+        "category": "Special",
+        "power": 40,
+        "accuracy": 100,
+        "PP": 25,
+        "effect": [
+            "None"
+        ]
+    },
+    {
+        "name": "Waterfall",
+        "type": "Water",
+        "category": "Physical",
+        "power": 80,
+        "accuracy": 100,
+        "PP": 15,
+        "effect": [
+            "MayFlinch"
+        ]
+    },
+    {
+        "name": "Withdraw",
+        "type": "Water",
+        "category": "None",
+        "power": 0,
+        "accuracy": 100,
+        "PP": 40,
+        "effect": [
+            "DefenseUp"
+        ]
     }
 ]
