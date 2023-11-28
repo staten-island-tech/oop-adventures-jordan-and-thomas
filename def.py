@@ -1,6 +1,8 @@
 import json
-import random
+class effect:
+    def HealHalfD(damagedone, currentHealth):
+        currentHealth = currentHealth + damagedone/2
+        print(currentHealth)
+    
 
-
-
-print(random.random())
+effect.HealHalfD(50,100)
