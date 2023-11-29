@@ -251,7 +251,6 @@ class Pokemon():
                             findmove14 += 1
                 if move14 == move11 or move14 == move12 or move14 == move13: 
                     findnewmove3 += 1
-        print(firstpokemonmoves)
         for i in range(len(data)):
             allpokemon.append(data[i]["Name"])
         print(allpokemon)
@@ -358,19 +357,19 @@ class Pokemon():
                 for i in range(len(data[secondpokemonnumber]["Learnable Moves"])):
                     if move23 in (data[secondpokemonnumber]["Learnable Moves"][i]):
                         secondpokemonmoves.append(move23)
-                        move12found = 1
+                        move23found = 1
                         break
-                if move12found == 0:
-                    for i in range(findmove12):
-                        move12 = input("Try again ")
-                    for i in range(len(data[firstpokemonnumber]["Learnable Moves"])):
-                        if move12 in (data[firstpokemonnumber]["Learnable Moves"][i]):
-                            firstpokemonmoves.append(move12)
+                if move23found == 0:
+                    for i in range(findmove23):
+                        move23 = input("Try again ")
+                    for i in range(len(data[secondpokemonnumber]["Learnable Moves"])):
+                        if move23 in (data[secondpokemonnumber]["Learnable Moves"][i]):
+                            secondpokemonmoves.append(move23)
                             break
                         else:
-                            findmove12 += 1
-                if move12 == move11: 
-                    findnewmove1 += 1
+                            findmove23 += 1
+                if move23 == move21 or move23 == move22: 
+                    findnewmove5 += 1
         for i in range(len(data)):
             if secondpokemon == (data[i]["Name"]):
                 move24 = input("Choose a learnable move ")
@@ -390,12 +389,25 @@ class Pokemon():
                             findmove24 += 1
         if move24 == move21 or move24 == move22 or move24 == move23:
             secondpokemonmoves.remove(move24)
+            move24found = 0
             for i in range(findnewmove6):
                 move24 = input("Choose a move that you haven't chosen yet ")
-                if move24 in secondpokemonmoves: 
+                for i in range(len(data[secondpokemonnumber]["Learnable Moves"])):
+                    if move24 in (data[secondpokemonnumber]["Learnable Moves"][i]):
+                        secondpokemonmoves.append(move24)
+                        move24found = 1
+                        break
+                if move24found == 0:
+                    for i in range(findmove24):
+                        move24 = input("Try again ")
+                    for i in range(len(data[secondpokemonnumber]["Learnable Moves"])):
+                        if move24 in (data[secondpokemonnumber]["Learnable Moves"][i]):
+                            secondpokemonmoves.append(move24)
+                            break
+                        else:
+                            findmove24 += 1
+                if move24 == move21 or move24 == move22 or move24 == move23: 
                     findnewmove6 += 1
-                secondpokemonmoves.append(move24)
-        print(secondpokemonmoves)
         for i in range(len(data)):
             allpokemon.append(data[i]["Name"])
         print(allpokemon)
@@ -451,11 +463,25 @@ class Pokemon():
                             findmove32 += 1
         if move32 == move31:
             thirdpokemonmoves.remove(move32)
+            move32found = 0
             for i in range(findnewmove7):
                 move32 = input("Choose a move that you haven't chosen yet ")
-                if move32 in thirdpokemonmoves: 
+                for i in range(len(data[thirdpokemonnumber]["Learnable Moves"])):
+                    if move32 in (data[thirdpokemonnumber]["Learnable Moves"][i]):
+                        thirdpokemonmoves.append(move32)
+                        move32found = 1
+                        break
+                if move32found == 0:
+                    for i in range(findmove32):
+                        move32 = input("Try again ")
+                    for i in range(len(data[thirdpokemonnumber]["Learnable Moves"])):
+                        if move32 in (data[thirdpokemonnumber]["Learnable Moves"][i]):
+                            thirdpokemonmoves.append(move32)
+                            break
+                        else:
+                            findmove32 += 1
+                if move32 == move31: 
                     findnewmove7 += 1
-                thirdpokemonmoves.append(move32)
         for i in range(len(data)):
             if thirdpokemon == (data[i]["Name"]):
                 move33 = input("Choose a learnable move ")
@@ -475,11 +501,25 @@ class Pokemon():
                             findmove33 += 1
         if move33 == move31 or move33 == move32:
             thirdpokemonmoves.remove(move33)
+            move33found = 0
             for i in range(findnewmove8):
                 move33 = input("Choose a move that you haven't chosen yet ")
-                if move33 in thirdpokemonmoves: 
+                for i in range(len(data[thirdpokemonnumber]["Learnable Moves"])):
+                    if move33 in (data[thirdpokemonnumber]["Learnable Moves"][i]):
+                        thirdpokemonmoves.append(move33)
+                        move33found = 1
+                        break
+                if move33found == 0:
+                    for i in range(findmove33):
+                        move33 = input("Try again ")
+                    for i in range(len(data[thirdpokemonnumber]["Learnable Moves"])):
+                        if move33 in (data[thirdpokemonnumber]["Learnable Moves"][i]):
+                            thirdpokemonmoves.append(move33)
+                            break
+                        else:
+                            findmove33 += 1
+                if move33 == move31 or move33 == move32: 
                     findnewmove8 += 1
-                thirdpokemonmoves.append(move33)
         for i in range(len(data)):
             if thirdpokemon == (data[i]["Name"]):
                 move34 = input("Choose a learnable move ")
@@ -499,12 +539,25 @@ class Pokemon():
                             findmove34 += 1
         if move34 == move31 or move34 == move32 or move34 == move33:
             thirdpokemonmoves.remove(move34)
+            move34found = 0
             for i in range(findnewmove9):
                 move34 = input("Choose a move that you haven't chosen yet ")
-                if move34 in thirdpokemonmoves: 
+                for i in range(len(data[thirdpokemonnumber]["Learnable Moves"])):
+                    if move34 in (data[thirdpokemonnumber]["Learnable Moves"][i]):
+                        thirdpokemonmoves.append(move34)
+                        move34found = 1
+                        break
+                if move34found == 0:
+                    for i in range(findmove34):
+                        move34 = input("Try again ")
+                    for i in range(len(data[thirdpokemonnumber]["Learnable Moves"])):
+                        if move34 in (data[thirdpokemonnumber]["Learnable Moves"][i]):
+                            thirdpokemonmoves.append(move34)
+                            break
+                        else:
+                            findmove34 += 1
+                if move34 == move31 or move34 == move32 or move34 == move33: 
                     findnewmove9 += 1
-                thirdpokemonmoves.append(move34)
-        print(thirdpokemonmoves)
         for i in range(len(data)):
             allpokemon.append(data[i]["Name"])
         print(allpokemon)
@@ -560,11 +613,25 @@ class Pokemon():
                             findmove42 += 1
         if move42 == move41:
             fourthpokemonmoves.remove(move42)
+            move42found = 0
             for i in range(findnewmove10):
                 move42 = input("Choose a move that you haven't chosen yet ")
-                if move42 in fourthpokemonmoves: 
+                for i in range(len(data[fourthpokemonnumber]["Learnable Moves"])):
+                    if move42 in (data[fourthpokemonnumber]["Learnable Moves"][i]):
+                        fourthpokemonmoves.append(move42)
+                        move42found = 1
+                        break
+                if move42found == 0:
+                    for i in range(findmove42):
+                        move42 = input("Try again ")
+                    for i in range(len(data[fourthpokemonnumber]["Learnable Moves"])):
+                        if move42 in (data[fourthpokemonnumber]["Learnable Moves"][i]):
+                            fourthpokemonmoves.append(move42)
+                            break
+                        else:
+                            findmove42 += 1
+                if move42 == move41: 
                     findnewmove10 += 1
-                fourthpokemonmoves.append(move42)
         for i in range(len(data)):
             if fourthpokemon == (data[i]["Name"]):
                 move43 = input("Choose a learnable move ")
@@ -584,11 +651,25 @@ class Pokemon():
                             findmove43 += 1
         if move43 == move41 or move43 == move42:
             fourthpokemonmoves.remove(move43)
+            move43found = 0
             for i in range(findnewmove11):
                 move43 = input("Choose a move that you haven't chosen yet ")
-                if move43 in fourthpokemonmoves: 
+                for i in range(len(data[fourthpokemonnumber]["Learnable Moves"])):
+                    if move43 in (data[fourthpokemonnumber]["Learnable Moves"][i]):
+                        fourthpokemonmoves.append(move43)
+                        move43found = 1
+                        break
+                if move43found == 0:
+                    for i in range(findmove43):
+                        move43 = input("Try again ")
+                    for i in range(len(data[fourthpokemonnumber]["Learnable Moves"])):
+                        if move43 in (data[fourthpokemonnumber]["Learnable Moves"][i]):
+                            fourthpokemonmoves.append(move43)
+                            break
+                        else:
+                            findmove43 += 1
+                if move43 == move41 or move43 == move42: 
                     findnewmove11 += 1
-                fourthpokemonmoves.append(move43)
         for i in range(len(data)):
             if fourthpokemon == (data[i]["Name"]):
                 move44 = input("Choose a learnable move ")
@@ -608,12 +689,25 @@ class Pokemon():
                             findmove44 += 1
         if move44 == move41 or move44 == move42 or move44 == move43:
             fourthpokemonmoves.remove(move44)
+            move44found = 0
             for i in range(findnewmove12):
                 move44 = input("Choose a move that you haven't chosen yet ")
-                if move44 in fourthpokemonmoves: 
+                for i in range(len(data[fourthpokemonnumber]["Learnable Moves"])):
+                    if move44 in (data[fourthpokemonnumber]["Learnable Moves"][i]):
+                        fourthpokemonmoves.append(move44)
+                        move44found = 1
+                        break
+                if move44found == 0:
+                    for i in range(findmove44):
+                        move44 = input("Try again ")
+                    for i in range(len(data[fourthpokemonnumber]["Learnable Moves"])):
+                        if move44 in (data[fourthpokemonnumber]["Learnable Moves"][i]):
+                            fourthpokemonmoves.append(move44)
+                            break
+                        else:
+                            findmove44 += 1
+                if move44 == move41 or move44 == move42 or move44 == move43: 
                     findnewmove12 += 1
-                fourthpokemonmoves.append(move44)
-        print(fourthpokemonmoves)
         for i in range(len(data)):
             allpokemon.append(data[i]["Name"])
         print(allpokemon)
@@ -669,11 +763,25 @@ class Pokemon():
                             findmove52 += 1
         if move52 == move51:
             fifthpokemonmoves.remove(move52)
+            move52found = 0
             for i in range(findnewmove13):
                 move52 = input("Choose a move that you haven't chosen yet ")
-                if move52 in fifthpokemonmoves: 
+                for i in range(len(data[fifthpokemonnumber]["Learnable Moves"])):
+                    if move52 in (data[fifthpokemonnumber]["Learnable Moves"][i]):
+                        fifthpokemonmoves.append(move52)
+                        move52found = 1
+                        break
+                if move52found == 0:
+                    for i in range(findmove52):
+                        move52 = input("Try again ")
+                    for i in range(len(data[fifthpokemonnumber]["Learnable Moves"])):
+                        if move52 in (data[fifthpokemonnumber]["Learnable Moves"][i]):
+                            fifthpokemonmoves.append(move52)
+                            break
+                        else:
+                            findmove52 += 1
+                if move52 == move51: 
                     findnewmove13 += 1
-                fifthpokemonmoves.append(move52)
         for i in range(len(data)):
             if fifthpokemon == (data[i]["Name"]):
                 move53 = input("Choose a learnable move ")
@@ -693,11 +801,25 @@ class Pokemon():
                             findmove53 += 1
         if move53 == move51 or move53 == move52:
             fifthpokemonmoves.remove(move53)
+            move53found = 0
             for i in range(findnewmove14):
                 move53 = input("Choose a move that you haven't chosen yet ")
-                if move53 in fifthpokemonmoves: 
+                for i in range(len(data[fifthpokemonnumber]["Learnable Moves"])):
+                    if move53 in (data[fifthpokemonnumber]["Learnable Moves"][i]):
+                        fifthpokemonmoves.append(move53)
+                        move53found = 1
+                        break
+                if move53found == 0:
+                    for i in range(findmove53):
+                        move53 = input("Try again ")
+                    for i in range(len(data[fifthpokemonnumber]["Learnable Moves"])):
+                        if move53 in (data[fifthpokemonnumber]["Learnable Moves"][i]):
+                            fifthpokemonmoves.append(move53)
+                            break
+                        else:
+                            findmove53 += 1
+                if move53 == move51 or move53 == move52: 
                     findnewmove14 += 1
-                fifthpokemonmoves.append(move53)
         for i in range(len(data)):
             if fifthpokemon == (data[i]["Name"]):
                 move54 = input("Choose a learnable move ")
@@ -717,12 +839,25 @@ class Pokemon():
                             findmove54 += 1
         if move54 == move51 or move54 == move52 or move54 == move53:
             fifthpokemonmoves.remove(move54)
+            move54found = 0
             for i in range(findnewmove15):
                 move54 = input("Choose a move that you haven't chosen yet ")
-                if move54 in fifthpokemonmoves: 
+                for i in range(len(data[fifthpokemonnumber]["Learnable Moves"])):
+                    if move54 in (data[fifthpokemonnumber]["Learnable Moves"][i]):
+                        fifthpokemonmoves.append(move54)
+                        move54found = 1
+                        break
+                if move54found == 0:
+                    for i in range(findmove54):
+                        move54 = input("Try again ")
+                    for i in range(len(data[fifthpokemonnumber]["Learnable Moves"])):
+                        if move54 in (data[fifthpokemonnumber]["Learnable Moves"][i]):
+                            fifthpokemonmoves.append(move54)
+                            break
+                        else:
+                            findmove54 += 1
+                if move54 == move51 or move54 == move52 or move54 == move53: 
                     findnewmove15 += 1
-                fifthpokemonmoves.append(move54)
-        print(fifthpokemonmoves)
         for i in range(len(data)):
             allpokemon.append(data[i]["Name"])
         print(allpokemon)
@@ -778,11 +913,25 @@ class Pokemon():
                             findmove62 += 1
         if move62 == move61:
             sixthpokemonmoves.remove(move62)
+            move62found = 0
             for i in range(findnewmove16):
                 move62 = input("Choose a move that you haven't chosen yet ")
-                if move62 in sixthpokemonmoves: 
+                for i in range(len(data[sixthpokemonnumber]["Learnable Moves"])):
+                    if move52 in (data[sixthpokemonnumber]["Learnable Moves"][i]):
+                        sixthpokemonmoves.append(move62)
+                        move62found = 1
+                        break
+                if move62found == 0:
+                    for i in range(findmove62):
+                        move62 = input("Try again ")
+                    for i in range(len(data[sixthpokemonnumber]["Learnable Moves"])):
+                        if move62 in (data[sixthpokemonnumber]["Learnable Moves"][i]):
+                            sixthpokemonmoves.append(move62)
+                            break
+                        else:
+                            findmove62 += 1
+                if move62 == move61: 
                     findnewmove16 += 1
-                sixthpokemonmoves.append(move62)
         for i in range(len(data)):
             if sixthpokemon == (data[i]["Name"]):
                 move63 = input("Choose a learnable move ")
@@ -802,11 +951,25 @@ class Pokemon():
                             findmove63 += 1
         if move63 == move61 or move63 == move62:
             sixthpokemonmoves.remove(move63)
+            move63found = 0
             for i in range(findnewmove17):
                 move63 = input("Choose a move that you haven't chosen yet ")
-                if move63 in sixthpokemonmoves: 
+                for i in range(len(data[sixthpokemonnumber]["Learnable Moves"])):
+                    if move63 in (data[sixthpokemonnumber]["Learnable Moves"][i]):
+                        sixthpokemonmoves.append(move63)
+                        move63found = 1
+                        break
+                if move63found == 0:
+                    for i in range(findmove63):
+                        move63 = input("Try again ")
+                    for i in range(len(data[sixthpokemonnumber]["Learnable Moves"])):
+                        if move63 in (data[sixthpokemonnumber]["Learnable Moves"][i]):
+                            sixthpokemonmoves.append(move63)
+                            break
+                        else:
+                            findmove63 += 1
+                if move63 == move61 or move63 == move62: 
                     findnewmove17 += 1
-                sixthpokemonmoves.append(move63)
         for i in range(len(data)):
             if sixthpokemon == (data[i]["Name"]):
                 move64 = input("Choose a learnable move ")
@@ -826,12 +989,25 @@ class Pokemon():
                             findmove64 += 1
         if move64 == move61 or move64 == move62 or move64 == move63:
             sixthpokemonmoves.remove(move64)
+            move64found = 0
             for i in range(findnewmove18):
                 move64 = input("Choose a move that you haven't chosen yet ")
-                if move64 in sixthpokemonmoves: 
+                for i in range(len(data[sixthpokemonnumber]["Learnable Moves"])):
+                    if move64 in (data[sixthpokemonnumber]["Learnable Moves"][i]):
+                        sixthpokemonmoves.append(move64)
+                        move64found = 1
+                        break
+                if move64found == 0:
+                    for i in range(findmove64):
+                        move64 = input("Try again ")
+                    for i in range(len(data[sixthpokemonnumber]["Learnable Moves"])):
+                        if move64 in (data[sixthpokemonnumber]["Learnable Moves"][i]):
+                            sixthpokemonmoves.append(move64)
+                            break
+                        else:
+                            findmove64 += 1
+                if move64 == move61 or move64 == move62 or move64 == move63: 
                     findnewmove18 += 1
-                sixthpokemonmoves.append(move64)
-        print(sixthpokemonmoves)
         teaminformation = (playerteam[0], firstpokemonmoves, "\n", playerteam[1], secondpokemonmoves, "\n", playerteam[2], thirdpokemonmoves, "\n", playerteam[3], fourthpokemonmoves ,"\n", playerteam[4], fifthpokemonmoves, "\n", playerteam[5], sixthpokemonmoves)
         print(teaminformation)
     teambuilder()
