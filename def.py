@@ -1,11 +1,11 @@
 import json
 import random
 class effect:
-    def HealHalfD(damagedone, currentHealth):
-        currentHealth = currentHealth + damagedone/2
+    def HealHalfD(damagedone, targetHealth):
+        targetHealth = targetHealth + damagedone/2
         
     def Hits2to5(movedamage):
-        times = randrange(5)
+        times = random.randrange(5)
         if times == 1 or times == 2:
             damagedoneb = movedamage * 2
         if times == 3:
@@ -15,42 +15,88 @@ class effect:
         if times == 5:
             damagedoneb = movedamage * 5
         
-    def SpeedDown():
-        a
+    def SpeedDown(speedstat):
+        x = 1
+        percent = speedstat/100
+        if x == 1:
+            targetspeedstat = percent * 67
+        if x == 2:
+            targetspeedstat = percent * 50
+        if x == 3:
+            targetspeedstat = percent * 40
+        if x == 4:
+            targetspeedstat = percent * 33
+        if x == 5:
+            targetspeedstat = percent * 29
+        if x == 6 or x > 6:
+            targetspeedstat = percent * 25
+        x += 1
 
     def HitsTwice(movedamage):
         damagedoneb = movedamage * 2
     
-    def Poison():
-        a
+    def Poison(targetpokemontype):
+        if targetpokemontype != "Poison":
+            skull = random.randrange(5)
+            if skull == 1:
+                targetpokemonstatus = "Poison"
     
     def Always40():
         damagedone = 40
     
-    def Paralyze():
-        a
+    def Paralyze(targetpokemontype):
+        if targetpokemontype != "Electric":
+            zap = random.randrange(5)
+            print(zap)
+            if zap == 1:
+                targetpokemonstatus = "Paralyze"
+                print("Pokemon has been paralyzed")
+            
     
-    def AlwaysParalyze():
-        a
+    def AlwaysParalyze(targetpokemontype):
+        if targetpokemontype != "Electric":
+            targetpokemonstatus = "Paralyze"
     
     def ItCounter(damagedealt, movecat):
         if movecat == "physical":
-            damagedone = damagedealt
+            damagedone = damagedealt * 2
     
-    def MissDoD():
-        b
+    def MissDoD(hit, targethealth):
+        if hit == "no":
+            smaack = targethealth/8
+            targethealth = smaack * 7
 
-    def MissDoLessD():
-        b
+
+    def MissDoLessD(hit, targethealth):
+        if hit == "no":
+            targethealth = targethealth - 1
 
     def Flinch13():
         chance = random.randrange(3)
         if chance == 1:
+            Flinch = "yes"
+    
+    def Seismictoss(defensestat):
+        damagedone = defensestat/4
+    
+    def Recoil14(damagedone, targethealth):
+        back = damagedone/4
+        targethealth = targethealth - back
+    
+    def Burn(targetpokemontype):
+        if targetpokemontype != "Fire":
+            targetpokemonstatus = "Burn"
+    
+
+
+
+
+
             
     
     
 
-
+effect.Paralyze("Water")
 
         
 
