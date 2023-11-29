@@ -18,7 +18,7 @@
         "accuracy": 85,
         "PP": 20,
         "effect": [
-            "HitsManyTimes"
+            "Hits2to5"
         ]
     },
     {
@@ -162,7 +162,7 @@
         "accuracy": 90,
         "PP": 20,
         "effect": [
-            "13Flinch"
+            "Flinch13"
         ]
     },
     {
@@ -173,7 +173,7 @@
         "accuracy": 85,
         "PP": 15,
         "effect": [
-            "13Flinch"
+            "Flinch13"
         ]
     },
     {
