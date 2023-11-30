@@ -1,6 +1,10 @@
 import json
 import random
 class effect:
+    "HealHalfD" = HealHalfD
+    "Hits2to5" = Hits2to5
+    "SpeedDown" = SpeedDown
+
     def HealHalfD(damagedone, targetHealth):
         targetHealth = targetHealth + damagedone/2
         
@@ -11,7 +15,7 @@ class effect:
         if times == 3:
             damagedoneb = movedamage * 3
         if times == 4:
-            damagedoneb = movedamage * 4
+            damagedoneb = movedamage * 4 
         if times == 5:
             damagedoneb = movedamage * 5
         
@@ -85,7 +89,36 @@ class effect:
     
     def Burn(targetpokemontype):
         if targetpokemontype != "Fire":
-            targetpokemonstatus = "Burn"
+            fuego = random.randrange(10)
+            if fuego == 1:
+                    targetpokemonstatus = "Burn"
+    
+    def FireSpin():
+        turns = random.randrange(4)
+        pokemonescape = trapped
+        if turns == 1:
+            TurnsHitsfor = 2
+        if turns == 2:
+            TurnsHitsfor = 3
+        if turns == 3:
+            TurnsHitsfor = 4
+        if turns == 4:
+            TurnsHitsfor = 5
+    
+    def Flygimmick():
+        immune = "yes"
+        uhhhhhhh
+
+    def Mirrormove():
+
+    def HitsNextTurn():
+        
+    def
+
+
+
+
+
     
 
 
@@ -96,7 +129,7 @@ class effect:
     
     
 
-effect.Paralyze("Water")
+
 
         
 
