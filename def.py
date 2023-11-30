@@ -113,7 +113,7 @@ class effect:
 
     def HitsNextTurn():
         
-    def
+    def m
 
 
 
