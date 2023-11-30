@@ -280,13 +280,13 @@ class Pokemon():
                     pokemonfound2 = 1
                     break
             if pokemonfound2 == 0:
-                for i in range(findnewpokemon2):
+                for i in range(differentsecondpokemon):
                     secondpokemon = input("Try again ")
                     for i in range(len(data)):
                         if secondpokemon == (data[i]["Name"]):
                             playerteam.append(secondpokemon)
                         else:
-                            findnewpokemon2 += 1
+                            differentsecondpokemon += 1
         for i in range(len(data)):
             if secondpokemon == (data[i]["Name"]):
                 print(data[i]["Learnable Moves"])
@@ -448,13 +448,13 @@ class Pokemon():
                     pokemonfound3 = 1
                     break
             if pokemonfound3 == 0:
-                for i in range(findnewpokemon3):
+                for i in range(differentthirdpokemon):
                     thirdpokemon = input("Try again ")
                     for i in range(len(data)):
                         if thirdpokemon == (data[i]["Name"]):
                             playerteam.append(thirdpokemon)
                         else:
-                            findnewpokemon3 += 1
+                            differentthirdpokemon += 1
         for i in range(len(data)):
             if thirdpokemon == (data[i]["Name"]):
                 print(data[i]["Learnable Moves"])
@@ -598,13 +598,13 @@ class Pokemon():
                 pokemonfound4 = 1
                 break
         if pokemonfound4 == 0:
-            for i in range(findnewpokemon4):
+            for i in range(differentfourthpokemon):
                 firstpokemon = input("Try again ")
                 for i in range(len(data)):
                     if fourthpokemon == (data[i]["Name"]):
                         playerteam.append(fourthpokemon)
                     else:
-                        findnewpokemon4 += 1
+                        differentfourthpokemon += 1
         if fourthpokemon == firstpokemon or fourthpokemon == secondpokemon or fourthpokemon == thirdpokemon:
             playerteam.remove(fourthpokemon)
             pokemonfound4 = 0
@@ -784,13 +784,13 @@ class Pokemon():
                     pokemonfound5 = 1
                     break
             if pokemonfound5 == 0:
-                for i in range(findnewpokemon5):
+                for i in range(differentfifthpokemon):
                     fifthpokemon = input("Try again ")
                     for i in range(len(data)):
                         if fifthpokemon == (data[i]["Name"]):
                             playerteam.append(fifthpokemon)
                         else:
-                            findnewpokemon5 += 1
+                            differentfifthpokemon += 1
         for i in range(len(data)):
             if fifthpokemon == (data[i]["Name"]):
                 print(data[i]["Learnable Moves"])
@@ -952,13 +952,13 @@ class Pokemon():
                     pokemonfound6 = 1
                     break
             if pokemonfound6 == 0:
-                for i in range(findnewpokemon6):
+                for i in range(differentsixthpokemon):
                     sixthpokemon = input("Try again ")
                     for i in range(len(data)):
                         if sixthpokemon == (data[i]["Name"]):
                             playerteam.append(sixthpokemon)
                         else:
-                            findnewpokemon6 += 1
+                            differentsixthpokemon += 1
         for i in range(len(data)):
             if sixthpokemon == (data[i]["Name"]):
                 print(data[i]["Learnable Moves"])
