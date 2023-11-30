@@ -7,4 +7,15 @@ class Pokemon():
         self.firstpokemonmoves = firstpokemonmoves
         self.secondpokemon = secondpokemon
         self.secondpokemonmoves = secondpokemonmoves
-        self.thirdpokemon
+        self.thirdpokemon = thirdpokemon
+        self.thirdpokemonmoves = thirdpokemonmoves
+        self.fourthpokemon = fourthpokemon
+        self.fourthpokemonmoves = fourthpokemonmoves
+        self.fifthpokemon = fifthpokemon
+        self.fifthpokemonmoves = fifthpokemonmoves
+        self.sixthpokemon = sixthpokemon
+        self.sixthpokemonmoves = sixthpokemonmoves
+    pokemonteam()
+class Mike(Pokemon):
+        Pokemon.pokemonteam()
+        
