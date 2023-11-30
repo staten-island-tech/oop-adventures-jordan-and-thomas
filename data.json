@@ -133,7 +133,7 @@
         ]
     },
     {
-        "name": "High Jump Kick",
+        "name": "Hi Jump Kick",
         "type": "Fighting",
         "category": "Physical",
         "power": 85,
@@ -195,7 +195,7 @@
         "accuracy": 80,
         "PP": 25,
         "effect": [
-            "14Recoil"
+            "Recoil14"
         ]
     },
     {
@@ -217,7 +217,7 @@
         "accuracy": 85,
         "PP": 5,
         "effect": [
-            "13Burn"
+            "Burn13"
         ]
     },
     {
