@@ -42,25 +42,21 @@ class Pokemon(Teambuilder):
         playerteam.split(",")
         pokemoninuse = playerteam[0]
         choosablemoves = firstpokemonmoves
+        print(choosablemoves)
         choosemove = input("What move would you like to choose? ")
-        if choosemove == choosablemoves[0] or choosemove == choosablemoves[1] or choosemove == choosablemoves[2] or choosemove == choosablemoves[3]:
-            choosemove = 
+        if choosemove == choosablemoves[0]:
+            
+        
     pokemoninuse()
 class Mike(Pokemon):
         def miketeam(self):
             Pokemon.pokemonteam
-class Tim(Pokemon):
-     def timteam(self):
-        Pokemon.pokemonteam(self, data("Pikachu"), Toxic, Thunderbolt, Double Team, Surf)
-        
+#class Tim(Pokemon):
+    #def timteam():
+    
+        #Pikachu learns Toxic, Thunderbolt, Double Team, Surf
         #move1= start with toxic
         #if it detects a switch in use toxic
         #if nothing is super effective it uses double team for 1-2 turn
         #after use whatever move uses most damage
-
-
-
-        
-class Simon(Pokemon):
-
-        
+    #timteam()
