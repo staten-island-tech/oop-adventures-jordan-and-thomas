@@ -1,7 +1,8 @@
 import json
 test = open("data.json", encoding="utf8")
 data = json.load(test)
-class Pokemon():
+from teambuilder import Teambuilder
+class Pokemon(Teambuilder):
     def pokemonteam(self, firstpokemon, firstpokemonmove1, firstpokemonmove2, firstpokemonmove3, firstpokemonmove4, secondpokemon, secondpokemonmove1, secondpokemonmove2, secondpokemonmove3, secondpokemonmove4, thirdpokemon, thirdpokemonmove1, thirdpokemonmove2, thirdpokemonmove3, thirdpokemonmove4, fourthpokemon, fourthpokemonmove1, fourthpokemonmove2, fourthpokemonmove3, fourthpokemonmove4, fifthpokemon, fifthpokemonmove1, fifthpokemonmove2, fifthpokemonmove3, fifthpokemonmove4, sixthpokemon, sixthpokemonmove1, sixthpokemonmove2, sixthpokemonmove3, sixthpokemonmove4):
         self.firstpokemon = firstpokemon
         self.firstpokemonmove1 = firstpokemonmove1
@@ -33,14 +34,33 @@ class Pokemon():
         self.sixthpokemonmove2 = sixthpokemonmove2
         self.sixthpokemonmove3 = sixthpokemonmove3
         self.sixthpokemonmove4 = sixthpokemonmove4
-        
     pokemonteam()
+    def pokemoninuse():
+        from teambuilder import playerteam
+        from teambuilder import firstpokemonmoves
+        Teambuilder.teambuilder
+        playerteam.split(",")
+        pokemoninuse = playerteam[0]
+        choosablemoves = firstpokemonmoves
+        choosemove = input("What move would you like to choose? ")
+        if choosemove == choosablemoves[0] or choosemove == choosablemoves[1] or choosemove == choosablemoves[2] or choosemove == choosablemoves[3]:
+            choosemove = 
+    pokemoninuse()
 class Mike(Pokemon):
         def miketeam(self):
-            Pokemon.pokemonteam(self, Charizard, a)
+            Pokemon.pokemonteam
 class Tim(Pokemon):
      def timteam(self):
-          Pokemon.pokemonteam(self, Pikachu, Surf, Thunderbolt, Submission, Skull Bash, Gyarados, b, Moltress, c, Articuno, d, Venusaur, e, Mewtwo)
+        Pokemon.pokemonteam(self, data("Pikachu"), Toxic, Thunderbolt, Double Team, Surf)
+        
+        #move1= start with toxic
+        #if it detects a switch in use toxic
+        #if nothing is super effective it uses double team for 1-2 turn
+        #after use whatever move uses most damage
+
+
+
+        
 class Simon(Pokemon):
 
         
