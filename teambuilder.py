@@ -1,4 +1,5 @@
 import json
+import os 
 test = open("data.json", encoding="utf8")
 data = json.load(test)
 
@@ -1093,6 +1094,16 @@ class Teambuilder():
                     findnewmove18 += 1
         teaminformation = (playerteam[0], firstpokemonmoves, playerteam[1], secondpokemonmoves, playerteam[2], thirdpokemonmoves, playerteam[3], fourthpokemonmoves, playerteam[4], fifthpokemonmoves, playerteam[5], sixthpokemonmoves)
         print(teaminformation)
+        with open("data.json", "r") as f:
+            data = json.load(f) # append to data!!!
+            print({"Name":name, "Types":types, "Learnable Moves":moves, "Attack Stat":attack, "Defense Stat":defense, "Special Stat":special, "Health Stat":health, "Speed Stat":speed})
+            playerteam.append({"Name":name, "Types":types, "Learnable Moves":moves, "Attack Stat":attack, "Defense Stat":defense, "Special Stat":special, "Health Stat":health, "Speed Stat":speed})
+        new_file = "updated.json"
+        with open(new_file, "w") as f:
+            json_string = json.dumps(data, indent=4)
+            f.write(json_string)
+        os.remove("data.json")
+        os.rename(new_file, "data.json")
     teambuilder()
 
         

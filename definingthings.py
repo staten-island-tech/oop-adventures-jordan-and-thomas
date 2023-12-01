@@ -1129,8 +1129,6 @@ class Pokemon(Teambuilder):
          print("spit")
     spit()
     def pokemoninuse():
-        from teambuilder import playerteam
-        from teambuilder import firstpokemonmoves
         playerteam.split(",")
         choosablemoves = firstpokemonmoves
         choosablemoves[0] = ("Spit")
