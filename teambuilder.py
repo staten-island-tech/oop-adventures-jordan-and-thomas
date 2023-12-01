@@ -1096,8 +1096,7 @@ class Teambuilder():
         print(teaminformation)
         with open("data.json", "r") as f:
             data = json.load(f) # append to data!!!
-            print({"Name":name, "Types":types, "Learnable Moves":moves, "Attack Stat":attack, "Defense Stat":defense, "Special Stat":special, "Health Stat":health, "Speed Stat":speed})
-            playerteam.append({"Name":name, "Types":types, "Learnable Moves":moves, "Attack Stat":attack, "Defense Stat":defense, "Special Stat":special, "Health Stat":health, "Speed Stat":speed})
+            playerteam.append({"First Pokemon":playerteam[0], "First Pokemon's Moves":firstpokemonmoves, "Second Pokemon":playerteam[1], "Second Pokemon's Moves":secondpokemonmoves, "Defense Stat":defense, "Special Stat":special, "Health Stat":health, "Speed Stat":speed})
         new_file = "updated.json"
         with open(new_file, "w") as f:
             json_string = json.dumps(data, indent=4)
