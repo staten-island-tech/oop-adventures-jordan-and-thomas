@@ -377,14 +377,12 @@ class Teambuilder():
                         move24found = 1
                         break
                 if move24found == 0:
-                    for i in range(findmove24):
+                    while move24found == 0:
                         move24 = input("Try again ")
                     for i in range(len(data[secondpokemonnumber]["Learnable Moves"])):
                         if move24 in (data[secondpokemonnumber]["Learnable Moves"][i]):
                             secondpokemonmoves.append(move24)
-                            break
-                        else:
-                            findmove24 += 1
+                            move24found == 1
         if move24 == move21 or move24 == move22 or move24 == move23:
             secondpokemonmoves.remove(move24)
             move24found = 0
