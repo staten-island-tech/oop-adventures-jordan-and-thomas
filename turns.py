@@ -1093,15 +1093,21 @@ class Pokemon():
                     findnewmove18 += 1
         teaminformation = (playerteam[0], firstpokemonmoves, playerteam[1], secondpokemonmoves, playerteam[2], thirdpokemonmoves, playerteam[3], fourthpokemonmoves, playerteam[4], fifthpokemonmoves, playerteam[5], sixthpokemonmoves)
         print(teaminformation)
+        playerpokemon1 = firstpokemon
+        playerpokemon2 = secondpokemon
+        playerpokemon3 = thirdpokemon
+        playerpokemon4 = fourthpokemon
+        playerpokemon5 = fifthpokemon
+        playerpokemon6 = sixthpokemon
 
 
-test = open("data.json", encoding="utf8")
-data = json.load(test)
-movelist = len(data)
+test = open("move.json", encoding="utf8")
+moves = json.load(test)
+movelist = len(moves)
 
 quiz = open("pokemon.json", encoding="utf8")
-pokemon = json.load(quiz)
-pokemonlist = len(pokemon)
+data = json.load(quiz)
+pokemonlist = len(data)
 
 #firstpokemon = "Bulbasuar"
 #secondpokemon = "Weedle"
@@ -1118,14 +1124,8 @@ pokemonlist = len(pokemon)
 
 Pokemon.teambuilder()
 
-playerpokemon1 = firstpokemon
-playerpokemon2 = secondpokemon
-playerpokemon3 = thirdpokemon
-playerpokemon4 = fourthpokemon
-playerpokemon5 = fifthpokemon
-playerpokemon6 = sixthpokemon
 
-pokemon1move1 = move1
+
 
 
 class Turns():
@@ -1141,9 +1141,9 @@ class Turns():
         time.sleep(1)
         print("You used", use)
         time.sleep(1)
-        for i in range(b):
-            if data[i]["name"] == use:
-                damage = data[i]["power"]
+        for i in range(movelist):
+            if moves[i]["name"] == use:
+                damage = moves[i]["power"]
                 print("It did", damage, "damage")
       
 
