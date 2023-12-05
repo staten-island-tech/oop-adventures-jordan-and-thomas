@@ -2,6 +2,8 @@ import json
 import os 
 test = open("data.json", encoding="utf8")
 data = json.load(test)
+test2 = open("playerteaminfo.json", encoding="utf8")
+data2 = json.load(test2)
 
 class Teambuilder():
     def teambuilder():
@@ -243,8 +245,6 @@ class Teambuilder():
                             findmove14 += 1
                 if move14 == move11 or move14 == move12 or move14 == move13: 
                     findnewmove3 += 1
-        for i in range(len(data)):
-            allpokemon.append(data[i]["Name"])
         print(allpokemon)
         secondpokemon = input("\nWhat pokemon do you want on your team? ")
         for i in range(len(data)):
@@ -401,8 +401,6 @@ class Teambuilder():
                             findmove24 += 1
                 if move24 == move21 or move24 == move22 or move24 == move23: 
                     findnewmove6 += 1
-        for i in range(len(data)):
-            allpokemon.append(data[i]["Name"])
         print(allpokemon)
         thirdpokemon = input("\nWhat pokemon do you want on your team? ")
         for i in range(len(data)):
@@ -553,8 +551,6 @@ class Teambuilder():
                             move34found == 1
                 if move34 == move31 or move34 == move32 or move34 == move33: 
                     findnewmove9 += 1
-        for i in range(len(data)):
-            allpokemon.append(data[i]["Name"])
         print(allpokemon)
         fourthpokemon = input("\nWhat pokemon do you want on your team? ")
         for i in range(len(data)):
@@ -705,8 +701,6 @@ class Teambuilder():
                             move44found == 1
                 if move44 == move41 or move44 == move42 or move44 == move43: 
                     findnewmove12 += 1
-        for i in range(len(data)):
-            allpokemon.append(data[i]["Name"])
         print(allpokemon)
         fifthpokemon = input("\nWhat pokemon do you want on your team? ")
         for i in range(len(data)):
@@ -857,8 +851,6 @@ class Teambuilder():
                             move54found == 1
                 if move54 == move51 or move54 == move52 or move54 == move53: 
                     findnewmove15 += 1
-        for i in range(len(data)):
-            allpokemon.append(data[i]["Name"])
         print(allpokemon)
         sixthpokemon = input("\nWhat pokemon do you want on your team? ")
         for i in range(len(data)):
@@ -1013,15 +1005,15 @@ class Teambuilder():
                     findnewmove18 += 1
         teaminformation = (playerteam[0], firstpokemonmoves, playerteam[1], secondpokemonmoves, playerteam[2], thirdpokemonmoves, playerteam[3], fourthpokemonmoves, playerteam[4], fifthpokemonmoves, playerteam[5], sixthpokemonmoves)
         print(teaminformation)
-        with open("playerteam.json", "r") as f:
-            playerteamjson = playerteam.load(f) # append to data!!!
+        with open("playerteaminfo.json", "r") as f:
+            playerteamjson = data2.load(f) # append to data!!!
             playerteamjson.append({"First Pokemon":playerteam[0], "First Pokemon's Moves":firstpokemonmoves, "Second Pokemon":playerteam[1], "Second Pokemon's Moves":secondpokemonmoves, "Third Pokemon":playerteam[2], "Third Pokemon's Moves":thirdpokemonmoves, "Fourth Pokemon":playerteam[3], "Fourth Pokemon's Moves":fourthpokemonmoves, "Fifth Pokemon":playerteam[4], "Fifth's Pokemon's Moves":fifthpokemonmoves, "Sixth Pokemon":playerteam[5], "Sixth Pokemon's Moves":sixthpokemonmoves})
         new_file = "updated.json"
         with open(new_file, "w") as f:
-            json_string = json.dumps(data, indent=4)
+            json_string = json.dumps(data2, indent=4)
             f.write(json_string)
-        os.remove("playerteam.json")
-        os.rename(new_file, "playerteam.json")
+        os.remove("playerteaminfo.json")
+        os.rename(new_file, "playerteaminfo.json")
     teambuilder()
 
         
