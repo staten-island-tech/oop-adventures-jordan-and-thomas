@@ -1,6 +1,7 @@
 import json
 test = open("data.json", encoding="utf8")
 data = json.load(test)
+from teambuilder import Teambuilder
     
         
 class Pokemon(Teambuilder):
@@ -37,20 +38,7 @@ class Pokemon(Teambuilder):
          print("spit")
     spit()
     def pokemoninuse():
-        playerteam.split(",")
-        choosablemoves = firstpokemonmoves
-        choosablemoves[0] = ("Spit")
-        print(choosablemoves)
-        choosemove = input("What move would you like to choose? ")
-        if choosemove == choosablemoves[0]:
-             Pokemon.choosemove
-    pokemoninuse()
-    
-             
-             
-             
-            
-        
+        Teambuilder.teambuilder
     pokemoninuse()
 class Mike(Pokemon):
         def miketeam(self):

@@ -1014,8 +1014,8 @@ class Teambuilder():
         teaminformation = (playerteam[0], firstpokemonmoves, playerteam[1], secondpokemonmoves, playerteam[2], thirdpokemonmoves, playerteam[3], fourthpokemonmoves, playerteam[4], fifthpokemonmoves, playerteam[5], sixthpokemonmoves)
         print(teaminformation)
         with open("playerteam.json", "r") as f:
-            playerteamjson = json.load(f) # append to data!!!
-            playerteam.append({"First Pokemon":playerteam[0], "First Pokemon's Moves":firstpokemonmoves, "Second Pokemon":playerteam[1], "Second Pokemon's Moves":secondpokemonmoves, "Third Pokemon":playerteam[2], "Third Pokemon's Moves":thirdpokemonmoves, "Fourth Pokemon":playerteam[3], "Fourth Pokemon's Moves":fourthpokemonmoves, "Fifth Pokemon":playerteam[4], "Fifth's Pokemon's Moves":fifthpokemonmoves, "Sixth Pokemon":playerteam[5], "Sixth Pokemon's Moves":sixthpokemonmoves})
+            playerteamjson = playerteam.load(f) # append to data!!!
+            playerteamjson.append({"First Pokemon":playerteam[0], "First Pokemon's Moves":firstpokemonmoves, "Second Pokemon":playerteam[1], "Second Pokemon's Moves":secondpokemonmoves, "Third Pokemon":playerteam[2], "Third Pokemon's Moves":thirdpokemonmoves, "Fourth Pokemon":playerteam[3], "Fourth Pokemon's Moves":fourthpokemonmoves, "Fifth Pokemon":playerteam[4], "Fifth's Pokemon's Moves":fifthpokemonmoves, "Sixth Pokemon":playerteam[5], "Sixth Pokemon's Moves":sixthpokemonmoves})
         new_file = "updated.json"
         with open(new_file, "w") as f:
             json_string = json.dumps(data, indent=4)
