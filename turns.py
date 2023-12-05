@@ -1093,12 +1093,7 @@ class Pokemon():
                     findnewmove18 += 1
         teaminformation = (playerteam[0], firstpokemonmoves, playerteam[1], secondpokemonmoves, playerteam[2], thirdpokemonmoves, playerteam[3], fourthpokemonmoves, playerteam[4], fifthpokemonmoves, playerteam[5], sixthpokemonmoves)
         print(teaminformation)
-        playerpokemon1 = firstpokemon
-        playerpokemon2 = secondpokemon
-        playerpokemon3 = thirdpokemon
-        playerpokemon4 = fourthpokemon
-        playerpokemon5 = fifthpokemon
-        playerpokemon6 = sixthpokemon
+
 
 
 test = open("move.json", encoding="utf8")
@@ -1109,46 +1104,66 @@ quiz = open("pokemon.json", encoding="utf8")
 data = json.load(quiz)
 pokemonlist = len(data)
 
-#firstpokemon = "Bulbasuar"
-#secondpokemon = "Weedle"
-#thirdpokemon = "Beedrill"
-#fourthpokemon = "Poliwrath"
-#fifthpokemon = "Arbok"
-#sixthpokemon = "Fearow"
-
-#move1 = "Leech Seed"
-#move2 = "Absorb"
-#move3 = "Growl"
-#move4 = "Vine Whip"
-#firstpokemonmoves = [move1, move2, move3, move4]
-
-Pokemon.teambuilder()
+firstpokemon = "Bulbasaur"
+secondpokemon = "Weedle"
+thirdpokemon = "Beedrill"
+fourthpokemon = "Poliwrath"
+fifthpokemon = "Arbok"
+sixthpokemon = "Fearow"
+userparty =[firstpokemon, secondpokemon, thirdpokemon, fourthpokemon, fifthpokemon, sixthpokemon]
 
 
+move1 = "Leech Seed"
+move2 = "Absorb"
+move3 = "Growl"
+move4 = "Vine Whip"
+firstpokemonmoves = [move1, move2, move3, move4]
+
+#enemyhealth = 200
+#Pokemon.teambuilder()
 
 
 
-class Turns():
+
+
+class Turns(Pokemon):
     def turnone(playerpokemon1, enemypokemon1, enemy):
+        userpokemon = playerpokemon1
+        enemypokemon = enemypokemon1
+        enemyhealth = 200
+
         print("You are challenged by", enemy)
-        time.sleep(1)
+        time.sleep(2)
         print("You threw out", playerpokemon1)
         time.sleep(0.5)
         print(enemy, "threw out", enemypokemon1)
         time.sleep(1.5)
-        print(firstpokemonmoves)
-        use = input("Pick a move to use: ")
-        time.sleep(1)
-        print("You used", use)
-        time.sleep(1)
-        for i in range(movelist):
-            if moves[i]["name"] == use:
-                damage = moves[i]["power"]
-                print("It did", damage, "damage")
+        print("Switch Out Or Attack")
+        userdo = input("What would you like to do: ")
+        if userdo == "Switch" or userdo == "switch" or userdo == "Switch Out" or userdo == "switch out" or userdo == "Switch out":
+            print(userparty)
+            switchin = input("Pick a Pokemon to Switch into: ")
+            print("You switched into", switchin)
+            userpokemon = switchin
+
+        if userdo == "Attack" or userdo == "attack":
+            print(firstpokemonmoves)
+            use = input("Pick a move to use: ")
+            time.sleep(1)
+            print("You used", use)
+            time.sleep(1)
+            # if move effect != None
+            #Do effect
+            for i in range(movelist):
+                if moves[i]["name"] == use:
+                    damage = moves[i]["power"]
+                    print("It did", damage, "damage")
+                    enemyhealth = enemyhealth - damage
+                    print(enemypokemon, "has", enemyhealth, "left")
       
 
 
-Turns.turnone(playerpokemon1, "Pikachu", "Elite Four Member Mike M.")
+Turns.turnone(firstpokemon, "Pikachu", "Elite Four Member Mike M.")
 
         
 
