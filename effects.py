@@ -1,9 +1,19 @@
 import json
 import random
-class effect:
-    "HealHalfD" = HealHalfD
-    "Hits2to5" = Hits2to5
-    "SpeedDown" = SpeedDown
+
+test = open("move.json", encoding="utf8")
+moves = json.load(test)
+movelist = len(moves)
+
+
+
+class effect():
+   
+
+    def Toxic():
+        print("grrrr")
+
+
 
     def HealHalfD(damagedone, targetHealth):
         targetHealth = targetHealth + damagedone/2
@@ -122,13 +132,18 @@ class effect:
     
 
 
+class Using(effect):
+    def usemove(use):
+        for i in range(movelist):
+            if use == "Toxic":
+                effect.Toxic()
 
 
 
             
     
     
-
+Using.usemove("Toxic")
 
 
         

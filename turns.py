@@ -1,5 +1,6 @@
 import json
-
+from effects import effect
+from effects import Using
 import time
 
 class Pokemon():
@@ -1094,7 +1095,7 @@ class Pokemon():
         teaminformation = (playerteam[0], firstpokemonmoves, playerteam[1], secondpokemonmoves, playerteam[2], thirdpokemonmoves, playerteam[3], fourthpokemonmoves, playerteam[4], fifthpokemonmoves, playerteam[5], sixthpokemonmoves)
         print(teaminformation)
 
-
+turn = 0
 
 test = open("move.json", encoding="utf8")
 moves = json.load(test)
@@ -1122,12 +1123,18 @@ firstpokemonmoves = [move1, move2, move3, move4]
 #enemyhealth = 200
 #Pokemon.teambuilder()
 
+class Mike():
+    def Pikachudoing():
+        if turn == 0:
+            print("Mike M used Toxic")
 
 
 
 
-class Turns(Pokemon):
+
+class Turns(Mike):
     def turnone(playerpokemon1, enemypokemon1, enemy):
+        
         userpokemon = playerpokemon1
         enemypokemon = enemypokemon1
         enemyhealth = 200
@@ -1159,7 +1166,8 @@ class Turns(Pokemon):
                     damage = moves[i]["power"]
                     print("It did", damage, "damage")
                     enemyhealth = enemyhealth - damage
-                    print(enemypokemon, "has", enemyhealth, "left")
+                    time.sleep(1)
+                    print(enemypokemon, "has", enemyhealth, "health left")
       
 
 
