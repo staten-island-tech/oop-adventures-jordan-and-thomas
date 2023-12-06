@@ -2,8 +2,8 @@ import json
 import os
 test = open("data.json", encoding="utf8")
 data = json.load(test)
-test2 = open("playerteaminfo.json", encoding="utf8")
-data2 = json.load(test2)
+with open("playerteaminfo.json", "r") as f:
+    playerteamjson = json.load(f) # append to data!!!
 allpokemon = []
 playerteam = []
 firstpokemonmoves = []
@@ -242,13 +242,12 @@ if move14 == move11 or move14 == move12 or move14 == move13:
                         findmove14 += 1
         if move14 == move11 or move14 == move12 or move14 == move13: 
             findnewmove3 += 1
-with open("playerteaminfo.json", "r") as f:
-    playerteamjson = json.load(f) # append to data!!!
-    playerteamjson.append({"First Pokemon":playerteam[0], "First Pokemon's Moves":firstpokemonmoves})
-    new_file = "updated.json"
-    with open(new_file, "w") as f:
-        json_string = json.dumps(data2, indent=4)
-        f.write(json_string)
-    os.remove("playerteaminfo.json")
-    os.rename(new_file, "playerteaminfo.json")
+playerinfo = {"First Pokemon":playerteam[0], "First Pokemon's Moves":firstpokemonmoves}
+playerteamjson.append({"First Pokemon":playerteam[0], "First Pokemon's Moves":firstpokemonmoves})
+new_file = "playerteaminfo.json"
+with open(new_file, "w") as f:
+    json_string = json.dumps(playerinfo, indent=4)
+    f.write(json_string)
+os.remove("playerteaminfo.json")
+os.rename(new_file, "playerteaminfo.json")
 
