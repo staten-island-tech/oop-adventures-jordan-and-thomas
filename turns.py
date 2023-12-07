@@ -1127,6 +1127,7 @@ class Mike():
     def Pikachudoing():
         if turn == 0:
             print("Mike M used Toxic")
+            Using.usemove()
 
 
 
