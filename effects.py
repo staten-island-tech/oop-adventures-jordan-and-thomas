@@ -10,8 +10,14 @@ movelist = len(moves)
 class effect():
    
 
-    def Toxic():
-        print("grrrr")
+    def Toxic(oppositehealth, pokemonin, endofturn,turn):
+        while pokemonin == "same":
+            if endofturn == "end":
+                N = 1
+                damage = N * oppositehealth/16
+                if turn + 1:
+                    N += 1
+
 
 
 
@@ -105,7 +111,7 @@ class effect():
     
     def FireSpin():
         turns = random.randrange(4)
-        pokemonescape = trapped
+        #pokemonescape = trapped
         if turns == 1:
             TurnsHitsfor = 2
         if turns == 2:
@@ -117,13 +123,6 @@ class effect():
     
     def Flygimmick():
         immune = "yes"
-        uhhhhhhh
-
-    def Mirrormove():
-
-    def HitsNextTurn():
-        
-    def m
 
 
 
@@ -133,9 +132,9 @@ class effect():
 
 
 class Using(effect):
-    def usemove(use):
+    def usemove(use, enemyuse):
         for i in range(movelist):
-            if use == "Toxic":
+            if use == "Toxic" or enemyuse == "Toxic":
                 effect.Toxic()
 
 
@@ -143,7 +142,7 @@ class Using(effect):
             
     
     
-Using.usemove("Toxic")
+
 
 
         

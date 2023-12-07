@@ -1127,18 +1127,35 @@ class Mike():
     def Pikachudoing():
         if turn == 0:
             print("Mike M used Toxic")
-            Using.usemove()
+            enemyuse = "Toxic"
+            Using.usemove
 
 
 
 
 
+goingfirst = [1]
 class Turns(Mike):
+    def speedcheck(enemyspeed, currentspeed):
+        if enemyspeed > currentspeed:
+            goingfirst.append("Enemy")
+        if currentspeed > enemyspeed:
+            goingfirst.append("User")
+            
+        
+
     def turnone(playerpokemon1, enemypokemon1, enemy):
         
         userpokemon = playerpokemon1
         enemypokemon = enemypokemon1
         enemyhealth = 200
+        enemyspeed = 200
+        currentspeed = 100
+
+        endorturn = "no"
+        pokemonin = "same"
+
+        
 
         print("You are challenged by", enemy)
         time.sleep(2)
@@ -1146,6 +1163,7 @@ class Turns(Mike):
         time.sleep(0.5)
         print(enemy, "threw out", enemypokemon1)
         time.sleep(1.5)
+     
         print("Switch Out Or Attack")
         userdo = input("What would you like to do: ")
         if userdo == "Switch" or userdo == "switch" or userdo == "Switch Out" or userdo == "switch out" or userdo == "Switch out":
@@ -1155,20 +1173,31 @@ class Turns(Mike):
             userpokemon = switchin
 
         if userdo == "Attack" or userdo == "attack":
-            print(firstpokemonmoves)
-            use = input("Pick a move to use: ")
-            time.sleep(1)
-            print("You used", use)
-            time.sleep(1)
-            # if move effect != None
-            #Do effect
-            for i in range(movelist):
-                if moves[i]["name"] == use:
-                    damage = moves[i]["power"]
-                    print("It did", damage, "damage")
-                    enemyhealth = enemyhealth - damage
-                    time.sleep(1)
-                    print(enemypokemon, "has", enemyhealth, "health left")
+            Turns.speedcheck(enemyspeed, currentspeed)
+            print(goingfirst)
+            if "User" in goingfirst:
+                print(firstpokemonmoves)
+                use = input("Pick a move to use: ")
+                time.sleep(1)
+                print("You used", use)
+                time.sleep(1)
+                # if move effect != None
+                #Do effect
+                for i in range(movelist):
+                    if moves[i]["name"] == use:
+                        damage = moves[i]["power"]
+                        print("It did", damage, "damage")
+                        enemyhealth = enemyhealth - damage
+                        time.sleep(1)
+                        print(enemypokemon, "has", enemyhealth, "health left")
+            if "Enemy" in goingfirst:
+                print("jhvhgv")
+            
+
+
+
+
+        
       
 
 

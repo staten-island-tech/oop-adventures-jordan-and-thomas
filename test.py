@@ -6,20 +6,13 @@
     #data = json.load(f)
 
 #b = len(data)
-
-class ap:
-    def gg():
-        apple = 2
-        print("good")
-
-class hm(ap):
-    def prnt():
-        print(apple)
-
-ap.gg()
-hm.prnt()
+x = ["hi"]
 
 
+if "hi" in x:
+    print("oooo")
+else:
+    print("nooo")
 #x = (random.randrange(10))
 #print(x)
 #if x == 1 or x == 2 or x == 3:
