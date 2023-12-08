@@ -12,7 +12,7 @@ thirdpokemonmoves = []
 fourthpokemonmoves = []
 fifthpokemonmoves = []
 sixthpokemonmoves = []
-pokemonfound1 = 0
+pokemonfound1 = True
 pokemonfound2 = 0
 pokemonfound3 = 0
 pokemonfound4 = 0
@@ -131,14 +131,13 @@ for i in range(len(data)):
                 move11found = 1
                 break
         if move11found == 0:
-            for i in range(findmove11):
+            x = True
+            while x == True:
                 move11 = input("Try again ")
                 for i in range(len(data[firstpokemonnumber]["Learnable Moves"])):
-                    print(data[firstpokemonnumber]["Learnable Moves"][i])
                     if move11 == (data[firstpokemonnumber]["Learnable Moves"][i]):
                         firstpokemonmoves.append(move11)
-                    else: 
-                        findmove11 += 1
+            break
 for i in range(len(data)):
     if firstpokemon == (data[i]["Name"]):
         move12 = input("Choose a learnable move ")
