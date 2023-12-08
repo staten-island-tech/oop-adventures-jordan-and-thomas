@@ -11,7 +11,9 @@ class effect():
    
 
     def Toxic(oppositehealth, pokemonin, endofturn,turn):
-        while pokemonin == "same":
+        print("It works")
+        afflicted = pokemonin
+        while afflicted == pokemonin:
             if endofturn == "end":
                 N = 1
                 damage = N * oppositehealth/16
@@ -132,10 +134,11 @@ class effect():
 
 
 class Using(effect):
-    def usemove(use, enemyuse):
+    def usemove(use, enemyuse, oppositehealth, pokemonin, endofturn,turn):
         for i in range(movelist):
             if use == "Toxic" or enemyuse == "Toxic":
-                effect.Toxic()
+                effect.Toxic(oppositehealth, pokemonin, endofturn,turn)
+            
 
 
 
