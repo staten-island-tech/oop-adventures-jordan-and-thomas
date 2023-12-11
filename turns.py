@@ -31,21 +31,34 @@ move3 = "Growl"
 move4 = "Vine Whip"
 firstpokemonmoves = [move1, move2, move3, move4]
 
+enemyhealth = 200
+currenthealth = 100
+enemyspeed = 100
+currentspeed = 50
+
+
 #enemyhealth = 200
 #Pokemon.teambuilder()
 
+class functionality():
+    def oppositehealththing(going, enemyhealth, currenthealth):
+        if going == "You":
+            oppositehealth = enemyhealth
+        if going == "Enemy":
+            oppositehealth = currenthealth
 
 class Ai():
     def supereffectivecheck(usermovetype):
         print("placeholder")
 
 
-class Mike():
+class Mike(functionality):
     def Raichudoing():
         if turn == 0:
             print("Raichu used Toxic")
             enemyuse = "Toxic"
-            Using.usemove("placeholder", enemyuse)
+            functionality.oppositehealththing(going, enemyhealth, currenthealth)
+            Using.usemove("placeholder", enemyuse, oppositehealth)
 
 
 
@@ -59,22 +72,12 @@ class Turns(Mike):
         if currentspeed > enemyspeed:
             goingfirst.append("User")
     
-    def oppositehealththing(going, enemyhealth, currenthealth):
-        if going == "You":
-            oppositehealth = enemyhealth
-        if going == "Enemy":
-            oppositehealth == currenthealth
+
 
 
 
     def turnone(playerpokemon1, enemypokemon1, enemy):
-        
-        userpokemon = playerpokemon1
-        enemypokemon = enemypokemon1
-        enemyhealth = 200
-        currenthealth = 100
-        enemyspeed = 200
-        currentspeed = 100
+   
 
         endorturn = "no"
         pokemonin = "same"
@@ -116,7 +119,7 @@ class Turns(Mike):
                         print("It did", damage, "damage")
                         enemyhealth = enemyhealth - damage
                         time.sleep(times)
-                        print(enemypokemon, "has", enemyhealth, "health left")
+                        print(enemypokemon1, "has", enemyhealth, "health left")
             if "Enemy" in goingfirst:
                 going = "Enemy"
                 Mike.Raichudoing()

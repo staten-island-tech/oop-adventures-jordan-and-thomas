@@ -6,13 +6,10 @@
     #data = json.load(f)
 
 #b = len(data)
-x = ["hi"]
+x = input("hsdv")
+y = str(len(x))
+print(x)
 
-
-if "hi" in x:
-    print("oooo")
-else:
-    print("nooo")
 #x = (random.randrange(10))
 #print(x)
 #if x == 1 or x == 2 or x == 3:
