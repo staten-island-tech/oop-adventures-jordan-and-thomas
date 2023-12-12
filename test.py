@@ -6,9 +6,7 @@
     #data = json.load(f)
 
 #b = len(data)
-x = input("hsdv")
-y = str(len(x))
-print(x)
+
 
 #x = (random.randrange(10))
 #print(x)

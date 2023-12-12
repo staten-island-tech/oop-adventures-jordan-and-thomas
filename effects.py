@@ -10,8 +10,8 @@ movelist = len(moves)
 class effect():
    
 
-    def Toxic(oppositehealth, pokemonin, endofturn,turn):
-        print("It works")
+    def Toxic(oppositepokemon, oppositehealth, pokemonin, endofturn, turn):
+        print(oppositepokemon "has been Poisoned")
         afflicted = pokemonin
         while afflicted == pokemonin:
             if endofturn == "end":

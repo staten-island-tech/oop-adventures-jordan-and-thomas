@@ -37,15 +37,35 @@ enemyspeed = 100
 currentspeed = 50
 
 
+endofturn = "no"
+pokemonin = "same"
+
+
 #enemyhealth = 200
 #Pokemon.teambuilder()
+global oppositehealth
+oppositehealth = "You"
 
+global currentpokemon
+currentpokemon = firstpokemon
+
+global enemypokemon
+enemypokemon1 = "Raichu"
+enemypokemon = enemypokemon1
 class functionality():
     def oppositehealththing(going, enemyhealth, currenthealth):
         if going == "You":
             oppositehealth = enemyhealth
         if going == "Enemy":
             oppositehealth = currenthealth
+    
+    def oppositepokemon(going, currentpokemon, enemypokemon):
+        if going == "You":
+            oppositepokemon = enemypokemon
+        if going == "Enemy":
+            oppositepokemon = currentpokemon
+
+
 
 class Ai():
     def supereffectivecheck(usermovetype):
@@ -58,7 +78,9 @@ class Mike(functionality):
             print("Raichu used Toxic")
             enemyuse = "Toxic"
             functionality.oppositehealththing(going, enemyhealth, currenthealth)
-            Using.usemove("placeholder", enemyuse, oppositehealth)
+            print(oppositehealth)
+            functionality.oppositepokemon
+            Using.usemove("placeholder", enemyuse, oppositehealth, pokemonin, endofturn, turn)
 
 
 
@@ -79,8 +101,8 @@ class Turns(Mike):
     def turnone(playerpokemon1, enemypokemon1, enemy):
    
 
-        endorturn = "no"
-        pokemonin = "same"
+        #endorturn = "no"
+        #pokemonin = "same"
 
         
 
@@ -133,7 +155,7 @@ class Turns(Mike):
       
 
 
-Turns.turnone(firstpokemon, "Raichu", "Elite Four Member Mike M.")
+Turns.turnone(firstpokemon, enemypokemon1, "Elite Four Member Mike M.")
 
         
 
