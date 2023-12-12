@@ -1,9 +1,9 @@
 import json
 test = open("data.json", encoding="utf8")
 data = json.load(test)
+pknumber = []
 playerteam = []
 pokemonmoves = []
-global pokemonnumber
 global p
 def pickpokemon():
     p = True
@@ -12,14 +12,15 @@ def pickpokemon():
         for i in range(len(data)):
             if pokemon == (data[i]["Name"]):
                 playerteam.append(pokemon)
-                pokemonnumber = i
+                pokemonnumber == i
+                pknumber
                 p = False
 pickpokemon()
 global m
 def pickmove():
     m = True
     while m == True:
-        move = input("Type moves here")
+        move = input("Type moves here ")
         for i in range(len(data)[pokemonnumber]["Learnable Moves"]):
             if move == (data[pokemonnumber]["Learnable Moves"]):
                 pokemonmoves.append(move)
