@@ -86,7 +86,7 @@ class Mike(functionality):
 
 
 
-goingfirst = [1]
+goingfirst = []
 class Turns(Mike):
     def speedcheck(enemyspeed, currentspeed):
         if enemyspeed > currentspeed:
