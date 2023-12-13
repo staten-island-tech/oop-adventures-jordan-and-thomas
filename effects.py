@@ -134,10 +134,10 @@ class effect():
 
 
 class Using(effect):
-    def usemove(use, enemyuse, oppositehealth, pokemonin, endofturn, turn):
+    def usemove(use, enemyuse, oppositepokemon, oppositehealth, pokemonin, endofturn, turn):
         for i in range(movelist):
             if use == "Toxic" or enemyuse == "Toxic":
-                effect.Toxic(oppositehealth, pokemonin, endofturn, turn)
+                effect.Toxic(oppositepokemon, oppositehealth, pokemonin, endofturn, turn)
             
 
 

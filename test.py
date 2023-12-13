@@ -8,6 +8,20 @@
 #b = len(data)
 
 
+
+def huh():
+    global bruh
+    x = input("Hi: ")
+    if x == "a":
+        bruh = "Hi"
+    if x == "b":
+        bruh = "HI"
+
+def he():
+    print(bruh)
+
+huh()
+he()
 #x = (random.randrange(10))
 #print(x)
 #if x == 1 or x == 2 or x == 3:

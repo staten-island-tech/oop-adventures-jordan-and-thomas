@@ -6,7 +6,7 @@ import time
 times = 1.5
 
 turn = 0
-going = "You"
+#going = "You"
 
 test = open("move.json", encoding="utf8")
 moves = json.load(test)
@@ -43,23 +43,29 @@ pokemonin = "same"
 
 #enemyhealth = 200
 #Pokemon.teambuilder()
-global oppositehealth
-oppositehealth = "You"
-
-global currentpokemon
-currentpokemon = firstpokemon
 
 global enemypokemon
 enemypokemon1 = "Raichu"
 enemypokemon = enemypokemon1
+
+
+
+currentpokemon = firstpokemon
+
+
+
+
 class functionality():
     def oppositehealththing(going, enemyhealth, currenthealth):
+        global oppositehealth
         if going == "You":
             oppositehealth = enemyhealth
         if going == "Enemy":
             oppositehealth = currenthealth
+        
     
     def oppositepokemon(going, currentpokemon, enemypokemon):
+        global oppositepokemon
         if going == "You":
             oppositepokemon = enemypokemon
         if going == "Enemy":
@@ -79,8 +85,9 @@ class Mike(functionality):
             enemyuse = "Toxic"
             functionality.oppositehealththing(going, enemyhealth, currenthealth)
             print(oppositehealth)
-            functionality.oppositepokemon
-            Using.usemove("placeholder", enemyuse, oppositehealth, pokemonin, endofturn, turn)
+            functionality.oppositepokemon(going, currentpokemon, enemypokemon)
+            print(oppositepokemon)
+            Using.usemove("placeholder", enemyuse, oppositepokemon, oppositehealth, pokemonin, endofturn, turn)
 
 
 
@@ -143,6 +150,7 @@ class Turns(Mike):
                         time.sleep(times)
                         print(enemypokemon1, "has", enemyhealth, "health left")
             if "Enemy" in goingfirst:
+                global going
                 going = "Enemy"
                 Mike.Raichudoing()
                 
