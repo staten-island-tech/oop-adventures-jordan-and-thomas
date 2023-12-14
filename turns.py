@@ -25,9 +25,9 @@ sixthpokemon = "Fearow"
 userparty =[firstpokemon, secondpokemon, thirdpokemon, fourthpokemon, fifthpokemon, sixthpokemon]
 
 
-move1 = "Leech Seed"
+move1 = "Cut"
 move2 = "Absorb"
-move3 = "Growl"
+move3 = "Tackle"
 move4 = "Vine Whip"
 firstpokemonmoves = [move1, move2, move3, move4]
 
@@ -38,7 +38,10 @@ currentspeed = 50
 
 
 endofturn = "no"
+global pokemonin
 pokemonin = "same"
+global enemyin
+enemyin = "same"
 
 
 #enemyhealth = 200
@@ -70,6 +73,15 @@ class functionality():
             oppositepokemon = enemypokemon
         if going == "Enemy":
             oppositepokemon = currentpokemon
+    
+    def afflicted(oppositepokemon, oppositehealth, pokemonin, endofturn, turn):
+        
+        if pokemonin == "afflicted":
+            if endofturn == "end":
+                N = 1
+                damage = N * oppositehealth/16
+                if turn + 1:
+                    N += 1
 
 
 
@@ -84,9 +96,9 @@ class Mike(functionality):
             print("Raichu used Toxic")
             enemyuse = "Toxic"
             functionality.oppositehealththing(going, enemyhealth, currenthealth)
-            print(oppositehealth)
+            
             functionality.oppositepokemon(going, currentpokemon, enemypokemon)
-            print(oppositepokemon)
+            
             Using.usemove("placeholder", enemyuse, oppositepokemon, oppositehealth, pokemonin, endofturn, turn)
 
 
@@ -119,7 +131,9 @@ class Turns(Mike):
         time.sleep(0.5)
         print(enemy, "threw out", enemypokemon1)
         time.sleep(times)
-     
+        global going
+    
+
         print("Switch Out Or Attack")
         userdo = input("What would you like to do: ")
         if userdo == "Switch" or userdo == "switch" or userdo == "Switch Out" or userdo == "switch out" or userdo == "Switch out":
@@ -127,6 +141,8 @@ class Turns(Mike):
             switchin = input("Pick a Pokemon to Switch into: ")
             print("You switched into", switchin)
             userpokemon = switchin
+            going = "Enemy"
+            Mike.Raichudoing()
 
 
             
@@ -138,6 +154,9 @@ class Turns(Mike):
             Turns.speedcheck(enemyspeed, currentspeed)
             
             if "User" in goingfirst:
+               
+                global enemyhealth
+                going = "You"
                 print("You used", use)
                 time.sleep(times)
                 # if move effect != None
@@ -149,11 +168,28 @@ class Turns(Mike):
                         enemyhealth = enemyhealth - damage
                         time.sleep(times)
                         print(enemypokemon1, "has", enemyhealth, "health left")
-            if "Enemy" in goingfirst:
-                global going
                 going = "Enemy"
+                time.sleep(times)
                 Mike.Raichudoing()
                 
+               
+
+            if "Enemy" in goingfirst:
+                going = "Enemy"
+                Mike.Raichudoing()
+                time.sleep(times)
+                going = "You"
+                print("You used", use)
+                time.sleep(times)
+                # if move effect != None
+                #Do effect
+                for i in range(movelist):
+                    if moves[i]["name"] == use:
+                        damage = moves[i]["power"]
+                        print("It did", damage, "damage")
+                        enemyhealth = enemyhealth - damage
+                        time.sleep(times)
+                        print(enemypokemon1, "has", enemyhealth, "health left")
             
 
 

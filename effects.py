@@ -12,13 +12,15 @@ class effect():
 
     def Toxic(oppositepokemon, oppositehealth, pokemonin, endofturn, turn):
         print(oppositepokemon, "has been Poisoned")
-        afflicted = pokemonin
-        while afflicted == pokemonin:
-            if endofturn == "end":
-                N = 1
-                damage = N * oppositehealth/16
-                if turn + 1:
-                    N += 1
+       
+        pokemonin = "afflicted"
+        #while afflicted == pokemonin:
+         #   if endofturn == "end":
+          #      N = 1
+           #     damage = N * oppositehealth/16
+            #    if turn + 1:
+             #       N += 1
+       
 
 
 
@@ -138,6 +140,7 @@ class Using(effect):
         for i in range(movelist):
             if use == "Toxic" or enemyuse == "Toxic":
                 effect.Toxic(oppositepokemon, oppositehealth, pokemonin, endofturn, turn)
+                break
             
 
 
