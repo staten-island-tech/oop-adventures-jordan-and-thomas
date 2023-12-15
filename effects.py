@@ -1,6 +1,10 @@
 import json
 import random
 
+quiz = open("pokemon.json", encoding="utf8")
+data = json.load(quiz)
+pokemonlist = len(data)
+
 test = open("move.json", encoding="utf8")
 moves = json.load(test)
 movelist = len(moves)
@@ -11,9 +15,15 @@ class effect():
    
 
     def Toxic(oppositepokemon, oppositehealth, pokemonin, endofturn, turn):
-        print(oppositepokemon, "has been Poisoned")
+        for i in range(pokemonlist):
+            if (data[i]["Name"]) == oppositepokemon:
+                ptype = (data[i]["Types"])
+        if "Poison" in ptype:
+            print("But it Failed")
+        else:
+            print(oppositepokemon, "has been Poisoned")
        
-        pokemonin = "afflicted"
+            pokemonin = "afflicted"
         #while afflicted == pokemonin:
          #   if endofturn == "end":
           #      N = 1

@@ -26,7 +26,7 @@ userparty =[firstpokemon, secondpokemon, thirdpokemon, fourthpokemon, fifthpokem
 
 
 move1 = "Cut"
-move2 = "Absorb"
+move2 = "Razor Leaf"
 move3 = "Tackle"
 move4 = "Vine Whip"
 firstpokemonmoves = [move1, move2, move3, move4]
@@ -82,6 +82,21 @@ class functionality():
                 damage = N * oppositehealth/16
                 if turn + 1:
                     N += 1
+    
+    def dead(oppositehealth):
+        if oppositehealth == 0:
+            global currentpokemon
+            print(oppositepokemon, "has fainted")
+            print(userparty)
+            switchin = input("Pick a Pokemon to switch in: ")
+            currentpokemon = switchin
+    
+    def supereffective():
+        for i in range(pokemonlist):
+            if (data[i]["Name"]) == oppositepokemon:
+                ptype = (data[i]["Types"])
+            
+
 
 
 
@@ -92,14 +107,22 @@ class Ai():
 
 class Mike(functionality):
     def Raichudoing():
+
         if turn == 0:
-            print("Raichu used Toxic")
-            enemyuse = "Toxic"
-            functionality.oppositehealththing(going, enemyhealth, currenthealth)
+            for i in range(pokemonlist):
+                if (data[i]["Name"]) == currentpokemon:
+                    ptype = (data[i]["Types"])
+            if "Poison" not in ptype:
+                print("Raichu used Toxic")
+                time.sleep(times)
+                enemyuse = "Toxic"
+                functionality.oppositehealththing(going, enemyhealth, currenthealth)
             
-            functionality.oppositepokemon(going, currentpokemon, enemypokemon)
+                functionality.oppositepokemon(going, currentpokemon, enemypokemon)
             
-            Using.usemove("placeholder", enemyuse, oppositepokemon, oppositehealth, pokemonin, endofturn, turn)
+                Using.usemove("placeholder", enemyuse, oppositepokemon, oppositehealth, pokemonin, endofturn, turn)
+            else:
+                print("Raichu used Double Team")
 
 
 
@@ -137,12 +160,16 @@ class Turns(Mike):
         print("Switch Out Or Attack")
         userdo = input("What would you like to do: ")
         if userdo == "Switch" or userdo == "switch" or userdo == "Switch Out" or userdo == "switch out" or userdo == "Switch out":
+            global currentpokemon
             print(userparty)
             switchin = input("Pick a Pokemon to Switch into: ")
             print("You switched into", switchin)
-            userpokemon = switchin
+            currentpokemon = switchin
+            
             going = "Enemy"
+            time.sleep(times)
             Mike.Raichudoing()
+           
 
 
             
