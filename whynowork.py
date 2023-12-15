@@ -1,13 +1,19 @@
 import json
-import os
-combinedname = input("Type here ")
-gang = combinedname.split(",")
-with open("playerteaminfo.json", "r") as f:
-    data = json.load(f) # append to data!!!
-    data.append([gang])
-new_file = "updated.json"
-with open(new_file, "w") as f:
-    json_string = json.dumps(data, indent=4)
-    f.write(json_string)
-os.remove("playerteaminfo.json")
-os.rename(new_file, "playerteaminfo.json")
+test = open("data.json", encoding="utf8")
+data = json.load(test)
+pknumber = []
+playerteam = []
+pokemonmoves = []
+global p
+def pickpokemon():
+    p = True
+    while p == True:
+        pokemon = input("Type pokemon here ")
+        for i in range(len(data)):
+            if pokemon == (data[i]["Name"]):
+                playerteam.append(pokemon)
+                pokemonnumber = i
+                pknumber.append(pokemonnumber)
+                p = False
+pickpokemon()
+print(data[pknumber[0]]["Learnable Moves"])
