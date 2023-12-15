@@ -53,6 +53,7 @@ class Teambuilder():
                     m4 = False
         pokemonmoves.append(currentpkmoves)
     def teambuilder(self):
+        for i in range(5):
             print(allpokemon)
             inputpokemon = input("Type pokemon here ")
             Teambuilder.pickpokemon(inputpokemon)
