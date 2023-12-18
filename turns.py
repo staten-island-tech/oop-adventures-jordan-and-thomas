@@ -91,10 +91,99 @@ class functionality():
             switchin = input("Pick a Pokemon to switch in: ")
             currentpokemon = switchin
     
-    def supereffective():
+    def supereffective(use, oppositepokemon):
+        global effective
+        effective = "normal"
         for i in range(pokemonlist):
             if (data[i]["Name"]) == oppositepokemon:
                 ptype = (data[i]["Types"])
+        for i in range(movelist):
+            if (moves[i]["name"]) == use:
+                usetype = (moves[i]["type"])
+
+        if usetype == "Normal" and "Rock" in ptype:
+            effective = "half"
+        if usetype == "Normal" and "Ghost" in ptype:
+            effective = "zero"
+
+        if usetype == "Fire" and "Fire" in ptype:
+            effective = "half"
+        if usetype == "Fire" and "Water" in ptype:
+            effective = "half"
+        if usetype == "Fire" and "Grass" in ptype:
+            effective = "super"
+        if usetype == "Fire" and "Ice" in ptype:
+            effective = "super"
+        if usetype == "Fire" and "Bug" in ptype:
+            effective = "super"
+        if usetype == "Fire" and "Rock" in ptype:
+            effective = "half"
+        if usetype == "Fire" and "Dragon" in ptype:
+            effective = "half"
+        
+        if usetype == "Water" and "Fire" in ptype:
+            effective = "super"
+        if usetype == "Water" and "Water" in ptype:
+            effective = "half"
+        if usetype == "Water" and "Grass" in ptype:
+            effective = "half"
+        if usetype == "Water" and "Ground" in ptype:
+            effective = "super"
+        if usetype == "Water" and "Rock" in ptype:
+            effective = "super"
+        if usetype == "Water" and "Dragon" in ptype:
+            effective = "half"
+        
+        if usetype == "Electric" and "Water" in ptype:
+            effective = "super"
+        if usetype == "Electic" and "Electirc" in ptype:
+            effective = "half"
+        if usetype == "Electric" and "Grass" in ptype:
+            effective = "half"
+        if usetype == "Electric" and "Ground" in ptype:
+            effective = "zero"
+        if usetype == "Electric" and "Flying" in ptype:
+            effective = "super"
+        if usetype == "Electric" and "Dragon" in ptype:
+            effective = "half"
+
+        if usetype == "Grass" and "Fire" in ptype:
+            effective = "half"
+        if usetype == "Grass" and "Water" in ptype:
+            effective = "super"
+        if usetype == "Grass" and "Grass" in ptype:
+            effective = "half"
+        if usetype == "Grass" and "Poison" in ptype:
+            effective = "half"
+        if usetype == "Grass" and "Ground" in ptype:
+            effective = "super"
+        if usetype == "Grass" and "Flying" in ptype:
+            effective = "half"
+        if usetype == "Grass" and "Bug" in ptype:
+            effective = "half"
+        if usetype == "Grass" and "Rock" in ptype:
+            effective = "super"
+        if usetype == "Grass" and "Dragon" in ptype:
+            effective = "half"
+        
+        if usetype == "Ice" and "Fire" in ptype:
+            effective = "half"
+        if usetype == "Ice" and "Water" in ptype:
+            effective = "half"
+        if usetype == "Ice" and "Grass" in ptype:
+            effective = "super"
+        if usetype == "Ice" and "Ice" in ptype:
+            effective = "half"
+        if usetype == "Ice" and "Ground" in ptype:
+            effective = "super"
+        if usetype == "Ice" and "Flying" in ptype:
+            effective = "super"
+        if usetype == "Ice" and "Dragon" in ptype:
+            effective = "super"
+        
+
+    
+        
             
 
 
@@ -230,7 +319,7 @@ Turns.turnone(firstpokemon, enemypokemon1, "Elite Four Member Mike M.")
 
         
 
-#Turns.turnone(playerpokemon1, "Charizard","Adam")
+
 
 
 
