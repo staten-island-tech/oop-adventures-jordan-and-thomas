@@ -181,12 +181,110 @@ class functionality():
         if usetype == "Ice" and "Dragon" in ptype:
             effective = "super"
         
+        if usetype == "Fighting" and "Normal" in ptype:
+            effective = "super"
+        if usetype == "Fighting" and "Ice" in ptype:
+            effective = "super"
+        if usetype == "Fighting" and "Poison" in ptype:
+            effective = "half"
+        if usetype == "Fighting" and "Flying" in ptype:
+            effective = "half"
+        if usetype == "Fighting" and "Psychic" in ptype:
+            effective = "half"
+        if usetype == "Fighting" and "Bug" in ptype:
+            effective = "half"
+        if usetype == "Fighting" and "Rock" in ptype:
+            effective = "super"
+        if usetype == "Fighting" and "Ghost" in ptype:
+            effective = "zero"
+        
+        if usetype == "Poison" and "Grass" in ptype:
+            effective = "super"
+        if usetype == "Poison" and "Poison" in ptype:
+            effective = "half"
+        if usetype == "Poison" and "Ground" in ptype:
+            effective = "half"
+        if usetype == "Poison" and "Rock" in ptype:
+            effective = "half"
+        if usetype == "Poison" and "Ghost" in ptype:
+            effective = "half"
+
+        if usetype == "Ground" and "Fire" in ptype:
+            effective = "super"
+        if usetype == "Ground" and "Electric" in ptype:
+            effective = "super"
+        if usetype == "Ground" and "Grass" in ptype:
+            effective = "half"
+        if usetype == "Ground" and "Poison" in ptype:
+            effective == "super"
+        if usetype == "Ground" and "Flying" in ptype:
+            effective == "zero"
+        if usetype == "Ground" and "Bug" in ptype:
+            effective == "half"
+        if usetype == "Ground" and "Rock" in ptype:
+            effective = "super"
+
+        if usetype == "Flying" and "Electric" in ptype:
+            effective = "half"
+        if usetype == "Flying" and "Grass" in ptype:
+            effective = "super"
+        if usetype == "Flying" and "Fighting" in ptype:
+            effective = "super"
+        if usetype == "Flying" and "Bug" in ptype:
+            effective = "Bug"
+        if usetype == "Flying" and "Rock" in ptype:
+            effective = "half"
+        
+        if usetype == "Psychic" and "Fighting" in ptype:
+            effective = "super"
+        if usetype == "Psychic" and "Poison" in ptype:
+            effective = "super"
+        if usetype == "Psychic" and "Psychic" in ptype:
+            effective = "half"
+        
+        if usetype == "Bug" and "Fire" in ptype:
+            effective = "half"
+        if usetype == "Bug" and "Grass" in ptype:
+            effective = "super"
+        if usetype == "Bug" and "Fighting" in ptype:
+            effective = "half"
+        if usetype == "Bug" and "Poison" in ptype:
+            effective = "half"
+        if usetype == "Bug" and "Flying" in ptype:
+            effective = "half"
+        if usetype == "Bug" and "Psychic" in ptype:
+            effective = "super"
+        if usetype == "Bug" and "Ghost" in ptype:
+            effective = "half"
+
+        if usetype == "Rock" and "Fire" in ptype:
+            effective = "super"
+        if usetype == "Rock" and "Ice" in ptype:
+            effective = "super"
+        if usetype == "Rock" and "Fighting" in ptype:
+            effective = "half"
+        if usetype == "Rock" and "Ground" in ptype:
+            effective = "half"
+        if usetype == "Rock" and "Flying" in ptype:
+            effective = "super"
+        if usetype == "Rock" and "Bug" in ptype:
+            effective = "super"
+        
+        if usetype == "Ghost" and "Normal" in ptype:
+            effective = "zero"
+        if usetype == "Ghost" and "Psychic" in ptype:
+            effective = "super"
+        if usetype == "Ghost" and "Ghost" in ptype:
+            effective = "super"
+        
+        if usetype == "Dragon" and "Dragon" in ptype:
+            effective = "super"
+        print(effective)
+ 
+
+        
 
     
-        
-            
-
-
 
 
 class Ai():
@@ -315,10 +413,10 @@ class Turns(Mike):
       
 
 
-Turns.turnone(firstpokemon, enemypokemon1, "Elite Four Member Mike M.")
+#Turns.turnone(firstpokemon, enemypokemon1, "Elite Four Member Mike M.")
 
         
-
+functionality.supereffective()
 
 
 
