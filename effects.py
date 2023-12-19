@@ -1,9 +1,39 @@
 import json
 import random
-class effect:
-    "HealHalfD" = HealHalfD
-    "Hits2to5" = Hits2to5
-    "SpeedDown" = SpeedDown
+
+quiz = open("pokemon.json", encoding="utf8")
+data = json.load(quiz)
+pokemonlist = len(data)
+
+test = open("move.json", encoding="utf8")
+moves = json.load(test)
+movelist = len(moves)
+
+
+
+class effect():
+   
+
+    def Toxic(oppositepokemon, oppositehealth, pokemonin, endofturn, turn):
+        for i in range(pokemonlist):
+            if (data[i]["Name"]) == oppositepokemon:
+                ptype = (data[i]["Types"])
+        if "Poison" in ptype:
+            print("But it Failed")
+        else:
+            print(oppositepokemon, "has been Poisoned")
+       
+            pokemonin = "afflicted"
+        #while afflicted == pokemonin:
+         #   if endofturn == "end":
+          #      N = 1
+           #     damage = N * oppositehealth/16
+            #    if turn + 1:
+             #       N += 1
+       
+
+
+
 
     def HealHalfD(damagedone, targetHealth):
         targetHealth = targetHealth + damagedone/2
@@ -95,7 +125,7 @@ class effect:
     
     def FireSpin():
         turns = random.randrange(4)
-        pokemonescape = trapped
+        #pokemonescape = trapped
         if turns == 1:
             TurnsHitsfor = 2
         if turns == 2:
@@ -107,13 +137,6 @@ class effect:
     
     def Flygimmick():
         immune = "yes"
-        uhhhhhhh
-
-    def Mirrormove():
-
-    def HitsNextTurn():
-        
-    def m
 
 
 
@@ -122,6 +145,13 @@ class effect:
     
 
 
+class Using(effect):
+    def usemove(use, enemyuse, oppositepokemon, oppositehealth, pokemonin, endofturn, turn):
+        for i in range(movelist):
+            if use == "Toxic" or enemyuse == "Toxic":
+                effect.Toxic(oppositepokemon, oppositehealth, pokemonin, endofturn, turn)
+                break
+            
 
 
 
