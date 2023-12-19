@@ -22,23 +22,21 @@ class Teambuilder():
         p = True
         pcheck = True
         while p == True:
-                playerpokemon = input("Type pokemon here ")
-                for i in range(len(data)):
-                    if playerpokemon == data[i]["Name"]:
-                        if len(playerteam) == 0:
+            playerpokemon = input("Type pokemon here ")
+            for i in range(len(data)):
+                if playerpokemon == data[i]["Name"]:
+                    if len(playerteam) != 0:
+                        pcheck = not playerpokemon in playerteam
+                        if pcheck == True:
                             playerteam.append(playerpokemon)
                             pokemonnumber = i
                             pknumber[0] = (pokemonnumber)
                             p = False
-                        if len(playerteam) != 0 or len(playerteam) != 1:
-                            for i in range(len(playerteam)):
-                                playerteam.append(playerpokemon)
-                                pokemonnumber = i
-                                pknumber[0] = pokemonnumber
-                                if playerpokemon == playerteam[i]:
-                                    pcheck = False
-                            if pcheck == True:
-                                p = False
+                    if len(playerteam) == 0:
+                        playerteam.append(playerpokemon)
+                        pokemonnumber = i
+                        pknumber[0] = (pokemonnumber)
+                        p = False
     def pickmove():
         currentpkmoves = []
         m = True
@@ -53,25 +51,31 @@ class Teambuilder():
             move2 = input("Type move here ")
             for i in range(len(data[pknumber[0]]["Learnable Moves"])):
                 if move2 == data[pknumber[0]]["Learnable Moves"][i]:
-                    currentpkmoves.append(move2)
-                    m2 = False
+                    m2check = not move2 in currentpkmoves
+                    if m2check == True:
+                        currentpkmoves.append(move2)
+                        m2 = False
         m3 = True
         while m3 == True:
             move3 = input("Type move here ")
             for i in range(len(data[pknumber[0]]["Learnable Moves"])):
                 if move3 == data[pknumber[0]]["Learnable Moves"][i]:
-                    currentpkmoves.append(move3)
-                    m3 = False
+                    m3check = not move3 in currentpkmoves
+                    if m3check == True:
+                        currentpkmoves.append(move3)
+                        m3 = False
         m4 = True
         while m4 == True:
             move4 = input("Type move here ")
             for i in range(len(data[pknumber[0]]["Learnable Moves"])):
                 if move4 == data[pknumber[0]]["Learnable Moves"][i]:
-                    currentpkmoves.append(move4)
-                    m4 = False
+                    m4check = not move4 in currentpkmoves
+                    if m4check == True:
+                        currentpkmoves.append(move4)
+                        m4 = False
         pokemonmoves.append(currentpkmoves)
     def teambuilder(self):
-        for i in range(5):
+        for i in range(6):
             print(allpokemon)
             Teambuilder.pickpokemon()
             print(data[pknumber[0]]["Learnable Moves"])
@@ -80,9 +84,7 @@ class Teambuilder():
 tb = Teambuilder()
 tb.teambuilder()
 
-
-print(playerteam)
-print(pokemonmoves)
-
+teaminfo = (playerteam[0], pokemonmoves[0], playerteam[1], pokemonmoves[1], playerteam[2], pokemonmoves[2], playerteam[3], pokemonmoves[3], playerteam[4], pokemonmoves[4], playerteam[5], pokemonmoves[5])
+print(teaminfo)
 
 
