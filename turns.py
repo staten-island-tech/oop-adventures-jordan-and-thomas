@@ -279,7 +279,26 @@ class functionality():
         
         if usetype == "Dragon" and "Dragon" in ptype:
             effective = "super"
-        print(effective)
+    def damagecalc(move, attackingpk, enemypk):
+        movepower = moves[move]["power"]
+        if moves[move]["category"] == "Physical":
+            attackingpower = userattack
+            defendingpower = enemydefense
+        if moves[move]["category"] == "Special":
+            attackingpower = userspecial
+            defendingpower = userspecial
+        math1 = 40 * movepower
+        math2 = attackingpower // defendingpower
+        math3 = math2 * math1
+        math4 = math3 // 50
+        math5 = math4 + 2
+        if moves[move]["type"] in usertype:
+
+
+
+        
+
+        
  
 
         
