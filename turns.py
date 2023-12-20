@@ -2,7 +2,8 @@ import json
 from effects import effect
 from effects import Using
 import time
-
+from tryingtofix import Teambuilder
+from tryingtofix import *
 times = 1.5
 
 turn = 0
@@ -12,30 +13,27 @@ test = open("move.json", encoding="utf8")
 moves = json.load(test)
 movelist = len(moves)
 
-quiz = open("pokemon.json", encoding="utf8")
+quiz = open("data.json", encoding="utf8")
 data = json.load(quiz)
 pokemonlist = len(data)
 
-firstpokemon = "Bulbasaur"
-secondpokemon = "Weedle"
-thirdpokemon = "Beedrill"
-fourthpokemon = "Poliwrath"
-fifthpokemon = "Arbok"
-sixthpokemon = "Fearow"
-userparty =[firstpokemon, secondpokemon, thirdpokemon, fourthpokemon, fifthpokemon, sixthpokemon]
+
+pknumber = [1]
+playerteam = []
+pokemonmoves = []
+allpokemon = []
+for i in range(len(data)):
+            allpokemon.append(data[i]["Name"])
 
 
-move1 = "Cut"
-move2 = "Razor Leaf"
-move3 = "Tackle"
-move4 = "Vine Whip"
-firstpokemonmoves = [move1, move2, move3, move4]
+tb = Teambuilder()
 
-enemyhealth = 200
-currenthealth = 100
-enemyspeed = 100
-currentspeed = 50
+tb.teambuilder()
 
+
+
+teaminfo = (playerteam[0], pokemonmoves[0], playerteam[1], pokemonmoves[1], playerteam[2], pokemonmoves[2], playerteam[3], pokemonmoves[3], playerteam[4], pokemonmoves[4], playerteam[5], pokemonmoves[5])
+print(teaminfo)
 
 endofturn = "no"
 global pokemonin
@@ -53,7 +51,7 @@ enemypokemon = enemypokemon1
 
 
 
-currentpokemon = firstpokemon
+currentpokemon = "firstpokemon"
 
 
 
@@ -87,7 +85,7 @@ class functionality():
         if oppositehealth == 0:
             global currentpokemon
             print(oppositepokemon, "has fainted")
-            print(userparty)
+            print("userparty")
             switchin = input("Pick a Pokemon to switch in: ")
             currentpokemon = switchin
     
@@ -303,7 +301,7 @@ class Mike(functionality):
                 print("Raichu used Toxic")
                 time.sleep(times)
                 enemyuse = "Toxic"
-                functionality.oppositehealththing(going, enemyhealth, currenthealth)
+                functionality.oppositehealththing(going, enemyhealth, "currenthealth")
             
                 functionality.oppositepokemon(going, currentpokemon, enemypokemon)
             
@@ -348,7 +346,7 @@ class Turns(Mike):
         userdo = input("What would you like to do: ")
         if userdo == "Switch" or userdo == "switch" or userdo == "Switch Out" or userdo == "switch out" or userdo == "Switch out":
             global currentpokemon
-            print(userparty)
+            print("userparty")
             switchin = input("Pick a Pokemon to Switch into: ")
             print("You switched into", switchin)
             currentpokemon = switchin
@@ -362,10 +360,10 @@ class Turns(Mike):
             
 
         if userdo == "Attack" or userdo == "attack":
-            print(firstpokemonmoves)
+            print("firstpokemonmoves")
             use = input("Pick a move to use: ")
             time.sleep(times)
-            Turns.speedcheck(enemyspeed, currentspeed)
+            Turns.speedcheck()#enemyspeed, currentspeed)
             
             if "User" in goingfirst:
                
@@ -416,7 +414,7 @@ class Turns(Mike):
 #Turns.turnone(firstpokemon, enemypokemon1, "Elite Four Member Mike M.")
 
         
-functionality.supereffective()
+
 
 
 

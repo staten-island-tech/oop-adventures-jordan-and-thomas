@@ -1,7 +1,7 @@
 import json
 import random
 
-quiz = open("pokemon.json", encoding="utf8")
+quiz = open("data.json", encoding="utf8")
 data = json.load(quiz)
 pokemonlist = len(data)
 
