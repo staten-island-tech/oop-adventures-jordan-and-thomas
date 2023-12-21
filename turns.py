@@ -281,12 +281,15 @@ class functionality():
             effective = "super"
     def damagecalc(move, attackingpk, enemypk):
         movepower = moves[move]["power"]
+        userattack = data[attackingpk]["Attack Stat"]
+        enemydefense = data[enemypk]["Defense Stat"]
+        userpecial = data
         if moves[move]["category"] == "Physical":
             attackingpower = userattack
             defendingpower = enemydefense
         if moves[move]["category"] == "Special":
             attackingpower = userspecial
-            defendingpower = userspecial
+            defendingpower = enemyspecial
         math1 = 40 * movepower
         math2 = attackingpower // defendingpower
         math3 = math2 * math1
