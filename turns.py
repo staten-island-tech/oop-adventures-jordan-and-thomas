@@ -26,14 +26,10 @@ for i in range(len(data)):
             allpokemon.append(data[i]["Name"])
 
 
-tb = Teambuilder()
-
-tb.teambuilder()
 
 
 
-teaminfo = (playerteam[0], pokemonmoves[0], playerteam[1], pokemonmoves[1], playerteam[2], pokemonmoves[2], playerteam[3], pokemonmoves[3], playerteam[4], pokemonmoves[4], playerteam[5], pokemonmoves[5])
-print(teaminfo)
+
 
 endofturn = "no"
 global pokemonin
@@ -49,9 +45,9 @@ global enemypokemon
 enemypokemon1 = "Raichu"
 enemypokemon = enemypokemon1
 
+print(teaminfo())
 
-
-currentpokemon = "firstpokemon"
+currentpokemon = teaminfo[0]
 
 
 
@@ -85,8 +81,12 @@ class functionality():
         if oppositehealth == 0:
             global currentpokemon
             print(oppositepokemon, "has fainted")
-            print("userparty")
+            dead = oppositepokemon
+            print(teaminfo)
             switchin = input("Pick a Pokemon to switch in: ")
+            if switchin == dead:
+                print(switchin, "has already fainted")
+                switchin = input("Pick a Pokemon to switch in to:")
             currentpokemon = switchin
     
     def supereffective(use, oppositepokemon):
@@ -278,6 +278,22 @@ class functionality():
         if usetype == "Dragon" and "Dragon" in ptype:
             effective = "super"
         print(effective)
+
+    def pokemoninmoves(currentpokemon):
+        global currentmoves
+
+        if currentpokemon == playerteam[0]:
+            currentmoves = pokemonmoves[0]
+        if currentpokemon == playerteam[1]:
+            currentmoves = pokemonmoves[1]
+        if currentpokemon == playerteam[2]:
+            currentmoves = pokemonmoves[2]
+        if currentpokemon == playerteam[3]:
+            currentmoves = pokemonmoves[3]
+        if currentpokemon == playerteam[4]:
+            currentmoves = pokemonmoves[4]
+        if currentpokemon == playerteam[5]:
+            currentmoves = pokemonmoves[5]
  
 
         
@@ -360,7 +376,8 @@ class Turns(Mike):
             
 
         if userdo == "Attack" or userdo == "attack":
-            print("firstpokemonmoves")
+            functionality.pokemoninmoves(currentpokemon)
+            print(currentmoves)
             use = input("Pick a move to use: ")
             time.sleep(times)
             Turns.speedcheck()#enemyspeed, currentspeed)
@@ -411,7 +428,7 @@ class Turns(Mike):
       
 
 
-#Turns.turnone(firstpokemon, enemypokemon1, "Elite Four Member Mike M.")
+Turns.turnone(currentpokemon, enemypokemon1, "Elite Four Member Mike M.")
 
         
 

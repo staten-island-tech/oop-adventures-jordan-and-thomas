@@ -1,6 +1,10 @@
 import json
 test = open("data.json", encoding="utf8")
 data = json.load(test)
+
+global playerteam
+global pokemonmoves
+
 pknumber = [1]
 playerteam = []
 pokemonmoves = []
@@ -17,6 +21,7 @@ global m3
 global m3check
 global m4
 global m4check
+
 class Teambuilder():
     def pickpokemon():
         p = True
