@@ -1,7 +1,7 @@
 import json
 test = open("data.json", encoding="utf8")
 data = json.load(test)
-pknumber = [1]
+pknumber = [0]
 playerteam = []
 pokemonmoves = []
 allpokemon = []

@@ -280,10 +280,20 @@ class functionality():
         if usetype == "Dragon" and "Dragon" in ptype:
             effective = "super"
     def damagecalc(move, attackingpk, enemypk):
-        movepower = moves[move]["power"]
-        userattack = data[attackingpk]["Attack Stat"]
-        enemydefense = data[enemypk]["Defense Stat"]
-        userpecial = data
+        for i in range(movelist):
+            if move == moves[i]["name"]:
+                movenumber = i
+        for i in range(pokemonlist):
+            if attackingpk == data[i]["Name"]:
+                attacknumber = i
+        for i in range(pokemonlist):
+            if enemypk == data[i]["Name"]:
+                enemynumber = i
+        movepower = moves[movenumber]["power"]
+        userattack = data[attacknumber]["Attack Stat"]
+        enemydefense = data[enemynumber]["Defense Stat"]
+        userspecial = data[attacknumber]["Special Stat"]
+        enemyspecial = data[enemynumber]["Special Stat"]
         if moves[move]["category"] == "Physical":
             attackingpower = userattack
             defendingpower = enemydefense
@@ -295,7 +305,12 @@ class functionality():
         math3 = math2 * math1
         math4 = math3 // 50
         math5 = math4 + 2
-        if moves[move]["type"] in usertype:
+        if moves[movenumber]["type"] in data[attacknumber]["Types"]:
+            STABmath = math5 * 1.5
+        f = functionality()
+        f.supereffective(move, enemypk)
+        
+        
 
 
 
@@ -438,7 +453,7 @@ class Turns(Mike):
 #Turns.turnone(firstpokemon, enemypokemon1, "Elite Four Member Mike M.")
 
         
-functionality.supereffective()
+
 
 
 
