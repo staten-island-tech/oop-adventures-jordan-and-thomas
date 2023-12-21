@@ -306,9 +306,19 @@ class functionality():
         math4 = math3 // 50
         math5 = math4 + 2
         if moves[movenumber]["type"] in data[attacknumber]["Types"]:
-            STABmath = math5 * 1.5
+            math6 = math5 * 1.5
         f = functionality()
-        f.supereffective(move, enemypk)
+        if len(data[enemynumber]["Types"]) > 1:
+            enemytype1 = (data[enemynumber]["Types"])[0]
+            enemytype2 = (data[enemynumber]["Types"])[1]
+            f.supereffective(move, enemytype1)
+            if effective == "super":
+                
+
+        if len(data[enemynumber]["Types"]) < 1:
+            enemytype
+        f.supereffective(move, enemytype1)
+        if 
         
         
 

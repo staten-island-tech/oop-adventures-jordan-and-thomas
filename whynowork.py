@@ -79,4 +79,5 @@ class Teambuilder():
             Teambuilder.pickpokemon()
             print(data[pknumber[0]]["Learnable Moves"])
             Teambuilder.pickmove()
-tb = Teambuilder
+tb = Teambuilder()
+tb.teambuilder()
