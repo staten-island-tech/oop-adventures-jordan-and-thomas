@@ -318,9 +318,19 @@ class functionality():
             enemytype2 = (data[enemynumber]["Types"])[1]
             f.supereffective(move, enemytype1)
             if effective == "super":
-                meffective1 = True
+                meffective1 = seffect
+            if effective == "half":
+                meffective1 = heffect
+            if effective == "zero":
+                meffective1 = neffect
             f.supereffective(move, enemytype2)
-            if effective == 
+            if effective == "super":
+                meffective2 = seffect
+            if effective == "half":
+                meffective2 = heffect
+            if effective == "zero":
+                meffective2 = neffect
+            
 
 
 
