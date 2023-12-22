@@ -36,7 +36,12 @@ currenthealth = 100
 enemyspeed = 100
 currentspeed = 50
 
-
+global stab
+stab = True
+global meffective1
+meffective1 = normal
+global meffective2
+meffective2 = normal
 endofturn = "no"
 global pokemonin
 pokemonin = "same"
@@ -306,14 +311,18 @@ class functionality():
         math4 = math3 // 50
         math5 = math4 + 2
         if moves[movenumber]["type"] in data[attacknumber]["Types"]:
-            math6 = math5 * 1.5
+            stab = True
         f = functionality()
         if len(data[enemynumber]["Types"]) > 1:
             enemytype1 = (data[enemynumber]["Types"])[0]
             enemytype2 = (data[enemynumber]["Types"])[1]
             f.supereffective(move, enemytype1)
             if effective == "super":
-                
+                meffective1 = True
+            f.supereffective(move, enemytype2)
+            if effective == 
+
+
 
         if len(data[enemynumber]["Types"]) < 1:
             enemytype
