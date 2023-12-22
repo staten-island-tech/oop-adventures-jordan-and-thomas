@@ -42,6 +42,12 @@ global meffective1
 meffective1 = normal
 global meffective2
 meffective2 = normal
+global meffective
+meffective = normal
+global twotype
+twotype = False
+global onetype
+onetype = False
 endofturn = "no"
 global pokemonin
 pokemonin = "same"
@@ -329,7 +335,24 @@ class functionality():
             if effective == "half":
                 meffective2 = heffect
             if effective == "zero":
-                meffective2 = neffect
+                meffective2 = zeffect
+            twotype = True
+        if len(data[enemynumber]["Types"]) < 1:
+            enemytype = (data[enemynumber]["Types"])[0]
+            f.supereffective(move, enemytype)
+            if effective == "super":
+                meffective = seffect
+            if effective == "half":
+                meffective = heffect
+            if effective == "zero":
+                meffective = zeffect
+            onetype = True
+        if stab == True:
+            
+
+
+
+
             
 
 
