@@ -1,1 +1,44 @@
-[]
+[
+    "Mew",
+    [
+        "Flash",
+        "Strength",
+        "Surf",
+        "Fly"
+    ],
+    "Mewtwo",
+    [
+        "Flash",
+        "Strength",
+        "Substitute",
+        "Tri Attack"
+    ],
+    "Dragonite",
+    [
+        "Strength",
+        "Surf",
+        "Substitute",
+        "Rest"
+    ],
+    "Dragonair",
+    [
+        "Surf",
+        "Substitute",
+        "Rest",
+        "Skull Bash"
+    ],
+    "Dratini",
+    [
+        "Surf",
+        "Substitute",
+        "Rest",
+        "Skull Bash"
+    ],
+    "Moltres",
+    [
+        "Fly",
+        "Substitute",
+        "Rest",
+        "Sky Attack"
+    ]
+]

@@ -2,6 +2,7 @@ import json
 from effects import effect
 from effects import Using
 import time
+from tryingtofix import Teambuilder
 
 times = 1.5
 
@@ -16,20 +17,9 @@ quiz = open("pokemon.json", encoding="utf8")
 data = json.load(quiz)
 pokemonlist = len(data)
 
-firstpokemon = "Bulbasaur"
-secondpokemon = "Weedle"
-thirdpokemon = "Beedrill"
-fourthpokemon = "Poliwrath"
-fifthpokemon = "Arbok"
-sixthpokemon = "Fearow"
-userparty =[firstpokemon, secondpokemon, thirdpokemon, fourthpokemon, fifthpokemon, sixthpokemon]
-
-
-move1 = "Cut"
-move2 = "Razor Leaf"
-move3 = "Tackle"
-move4 = "Vine Whip"
-firstpokemonmoves = [move1, move2, move3, move4]
+pluh = open("playerteaminfo.json", encoding="utf8")
+inputteam = json.load(pluh)
+inputteamlist = len(inputteam)
 
 enemyhealth = 200
 currenthealth = 100
@@ -39,11 +29,11 @@ currentspeed = 50
 global stab
 stab = True
 global meffective1
-meffective1 = normal
+meffective1 = 1
 global meffective2
-meffective2 = normal
+meffective2 = 1
 global meffective
-meffective = normal
+meffective = 1
 global twotype
 twotype = False
 global onetype
@@ -61,11 +51,12 @@ enemyin = "same"
 global enemypokemon
 enemypokemon1 = "Raichu"
 enemypokemon = enemypokemon1
+tb = Teambuilder()
+tb.teambuilder()
 
-
-
-currentpokemon = firstpokemon
-
+print(inputteam)
+userparty = (inputteam[0], inputteam[2], inputteam[4], inputteam[6], inputteam[8], inputteam[10])
+print(userparty)
 
 
 
@@ -324,43 +315,39 @@ class functionality():
             enemytype2 = (data[enemynumber]["Types"])[1]
             f.supereffective(move, enemytype1)
             if effective == "super":
-                meffective1 = seffect
+                meffective1 = 2
             if effective == "half":
-                meffective1 = heffect
+                meffective1 = 0.5
             if effective == "zero":
-                meffective1 = neffect
+                meffective1 = 0
             f.supereffective(move, enemytype2)
             if effective == "super":
-                meffective2 = seffect
+                meffective2 = 2
             if effective == "half":
-                meffective2 = heffect
+                meffective2 = 0.5
             if effective == "zero":
-                meffective2 = zeffect
+                meffective2 = 0
             twotype = True
         if len(data[enemynumber]["Types"]) < 1:
             enemytype = (data[enemynumber]["Types"])[0]
             f.supereffective(move, enemytype)
             if effective == "super":
-                meffective = seffect
+                meffective = 2
             if effective == "half":
-                meffective = heffect
+                meffective = 0.5
             if effective == "zero":
-                meffective = zeffect
+                meffective = 0
             onetype = True
         if stab == True:
+            math5 *=  1.5
+        if onetype == True:
+            math5 *= meffective
+        if twotype == True:
+            meffective = meffective1 * meffective2
+            math5 *= meffective
+        movepower = math5
+
             
-
-
-
-
-            
-
-
-
-        if len(data[enemynumber]["Types"]) < 1:
-            enemytype
-        f.supereffective(move, enemytype1)
-        if 
         
         
 
@@ -451,7 +438,7 @@ class Turns(Mike):
             
 
         if userdo == "Attack" or userdo == "attack":
-            print(firstpokemonmoves)
+            print(inputteam[1])
             use = input("Pick a move to use: ")
             time.sleep(times)
             Turns.speedcheck(enemyspeed, currentspeed)
