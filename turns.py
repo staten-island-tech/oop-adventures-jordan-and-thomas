@@ -21,13 +21,10 @@ pluh = open("playerteaminfo.json", encoding="utf8")
 inputteam = json.load(pluh)
 inputteamlist = len(inputteam)
 
-enemyhealth = 200
-currenthealth = 100
-enemyspeed = 100
-currentspeed = 50
+
 
 global stab
-stab = True
+stab = False
 global meffective1
 meffective1 = 1
 global meffective2
@@ -45,18 +42,36 @@ global enemyin
 enemyin = "same"
 
 
+
 #enemyhealth = 200
 #Pokemon.teambuilder()
 
 global enemypokemon
+global enemyspeed
+global enemyhealth
 enemypokemon1 = "Raichu"
 enemypokemon = enemypokemon1
+for i in range(len(data)):
+    if enemypokemon == data[i]["Name"]:
+        enemyspeed = data[i]["Speed Stat"]
+        enemyhealth = data[i]["Health Stat"]
 tb = Teambuilder()
 tb.teambuilder()
+pluh = open("playerteaminfo.json", encoding="utf8")
+inputteam = json.load(pluh)
+inputteamlist = len(inputteam)
 
-print(inputteam)
 userparty = (inputteam[0], inputteam[2], inputteam[4], inputteam[6], inputteam[8], inputteam[10])
-print(userparty)
+firstpokemon = inputteam[0]
+global currentpokemon
+currentpokemon = firstpokemon
+global currentspeed
+global currenthealth
+for i in range(len(data)):
+    if currentpokemon == data[i]["Name"]:
+        currentspeed = data[i]["Speed Stat"]
+        currenthealth = data[i]["Health Stat"]
+print(currentspeed)
 
 
 
@@ -281,7 +296,7 @@ class functionality():
         
         if usetype == "Dragon" and "Dragon" in ptype:
             effective = "super"
-    def damagecalc(move, attackingpk, enemypk):
+    def damagecalc(damagecalc, move, attackingpk, enemypk):
         for i in range(movelist):
             if move == moves[i]["name"]:
                 movenumber = i
@@ -296,18 +311,30 @@ class functionality():
         enemydefense = data[enemynumber]["Defense Stat"]
         userspecial = data[attacknumber]["Special Stat"]
         enemyspecial = data[enemynumber]["Special Stat"]
-        if moves[move]["category"] == "Physical":
+        if  moves[i]["category"] == "Physical":
+            global attackingpower
+            global defendingpower
             attackingpower = userattack
             defendingpower = enemydefense
-        if moves[move]["category"] == "Special":
+        if moves[i]["category"] == "Special":
+            global attackingpower
+            global defendingpower
             attackingpower = userspecial
             defendingpower = enemyspecial
-        math1 = 40 * movepower
-        math2 = attackingpower // defendingpower
-        math3 = math2 * math1
-        math4 = math3 // 50
-        math5 = math4 + 2
+        math1 = float(40 * movepower)
+        print(math1)
+        math2 = float(attackingpower // defendingpower)
+        print(attackingpower)
+        print(defendingpower)
+        print(math2)
+        math3 = float(math2 * math1)
+        print(math3)
+        math4 = float(math3 // 50)
+        print(math4)
+        math5 = float(math4 + 2)
+        print(math5)
         if moves[movenumber]["type"] in data[attacknumber]["Types"]:
+            global stab
             stab = True
         f = functionality()
         if len(data[enemynumber]["Types"]) > 1:
@@ -327,6 +354,7 @@ class functionality():
                 meffective2 = 0.5
             if effective == "zero":
                 meffective2 = 0
+            global twotype
             twotype = True
         if len(data[enemynumber]["Types"]) < 1:
             enemytype = (data[enemynumber]["Types"])[0]
@@ -337,6 +365,7 @@ class functionality():
                 meffective = 0.5
             if effective == "zero":
                 meffective = 0
+            global onetype
             onetype = True
         if stab == True:
             math5 *=  1.5
@@ -345,7 +374,8 @@ class functionality():
         if twotype == True:
             meffective = meffective1 * meffective2
             math5 *= meffective
-        movepower = math5
+        global movedamage
+        movedamage = math5
 
             
         
@@ -398,6 +428,8 @@ class Turns(Mike):
             goingfirst.append("Enemy")
         if currentspeed > enemyspeed:
             goingfirst.append("User")
+        if enemyspeed == currentspeed:
+            goingfirst.append("Enemy")
     
 
 
@@ -424,6 +456,7 @@ class Turns(Mike):
         userdo = input("What would you like to do: ")
         if userdo == "Switch" or userdo == "switch" or userdo == "Switch Out" or userdo == "switch out" or userdo == "Switch out":
             global currentpokemon
+            currentpokemon = playerpokemon1
             print(userparty)
             switchin = input("Pick a Pokemon to Switch into: ")
             print("You switched into", switchin)
@@ -450,10 +483,12 @@ class Turns(Mike):
                 print("You used", use)
                 time.sleep(times)
                 # if move effect != None
-                #Do effect
-                for i in range(movelist):
-                    if moves[i]["name"] == use:
-                        damage = moves[i]["power"]
+                #Do effect\
+                f = functionality()
+                for i in range(len(inputteam[1])):
+                    if inputteam[1][i]== use:
+                        f.damagecalc(use, currentpokemon, enemypokemon1)
+                        damage = movedamage
                         print("It did", damage, "damage")
                         enemyhealth = enemyhealth - damage
                         time.sleep(times)
@@ -473,9 +508,11 @@ class Turns(Mike):
                 time.sleep(times)
                 # if move effect != None
                 #Do effect
-                for i in range(movelist):
-                    if moves[i]["name"] == use:
-                        damage = moves[i]["power"]
+                f = functionality()
+                for i in range(len(inputteam[1])):
+                    if inputteam[1][i] == use:
+                        f.damagecalc(use, currentpokemon, enemypokemon1)
+                        damage = movedamage
                         print("It did", damage, "damage")
                         enemyhealth = enemyhealth - damage
                         time.sleep(times)
@@ -489,7 +526,7 @@ class Turns(Mike):
       
 
 
-#Turns.turnone(firstpokemon, enemypokemon1, "Elite Four Member Mike M.")
+Turns.turnone(firstpokemon, enemypokemon1, "Elite Four Member Mike M.")
 
         
 
