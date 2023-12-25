@@ -2,7 +2,7 @@ import json
 import os
 test = open("data.json", encoding="utf8")
 data = json.load(test)
-moveamount = [4]
+
 pknumber = [0]
 playerteam = []
 pokemonmoves = []
@@ -11,17 +11,20 @@ for i in range(len(data)):
             allpokemon.append(data[i]["Name"])
 global p
 global pcheck
-global m
+
 global mcheck
-global m2
+
 global m2check
-global m3
+
 global m3check
-global m4
+
 global m4check
-global moves4
-global moves2
 global moves1
+moves1 = False
+global moves2
+moves2 = False
+global moves4
+moves4 = False
 class Teambuilder():
     def pickpokemon():
         p = True
@@ -32,8 +35,7 @@ class Teambuilder():
                 moves2 = True
             if playerpokemon == "Ditto":
                 moves1 = True
-                print(moveamount[0])
-            if not playerpokemon == "Magikarp" or not playerpokemon == "Ditto":
+            else:
                 moves4 = True
             for i in range(len(data)):
                 if playerpokemon == data[i]["Name"]:
@@ -49,20 +51,24 @@ class Teambuilder():
                         pokemonnumber = i
                         pknumber[0] = (pokemonnumber)
                         p = False
-        print(moveamount[0])
     def pickmove():
         currentpkmoves = []
-        if moveamount[0] == 4:
+        if moves4 == True:
+            global m
+            global m2
+            global m3
+            global m4
             m = True
             m2 = True
             m3 = True
             m4 = True
-        if moveamount[0] == 2:
+        if moves2 == True:
             m = True
             m2 = True
             m3 = False
             m4 = False
-        if moveamount[0] == 1:
+            print("pluh")
+        if moves1 == True:
             m = True
             m2 = False
             m3 = False
