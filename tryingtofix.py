@@ -2,6 +2,7 @@ import json
 import os
 test = open("data.json", encoding="utf8")
 data = json.load(test)
+moveamount = [4]
 pknumber = [0]
 playerteam = []
 pokemonmoves = []
@@ -18,12 +19,22 @@ global m3
 global m3check
 global m4
 global m4check
+global moves4
+global moves2
+global moves1
 class Teambuilder():
     def pickpokemon():
         p = True
         pcheck = True
         while p == True:
             playerpokemon = input("Type pokemon here ")
+            if playerpokemon == "Magikarp":
+                moves2 = True
+            if playerpokemon == "Ditto":
+                moves1 = True
+                print(moveamount[0])
+            if not playerpokemon == "Magikarp" or not playerpokemon == "Ditto":
+                moves4 = True
             for i in range(len(data)):
                 if playerpokemon == data[i]["Name"]:
                     if len(playerteam) != 0:
@@ -38,16 +49,31 @@ class Teambuilder():
                         pokemonnumber = i
                         pknumber[0] = (pokemonnumber)
                         p = False
+        print(moveamount[0])
     def pickmove():
         currentpkmoves = []
-        m = True
+        if moveamount[0] == 4:
+            m = True
+            m2 = True
+            m3 = True
+            m4 = True
+        if moveamount[0] == 2:
+            m = True
+            m2 = True
+            m3 = False
+            m4 = False
+        if moveamount[0] == 1:
+            m = True
+            m2 = False
+            m3 = False
+            m4 = False
         while m == True:
             move = input("Type move here ")
             for i in range(len(data[pknumber[0]]["Learnable Moves"])):
                 if move == data[pknumber[0]]["Learnable Moves"][i]:
                     currentpkmoves.append(move)
                     m = False
-        m2 = True
+
         while m2 == True:
             move2 = input("Type move here ")
             for i in range(len(data[pknumber[0]]["Learnable Moves"])):
@@ -56,7 +82,7 @@ class Teambuilder():
                     if m2check == True:
                         currentpkmoves.append(move2)
                         m2 = False
-        m3 = True
+
         while m3 == True:
             move3 = input("Type move here ")
             for i in range(len(data[pknumber[0]]["Learnable Moves"])):
@@ -65,7 +91,7 @@ class Teambuilder():
                     if m3check == True:
                         currentpkmoves.append(move3)
                         m3 = False
-        m4 = True
+
         while m4 == True:
             move4 = input("Type move here ")
             for i in range(len(data[pknumber[0]]["Learnable Moves"])):
@@ -74,7 +100,7 @@ class Teambuilder():
                     if m4check == True:
                         currentpkmoves.append(move4)
                         m4 = False
-        pokemonmoves.append(currentpkmoves)
+            pokemonmoves.append(currentpkmoves)
     def teambuilder(self):
         for i in range(6):
             print(allpokemon)
@@ -89,6 +115,8 @@ class Teambuilder():
         with open(new_file, "w") as f:
             json_string = json.dumps(teaminfo, indent=4)
             f.write(json_string)
+tb = Teambuilder()
+tb.teambuilder()
 
 
 

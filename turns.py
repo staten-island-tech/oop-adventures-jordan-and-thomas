@@ -300,6 +300,7 @@ class functionality():
         for i in range(movelist):
             if move == moves[i]["name"]:
                 movenumber = i
+        print(movenumber)
         for i in range(pokemonlist):
             if attackingpk == data[i]["Name"]:
                 attacknumber = i
@@ -311,14 +312,12 @@ class functionality():
         enemydefense = data[enemynumber]["Defense Stat"]
         userspecial = data[attacknumber]["Special Stat"]
         enemyspecial = data[enemynumber]["Special Stat"]
-        if  moves[i]["category"] == "Physical":
+        if moves[i]["category"] == "Physical":
             global attackingpower
             global defendingpower
             attackingpower = userattack
             defendingpower = enemydefense
         if moves[i]["category"] == "Special":
-            global attackingpower
-            global defendingpower
             attackingpower = userspecial
             defendingpower = enemyspecial
         math1 = float(40 * movepower)
