@@ -110,18 +110,12 @@ class Teambuilder():
             Teambuilder.pickmove()
         with open("playerteaminfo.json", "r") as f:
             playerteamjson = json.load(f)
-            print(playerteam[3])
-            print(pokemonmoves[3])
-            print(playerteam[4])
-            print(pokemonmoves[4])
             teaminfo = (playerteam[0], pokemonmoves[0], playerteam[1], pokemonmoves[1], playerteam[2], pokemonmoves[2], playerteam[3], pokemonmoves[3], playerteam[4], pokemonmoves[4], playerteam[5], pokemonmoves[5])
             playerteamjson.append({"First Pokemon":playerteam[0], "First Pokemon's Moves":pokemonmoves[0], "Second Pokemon":playerteam[1], "Second Pokemon's Moves":pokemonmoves[1], "Third Pokemon":playerteam[2], "Third Pokemon's Moves":pokemonmoves[2], "Fourth Pokemon":playerteam[3], "Fourth Pokemon's Moves":pokemonmoves[3], "Fifth Pokemon":playerteam[4], "Fifth's Pokemon's Moves":pokemonmoves[4], "Sixth Pokemon":playerteam[5], "Sixth Pokemon's Moves":pokemonmoves[5]})
         new_file = "playerteaminfo.json"
         with open(new_file, "w") as f:
             json_string = json.dumps(teaminfo, indent=4)
             f.write(json_string)
-tb = Teambuilder()
-tb.teambuilder()
 
 
 

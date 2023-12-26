@@ -2,6 +2,9 @@ import json
 from effects import effect
 from effects import Using
 import time
+import decimal
+from decimal import Decimal
+
 from tryingtofix import Teambuilder
 
 times = 1.5
@@ -312,25 +315,26 @@ class functionality():
         enemydefense = data[enemynumber]["Defense Stat"]
         userspecial = data[attacknumber]["Special Stat"]
         enemyspecial = data[enemynumber]["Special Stat"]
-        if moves[i]["category"] == "Physical":
+        print(moves[movenumber]["category"])
+        if moves[movenumber]["category"] == "Physical":
             global attackingpower
             global defendingpower
             attackingpower = userattack
             defendingpower = enemydefense
-        if moves[i]["category"] == "Special":
+        if moves[movenumber]["category"] == "Special":
             attackingpower = userspecial
             defendingpower = enemyspecial
-        math1 = float(40 * movepower)
+        math1 = decimal.Decimal(40) * decimal.Decimal(movepower)
         print(math1)
-        math2 = float(attackingpower // defendingpower)
+        math2 = decimal.Decimal(attackingpower) // decimal.Decimal(defendingpower)
         print(attackingpower)
         print(defendingpower)
         print(math2)
-        math3 = float(math2 * math1)
+        math3 = decimal.Decimal(math2) * decimal.Decimal(math1)
         print(math3)
-        math4 = float(math3 // 50)
+        math4 = decimal.Decimal(math3) // decimal.Decimal(50)
         print(math4)
-        math5 = float(math4 + 2)
+        math5 = decimal.Decimal(math4) + decimal.Decimal(2)
         print(math5)
         if moves[movenumber]["type"] in data[attacknumber]["Types"]:
             global stab
@@ -367,14 +371,14 @@ class functionality():
             global onetype
             onetype = True
         if stab == True:
-            math5 *=  1.5
+            math5 *=  decimal.Decimal(1.5)
         if onetype == True:
-            math5 *= meffective
+            math5 *= decimal.Decimal(meffective)
         if twotype == True:
-            meffective = meffective1 * meffective2
-            math5 *= meffective
+            meffective = decimal.Decimal(meffective1) * decimal.Decimal(meffective2)
+            math5 *= decimal.Decimal(meffective)
         global movedamage
-        movedamage = math5
+        movedamage = round(math5)
 
             
         
