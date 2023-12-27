@@ -382,20 +382,20 @@ class functionality():
         for i in range(movelist):
             if move == moves[i]["name"]:
                 movenumber = i
-        if moves[movenumber]["effect"] == "HealHalfD":
+        if "HealHalfD" in moves[movenumber]["effect"]:
             global heal
             global healamount
             heal == True
             healamount = damage / 2
-        if moves[movenumber]["effect"] == "Hits2To5":
+        if "Hits2To5" in moves[movenumber]["effect"]:
             hitamount = sample(multiplehits, 1)[0]
             global again
             global moveagain
             again = True
             moveagain = hitamount - 1
-        if moves[movenumber]["effect"] == "SpeedDown":
+        if "SpeedDown" in moves[movenumber["effect"]]:
             onestage = decimal.Decimal(2) / decimal.Decimal(3)
-            enemyspeed *= onestage
+            enemyspeed *= onestage 
 
         
 
