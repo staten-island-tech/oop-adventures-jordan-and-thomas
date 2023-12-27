@@ -303,7 +303,6 @@ class functionality():
         for i in range(movelist):
             if move == moves[i]["name"]:
                 movenumber = i
-        print(movenumber)
         for i in range(pokemonlist):
             if attackingpk == data[i]["Name"]:
                 attacknumber = i
@@ -325,17 +324,10 @@ class functionality():
             attackingpower = userspecial
             defendingpower = enemyspecial
         math1 = decimal.Decimal(40) * decimal.Decimal(movepower)
-        print(math1)
-        math2 = decimal.Decimal(attackingpower) // decimal.Decimal(defendingpower)
-        print(attackingpower)
-        print(defendingpower)
-        print(math2)
+        math2 = decimal.Decimal(attackingpower) / decimal.Decimal(defendingpower)
         math3 = decimal.Decimal(math2) * decimal.Decimal(math1)
-        print(math3)
-        math4 = decimal.Decimal(math3) // decimal.Decimal(50)
-        print(math4)
+        math4 = decimal.Decimal(math3) / decimal.Decimal(50)
         math5 = decimal.Decimal(math4) + decimal.Decimal(2)
-        print(math5)
         if moves[movenumber]["type"] in data[attacknumber]["Types"]:
             global stab
             stab = True
@@ -499,6 +491,7 @@ class Turns(Mike):
                 going = "Enemy"
                 time.sleep(times)
                 Mike.Raichudoing()
+                functionality.afflicted()
                 
                
 
@@ -520,6 +513,7 @@ class Turns(Mike):
                         enemyhealth = enemyhealth - damage
                         time.sleep(times)
                         print(enemypokemon1, "has", enemyhealth, "health left")
+                functionality.afflicted()
             
 
 
@@ -532,7 +526,13 @@ class Turns(Mike):
 Turns.turnone(firstpokemon, enemypokemon1, "Elite Four Member Mike M.")
 
         
-
+#Mike's Team
+#Charizard
+#Dragonite
+#Raichu - Toxic, Thunderbolt, Double Team, Surf
+#Gengar
+#Blastoise
+#Machamp
 
 
 
