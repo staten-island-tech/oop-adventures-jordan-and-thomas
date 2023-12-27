@@ -4,6 +4,7 @@ from effects import Using
 import time
 import decimal
 from decimal import Decimal
+from random import sample
 
 from tryingtofix import Teambuilder
 
@@ -11,7 +12,7 @@ times = 1.5
 
 turn = 0
 #going = "You"
-
+multiplehits = [2, 3, 4, 5]
 test = open("move.json", encoding="utf8")
 moves = json.load(test)
 movelist = len(moves)
@@ -322,6 +323,11 @@ class functionality():
         if moves[movenumber]["category"] == "Special":
             attackingpower = userspecial
             defendingpower = enemyspecial
+        if moves[movenumber]["category"] == "None":
+            global nodamage
+            nodamage = True
+            attackingpower = 0
+            defendingpower = 0
         math1 = decimal.Decimal(40) * decimal.Decimal(movepower)
         math2 = decimal.Decimal(attackingpower) / decimal.Decimal(defendingpower)
         math3 = decimal.Decimal(math2) * decimal.Decimal(math1)
@@ -370,7 +376,9 @@ class functionality():
             math5 *= decimal.Decimal(meffective)
         global movedamage
         movedamage = round(math5)
-    def specialeffect(specialeffect, move, damage):
+        if nodamage == True:
+            movedamage = 0
+    def specialeffect(specialeffect, move, damage, enemyspeed):
         for i in range(movelist):
             if move == moves[i]["name"]:
                 movenumber = i
@@ -379,7 +387,18 @@ class functionality():
             global healamount
             heal == True
             healamount = damage / 2
-        if moves[movenumber][ Z]
+        if moves[movenumber]["effect"] == "Hits2To5":
+            hitamount = sample(multiplehits, 1)[0]
+            global again
+            global moveagain
+            again = True
+            moveagain = hitamount - 1
+        if moves[movenumber]["effect"] == "SpeedDown":
+            onestage = decimal.Decimal(2) / decimal.Decimal(3)
+            enemyspeed *= onestage
+
+        
+
 
 
 
@@ -504,7 +523,6 @@ class Turns(Mike):
                 going = "Enemy"
                 time.sleep(times)
                 Mike.Raichudoing()
-                functionality.afflicted()
                 
                
 
@@ -526,7 +544,6 @@ class Turns(Mike):
                         enemyhealth = enemyhealth - damage
                         time.sleep(times)
                         print(enemypokemon1, "has", enemyhealth, "health left")
-                functionality.afflicted()
             
 
 
