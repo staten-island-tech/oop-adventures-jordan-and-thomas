@@ -370,10 +370,18 @@ class functionality():
             math5 *= decimal.Decimal(meffective)
         global movedamage
         movedamage = round(math5)
-    def specialeffect(specialeffect, move, attackingpk):
-        for i in range(pokemonlist):
-            if attackingpk == data[i]["Name"]:
-                attacknumber = i
+    def specialeffect(specialeffect, move, damage):
+        for i in range(movelist):
+            if move == moves[i]["name"]:
+                movenumber = i
+        if moves[movenumber]["effect"] == "HealHalfD":
+            global heal
+            global healamount
+            heal == True
+            healamount = damage / 2
+        if moves[movenumber][ Z]
+
+
 
 
 
