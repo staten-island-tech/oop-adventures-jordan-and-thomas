@@ -64,8 +64,9 @@ tb.teambuilder()
 pluh = open("playerteaminfo.json", encoding="utf8")
 inputteam = json.load(pluh)
 inputteamlist = len(inputteam)
-
-userparty = (inputteam[0], inputteam[2], inputteam[4], inputteam[6], inputteam[8], inputteam[10])
+userparty = [inputteam[0], inputteam[2], inputteam[4], inputteam[6], inputteam[8], inputteam[10]]
+userpartystatus = [inputteam[0], "none", inputteam[2], "none", inputteam[4], "none", inputteam[6], "none", inputteam[8], "none", inputteam[10], "none"]
+eliteteamstatus = [data[25]["Name"], "none"]
 firstpokemon = inputteam[0]
 global currentpokemon
 currentpokemon = firstpokemon
@@ -96,14 +97,16 @@ class functionality():
             oppositepokemon = currentpokemon
     
     def afflicted(oppositepokemon, oppositehealth, pokemonin, endofturn, turn):
-        
         if pokemonin == "afflicted":
             if endofturn == "end":
                 N = 1
                 damage = N * oppositehealth/16
                 if turn + 1:
                     N += 1
-    
+    def switch(switch, newpokemon):
+        global enemypokemon
+        enemypokemon = newpokemon
+
     def dead(oppositehealth):
         if oppositehealth == 0:
             global currentpokemon
@@ -378,10 +381,13 @@ class functionality():
         movedamage = round(math5)
         if nodamage == True:
             movedamage = 0
-    def specialeffect(specialeffect, move, damage, enemyspeed):
+    def specialeffect(specialeffect, move, damage, enemyspeed, enemypk):
         for i in range(movelist):
             if move == moves[i]["name"]:
                 movenumber = i
+        for i in range(pokemonlist):
+            if enemypk == data[i]["Name"]:
+                enemynumber = i
         if "HealHalfD" in moves[movenumber]["effect"]:
             global heal
             global healamount
@@ -393,9 +399,18 @@ class functionality():
             global moveagain
             again = True
             moveagain = hitamount - 1
-        if "SpeedDown" in moves[movenumber["effect"]]:
+        if "SpeedDown" in moves[movenumber]["effect"]:
             onestage = decimal.Decimal(2) / decimal.Decimal(3)
             enemyspeed *= onestage 
+        if "HitsTwice" in moves[movenumber]["effect"]:
+            again = True
+            moveagain = 1
+        if "Poison" in moves[movenumber]["effect"]:
+            if not "Poison" in data[enemynumber]["Types"]:
+                enemypk = "afflicted"
+
+
+
 
         
 
@@ -427,22 +442,23 @@ class Ai():
 
 class Mike(functionality):
     def Raichudoing():
+        
 
-        if turn == 0:
-            for i in range(pokemonlist):
-                if (data[i]["Name"]) == currentpokemon:
-                    ptype = (data[i]["Types"])
-            if "Poison" not in ptype:
-                print("Raichu used Toxic")
-                time.sleep(times)
-                enemyuse = "Toxic"
-                functionality.oppositehealththing(going, enemyhealth, currenthealth)
+        #if turn == 0:
+            #for i in range(pokemonlist):
+                #if (data[i]["Name"]) == currentpokemon:
+                    #ptype = (data[i]["Types"])
+            #if "Poison" not in ptype:
+                #print("Raichu used Toxic")
+                #time.sleep(times)
+                #enemyuse = "Toxic"
+                #functionality.oppositehealththing(going, enemyhealth, currenthealth)
             
-                functionality.oppositepokemon(going, currentpokemon, enemypokemon)
+                #functionality.oppositepokemon(going, currentpokemon, enemypokemon)
             
-                Using.usemove("placeholder", enemyuse, oppositepokemon, oppositehealth, pokemonin, endofturn, turn)
-            else:
-                print("Raichu used Double Team")
+                #Using.usemove("placeholder", enemyuse, oppositepokemon, oppositehealth, pokemonin, endofturn, turn)
+            #else:
+                #print("Raichu used Double Team")
 
 
 
