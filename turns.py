@@ -314,7 +314,6 @@ class functionality():
         enemydefense = data[enemynumber]["Defense Stat"]
         userspecial = data[attacknumber]["Special Stat"]
         enemyspecial = data[enemynumber]["Special Stat"]
-        print(moves[movenumber]["category"])
         if moves[movenumber]["category"] == "Physical":
             global attackingpower
             global defendingpower
@@ -371,6 +370,12 @@ class functionality():
             math5 *= decimal.Decimal(meffective)
         global movedamage
         movedamage = round(math5)
+    def specialeffect(specialeffect, move, attackingpk):
+        for i in range(pokemonlist):
+            if attackingpk == data[i]["Name"]:
+                attacknumber = i
+
+
 
             
         
