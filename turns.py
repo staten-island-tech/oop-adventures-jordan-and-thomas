@@ -76,7 +76,7 @@ for i in range(len(data)):
     if currentpokemon == data[i]["Name"]:
         currentspeed = data[i]["Speed Stat"]
         currenthealth = data[i]["Health Stat"]
-print(currentspeed)
+
 
 
 
@@ -329,8 +329,8 @@ class functionality():
         if moves[movenumber]["category"] == "None":
             global nodamage
             nodamage = True
-            attackingpower = 0
-            defendingpower = 0
+            attackingpower = userattack
+            defendingpower = enemydefense
         math1 = decimal.Decimal(40) * decimal.Decimal(movepower)
         math2 = decimal.Decimal(attackingpower) / decimal.Decimal(defendingpower)
         math3 = decimal.Decimal(math2) * decimal.Decimal(math1)
@@ -442,23 +442,23 @@ class Ai():
 
 class Mike(functionality):
     def Raichudoing():
-        
 
-        #if turn == 0:
-            #for i in range(pokemonlist):
-                #if (data[i]["Name"]) == currentpokemon:
-                    #ptype = (data[i]["Types"])
-            #if "Poison" not in ptype:
-                #print("Raichu used Toxic")
-                #time.sleep(times)
-                #enemyuse = "Toxic"
+
+        if turn == 0:
+            for i in range(pokemonlist):
+                if (data[i]["Name"]) == currentpokemon:
+                    ptype = (data[i]["Types"])
+            if "Poison" not in ptype:
+                print("Raichu used Toxic")
+                time.sleep(times)
+                enemyuse = "Toxic"
                 #functionality.oppositehealththing(going, enemyhealth, currenthealth)
             
                 #functionality.oppositepokemon(going, currentpokemon, enemypokemon)
             
-                #Using.usemove("placeholder", enemyuse, oppositepokemon, oppositehealth, pokemonin, endofturn, turn)
-            #else:
-                #print("Raichu used Double Team")
+                Using.usemove("placeholder", enemyuse, oppositepokemon, oppositehealth, pokemonin, endofturn, turn)
+            else:
+                print("Raichu used Double Team")
 
 
 
@@ -477,15 +477,7 @@ class Turns(Mike):
 
 
 
-
-    def turnone(playerpokemon1, enemypokemon1, enemy):
-   
-
-        #endorturn = "no"
-        #pokemonin = "same"
-
-        
-
+    def preturn(playerpokemon1, enemypokemon1, enemy):
         print("You are challenged by", enemy)
         time.sleep(times)
         print("You threw out", playerpokemon1)
@@ -493,6 +485,15 @@ class Turns(Mike):
         print(enemy, "threw out", enemypokemon1)
         time.sleep(times)
         global going
+    def turn(playerpokemon1, enemypokemon1):
+   
+
+        #endorturn = "no"
+        #pokemonin = "same"
+
+        
+
+
     
 
         print("Switch Out Or Attack")
@@ -568,8 +569,8 @@ class Turns(Mike):
         
       
 
-
-Turns.turnone(firstpokemon, enemypokemon1, "Elite Four Member Mike M.")
+Turns.preturn(firstpokemon, enemypokemon1, "Elite Four Member Mike")
+Turns.turn(firstpokemon, enemypokemon1)
 
         
 #Mike's Team
