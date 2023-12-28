@@ -67,6 +67,8 @@ inputteamlist = len(inputteam)
 userparty = [inputteam[0], inputteam[2], inputteam[4], inputteam[6], inputteam[8], inputteam[10]]
 userpartystatus = [inputteam[0], "none", inputteam[2], "none", inputteam[4], "none", inputteam[6], "none", inputteam[8], "none", inputteam[10], "none"]
 eliteteamstatus = [data[25]["Name"], "none"]
+userpartyhealth = []
+enemypartyhealth = []
 firstpokemon = inputteam[0]
 global currentpokemon
 currentpokemon = firstpokemon
@@ -327,8 +329,6 @@ class functionality():
             attackingpower = userspecial
             defendingpower = enemyspecial
         if moves[movenumber]["category"] == "None":
-            global nodamage
-            nodamage = True
             attackingpower = userattack
             defendingpower = enemydefense
         math1 = decimal.Decimal(40) * decimal.Decimal(movepower)
@@ -379,7 +379,7 @@ class functionality():
             math5 *= decimal.Decimal(meffective)
         global movedamage
         movedamage = round(math5)
-        if nodamage == True:
+        if moves[movenumber]["category"] == "None":
             movedamage = 0
     def specialeffect(specialeffect, move, damage, enemyspeed, enemypk):
         for i in range(movelist):
@@ -456,7 +456,7 @@ class Mike(functionality):
             
                 #functionality.oppositepokemon(going, currentpokemon, enemypokemon)
             
-                Using.usemove("placeholder", enemyuse, oppositepokemon, oppositehealth, pokemonin, endofturn, turn)
+                #Using.usemove("placeholder", enemyuse, oppositepokemon, oppositehealth, pokemonin, endofturn, turn)
             else:
                 print("Raichu used Double Team")
 
