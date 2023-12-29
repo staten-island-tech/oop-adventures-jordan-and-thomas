@@ -64,6 +64,7 @@ tb.teambuilder()
 pluh = open("playerteaminfo.json", encoding="utf8")
 inputteam = json.load(pluh)
 inputteamlist = len(inputteam)
+enemyparty = ["Raichu", ["Thunderbolt", "Thunder Wave", "Submission", "Surf"]]
 userparty = [inputteam[0], inputteam[2], inputteam[4], inputteam[6], inputteam[8], inputteam[10]]
 userpartystatus = [inputteam[0], "none", inputteam[2], "none", inputteam[4], "none", inputteam[6], "none", inputteam[8], "none", inputteam[10], "none"]
 eliteteamstatus = ["Raichu", "none"]
@@ -471,23 +472,9 @@ class Ai():
 
 class Mike(functionality):
     def Raichudoing():
-
-
-
-            for i in range(pokemonlist):
-                if (data[i]["Name"]) == currentpokemon:
-                    ptype = (data[i]["Types"])
-            if "Poison" not in ptype:
-                print("Raichu used Toxic")
-                time.sleep(times)
-                enemyuse = "Toxic"
-                #functionality.oppositehealththing(going, enemyhealth, currenthealth)
-            
-                #functionality.oppositepokemon(going, currentpokemon, enemypokemon)
-            
-                #Using.usemove("placeholder", enemyuse, oppositepokemon, oppositehealth, pokemonin, endofturn, turn)
-            else:
-                print("Raichu used Double Team")
+        global enemymove
+        enemymove = "Thunderbolt"
+        return(enemymove)
 
 
 
@@ -524,13 +511,15 @@ class Turns(Mike):
 
 
     
-        while enemypartyhealth[1] != 0:
+        while enemypartyhealth[1] != 0 or userpartyhealth[1] + userpartyhealth[3] + userpartyhealth[5] + userpartyhealth[7] + userpartyhealth[9] + userpartyhealth[11] != 0:
             print("Switch Out Or Attack")
             userdo = input("What would you like to do: ")
             if userdo == "Switch" or userdo == "switch" or userdo == "Switch Out" or userdo == "switch out" or userdo == "Switch out":
                 global currentpokemon
                 currentpokemon = playerpokemon1
-                print(userparty)
+                for i in range(len(userpartyhealth)):
+                    if userpartyhealth[i] == 0:
+                        
                 switchin = input("Pick a Pokemon to Switch into: ")
                 print("You switched into", switchin)
                 currentpokemon = switchin
@@ -538,13 +527,22 @@ class Turns(Mike):
                 going = "Enemy"
                 time.sleep(times)
                 Mike.Raichudoing()
-           
-
-
-            
-
+                f.damagecalc(enemymove, enemypokemon1, currentpokemon)
+                enemydamage = movedamage
+                for i in range(len(userpartyhealth)):
+                    if currentpokemon == userpartyhealth[i]:
+                        currentpkhealth = userpartyhealth[i + 1]
+                if enemydamage == currentpkhealth or enemydamage > currentpkhealth:
+                    enemydamage = currentpkhealth
+                print("Raichu did", enemydamage, "damage")
+                currentpkhealth -= enemydamage
+                userpartyhealth[i + 1] = currentpkhealth
+                if currentpkhealth
             if userdo == "Attack" or userdo == "attack":
-                print(inputteam[1])
+                for i in range(inputteamlist):
+                    if currentpokemon == inputteam[i]:
+                        currentmoves = inputteam[i + 1]
+                        print(currentmoves)
                 use = input("Pick a move to use: ")
                 time.sleep(times)
                 Turns.speedcheck(enemyspeed, currentspeed)
@@ -558,8 +556,8 @@ class Turns(Mike):
                     # if move effect != None
                     #Do effect\
                     f = functionality()
-                    for i in range(len(inputteam[1])):
-                        if inputteam[1][i]== use:
+                    for i in range(len(currentmoves)):
+                        if currentmoves[i]== use:
                             f.damagecalc(use, currentpokemon, enemypokemon1)
                             damage = movedamage
                             if damage == enemyhealth or damage > enemyhealth:
@@ -589,8 +587,8 @@ class Turns(Mike):
                     # if move effect != None
                     #Do effect
                     f = functionality()
-                    for i in range(len(inputteam[1])):
-                        if inputteam[1][i] == use:
+                    for i in range(len(currentmoves)):
+                        if currentmoves[i] == use:
                             f.damagecalc(use, currentpokemon, enemypokemon1)
                             damage = movedamage
                             if damage == enemyhealth or damage > enemyhealth:
