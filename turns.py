@@ -370,10 +370,12 @@ class functionality():
                 meffective = 0
             global onetype
             onetype = True
+            print("gang")
         if stab == True:
             math5 *=  decimal.Decimal(1.5)
         if onetype == True:
             math5 *= decimal.Decimal(meffective)
+            print("pluh")
         if twotype == True:
             meffective = decimal.Decimal(meffective1) * decimal.Decimal(meffective2)
             math5 *= decimal.Decimal(meffective)
