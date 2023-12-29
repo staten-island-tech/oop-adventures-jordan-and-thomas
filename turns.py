@@ -117,19 +117,20 @@ class functionality():
             switchin = input("Pick a Pokemon to switch in: ")
             currentpokemon = switchin
     
-    def supereffective(use, oppositepokemon):
+    def supereffective(supereffective, use, ptype):
         global effective
         effective = "normal"
         for i in range(pokemonlist):
             if (data[i]["Name"]) == oppositepokemon:
                 ptype = (data[i]["Types"])
+                print(ptype)
         for i in range(movelist):
             if (moves[i]["name"]) == use:
                 usetype = (moves[i]["type"])
 
-        if usetype == "Normal" and "Rock" in ptype:
+        if usetype == "Normal" and "Rock" == ptype:
             effective = "half"
-        if usetype == "Normal" and "Ghost" in ptype:
+        if usetype == "Normal" and "Ghost" == ptype:
             effective = "zero"
 
         if usetype == "Fire" and "Fire" in ptype:
@@ -305,6 +306,7 @@ class functionality():
         
         if usetype == "Dragon" and "Dragon" in ptype:
             effective = "super"
+        return(effective)
     def damagecalc(damagecalc, move, attackingpk, enemypk):
         for i in range(movelist):
             if move == moves[i]["name"]:
@@ -340,7 +342,7 @@ class functionality():
             global stab
             stab = True
         f = functionality()
-        if len(data[enemynumber]["Types"]) > 1:
+        if len(data[enemynumber]["Types"]) == 0:
             enemytype1 = (data[enemynumber]["Types"])[0]
             enemytype2 = (data[enemynumber]["Types"])[1]
             f.supereffective(move, enemytype1)
@@ -359,7 +361,7 @@ class functionality():
                 meffective2 = 0
             global twotype
             twotype = True
-        if len(data[enemynumber]["Types"]) < 1:
+        if len(data[enemynumber]["Types"]) == 1:
             enemytype = (data[enemynumber]["Types"])[0]
             f.supereffective(move, enemytype)
             if effective == "super":
@@ -370,7 +372,6 @@ class functionality():
                 meffective = 0
             global onetype
             onetype = True
-            print("gang")
         if stab == True:
             math5 *=  decimal.Decimal(1.5)
         if onetype == True:
