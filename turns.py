@@ -362,6 +362,7 @@ class functionality():
             enemytype1 = (data[enemynumber]["Types"])[0]
             enemytype2 = (data[enemynumber]["Types"])[1]
             f.supereffective(move, enemytype1)
+            global meffective
             if effective == "super":
                 meffective1 = 2
             if effective == "half":
@@ -603,7 +604,6 @@ class Turns(Mike):
                             if enemyhealth == 0:
                                 print(enemypokemon1, "fainted")
                     enemypartyhealth[1] = enemyhealth
-                    print(enemypartyhealth[1])
             
 
 
