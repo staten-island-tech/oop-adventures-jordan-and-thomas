@@ -585,11 +585,16 @@ class Turns(Mike):
                     Mike.Raichudoing()
                     f.damagecalc(enemymove, enemypokemon1, currentpokemon)
                     enemydamage = movedamage
+                    for i in range(len(userpartyhealth)):
+                        if currentpokemon == userpartyhealth[i]:
+                            i1 = i + 1
+                            currenthealth = userpartyhealth[i1]
                     if enemydamage == currenthealth or enemydamage > currenthealth:
                         enemydamage = currenthealth
                     print("Raichu did", enemydamage, "damage")
                     currenthealth -= enemydamage
-                    userpartyhealth[i + 1] = currenthealth
+
+                    userpartyhealth[i1] = currenthealth
                     if currenthealth == 0:
                         for i in range(len(userparty)):
                             if currentpokemon == userparty[i]:
@@ -601,35 +606,63 @@ class Turns(Mike):
                                 currentpokemon = newpk
                         for i in range(len(userpartyhealth)):
                             if currentpokemon == userpartyhealth[i]:
-                                currenthealth = userpartyhealth[i + 1]
+                                i1 = i + 1
+                                currenthealth = userpartyhealth[i1]
                 
                
 
                 if "Enemy" in goingfirst:
+                    f = functionality()
                     going = "Enemy"
                     Mike.Raichudoing()
-                    time.sleep(times)
-                    going = "You"
-                    print("You used", use)
-                    time.sleep(times)
-                    # if move effect != None
-                    #Do effect
-                    f = functionality()
-                    for i in range(len(currentmoves)):
-                        if currentmoves[i] == use:
-                            f.damagecalc(use, currentpokemon, enemypokemon1)
-                            damage = movedamage
-                            if damage == enemyhealth or damage > enemyhealth:
-                                damage = enemyhealth
-                            f.specialeffect(use, damage, enemyspeed, enemypokemon1, currentpokemon)
-                            print("It did", damage, "damage")
-                            enemyhealth = enemyhealth - damage
-                            time.sleep(times)
-                            if enemyhealth > 0:
-                                print(enemypokemon1, "has", enemyhealth, "health left")
-                            if enemyhealth == 0:
-                                print(enemypokemon1, "fainted")
-                    enemypartyhealth[1] = enemyhealth
+                    f.damagecalc(enemymove, enemypokemon1, currentpokemon)
+                    enemydamage = movedamage
+                    for i in range(len(userpartyhealth)):
+                        if currentpokemon == userpartyhealth[i]:
+                            i1 = i + 1
+                            currenthealth = userpartyhealth[i1]
+                    if enemydamage == currenthealth or enemydamage > currenthealth:
+                        enemydamage = currenthealth
+                    print("Raichu did", enemydamage, "damage")
+                    currenthealth -= enemydamage
+                    i1 = i + 1
+                    userpartyhealth[i1] = currenthealth
+                    if currenthealth == 0:
+                        for i in range(len(userparty)):
+                            if currentpokemon == userparty[i]:
+                                userparty.remove[i]
+                        print(userparty)
+                        newpk = input("Who will you switch into? ")
+                        for i in range(len(userparty)):
+                            if newpk == userparty[i]:
+                                currentpokemon = newpk
+                        for i in range(len(userpartyhealth)):
+                            if currentpokemon == userpartyhealth[i]:
+                                i1 = i + 1
+                                currenthealth = userpartyhealth[i1]
+                    if currenthealth > 0:
+                        time.sleep(times)
+                        going = "You"
+                        print("You used", use)
+                        time.sleep(times)
+                        # if move effect != None
+                        #Do effect
+                        f = functionality()
+                        for i in range(len(currentmoves)):
+                            if currentmoves[i] == use:
+                                f.damagecalc(use, currentpokemon, enemypokemon1)
+                                damage = movedamage
+                                if damage == enemyhealth or damage > enemyhealth:
+                                    damage = enemyhealth
+                                f.specialeffect(use, damage, enemyspeed, enemypokemon1, currentpokemon)
+                                print("It did", damage, "damage")
+                                enemyhealth = enemyhealth - damage
+                                time.sleep(times)
+                                if enemyhealth > 0:
+                                    print(enemypokemon1, "has", enemyhealth, "health left")
+                                if enemyhealth == 0:
+                                    print(enemypokemon1, "fainted")
+                        enemypartyhealth[1] = enemyhealth
             
 
 

@@ -1,10 +1,10 @@
 [
-    "Golbat",
+    "Mew",
     [
-        "Leech Life",
-        "Substitute",
-        "Rest",
-        "Swift"
+        "Flash",
+        "Strength",
+        "Surf",
+        "Fly"
     ],
     "Mewtwo",
     [
@@ -12,13 +12,6 @@
         "Strength",
         "Substitute",
         "Tri Attack"
-    ],
-    "Mew",
-    [
-        "Flash",
-        "Strength",
-        "Surf",
-        "Fly"
     ],
     "Dragonite",
     [
@@ -40,5 +33,12 @@
         "Substitute",
         "Rest",
         "Skull Bash"
+    ],
+    "Moltres",
+    [
+        "Fly",
+        "Substitute",
+        "Rest",
+        "Sky Attack"
     ]
 ]
