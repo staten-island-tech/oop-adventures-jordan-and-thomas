@@ -511,20 +511,20 @@ class Turns(Mike):
 
 
     
-        while enemypartyhealth[1] != 0 or userpartyhealth[1] + userpartyhealth[3] + userpartyhealth[5] + userpartyhealth[7] + userpartyhealth[9] + userpartyhealth[11] != 0:
+        while enemypartyhealth[1] != 0 or len(userparty) < 0:
             print("Switch Out Or Attack")
             userdo = input("What would you like to do: ")
             if userdo == "Switch" or userdo == "switch" or userdo == "Switch Out" or userdo == "switch out" or userdo == "Switch out":
                 for i in range(len(userpartyhealth)):
-                    if currentpokemon == userpartyhealth[i]:
-                        currenthealth = userpartyhealth[i + 1]
+                    if currentpokemon == userpartyhealth[i - 1]:
+                        currenthealth = userpartyhealth[i]
                 print(userparty)
                 switchin = input("Pick a Pokemon to Switch into: ")
                 print("You switched into", switchin)
                 currentpokemon = switchin
                 for i in range(len(userpartyhealth)):
-                    if currentpokemon == userpartyhealth[i]:
-                        currenthealth = userpartyhealth[i + 1]
+                    if currentpokemon == userpartyhealth[i - 1]:
+                        currenthealth = userpartyhealth[i]
                 going = "Enemy"
                 time.sleep(times)
                 Mike.Raichudoing()
@@ -534,7 +534,7 @@ class Turns(Mike):
                     enemydamage = currenthealth
                 print("Raichu did", enemydamage, "damage")
                 currenthealth -= enemydamage
-                userpartyhealth[i + 1] = currenthealth
+                userpartyhealth[i] = currenthealth
                 if currenthealth == 0:
                     for i in range(len(userparty)):
                         if currentpokemon == userparty[i]:
@@ -545,12 +545,12 @@ class Turns(Mike):
                         if newpk == userparty[i]:
                             currentpokemon = newpk
                     for i in range(len(userpartyhealth)):
-                        if currentpokemon == userpartyhealth[i]:
-                            currenthealth = userpartyhealth[i + 1]
+                        if currentpokemon == userpartyhealth[i - 1]:
+                            currenthealth = userpartyhealth[i]
             if userdo == "Attack" or userdo == "attack":
                 for i in range(inputteamlist):
-                    if currentpokemon == inputteam[i]:
-                        currentmoves = inputteam[i + 1]
+                    if currentpokemon == inputteam[i - 1]:
+                        currentmoves = inputteam[i]
                         print(currentmoves)
                 use = input("Pick a move to use: ")
                 time.sleep(times)
@@ -586,15 +586,13 @@ class Turns(Mike):
                     f.damagecalc(enemymove, enemypokemon1, currentpokemon)
                     enemydamage = movedamage
                     for i in range(len(userpartyhealth)):
-                        if currentpokemon == userpartyhealth[i]:
-                            i1 = i + 1
-                            currenthealth = userpartyhealth[i1]
+                        if currentpokemon == userpartyhealth[i - 1]:
+                            currenthealth = userpartyhealth[i]
                     if enemydamage == currenthealth or enemydamage > currenthealth:
                         enemydamage = currenthealth
                     print("Raichu did", enemydamage, "damage")
                     currenthealth -= enemydamage
-
-                    userpartyhealth[i1] = currenthealth
+                    userpartyhealth[i] = currenthealth
                     if currenthealth == 0:
                         for i in range(len(userparty)):
                             if currentpokemon == userparty[i]:
@@ -605,9 +603,8 @@ class Turns(Mike):
                             if newpk == userparty[i]:
                                 currentpokemon = newpk
                         for i in range(len(userpartyhealth)):
-                            if currentpokemon == userpartyhealth[i]:
-                                i1 = i + 1
-                                currenthealth = userpartyhealth[i1]
+                            if currentpokemon == userpartyhealth[i - 1]:
+                                currenthealth = userpartyhealth[i]
                 
                
 
@@ -618,15 +615,13 @@ class Turns(Mike):
                     f.damagecalc(enemymove, enemypokemon1, currentpokemon)
                     enemydamage = movedamage
                     for i in range(len(userpartyhealth)):
-                        if currentpokemon == userpartyhealth[i]:
-                            i1 = i + 1
-                            currenthealth = userpartyhealth[i1]
+                        if currentpokemon == userpartyhealth[i - 1]:
+                            currenthealth = userpartyhealth[i]
                     if enemydamage == currenthealth or enemydamage > currenthealth:
                         enemydamage = currenthealth
                     print("Raichu did", enemydamage, "damage")
                     currenthealth -= enemydamage
-                    i1 = i + 1
-                    userpartyhealth[i1] = currenthealth
+                    userpartyhealth[i] = currenthealth
                     if currenthealth == 0:
                         for i in range(len(userparty)):
                             if currentpokemon == userparty[i]:
@@ -637,9 +632,8 @@ class Turns(Mike):
                             if newpk == userparty[i]:
                                 currentpokemon = newpk
                         for i in range(len(userpartyhealth)):
-                            if currentpokemon == userpartyhealth[i]:
-                                i1 = i + 1
-                                currenthealth = userpartyhealth[i1]
+                            if currentpokemon == userpartyhealth[i - 1]:
+                                currenthealth = userpartyhealth[i]
                     if currenthealth > 0:
                         time.sleep(times)
                         going = "You"
