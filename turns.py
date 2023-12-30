@@ -533,7 +533,8 @@ class Turns(Mike):
                 if enemydamage == currenthealth or enemydamage > currenthealth:
                     enemydamage = currenthealth
                 print("Raichu did", enemydamage, "damage")
-                currenthealth -= enemydamage
+                currenthealth = currenthealth - enemydamage
+                print(currentpokemon, "has", currenthealth, "health left")
                 userpartyhealth[i] = currenthealth
                 if currenthealth == 0:
                     for i in range(len(userparty)):
@@ -592,6 +593,7 @@ class Turns(Mike):
                         enemydamage = currenthealth
                     print("Raichu did", enemydamage, "damage")
                     currenthealth -= enemydamage
+                    print(currentpokemon, "has", currenthealth, "health left")
                     userpartyhealth[i] = currenthealth
                     if currenthealth == 0:
                         for i in range(len(userparty)):
@@ -617,11 +619,15 @@ class Turns(Mike):
                     for i in range(len(userpartyhealth)):
                         if currentpokemon == userpartyhealth[i - 1]:
                             currenthealth = userpartyhealth[i]
+                            x = i
                     if enemydamage == currenthealth or enemydamage > currenthealth:
                         enemydamage = currenthealth
                     print("Raichu did", enemydamage, "damage")
+                    print(currenthealth)
                     currenthealth -= enemydamage
-                    userpartyhealth[i] = currenthealth
+                    print(currenthealth)
+                    print(currentpokemon, "has", currenthealth, "health left")
+                    userpartyhealth[x] = currenthealth
                     if currenthealth == 0:
                         for i in range(len(userparty)):
                             if currentpokemon == userparty[i]:
