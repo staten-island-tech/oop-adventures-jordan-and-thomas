@@ -6,6 +6,13 @@
         "Surf",
         "Fly"
     ],
+    "Golbat",
+    [
+        "Leech Life",
+        "Substitute",
+        "Rest",
+        "Swift"
+    ],
     "Mewtwo",
     [
         "Flash",
@@ -33,12 +40,5 @@
         "Substitute",
         "Rest",
         "Skull Bash"
-    ],
-    "Moltres",
-    [
-        "Fly",
-        "Substitute",
-        "Rest",
-        "Sky Attack"
     ]
 ]

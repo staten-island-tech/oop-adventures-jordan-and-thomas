@@ -532,6 +532,7 @@ class Turns(Mike):
                 enemydamage = movedamage
                 if enemydamage == currenthealth or enemydamage > currenthealth:
                     enemydamage = currenthealth
+                print("Raichu used", enemymove)
                 print("Raichu did", enemydamage, "damage")
                 currenthealth = currenthealth - enemydamage
                 print(currentpokemon, "has", currenthealth, "health left")
@@ -591,6 +592,7 @@ class Turns(Mike):
                             currenthealth = userpartyhealth[i]
                     if enemydamage == currenthealth or enemydamage > currenthealth:
                         enemydamage = currenthealth
+                    print("Raichu used", enemymove)
                     print("Raichu did", enemydamage, "damage")
                     currenthealth -= enemydamage
                     print(currentpokemon, "has", currenthealth, "health left")
@@ -622,16 +624,16 @@ class Turns(Mike):
                             x = i
                     if enemydamage == currenthealth or enemydamage > currenthealth:
                         enemydamage = currenthealth
+                    print("Raichu used", enemymove, )
                     print("Raichu did", enemydamage, "damage")
-                    print(currenthealth)
                     currenthealth -= enemydamage
-                    print(currenthealth)
                     print(currentpokemon, "has", currenthealth, "health left")
                     userpartyhealth[x] = currenthealth
                     if currenthealth == 0:
+                        print(len(userparty))
                         for i in range(len(userparty)):
                             if currentpokemon == userparty[i]:
-                                userparty.remove[i]
+                                userparty.remove(userparty[i])
                         print(userparty)
                         newpk = input("Who will you switch into? ")
                         for i in range(len(userparty)):
