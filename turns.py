@@ -46,8 +46,6 @@ enemypokemon1 = "Raichu"
 enemypokemon = enemypokemon1
 
 
-print(teaminfo[0])
-currentpokemon = teaminfo[0]
 
 
 
@@ -308,8 +306,10 @@ class Ai():
 
 class Mike(functionality):
     def Raichudoing():
+        global enemypokemon
 
         if turn == 0:
+            enemypokemon = "Raichu"
             for i in range(pokemonlist):
                 if (data[i]["Name"]) == currentpokemon:
                     ptype = (data[i]["Types"])
@@ -337,7 +337,17 @@ class Turns(Mike):
         if currentspeed > enemyspeed:
             goingfirst.append("User")
     
-
+    def speedstat(currentpokemon):
+        global currentspeed
+        for i in range(pokemonlist):
+            if data[i]["Name"] == currentpokemon:
+                currentspeed = data[i]["Speed Stat"]
+    
+    def enemyspeed(enemypokemon):
+        global enemyspeed
+        for i in range(pokemonlist):
+            if data[i]["Name"] == enemypokemon:
+                enemyspeed = data[i]["Speed Stat"]
 
 
 
@@ -356,6 +366,8 @@ class Turns(Mike):
         print(enemy, "threw out", enemypokemon1)
         time.sleep(times)
         global going
+        Turns.enemyspeed(enemypokemon)
+        Turns.speedstat(currentpokemon)
     
 
         print("Switch Out Or Attack")
@@ -380,7 +392,7 @@ class Turns(Mike):
             print(currentmoves)
             use = input("Pick a move to use: ")
             time.sleep(times)
-            Turns.speedcheck()#enemyspeed, currentspeed)
+            Turns.speedcheck(enemyspeed, currentspeed)
             
             if "User" in goingfirst:
                
@@ -425,7 +437,7 @@ class Turns(Mike):
 
 
         
-      
+currentpokemon = teaminfo[0]      
 
 
 Turns.turnone(currentpokemon, enemypokemon1, "Elite Four Member Mike M.")
