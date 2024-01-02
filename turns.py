@@ -29,6 +29,7 @@ for i in range(len(data)):
 
 
 
+currentpokemon = teaminfo[0]    
 
 
 endofturn = "no"
@@ -357,7 +358,7 @@ class Turns(Mike):
         #endorturn = "no"
         #pokemonin = "same"
 
-        
+        currentpokemon = teaminfo[0]    
 
         print("You are challenged by", enemy)
         time.sleep(times)
@@ -373,7 +374,7 @@ class Turns(Mike):
         print("Switch Out Or Attack")
         userdo = input("What would you like to do: ")
         if userdo == "Switch" or userdo == "switch" or userdo == "Switch Out" or userdo == "switch out" or userdo == "Switch out":
-            global currentpokemon
+            
             print("userparty")
             switchin = input("Pick a Pokemon to Switch into: ")
             print("You switched into", switchin)
@@ -436,11 +437,10 @@ class Turns(Mike):
 
 
 
-        
-currentpokemon = teaminfo[0]      
+          
+time.sleep(2)
 
-
-Turns.turnone(currentpokemon, enemypokemon1, "Elite Four Member Mike M.")
+Turns.turnone(currentpokemon, enemypokemon, "Elite Four Member Mike M.")
 
         
 
