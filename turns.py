@@ -26,6 +26,7 @@ inputteam = json.load(pluh)
 inputteamlist = len(inputteam)
 global unique
 unique = ["nah", "id", "win"]
+typeeffect = ["Surfer", "Rosa"]
 global stab
 stab = False
 global meffective1
@@ -322,6 +323,7 @@ class functionality():
         
         if usetype == "Dragon" and "Dragon" == ptype:
             effective = "super"
+        typeeffect[0] = effective
         return(effective)
     def damagecalc(damagecalc, move, attackingpk, enemypk):
         for i in range(movelist):
@@ -358,34 +360,34 @@ class functionality():
             global stab
             stab = True
         f = functionality()
-        if len(data[enemynumber]["Types"]) == 1:
+        if len(data[enemynumber]["Types"]) == 2:
             enemytype1 = (data[enemynumber]["Types"])[0]
             enemytype2 = (data[enemynumber]["Types"])[1]
             f.supereffective(move, enemytype1)
             global meffective
-            if effective == "super":
+            if typeeffect[0] == "super":
                 meffective1 = 2
-            if effective == "half":
+            if typeeffect[0] == "half":
                 meffective1 = 0.5
-            if effective == "zero":
+            if typeeffect[0] == "zero":
                 meffective1 = 0
             f.supereffective(move, enemytype2)
-            if effective == "super":
+            if typeeffect[0] == "super":
                 meffective2 = 2
-            if effective == "half":
+            if typeeffect[0] == "half":
                 meffective2 = 0.5
-            if effective == "zero":
+            if typeeffect[0] == "zero":
                 meffective2 = 0
             global twotype
             twotype = True
-        if len(data[enemynumber]["Types"]) == 0:
+        if len(data[enemynumber]["Types"]) == 1:
             enemytype = (data[enemynumber]["Types"])[0]
             f.supereffective(move, enemytype)
-            if effective == "super":
+            if typeeffect[0] == "super":
                 meffective = 2
-            if effective == "half":
+            if typeeffect[0] == "half":
                 meffective = 0.5
-            if effective == "zero":
+            if typeeffect[0] == "zero":
                 meffective = 0
             global onetype
             onetype = True
@@ -666,6 +668,7 @@ class Turns(Mike):
                                 f.specialeffect(use, damage, enemyspeed, enemypokemon1, currentpokemon)
                                 if unique[0] == "yah":
                                     damage = uniquedamage
+                                    unique[0] = "nah"
                                 if damage == enemyhealth or damage > enemyhealth:
                                     damage = enemyhealth
                                     unique = False
