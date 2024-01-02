@@ -88,7 +88,7 @@ class Teambuilder():
 
 tb = Teambuilder()
 tb.teambuilder()
-
+global teaminfo
 teaminfo = (playerteam[0], pokemonmoves[0], playerteam[1], pokemonmoves[1], playerteam[2], pokemonmoves[2], playerteam[3], pokemonmoves[3], playerteam[4], pokemonmoves[4], playerteam[5], pokemonmoves[5])
 print(teaminfo)
 

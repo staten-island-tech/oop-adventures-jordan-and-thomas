@@ -45,8 +45,8 @@ global enemypokemon
 enemypokemon1 = "Raichu"
 enemypokemon = enemypokemon1
 
-print(teaminfo())
 
+print(teaminfo[0])
 currentpokemon = teaminfo[0]
 
 
@@ -282,18 +282,18 @@ class functionality():
     def pokemoninmoves(currentpokemon):
         global currentmoves
 
-        if currentpokemon == playerteam[0]:
-            currentmoves = pokemonmoves[0]
-        if currentpokemon == playerteam[1]:
-            currentmoves = pokemonmoves[1]
-        if currentpokemon == playerteam[2]:
-            currentmoves = pokemonmoves[2]
-        if currentpokemon == playerteam[3]:
-            currentmoves = pokemonmoves[3]
-        if currentpokemon == playerteam[4]:
-            currentmoves = pokemonmoves[4]
-        if currentpokemon == playerteam[5]:
-            currentmoves = pokemonmoves[5]
+        if currentpokemon == teaminfo[0]:
+            currentmoves = teaminfo[1]
+        if currentpokemon == teaminfo[2]:
+            currentmoves = teaminfo[3]
+        if currentpokemon == teaminfo[4]:
+            currentmoves = teaminfo[5]
+        if currentpokemon == teaminfo[6]:
+            currentmoves = teaminfo[7]
+        if currentpokemon == teaminfo[8]:
+            currentmoves = teaminfo[9]
+        if currentpokemon == teaminfo[10]:
+            currentmoves = teaminfo[11]
  
 
         
