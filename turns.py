@@ -413,16 +413,16 @@ class functionality():
                 if userpk == data[i]["Name"]:
                     fullhealth = data[i]["Health Stat"]
             for i in range(len(userpartyhealth)):
-                if userpk == userpartyhealth[i]:
-                    currenthealth = userpartyhealth[i + 1]
+                if userpk == userpartyhealth[i - 1]:
+                    currenthealth = userpartyhealth[i]
             healamount = damage / 2
             if currenthealth != fullhealth:
                 currenthealth += healamount 
             if currenthealth == fullhealth or currenthealth > fullhealth:
                 currenthealth = fullhealth
             for i in range(len(userpartyhealth)):
-                if userpk == userpartyhealth[i]:
-                    userpartyhealth[i + 1] = currenthealth
+                if userpk == userpartyhealth[i - 1]:
+                    userpartyhealth[i] = currenthealth
         if "Hits2To5" in moves[movenumber]["effect"]:
             hitamount = sample(multiplehits, 1)[0]
             global again
@@ -630,10 +630,10 @@ class Turns(Mike):
                     print(currentpokemon, "has", currenthealth, "health left")
                     userpartyhealth[x] = currenthealth
                     if currenthealth == 0:
-                        print(len(userparty))
                         for i in range(len(userparty)):
                             if currentpokemon == userparty[i]:
                                 userparty.remove(userparty[i])
+                                break
                         print(userparty)
                         newpk = input("Who will you switch into? ")
                         for i in range(len(userparty)):
