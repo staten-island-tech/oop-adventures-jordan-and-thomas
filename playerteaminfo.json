@@ -1,4 +1,11 @@
 [
+    "Golem",
+    [
+        "Strength",
+        "Substitute",
+        "Rock Slide",
+        "Rest"
+    ],
     "Mew",
     [
         "Flash",
@@ -6,12 +13,12 @@
         "Surf",
         "Fly"
     ],
-    "Golbat",
+    "Beedrill",
     [
-        "Leech Life",
-        "Substitute",
-        "Rest",
-        "Swift"
+        "Pin Missile",
+        "String Shot",
+        "Poison Sting",
+        "Harden"
     ],
     "Mewtwo",
     [
@@ -28,13 +35,6 @@
         "Rest"
     ],
     "Dragonair",
-    [
-        "Surf",
-        "Substitute",
-        "Rest",
-        "Skull Bash"
-    ],
-    "Dratini",
     [
         "Surf",
         "Substitute",
