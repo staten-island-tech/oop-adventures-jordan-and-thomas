@@ -332,6 +332,7 @@ class Mike(functionality):
 
 goingfirst = []
 class Turns(Mike):
+    
     def speedcheck(enemyspeed, currentspeed):
         if enemyspeed > currentspeed:
             goingfirst.append("Enemy")
@@ -398,6 +399,9 @@ class Turns(Mike):
             if "User" in goingfirst:
                
                 global enemyhealth
+                for i in range(pokemonlist):
+                    if data[i]["Name"] == enemypokemon:
+                        enemyhealth = data[i]["Health Stat"]
                 going = "You"
                 print("You used", use)
                 time.sleep(times)
@@ -409,7 +413,7 @@ class Turns(Mike):
                         print("It did", damage, "damage")
                         enemyhealth = enemyhealth - damage
                         time.sleep(times)
-                        print(enemypokemon1, "has", enemyhealth, "health left")
+                        print(enemypokemon, "has", enemyhealth, "health left")
                 going = "Enemy"
                 time.sleep(times)
                 Mike.Raichudoing()
@@ -431,7 +435,7 @@ class Turns(Mike):
                         print("It did", damage, "damage")
                         enemyhealth = enemyhealth - damage
                         time.sleep(times)
-                        print(enemypokemon1, "has", enemyhealth, "health left")
+                        print(enemypokemon, "has", enemyhealth, "health left")
             
 
 
