@@ -80,7 +80,7 @@ class Teambuilder():
                         m4 = False
         pokemonmoves.append(currentpkmoves)
     def teambuilder(self):
-        for i in range(6):
+        for i in range(1):
             print(allpokemon)
             Teambuilder.pickpokemon()
             print(data[pknumber[0]]["Learnable Moves"])
