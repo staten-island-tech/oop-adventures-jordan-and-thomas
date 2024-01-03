@@ -9,7 +9,7 @@ times = 1.5
 turn = 0
 #going = "You"
 
-test = open("move.json", encoding="utf8")
+test = open("moves.json", encoding="utf8")
 moves = json.load(test)
 movelist = len(moves)
 
