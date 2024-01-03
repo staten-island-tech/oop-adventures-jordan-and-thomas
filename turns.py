@@ -325,6 +325,7 @@ class functionality():
             effective = "super"
         typeeffect[0] = effective
         return(effective)
+
     def damagecalc(damagecalc, move, attackingpk, enemypk):
         for i in range(movelist):
             if move == moves[i]["name"]:
@@ -364,7 +365,7 @@ class functionality():
             enemytype1 = (data[enemynumber]["Types"])[0]
             enemytype2 = (data[enemynumber]["Types"])[1]
             f.supereffective(move, enemytype1)
-            global meffective
+            global meffective1
             if typeeffect[0] == "super":
                 meffective1 = 2
             if typeeffect[0] == "half":
@@ -372,6 +373,7 @@ class functionality():
             if typeeffect[0] == "zero":
                 meffective1 = 0
             f.supereffective(move, enemytype2)
+            global meffective2
             if typeeffect[0] == "super":
                 meffective2 = 2
             if typeeffect[0] == "half":
@@ -383,6 +385,7 @@ class functionality():
         if len(data[enemynumber]["Types"]) == 1:
             enemytype = (data[enemynumber]["Types"])[0]
             f.supereffective(move, enemytype)
+            global meffective
             if typeeffect[0] == "super":
                 meffective = 2
             if typeeffect[0] == "half":
@@ -435,6 +438,7 @@ class functionality():
             for i in range(hitamount):
                 print(userpk, "did", setdamage, "damage")
                 uniquedamage += setdamage
+            damage = uniquedamage
             unique[0] = "Yah"
         if "SpeedDown" in moves[movenumber]["effect"]:
             onestage = decimal.Decimal(2) / decimal.Decimal(3)
@@ -509,15 +513,14 @@ class Turns(Mike):
         time.sleep(times)
         global going
     def turn(currentpokemon, enemypokemon1):
-   
-
-        #endorturn = "no"
-        #pokemonin = "same"
-
-        
-
-
-    
+        global unique
+        global meffective
+        global meffective1
+        global meffective2
+        global onetype
+        global twotype
+        global movedamage
+        global uniquedamage
         while enemypartyhealth[1] != 0 or len(userparty) < 0:
             print("Switch Out Or Attack")
             userdo = input("What would you like to do: ")
@@ -525,7 +528,6 @@ class Turns(Mike):
                 for i in range(len(userpartyhealth)):
                     if currentpokemon == userpartyhealth[i - 1]:
                         currenthealth = userpartyhealth[i]
-                        x = i
                 print(userparty)
                 switchin = input("Pick a Pokemon to Switch into: ")
                 print("You switched into", switchin)
@@ -533,6 +535,7 @@ class Turns(Mike):
                 for i in range(len(userpartyhealth)):
                     if currentpokemon == userpartyhealth[i - 1]:
                         currenthealth = userpartyhealth[i]
+                        x = 1
                 going = "Enemy"
                 time.sleep(times)
                 Mike.Raichudoing()
@@ -545,6 +548,7 @@ class Turns(Mike):
                 currenthealth = currenthealth - enemydamage
                 print(currentpokemon, "has", currenthealth, "health left")
                 userpartyhealth[x] = currenthealth
+                print(userpartyhealth[x])
                 if currenthealth == 0:
                     for i in range(len(userparty)):
                         if currentpokemon == userparty[i]:
@@ -665,13 +669,9 @@ class Turns(Mike):
                             if currentmoves[i] == use:
                                 f.damagecalc(use, currentpokemon, enemypokemon1)
                                 damage = movedamage
+                                print(damage)
                                 f.specialeffect(use, damage, enemyspeed, enemypokemon1, currentpokemon)
-                                if unique[0] == "yah":
-                                    damage = uniquedamage
-                                    unique[0] = "nah"
-                                if damage == enemyhealth or damage > enemyhealth:
-                                    damage = enemyhealth
-                                    unique = False
+                                print(damage)
                                 print("It did", damage, "damage")
                                 enemyhealth = enemyhealth - damage
                                 time.sleep(times)

@@ -1,4 +1,11 @@
 [
+    "Beedrill",
+    [
+        "Pin Missile",
+        "String Shot",
+        "Poison Sting",
+        "Harden"
+    ],
     "Golem",
     [
         "Strength",
@@ -12,13 +19,6 @@
         "Strength",
         "Surf",
         "Fly"
-    ],
-    "Beedrill",
-    [
-        "Pin Missile",
-        "String Shot",
-        "Poison Sting",
-        "Harden"
     ],
     "Mewtwo",
     [
