@@ -449,6 +449,7 @@ class functionality():
         if "Poison" in moves[movenumber]["effect"]:
             if not "Poison" in data[enemynumber]["Types"]:
                 enemypk = "afflicted"
+        return damage
 
 
 
@@ -522,6 +523,7 @@ class Turns(Mike):
         global movedamage
         global uniquedamage
         while enemypartyhealth[1] != 0 or len(userparty) < 0:
+            f = functionality()
             print("Switch Out Or Attack")
             userdo = input("What would you like to do: ")
             if userdo == "Switch" or userdo == "switch" or userdo == "Switch Out" or userdo == "switch out" or userdo == "Switch out":
@@ -535,7 +537,7 @@ class Turns(Mike):
                 for i in range(len(userpartyhealth)):
                     if currentpokemon == userpartyhealth[i - 1]:
                         currenthealth = userpartyhealth[i]
-                        x = 1
+                        x = i
                 going = "Enemy"
                 time.sleep(times)
                 Mike.Raichudoing()
@@ -548,7 +550,6 @@ class Turns(Mike):
                 currenthealth = currenthealth - enemydamage
                 print(currentpokemon, "has", currenthealth, "health left")
                 userpartyhealth[x] = currenthealth
-                print(userpartyhealth[x])
                 if currenthealth == 0:
                     for i in range(len(userparty)):
                         if currentpokemon == userparty[i]:
@@ -669,10 +670,10 @@ class Turns(Mike):
                             if currentmoves[i] == use:
                                 f.damagecalc(use, currentpokemon, enemypokemon1)
                                 damage = movedamage
-                                print(damage)
-                                f.specialeffect(use, damage, enemyspeed, enemypokemon1, currentpokemon)
-                                print(damage)
-                                print("It did", damage, "damage")
+                                damage = f.specialeffect(use, damage, enemyspeed, enemypokemon1, currentpokemon)
+                                if damage == enemyhealth or damage > enemyhealth:
+                                    damage = enemyhealth
+                                print(currentpokemon, "did", damage, "damage")
                                 enemyhealth = enemyhealth - damage
                                 time.sleep(times)
                                 if enemyhealth > 0:
