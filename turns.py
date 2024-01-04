@@ -499,6 +499,8 @@ class Ai():
 class Mike(functionality):
     MikeTeam = ["Raichu", "Dragonite", "Charizard", "Gengar", "Blastoise", "Machamp"]
     def checks(enemypokemon, oppositepokemon):
+        global shouldiswitch
+        shouldiswitch = "no"
         for i in range(pokemonlist):
             if data[i]["Name"] == enemypokemon:
                 Types = data[i]["Types"]
@@ -541,7 +543,9 @@ class Mike(functionality):
             M = matchup
             if R != "half" or "none":
                 print("Mike M switched into Raichu")
-                #enemy pokemon =
+                #break
+                #global global_enemypokemon
+                shouldiswitch = "yes"
             if D != "half" or "none":
                 print("Mike M switched into Dragonite")
             if C != "half" or "none":
@@ -559,7 +563,7 @@ class Mike(functionality):
         
     def Raichudoing():
         global enemypokemon
-
+        Rmoves = ["Double Team", "Toxic", "Thunderbolt"]
         if turn == 0:
             enemypokemon = "Raichu"
             for i in range(pokemonlist):
@@ -576,6 +580,12 @@ class Mike(functionality):
                 Using.usemove("placeholder", enemyuse, oppositepokemon, oppositehealth, pokemonin, endofturn, turn)
             else:
                 print("Raichu used Double Team")
+        
+        if turn != 0:
+            #Check()
+            
+        
+    
         
 
 
