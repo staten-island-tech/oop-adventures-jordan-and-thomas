@@ -5,7 +5,7 @@ import time
 from tryingtofix import Teambuilder
 from tryingtofix import *
 times = 1.5
-
+import random
 turn = 0
 #going = "You"
 
@@ -27,8 +27,9 @@ for i in range(len(data)):
 
 
 
-
-
+yourdeadguys = []
+Mikesdeadguys = []
+yourteam = [teaminfo[0], teaminfo[2], teaminfo[4], teaminfo[6], teaminfo[8], teaminfo[10]]
 currentpokemon = teaminfo[0]    
 
 
@@ -42,9 +43,9 @@ enemyin = "same"
 #enemyhealth = 200
 #Pokemon.teambuilder()
 
-global enemypokemon
-enemypokemon1 = "Raichu"
-enemypokemon = enemypokemon1
+#global enemypokemon
+#enemypokemon1 = "Raichu"
+#enemypokemon = enemypokemon1
 
 
 
@@ -76,17 +77,23 @@ class functionality():
                 if turn + 1:
                     N += 1
     
-    def dead(oppositehealth):
+    def dead(oppositehealth, oppositepokemon):
         if oppositehealth == 0:
-            global currentpokemon
-            print(oppositepokemon, "has fainted")
-            dead = oppositepokemon
-            print(teaminfo)
-            switchin = input("Pick a Pokemon to switch in: ")
-            if switchin == dead:
-                print(switchin, "has already fainted")
-                switchin = input("Pick a Pokemon to switch in to:")
-            currentpokemon = switchin
+            if going == "Enemy":
+                yourdeadguys.append(currentpokemon)
+                global currentpokemon
+                print(oppositepokemon, "has fainted")
+                
+                print(teaminfo)
+                switchin = input("Pick a Pokemon to switch in: ")
+                if switchin in yourdeadguys or switchin not in yourteam:
+                    print(switchin, "has already fainted")
+                    switchin = input("Pick a Pokemon to switch in to:")
+                currentpokemon = switchin
+            if going == "You":
+                Mikesdeadguys.append(oppositepokemon)
+                #switch in good
+        
     
     def supereffective(use, oppositepokemon):
         global effective
@@ -485,20 +492,9 @@ class functionality():
         if currentpokemon == teaminfo[10]:
             currentmoves = teaminfo[11]
  
-
-        
-
-    
-
-
-class Ai():
-    def supereffectivecheck(usermovetype):
-        print("placeholder")
-
-
-class Mike(functionality):
-    MikeTeam = ["Raichu", "Dragonite", "Charizard", "Gengar", "Blastoise", "Machamp"]
-    def checks(enemypokemon, oppositepokemon):
+    def checks(enemypokemo, oppositepokemon):
+        global enemypokemon
+        enemypokemon = enemypokemo
         global shouldiswitch
         shouldiswitch = "no"
         for i in range(pokemonlist):
@@ -541,21 +537,85 @@ class Mike(functionality):
             B = matchup
             functionality.typechart("Machamp", oppositepokemon)
             M = matchup
-            if R != "half" or "none":
-                print("Mike M switched into Raichu")
-                #break
-                #global global_enemypokemon
+            if R != "half" or "none" and "Raichu" not in Mikesdeadguys:
+                
+                enemypokemon = "Raichu"
+                print("Mike M switched into", enemypokemon)
                 shouldiswitch = "yes"
-            if D != "half" or "none":
+                
+            elif D != "half" or "none" and "Dragonite" not in Mikesdeadguys:
+                enemypokemon = "Dragonite"
                 print("Mike M switched into Dragonite")
-            if C != "half" or "none":
+                shouldiswitch = "yes"
+                
+            elif C != "half" or "none" and "Charizard" not in Mikesdeadguys:
+                enemypokemon = "Charizard"
                 print("Mike M switched into Charizard")
-            if G != "half" or "none":
+                shouldiswitch = "yes"
+
+            elif G != "half" or "none" and "Gengar" not in Mikesdeadguys:
+                enemypokemon = "Gengar"
                 print("Mike M switched into Gengar")
-            if B != "half" or "none":
+                shouldiswitch = "yes"
+
+            elif B != "half" or "none" and "Blastoise" not in Mikesdeadguys:
+                enemypokemon = "Blastoise"
                 print("Mike M switched into Blastoise")
-            if M != "half" or "none":
+                shouldiswitch = "yes"
+
+            elif M != "half" or "none" and "Machamp" not in Mikesdeadguys:
+                enemypokemon = "Machamp"
                 print("Mike M switched into Machamp")
+                shouldiswitch = "yes"
+            else: 
+                caniswitch = "no"
+                while caniswitch == "no":
+                    p = random.randrange(6)
+                    if p == 1 and "Raichu" not in Mikesdeadguys:
+                         enemypokemon = "Raichu"
+                         print("Mike M switched into", enemypokemon)
+                         shouldiswitch = "yes"
+                         caniswitch = "yes"
+                    if p == 2 and "Dragonite" not in Mikesdeadguys:
+                        enemypokemon = "Dragonite"
+                        print("Mike M switched into Dragonite")
+                        shouldiswitch = "yes"
+                        caniswitch = "yes"
+                    if p == 3 and "Charizard" not in Mikesdeadguys:
+                        enemypokemon = "Charizard"
+                        print("Mike M switched into Charizard")
+                        shouldiswitch = "yes"
+                        caniswitch = "yes"
+                    if p == 4 and "Gengar" not in Mikesdeadguys:
+                        enemypokemon = "Gengar"
+                        print("Mike M switched into Gengar")
+                        shouldiswitch = "yes"
+                        caniswitch = "yes"
+                    if p == 5 and "Blastoise" not in Mikesdeadguys:
+                        enemypokemon = "Blastoise"
+                        print("Mike M switched into Blastoise")
+                        shouldiswitch = "yes"
+                        caniswitch = "yes"
+                    if p == 6 and "Machamp" not in Mikesdeadguys:
+                        enemypokemon = "Machamp"
+                        print("Mike M switched into Machamp")
+                        shouldiswitch = "yes"
+                        caniswitch = "yes"
+
+        
+
+    
+
+
+class Ai():
+    def supereffectivecheck(usermovetype):
+        print("placeholder")
+
+
+class Mike(functionality):
+    MikeTeam = ["Raichu", "Dragonite", "Charizard", "Gengar", "Blastoise", "Machamp"]
+   
+
 
 
 
@@ -563,7 +623,7 @@ class Mike(functionality):
         
     def Raichudoing():
         global enemypokemon
-        Rmoves = ["Double Team", "Toxic", "Thunderbolt"]
+        Rmoves = ["Double Team", "Toxic", "Thunderbolt", "Surf"]
         if turn == 0:
             enemypokemon = "Raichu"
             for i in range(pokemonlist):
@@ -581,8 +641,13 @@ class Mike(functionality):
             else:
                 print("Raichu used Double Team")
         
-        if turn != 0:
-            #Check()
+        if turn != 0 and enemypokemon == "Raichu":
+            functionality.checks()
+            if shouldiswitch != "yes":
+                functionality.supereffective("Thunderbolt", currentpokemon)
+                if effective != "super":
+                    functionality.supereffective("Surf", currentpokemon)
+
             
         
     
