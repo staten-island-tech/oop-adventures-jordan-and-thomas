@@ -15,10 +15,17 @@
     ],
     "Golem",
     [
-        "Earthquake",
         "Strength",
         "Substitute",
-        "Rock Slide"
+        "Rock Slide",
+        "Rest"
+    ],
+    "Sandslash",
+    [
+        "Earthquake",
+        "Strength",
+        "Cut",
+        "Substitute"
     ],
     "Dragonite",
     [
@@ -28,13 +35,6 @@
         "Rest"
     ],
     "Dragonair",
-    [
-        "Surf",
-        "Substitute",
-        "Rest",
-        "Skull Bash"
-    ],
-    "Dratini",
     [
         "Surf",
         "Substitute",

@@ -553,7 +553,7 @@ class Turns(Mike):
                 if currenthealth == 0:
                     for i in range(len(userparty)):
                         if currentpokemon == userparty[i]:
-                            userparty.remove[i]
+                            userparty.remove(i)
                     print(userparty)
                     newpk = input("Who will you switch into? ")
                     for i in range(len(userparty)):
