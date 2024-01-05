@@ -6,6 +6,7 @@ from tryingtofix import Teambuilder
 from tryingtofix import *
 times = 1.5
 import random
+import decimal
 from decimal import Decimal
 turn = 0
 #going = "You"
@@ -162,7 +163,7 @@ class functionality():
                 
                 print(oppositepokemon, "has fainted")
                 
-                print(teaminfo)
+                print(yourteam)
                 switchin = input("Pick a Pokemon to switch in: ")
                 if switchin in yourdeadguys or switchin not in yourteam:
                     print(switchin, "has already fainted")
@@ -173,7 +174,7 @@ class functionality():
                 #switch in good
         
     
-    def supereffective(use, oppositepokemon):
+    def supereffective(supereffective, use, oppositepokemon):
         global effective
         effective = "normal"
         for i in range(pokemonlist):
@@ -363,7 +364,7 @@ class functionality():
             effective = "super"
         print(effective)
 
-    def typechart(enemypokemon, oppositepokemon):
+    def typechart(tyepchart, enemypokemon, oppositepokemon):
         global matchup
         matchup = "normal"
         for i in range(pokemonlist):
@@ -557,18 +558,144 @@ class functionality():
     def pokemoninmoves(currentpokemon):
         global currentmoves
 
-        if currentpokemon == teaminfo[0]:
-            currentmoves = teaminfo[1]
-        if currentpokemon == teaminfo[2]:
-            currentmoves = teaminfo[3]
-        if currentpokemon == teaminfo[4]:
-            currentmoves = teaminfo[5]
-        if currentpokemon == teaminfo[6]:
-            currentmoves = teaminfo[7]
-        if currentpokemon == teaminfo[8]:
-            currentmoves = teaminfo[9]
-        if currentpokemon == teaminfo[10]:
-            currentmoves = teaminfo[11]
+        #if currentpokemon == teaminfo[0]:
+        #    currentmoves = teaminfo[1]
+        #if currentpokemon == teaminfo[2]:
+        #    currentmoves = teaminfo[3]
+        #if currentpokemon == teaminfo[4]:
+        #    currentmoves = teaminfo[5]
+        #if currentpokemon == teaminfo[6]:
+        #    currentmoves = teaminfo[7]
+        #if currentpokemon == teaminfo[8]:
+        #    currentmoves = teaminfo[9]
+        #if currentpokemon == teaminfo[10]:
+        #    currentmoves = teaminfo[11]
+
+    def damagecalc(damagecalc, move, attackingpk, enemypk):
+        for i in range(movelist):
+            if move == moves[i]["name"]:
+                movenumber = i
+        for i in range(pokemonlist):
+            if attackingpk == data[i]["Name"]:
+                attacknumber = i
+        for i in range(pokemonlist):
+            if enemypk == data[i]["Name"]:
+                enemynumber = i
+        movepower = moves[movenumber]["power"]
+        userattack = data[attacknumber]["Attack Stat"]
+        enemydefense = data[enemynumber]["Defense Stat"]
+        userspecial = data[attacknumber]["Special Stat"]
+        enemyspecial = data[enemynumber]["Special Stat"]
+        if moves[movenumber]["category"] == "Physical":
+            global attackingpower
+            global defendingpower
+            attackingpower = userattack
+            defendingpower = enemydefense
+        if moves[movenumber]["category"] == "Special":
+            attackingpower = userspecial
+            defendingpower = enemyspecial
+        if moves[movenumber]["category"] == "None":
+            attackingpower = userattack
+            defendingpower = enemydefense
+        math1 = decimal.Decimal(40) * decimal.Decimal(movepower)
+        math2 = decimal.Decimal(attackingpower) / decimal.Decimal(defendingpower)
+        math3 = decimal.Decimal(math2) * decimal.Decimal(math1)
+        math4 = decimal.Decimal(math3) / decimal.Decimal(50)
+        math5 = decimal.Decimal(math4) + decimal.Decimal(2)
+        if moves[movenumber]["type"] in data[attacknumber]["Types"]:
+            global stab
+            stab = True
+        f = functionality()
+        if len(data[enemynumber]["Types"]) == 2:
+            enemytype1 = (data[enemynumber]["Types"])[0]
+            enemytype2 = (data[enemynumber]["Types"])[1]
+            f.supereffective(move, enemytype1)
+            global meffective1
+            if typeeffect[0] == "super":
+                meffective1 = 2
+            if typeeffect[0] == "half":
+                meffective1 = 0.5
+            if typeeffect[0] == "zero":
+                meffective1 = 0
+            f.supereffective(move, enemytype2)
+            global meffective2
+            if typeeffect[0] == "super":
+                meffective2 = 2
+            if typeeffect[0] == "half":
+                meffective2 = 0.5
+            if typeeffect[0] == "zero":
+                meffective2 = 0
+            global twotype
+            twotype = True
+        if len(data[enemynumber]["Types"]) == 1:
+            enemytype = (data[enemynumber]["Types"])[0]
+            f.supereffective(move, enemytype)
+            global meffective
+            if typeeffect[0] == "super":
+                meffective = 2
+            if typeeffect[0] == "half":
+                meffective = 0.5
+            if typeeffect[0] == "zero":
+                meffective = 0
+            global onetype
+            onetype = True
+        if stab == True:
+            math5 *=  decimal.Decimal(1.5)
+        if onetype == True:
+            math5 *= decimal.Decimal(meffective)
+        if twotype == True:
+            meffective = decimal.Decimal(meffective1) * decimal.Decimal(meffective2)
+            math5 *= decimal.Decimal(meffective)
+        global movedamage
+        movedamage = round(math5)
+        if moves[movenumber]["category"] == "None":
+            movedamage = 0
+    def specialeffect(specialeffect, move, damage, enemyspeed, enemypk, userpk):
+        f = functionality
+        for i in range(movelist):
+            if move == moves[i]["name"]:
+                movenumber = i
+        for i in range(pokemonlist):
+            if enemypk == data[i]["Name"]:
+                enemynumber = i
+        if "HealHalfD" in moves[movenumber]["effect"]:
+            for i in range(pokemonlist):
+                if userpk == data[i]["Name"]:
+                    fullhealth = data[i]["Health Stat"]
+            for i in range(len(userpartyhealth)):
+                if userpk == userpartyhealth[i - 1]:
+                    currenthealth = userpartyhealth[i]
+            healamount = damage / 2
+            if currenthealth != fullhealth:
+                currenthealth += int(healamount)
+            if currenthealth == fullhealth or currenthealth > fullhealth:
+                currenthealth = fullhealth
+            for i in range(len(userpartyhealth)):
+                if userpk == userpartyhealth[i - 1]:
+                    userpartyhealth[i] = currenthealth
+            print(userpk, "healed", healamount)
+            print(userpk, "has", currenthealth, "health left")
+        if "Hits2to5" in moves[movenumber]["effect"]:
+            hitamount = sample(multiplehits, 1)[0]
+            setdamage = damage
+            global uniquedamage
+            uniquedamage = damage
+            for i in range(hitamount):
+                print(userpk, "did", setdamage, "damage")
+                uniquedamage += setdamage
+            damage = uniquedamage
+            unique[0] = "Yah"
+        if "SpeedDown" in moves[movenumber]["effect"]:
+            onestage = decimal.Decimal(2) / decimal.Decimal(3)
+            enemyspeed *= onestage 
+        if "HitsTwice" in moves[movenumber]["effect"]:
+            again = True
+            moveagain = 1
+        if "Poison" in moves[movenumber]["effect"]:
+            if not "Poison" in data[enemynumber]["Types"]:
+                enemypk = "afflicted"
+        return damage
+
  
     def checks(enemypokemo, oppositepokemon):
         global enemypokemon

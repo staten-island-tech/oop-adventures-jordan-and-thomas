@@ -1,44 +1,45 @@
 [
     "Bulbasaur",
     [
-        "Tackle",
         "Vine Whip",
-        "Leech Seed",
-        "Rest"
+        "Growl",
+        "Tackle",
+        "Cut"
+    ],
+    "Ekans",
+    [
+        "Bite",
+        "Glare",
+        "Toxic",
+        "Take Down"
+    ],
+    "Zubat",
+    [
+        "Bite",
+        "Supersonic",
+        "Haze",
+        "Toxic"
     ],
     "Golem",
     [
         "Dig",
         "Mimic",
-        "Rock Throw",
-        "Bide"
+        "Bide",
+        "Rest"
     ],
     "Onix",
     [
-        "Tackle",
-        "Earthquake",
+        "Bind",
+        "Rage",
         "Slam",
-        "Screech"
+        "Harden"
     ],
-    "Ekans",
+    "Poliwag",
     [
-        "Wrap",
-        "Leer",
-        "Bite",
-        "Glare"
-    ],
-    "Abra",
-    [
-        "Teleport",
-        "Toxic",
-        "Body Slam",
-        "Take Down"
-    ],
-    "Seel",
-    [
-        "Headbutt",
+        "Water Gun",
+        "Water Gun",
+        "Rage",
         "Rest",
-        "Bubble Beam",
-        "Water Gun"
+        "Psywave"
     ]
 ]
