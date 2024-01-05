@@ -640,6 +640,7 @@ class Mike(functionality):
                 Using.usemove("placeholder", enemyuse, oppositepokemon, oppositehealth, pokemonin, endofturn, turn)
             else:
                 print("Raichu used Double Team")
+                #effect of double team
         
         if turn != 0 and enemypokemon == "Raichu":
             functionality.checks()
@@ -647,6 +648,32 @@ class Mike(functionality):
                 functionality.supereffective("Thunderbolt", currentpokemon)
                 if effective != "super":
                     functionality.supereffective("Surf", currentpokemon)
+                    if effective != "super":
+                        x = random.randrange(3)
+                        if x == 1:
+                            print("Raichu used Double Team")
+                            #effect of double team
+                        if x == 2:
+                            print("Raichu used Thunderbolt")
+                            for i in range(movelist):
+                                if moves[i]["name"] == "Thunderbolt":
+                                    damage = moves[i]["power"]
+                                    print("It did", damage, "damage")
+                                    currentpokemonhealth = currentpokemonhealth - damage
+                                    time.sleep(times)
+                                    print(currentpokemon, "has", currentpokemonhealth, "health left")
+                        if x == 3:
+                            print("Raichu used Surf")
+                            for i in range(movelist):
+                                if moves[i]["name"] == "Surf":
+                                    damage = moves[i]["power"]
+                                    print("It did", damage, "damage")
+                                    currentpokemonhealth = currentpokemonhealth - damage
+                                    time.sleep(times)
+                                    print(currentpokemon, "has", currentpokemonhealth, "health left")
+
+
+
 
             
         
