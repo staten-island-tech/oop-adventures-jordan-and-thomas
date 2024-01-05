@@ -352,11 +352,14 @@ class functionality():
         if moves[movenumber]["category"] == "None":
             attackingpower = userattack
             defendingpower = enemydefense
+        print
         math1 = decimal.Decimal(40) * decimal.Decimal(movepower)
         math2 = decimal.Decimal(attackingpower) / decimal.Decimal(defendingpower)
         math3 = decimal.Decimal(math2) * decimal.Decimal(math1)
         math4 = decimal.Decimal(math3) / decimal.Decimal(50)
         math5 = decimal.Decimal(math4) + decimal.Decimal(2)
+        print(math5)
+        print(len(data[enemynumber]["Types"]))
         if moves[movenumber]["type"] in data[attacknumber]["Types"]:
             global stab
             stab = True
@@ -364,6 +367,8 @@ class functionality():
         if len(data[enemynumber]["Types"]) == 2:
             enemytype1 = (data[enemynumber]["Types"])[0]
             enemytype2 = (data[enemynumber]["Types"])[1]
+            print(enemytype1)
+            print(enemytype2)
             f.supereffective(move, enemytype1)
             global meffective1
             if typeeffect[0] == "super":
@@ -372,6 +377,8 @@ class functionality():
                 meffective1 = 0.5
             if typeeffect[0] == "zero":
                 meffective1 = 0
+            else:
+                meffective1 = 1
             f.supereffective(move, enemytype2)
             global meffective2
             if typeeffect[0] == "super":
@@ -380,6 +387,8 @@ class functionality():
                 meffective2 = 0.5
             if typeeffect[0] == "zero":
                 meffective2 = 0
+            else:
+                meffective2 = 1
             global twotype
             twotype = True
         if len(data[enemynumber]["Types"]) == 1:
@@ -392,15 +401,18 @@ class functionality():
                 meffective = 0.5
             if typeeffect[0] == "zero":
                 meffective = 0
-            global onetype
-            onetype = True
+            else:
+                meffective = 1
         if stab == True:
             math5 *=  decimal.Decimal(1.5)
+            print(math5)
         if onetype == True:
             math5 *= decimal.Decimal(meffective)
+            print(math5)
         if twotype == True:
             meffective = decimal.Decimal(meffective1) * decimal.Decimal(meffective2)
             math5 *= decimal.Decimal(meffective)
+            print(math5)
         global movedamage
         movedamage = round(math5)
         if moves[movenumber]["category"] == "None":
