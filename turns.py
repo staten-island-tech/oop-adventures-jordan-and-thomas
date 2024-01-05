@@ -708,14 +708,7 @@ class Turns(Mike):
 
 
 
-    def turnone(playerpokemon1, enemypokemon1, enemy):
-   
-
-        #endorturn = "no"
-        #pokemonin = "same"
-
-        currentpokemon = teaminfo[0]    
-
+       def preturn(playerpokemon1, enemypokemon1, enemy):
         print("You are challenged by", enemy)
         time.sleep(times)
         print("You threw out", playerpokemon1)
@@ -723,86 +716,193 @@ class Turns(Mike):
         print(enemy, "threw out", enemypokemon1)
         time.sleep(times)
         global going
-        Turns.enemyspeed(enemypokemon)
-        Turns.speedstat(currentpokemon)
-    
-
-        print("Switch Out Or Attack")
-        userdo = input("What would you like to do: ")
-        if userdo == "Switch" or userdo == "switch" or userdo == "Switch Out" or userdo == "switch out" or userdo == "Switch out":
-            
-            print("userparty")
-            switchin = input("Pick a Pokemon to Switch into: ")
-            print("You switched into", switchin)
-            currentpokemon = switchin
-            
-            going = "Enemy"
-            time.sleep(times)
-            Mike.Raichudoing()
-           
-
-
-            
-
-        if userdo == "Attack" or userdo == "attack":
-            functionality.pokemoninmoves(currentpokemon)
-            print(currentmoves)
-            use = input("Pick a move to use: ")
-            time.sleep(times)
-            Turns.speedcheck(enemyspeed, currentspeed)
-            
-            if "User" in goingfirst:
-               
-                global enemyhealth
-                for i in range(pokemonlist):
-                    if data[i]["Name"] == enemypokemon:
-                        enemyhealth = data[i]["Health Stat"]
-                going = "You"
-                print("You used", use)
-                time.sleep(times)
-                # if move effect != None
-                #Do effect
-                for i in range(movelist):
-                    if moves[i]["name"] == use:
-                        damage = moves[i]["power"]
-                        print("It did", damage, "damage")
-                        enemyhealth = enemyhealth - damage
-                        time.sleep(times)
-                        print(enemypokemon, "has", enemyhealth, "health left")
+    def turn(currentpokemon, enemypokemon1):
+        global unique
+        global meffective
+        global meffective1
+        global meffective2
+        global onetype
+        global twotype
+        global movedamage
+        global uniquedamage
+        while enemypartyhealth[1] != 0 or len(userparty) < 0:
+            f = functionality()
+            print("Switch Out Or Attack")
+            userdo = input("What would you like to do: ")
+            if userdo == "Switch" or userdo == "switch" or userdo == "Switch Out" or userdo == "switch out" or userdo == "Switch out":
+                for i in range(len(userpartyhealth)):
+                    if currentpokemon == userpartyhealth[i - 1]:
+                        currenthealth = userpartyhealth[i]
+                print(userparty)
+                switchin = input("Pick a Pokemon to Switch into: ")
+                print("You switched into", switchin)
+                currentpokemon = switchin
+                for i in range(len(userpartyhealth)):
+                    if currentpokemon == userpartyhealth[i - 1]:
+                        currenthealth = userpartyhealth[i]
+                        x = i
                 going = "Enemy"
                 time.sleep(times)
                 Mike.Raichudoing()
+                f.damagecalc(enemymove, enemypokemon1, currentpokemon)
+                enemydamage = movedamage
+                if enemydamage == currenthealth or enemydamage > currenthealth:
+                    enemydamage = currenthealth
+                print("Raichu used", enemymove)
+                print("Raichu did", enemydamage, "damage")
+                currenthealth = currenthealth - enemydamage
+                print(currentpokemon, "has", currenthealth, "health left")
+                userpartyhealth[x] = currenthealth
+                if currenthealth == 0:
+                    for i in range(len(userparty)):
+                        if currentpokemon == userparty[i]:
+                            userparty.remove(i)
+                    print(userparty)
+                    newpk = input("Who will you switch into? ")
+                    for i in range(len(userparty)):
+                        if newpk == userparty[i]:
+                            currentpokemon = newpk
+                    for i in range(len(userpartyhealth)):
+                        if currentpokemon == userpartyhealth[i - 1]:
+                            currenthealth = userpartyhealth[i]
+            if userdo == "Attack" or userdo == "attack":
+                for i in range(inputteamlist):
+                    if currentpokemon == inputteam[i - 1]:
+                        currentmoves = inputteam[i]
+                        print(currentmoves)
+                use = input("Pick a move to use: ")
+                time.sleep(times)
+                Turns.speedcheck(enemyspeed, currentspeed)
+            
+                if "User" in goingfirst:
+               
+                    global enemyhealth
+                    going = "You"
+                    print("You used", use)
+                    time.sleep(times)
+                    # if move effect != None
+                    #Do effect\
+                    f = functionality()
+                    for i in range(len(currentmoves)):
+                        if currentmoves[i]== use:
+                            f.damagecalc(use, currentpokemon, enemypokemon1)
+                            damage = movedamage
+                            f.specialeffect(use, damage, enemyspeed, enemypokemon1, currentpokemon)
+                            if damage == enemyhealth or damage > enemyhealth:
+                                damage = enemyhealth
+                            print("It did", damage, "damage")
+                            enemyhealth = enemyhealth - damage
+                            time.sleep(times)
+                            if enemyhealth > 0:
+                                print(enemypokemon1, "has", enemyhealth, "health left")
+                            if enemyhealth == 0:
+                                print(enemypokemon1, "fainted")
+                    enemypartyhealth[1] = enemyhealth
+                    going = "Enemy"
+                    time.sleep(times)
+                    Mike.Raichudoing()
+                    f.damagecalc(enemymove, enemypokemon1, currentpokemon)
+                    enemydamage = movedamage
+                    for i in range(len(userpartyhealth)):
+                        if currentpokemon == userpartyhealth[i - 1]:
+                            currenthealth = userpartyhealth[i]
+                    if enemydamage == currenthealth or enemydamage > currenthealth:
+                        enemydamage = currenthealth
+                    print("Raichu used", enemymove)
+                    print("Raichu did", enemydamage, "damage")
+                    currenthealth -= enemydamage
+                    print(currentpokemon, "has", currenthealth, "health left")
+                    userpartyhealth[i] = currenthealth
+                    if currenthealth == 0:
+                        for i in range(len(userparty)):
+                            if currentpokemon == userparty[i]:
+                                userparty.remove[i]
+                        print(userparty)
+                        newpk = input("Who will you switch into? ")
+                        for i in range(len(userparty)):
+                            if newpk == userparty[i]:
+                                currentpokemon = newpk
+                        for i in range(len(userpartyhealth)):
+                            if currentpokemon == userpartyhealth[i - 1]:
+                                currenthealth = userpartyhealth[i]
                 
                
 
-            if "Enemy" in goingfirst:
-                going = "Enemy"
-                for i in range(pokemonlist):
-                    if data[i]["Name"] == enemypokemon:
-                        enemyhealth = data[i]["Health Stat"]
-                Mike.Raichudoing()
-                time.sleep(times)
-                going = "You"
-                print("You used", use)
-                time.sleep(times)
-                # if move effect != None
-                #Do effect
-                for i in range(movelist):
-                    if moves[i]["name"] == use:
-                        damage = moves[i]["power"]
-                        print("It did", damage, "damage")
-                        enemyhealth = enemyhealth - damage
+                if "Enemy" in goingfirst:
+                    f = functionality()
+                    going = "Enemy"
+                    Mike.Raichudoing()
+                    f.damagecalc(enemymove, enemypokemon1, currentpokemon)
+                    enemydamage = movedamage
+                    for i in range(len(userpartyhealth)):
+                        if currentpokemon == userpartyhealth[i - 1]:
+                            currenthealth = userpartyhealth[i]
+                            x = i
+                    if enemydamage == currenthealth or enemydamage > currenthealth:
+                        enemydamage = currenthealth
+                    print("Raichu used", enemymove, )
+                    print("Raichu did", enemydamage, "damage")
+                    currenthealth -= enemydamage
+                    print(currentpokemon, "has", currenthealth, "health left")
+                    userpartyhealth[x] = currenthealth
+                    global death
+                    death = False
+                    if currenthealth == 0:
+                        for i in range(len(userparty)):
+                            if currentpokemon == userparty[i]:
+                                userparty.remove(userparty[i])
+                                death = True
+                                break
+                        print(userparty)
+                        newpk = input("Who will you switch into? ")
+                        for i in range(len(userparty)):
+                            if newpk == userparty[i]:
+                                currentpokemon = newpk
+                        for i in range(len(userpartyhealth)):
+                            if currentpokemon == userpartyhealth[i - 1]:
+                                currenthealth = userpartyhealth[i]
+                    if death == False:
                         time.sleep(times)
-                        print(enemypokemon, "has", enemyhealth, "health left")
+                        going = "You"
+                        print("You used", use)
+                        time.sleep(times)
+                        # if move effect != None
+                        #Do effect
+                        f = functionality()
+                        for i in range(len(currentmoves)):
+                            if currentmoves[i] == use:
+                                f.damagecalc(use, currentpokemon, enemypokemon1)
+                                damage = movedamage
+                                damage = f.specialeffect(use, damage, enemyspeed, enemypokemon1, currentpokemon)
+                                if damage == enemyhealth or damage > enemyhealth:
+                                    damage = enemyhealth
+                                print(currentpokemon, "did", damage, "damage")
+                                enemyhealth = enemyhealth - damage
+                                time.sleep(times)
+                                if enemyhealth > 0:
+                                    print(enemypokemon1, "has", enemyhealth, "health left")
+                                if enemyhealth == 0:
+                                    print(enemypokemon1, "fainted")
+                        enemypartyhealth[1] = enemyhealth
+            
+
+
+
+
+time.sleep(2)        
+      
+
+Turns.preturn(firstpokemon, enemypokemon, "Elite Four Member Mike")
+Turns.turn(firstpokemon, enemypokemon)
             
 
 
 
 
           
-time.sleep(2)
 
-Turns.turnone(currentpokemon, enemypokemon, "Elite Four Member Mike M.")
+
+
 
         
 
