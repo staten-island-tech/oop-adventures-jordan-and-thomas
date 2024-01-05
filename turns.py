@@ -61,8 +61,8 @@ tb.teambuilder()
 pluh = open("playerteaminfo.json", encoding="utf8")
 inputteam = json.load(pluh)
 inputteamlist = len(inputteam)
-enemyparty = ["Raichu", ["Thunderbolt", "Thunder Wave", "Submission", "Surf"]]
-userparty = [inputteam[0], inputteam[2], inputteam[4], inputteam[6], inputteam[8], inputteam[10]]
+enemyparty = ["Raichu", ["Toxic", "Double Team", "Thunderbolt", "Surf"]]
+yourteam = [inputteam[0], inputteam[2], inputteam[4], inputteam[6], inputteam[8], inputteam[10]]
 userpartystatus = [inputteam[0], "none", inputteam[2], "none", inputteam[4], "none", inputteam[6], "none", inputteam[8], "none", inputteam[10], "none"]
 eliteteamstatus = ["Raichu", "none"]
 for i in range(pokemonlist):
@@ -106,8 +106,8 @@ for i in range(len(data)):
 
 yourdeadguys = []
 Mikesdeadguys = []
-yourteam = [teaminfo[0], teaminfo[2], teaminfo[4], teaminfo[6], teaminfo[8], teaminfo[10]]
-currentpokemon = teaminfo[0]    
+#yourteam = [teaminfo[0], teaminfo[2], teaminfo[4], teaminfo[6], teaminfo[8], teaminfo[10]]
+currentpokemon = yourteam[0]    
 
 
 endofturn = "no"

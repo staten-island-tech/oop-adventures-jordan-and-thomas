@@ -1,1 +1,44 @@
-[]
+[
+    "Bulbasaur",
+    [
+        "Tackle",
+        "Vine Whip",
+        "Leech Seed",
+        "Rest"
+    ],
+    "Golem",
+    [
+        "Dig",
+        "Mimic",
+        "Rock Throw",
+        "Bide"
+    ],
+    "Onix",
+    [
+        "Tackle",
+        "Earthquake",
+        "Slam",
+        "Screech"
+    ],
+    "Ekans",
+    [
+        "Wrap",
+        "Leer",
+        "Bite",
+        "Glare"
+    ],
+    "Abra",
+    [
+        "Teleport",
+        "Toxic",
+        "Body Slam",
+        "Take Down"
+    ],
+    "Seel",
+    [
+        "Headbutt",
+        "Rest",
+        "Bubble Beam",
+        "Water Gun"
+    ]
+]
