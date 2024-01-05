@@ -6,6 +6,7 @@ from tryingtofix import Teambuilder
 from tryingtofix import *
 times = 1.5
 import random
+from decimal import Decimal
 turn = 0
 #going = "You"
 
@@ -17,7 +18,83 @@ quiz = open("data.json", encoding="utf8")
 data = json.load(quiz)
 pokemonlist = len(data)
 
+pluh = open("playerteaminfo.json", encoding="utf8")
+inputteam = json.load(pluh)
+inputteamlist = len(inputteam)
+global unique
+unique = ["nah", "id", "win"]
+typeeffect = ["Surfer", "Rosa"]
+global stab
+stab = False
+global meffective1
+meffective1 = 1
+global meffective2
+meffective2 = 1
+global meffective
+meffective = 1
+global twotype
+twotype = False
+global onetype
+onetype = False
+endofturn = "no"
+global pokemonin
+pokemonin = "same"
+global enemyin
+enemyin = "same"
 
+
+
+#enemyhealth = 200
+#Pokemon.teambuilder()
+
+global enemypokemon
+global enemyspeed
+global enemyhealth
+enemypokemon1 = "Raichu"
+enemypokemon = enemypokemon1
+for i in range(len(data)):
+    if enemypokemon == data[i]["Name"]:
+        enemyspeed = data[i]["Speed Stat"]
+        enemyhealth = data[i]["Health Stat"]
+tb = Teambuilder()
+tb.teambuilder()
+pluh = open("playerteaminfo.json", encoding="utf8")
+inputteam = json.load(pluh)
+inputteamlist = len(inputteam)
+enemyparty = ["Raichu", ["Thunderbolt", "Thunder Wave", "Submission", "Surf"]]
+userparty = [inputteam[0], inputteam[2], inputteam[4], inputteam[6], inputteam[8], inputteam[10]]
+userpartystatus = [inputteam[0], "none", inputteam[2], "none", inputteam[4], "none", inputteam[6], "none", inputteam[8], "none", inputteam[10], "none"]
+eliteteamstatus = ["Raichu", "none"]
+for i in range(pokemonlist):
+    if inputteam[0] == data[i]["Name"]:
+        global firstpkhealth
+        firstpkhealth = data[i]["Health Stat"]
+    if inputteam[2] == data[i]["Name"]:
+        global secondpkhealth
+        secondpkhealth = data[i]["Health Stat"]
+    if inputteam[4] == data[i]["Name"]:
+        global thirdpkhealth
+        thirdpkhealth = data[i]["Health Stat"]
+    if inputteam[6] == data[i]["Name"]:
+        global fourthpkhealth
+        fourthpkhealth = data[i]["Health Stat"]
+    if inputteam[8] == data[i]["Name"]:
+        global fifthpkhealth
+        fifthpkhealth = data[i]["Health Stat"]
+    if inputteam[10] == data[i]["Name"]:
+        global sixthpkhealth
+        sixthpkhealth = data[i]["Health Stat"]
+userpartyhealth = [inputteam[0], firstpkhealth, inputteam[2], secondpkhealth, inputteam[4], thirdpkhealth, inputteam[6], fourthpkhealth, inputteam[8], fifthpkhealth, inputteam[10], sixthpkhealth]
+enemypartyhealth = ["Raichu", 230]
+firstpokemon = inputteam[0]
+global currentpokemon
+currentpokemon = firstpokemon
+global currentspeed
+global currenthealth
+for i in range(len(data)):
+    if currentpokemon == data[i]["Name"]:
+        currentspeed = data[i]["Speed Stat"]
+        currenthealth = data[i]["Health Stat"]
 pknumber = [1]
 playerteam = []
 pokemonmoves = []
@@ -34,9 +111,9 @@ currentpokemon = teaminfo[0]
 
 
 endofturn = "no"
-global pokemonin
+
 pokemonin = "same"
-global enemyin
+
 enemyin = "same"
 
 
@@ -80,8 +157,9 @@ class functionality():
     def dead(oppositehealth, oppositepokemon):
         if oppositehealth == 0:
             if going == "Enemy":
-                yourdeadguys.append(currentpokemon)
                 global currentpokemon
+                yourdeadguys.append(currentpokemon)
+                
                 print(oppositepokemon, "has fainted")
                 
                 print(teaminfo)
@@ -622,6 +700,7 @@ class Mike(functionality):
 
         
     def Raichudoing():
+        global enemymove
         global enemypokemon
         Rmoves = ["Double Team", "Toxic", "Thunderbolt", "Surf"]
         if turn == 0:
@@ -632,6 +711,7 @@ class Mike(functionality):
             if "Poison" not in ptype:
                 print("Raichu used Toxic")
                 time.sleep(times)
+                enemymove = "Toxic"
                 enemyuse = "Toxic"
                 functionality.oppositehealththing(going, enemyhealth, "currenthealth")
             
@@ -639,6 +719,7 @@ class Mike(functionality):
             
                 Using.usemove("placeholder", enemyuse, oppositepokemon, oppositehealth, pokemonin, endofturn, turn)
             else:
+                enemymove = "Double Team"
                 print("Raichu used Double Team")
                 #effect of double team
         
@@ -651,10 +732,12 @@ class Mike(functionality):
                     if effective != "super":
                         x = random.randrange(3)
                         if x == 1:
+                            enemymove = "Double Team"
                             print("Raichu used Double Team")
                             #effect of double team
                         if x == 2:
                             print("Raichu used Thunderbolt")
+                            enemymove = "Thunderbolt"
                             for i in range(movelist):
                                 if moves[i]["name"] == "Thunderbolt":
                                     damage = moves[i]["power"]
@@ -663,6 +746,7 @@ class Mike(functionality):
                                     time.sleep(times)
                                     print(currentpokemon, "has", currentpokemonhealth, "health left")
                         if x == 3:
+                            enemymove = "Surf"
                             print("Raichu used Surf")
                             for i in range(movelist):
                                 if moves[i]["name"] == "Surf":
@@ -705,10 +789,11 @@ class Turns(Mike):
         for i in range(pokemonlist):
             if data[i]["Name"] == enemypokemon:
                 enemyspeed = data[i]["Speed Stat"]
+                print("placeholder")
 
 
 
-       def preturn(playerpokemon1, enemypokemon1, enemy):
+    def preturn(playerpokemon1, enemypokemon1, enemy):
         print("You are challenged by", enemy)
         time.sleep(times)
         print("You threw out", playerpokemon1)
