@@ -191,17 +191,17 @@ class functionality():
         if usetype == "Electric" and "Dragon" == ptype or usetype == "Electric" and " Dragon" == ptype:
             effective = "half"
 
-        if usetype == "Grass" and "Fire" == ptype:
+        if usetype == "Grass" and "Fire" == ptype or usetype == "Grass" and " Fire" == ptype:
             effective = "half"
-        if usetype == "Grass" and "Water" == ptype:
+        if usetype == "Grass" and "Water" == ptype or usetype == "Grass" and " Water" == ptype:
             effective = "super"
-        if usetype == "Grass" and "Grass" == ptype:
+        if usetype == "Grass" and "Grass" == ptype or usetype == "Grass" and " Grass" == ptype:
             effective = "half"
-        if usetype == "Grass" and "Poison" == ptype:
+        if usetype == "Grass" and "Poison" == ptype or usetype == "Grass" and " Poison" == ptype:
             effective = "half"
-        if usetype == "Grass" and "Ground" == ptype:
+        if usetype == "Grass" and "Ground" == ptype or usetype == "Grass" and " Ground" == ptype:
             effective = "super"
-        if usetype == "Grass" and "Flying" == ptype:
+        if usetype == "Grass" and "Flying" == ptype or usetype == "Grass" and " Flying" == ptype:
             effective = "half"
         if usetype == "Grass" and "Bug" == ptype:
             effective = "half"
