@@ -323,7 +323,6 @@ class functionality():
         
         if usetype == "Dragon" and "Dragon" == ptype:
             effective = "super"
-        typeeffect[0] = effective
         return(effective)
 
     def damagecalc(damagecalc, move, attackingpk, enemypk):
@@ -369,40 +368,44 @@ class functionality():
             enemytype2 = (data[enemynumber]["Types"])[1]
             print(enemytype1)
             print(enemytype2)
-            f.supereffective(move, enemytype1)
+            typeeffect1 = f.supereffective(move, enemytype1)
             global meffective1
-            if typeeffect[0] == "super":
+            if typeeffect1 == "super":
                 meffective1 = 2
-            if typeeffect[0] == "half":
+            if typeeffect1 == "half":
                 meffective1 = 0.5
-            if typeeffect[0] == "zero":
+            if typeeffect1 == "zero":
                 meffective1 = 0
             else:
                 meffective1 = 1
-            f.supereffective(move, enemytype2)
+            typeeffect2 = f.supereffective(move, enemytype2)
             global meffective2
-            if typeeffect[0] == "super":
+            if typeeffect2 == "super":
                 meffective2 = 2
-            if typeeffect[0] == "half":
+            if typeeffect2 == "half":
                 meffective2 = 0.5
-            if typeeffect[0] == "zero":
+            if typeeffect2 == "zero":
                 meffective2 = 0
             else:
                 meffective2 = 1
+            print(meffective1)
+            print(meffective2)
             global twotype
             twotype = True
         if len(data[enemynumber]["Types"]) == 1:
             enemytype = (data[enemynumber]["Types"])[0]
-            f.supereffective(move, enemytype)
+            print(enemytype)
+            typeeffect = f.supereffective(move, enemytype)
             global meffective
-            if typeeffect[0] == "super":
+            if typeeffect == "super":
                 meffective = 2
-            if typeeffect[0] == "half":
+            if typeeffect == "half":
                 meffective = 0.5
-            if typeeffect[0] == "zero":
+            if typeeffect == "zero":
                 meffective = 0
             else:
                 meffective = 1
+            print(meffective)
         if stab == True:
             math5 *=  decimal.Decimal(1.5)
             print(math5)
@@ -413,6 +416,7 @@ class functionality():
             meffective = decimal.Decimal(meffective1) * decimal.Decimal(meffective2)
             math5 *= decimal.Decimal(meffective)
             print(math5)
+            print("two")
         global movedamage
         movedamage = round(math5)
         if moves[movenumber]["category"] == "None":

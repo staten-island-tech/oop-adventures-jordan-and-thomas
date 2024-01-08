@@ -1,11 +1,4 @@
 [
-    "Sandslash",
-    [
-        "Earthquake",
-        "Strength",
-        "Cut",
-        "Substitute"
-    ],
     "Mew",
     [
         "Flash",
@@ -40,5 +33,12 @@
         "Substitute",
         "Rest",
         "Skull Bash"
+    ],
+    "Moltres",
+    [
+        "Fly",
+        "Substitute",
+        "Rest",
+        "Sky Attack"
     ]
 ]
