@@ -362,6 +362,8 @@ class functionality():
         if moves[movenumber]["type"] in data[attacknumber]["Types"]:
             global stab
             stab = True
+        if not(moves[movenumber]["type"] in data[attacknumber]["Types"]):
+            stab = False
         f = functionality()
         if len(data[enemynumber]["Types"]) == 2:
             enemytype1 = (data[enemynumber]["Types"])[0]
@@ -369,24 +371,44 @@ class functionality():
             print(enemytype1)
             print(enemytype2)
             typeeffect1 = f.supereffective(move, enemytype1)
+            print(f.supereffective(move, enemytype))
             global meffective1
+            global typesuper1
+            typesuper1 = False
+            global typehalf1
+            typehalf1 = False
+            global typezero1
+            typezero1 = False
             if typeeffect1 == "super":
+                typesuper1 = True
                 meffective1 = 2
             if typeeffect1 == "half":
+                typehalf1 = True
                 meffective1 = 0.5
             if typeeffect1 == "zero":
+                typezero1 = True
                 meffective1 = 0
-            else:
+            if typesuper1 != True and typehalf1 != True and typezero1 != True:
                 meffective1 = 1
             typeeffect2 = f.supereffective(move, enemytype2)
+            print(f.supereffective(move, enemytype))
             global meffective2
+            global typesuper2
+            typesuper2 = False
+            global typehalf2
+            typehalf2 = False
+            global typezero2
+            typezero2 = False
             if typeeffect2 == "super":
+                typesuper2 = True
                 meffective2 = 2
             if typeeffect2 == "half":
+                typehalf2 = True
                 meffective2 = 0.5
             if typeeffect2 == "zero":
+                typezero2 = True
                 meffective2 = 0
-            else:
+            if typesuper2 != True and typehalf2 != True and typezero2 != True:
                 meffective2 = 1
             print(meffective1)
             print(meffective2)
@@ -396,14 +418,25 @@ class functionality():
             enemytype = (data[enemynumber]["Types"])[0]
             print(enemytype)
             typeeffect = f.supereffective(move, enemytype)
+            print(typeeffect)
             global meffective
+            global typesuper
+            typesuper = False
+            global typehalf
+            typehalf = False
+            global typezero
+            typezero = False
             if typeeffect == "super":
+                typesuper = True
                 meffective = 2
             if typeeffect == "half":
+                typehalf = True
                 meffective = 0.5
+                print("pluh")
             if typeeffect == "zero":
+                typezero = True
                 meffective = 0
-            else:
+            if typesuper != True and typehalf != True and typezero != True:
                 meffective = 1
             print(meffective)
         if stab == True:
