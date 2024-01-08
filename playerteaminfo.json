@@ -3,42 +3,42 @@
     [
         "Tackle",
         "Vine Whip",
-        "Bide",
-        "Rest"
+        "Growl",
+        "Cut"
     ],
     "Golem",
     [
         "Tackle",
-        "Rock Throw",
-        "Dig",
-        "Mimic"
-    ],
-    "Pinsir",
-    [
-        "Vice Grip",
-        "Bide",
         "Rest",
-        "Cut"
+        "Mimic",
+        "Dig"
     ],
     "Fearow",
     [
         "Peck",
-        "Growl",
+        "Fly",
         "Leer",
-        "Fury Attack"
+        "Growl"
     ],
-    "Ekans",
+    "Slowpoke",
     [
-        "Wrap",
-        "Leer",
-        "Bite",
-        "Glare"
+        "Mimic",
+        "Bide",
+        "Rest",
+        "Dig"
     ],
     "Onix",
     [
         "Bind",
         "Tackle",
-        "Rage",
-        "Dig"
+        "Slam",
+        "Harden"
+    ],
+    "Beedrill",
+    [
+        "Rest",
+        "Cut",
+        "Harden",
+        "Toxic"
     ]
 ]

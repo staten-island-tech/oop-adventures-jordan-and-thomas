@@ -8,6 +8,7 @@ times = 1.5
 import random
 import decimal
 from decimal import Decimal
+global turn
 turn = 0
 #going = "You"
 
@@ -174,15 +175,18 @@ class functionality():
                 #switch in good
         
     
-    def supereffective(supereffective, use, oppositepokemon):
+    def supereffective(supereffective, use, opptype):
         global effective
         effective = "normal"
-        for i in range(pokemonlist):
-            if (data[i]["Name"]) == oppositepokemon:
-                ptype = (data[i]["Types"])
+        #for i in range(pokemonlist):
+            
+            #if opptype in (data[i]["Types"]):
+              #  ptype = (data[i]["Types"])
+        ptype = opptype
         for i in range(movelist):
             if (moves[i]["name"]) == use:
                 usetype = (moves[i]["type"])
+        print(ptype)
 
         if usetype == "Normal" and "Rock" in ptype:
             effective = "half"
@@ -826,7 +830,7 @@ class Mike(functionality):
 
 
         
-    def Raichudoing():
+    def Raichudoing(turn):
         global enemymove
         global enemypokemon
         Rmoves = ["Double Team", "Toxic", "Thunderbolt", "Surf"]
@@ -1012,7 +1016,7 @@ class Turns(Mike):
                     enemypartyhealth[1] = enemyhealth
                     going = "Enemy"
                     time.sleep(times)
-                    Mike.Raichudoing()
+                    Mike.Raichudoing(turn)
                     f.damagecalc(enemymove, enemypokemon1, currentpokemon)
                     enemydamage = movedamage
                     for i in range(len(userpartyhealth)):
@@ -1037,13 +1041,14 @@ class Turns(Mike):
                         for i in range(len(userpartyhealth)):
                             if currentpokemon == userpartyhealth[i - 1]:
                                 currenthealth = userpartyhealth[i]
+                    turn =+1
                 
                
 
                 if "Enemy" in goingfirst:
                     f = functionality()
                     going = "Enemy"
-                    Mike.Raichudoing()
+                    Mike.Raichudoing(turn)
                     f.damagecalc(enemymove, enemypokemon1, currentpokemon)
                     enemydamage = movedamage
                     for i in range(len(userpartyhealth)):
@@ -1095,7 +1100,9 @@ class Turns(Mike):
                                     print(enemypokemon1, "has", enemyhealth, "health left")
                                 if enemyhealth == 0:
                                     print(enemypokemon1, "fainted")
-                        enemypartyhealth[1] = enemyhealth
+                    enemypartyhealth[1] = enemyhealth
+                    
+                    turn =+1
             
 
 
