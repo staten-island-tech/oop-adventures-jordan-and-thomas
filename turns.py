@@ -145,37 +145,37 @@ class functionality():
             if (moves[i]["name"]) == use:
                 usetype = (moves[i]["type"])
 
-        if usetype == "Normal" and "Rock" == ptype:
+        if usetype == "Normal" and "Rock" == ptype or usetype == "Normal" and " Rock" == ptype:
             effective = "half"
-        if usetype == "Normal" and "Ghost" == ptype:
+        if usetype == "Normal" and "Ghost" == ptype or usetype == "Normal" and " Ghost" == ptype:
             effective = "zero"
 
-        if usetype == "Fire" and "Fire" == ptype:
+        if usetype == "Fire" and "Fire" == ptype or usetype == "Fire" and " Fire" == ptype:
             effective = "half"
-        if usetype == "Fire" and "Water" == ptype:
+        if usetype == "Fire" and "Water" == ptype or usetype == "Fire" and " Water" == ptype:
             effective = "half"
-        if usetype == "Fire" and "Grass" == ptype:
+        if usetype == "Fire" and "Grass" == ptype or usetype == "Fire" and " Grass" == ptype:
             effective = "super"
-        if usetype == "Fire" and "Ice" == ptype:
+        if usetype == "Fire" and "Ice" == ptype or usetype == "Fire" and " Ice" == ptype:
             effective = "super"
-        if usetype == "Fire" and "Bug" == ptype:
+        if usetype == "Fire" and "Bug" == ptype or usetype == "Fire" and " Bug" == ptype:
             effective = "super"
-        if usetype == "Fire" and "Rock" == ptype:
+        if usetype == "Fire" and "Rock" == ptype or usetype == "Fire" and " Rock" == ptype:
             effective = "half"
-        if usetype == "Fire" and "Dragon" == ptype:
+        if usetype == "Fire" and "Dragon" == ptype or usetype == "Fire" and " Dragon" == ptype:
             effective = "half"
         
-        if usetype == "Water" and "Fire" == ptype:
+        if usetype == "Water" and "Fire" == ptype or usetype == "Water" and " Fire" == ptype:
             effective = "super"
-        if usetype == "Water" and "Water" == ptype:
+        if usetype == "Water" and "Water" == ptype or usetype == "Water" and " Water" == ptype:
             effective = "half"
-        if usetype == "Water" and "Grass" == ptype:
+        if usetype == "Water" and "Grass" == ptype or usetype == "Water" and " Grass" == ptype:
             effective = "half"
-        if usetype == "Water" and "Ground" == ptype:
+        if usetype == "Water" and "Ground" == ptype or usetype == "Water" and " Ground" == ptype:
             effective = "super"
-        if usetype == "Water" and "Rock" == ptype:
+        if usetype == "Water" and "Rock" == ptype or usetype == "Water" and " Rock" == ptype:
             effective = "super"
-        if usetype == "Water" and "Dragon" == ptype:
+        if usetype == "Water" and "Dragon" == ptype or usetype == "Water" and " Dragon" == ptype:
             effective = "half"
         
         if usetype == "Electric" and "Water" == ptype:
@@ -371,7 +371,7 @@ class functionality():
             print(enemytype1)
             print(enemytype2)
             typeeffect1 = f.supereffective(move, enemytype1)
-            print(f.supereffective(move, enemytype))
+            print(typeeffect1)
             global meffective1
             global typesuper1
             typesuper1 = False
@@ -391,7 +391,7 @@ class functionality():
             if typesuper1 != True and typehalf1 != True and typezero1 != True:
                 meffective1 = 1
             typeeffect2 = f.supereffective(move, enemytype2)
-            print(f.supereffective(move, enemytype))
+            print(typeeffect2)
             global meffective2
             global typesuper2
             typesuper2 = False
@@ -442,11 +442,14 @@ class functionality():
         if stab == True:
             math5 *=  decimal.Decimal(1.5)
             print(math5)
-        if onetype == True:
+        if len(data[enemynumber]["Types"]) == 1:
             math5 *= decimal.Decimal(meffective)
             print(math5)
-        if twotype == True:
+        if len(data[enemynumber]["Types"]) == 2:
+            print(meffective1)
+            print(meffective2)
             meffective = decimal.Decimal(meffective1) * decimal.Decimal(meffective2)
+            print(meffective)
             math5 *= decimal.Decimal(meffective)
             print(math5)
             print("two")
