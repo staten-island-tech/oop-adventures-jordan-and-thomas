@@ -676,7 +676,7 @@ class functionality():
             print(userpk, "healed", healamount)
             print(userpk, "has", currenthealth, "health left")
         if "Hits2to5" in moves[movenumber]["effect"]:
-            hitamount = sample(multiplehits, 1)[0]
+            hitamount = 3 #sample(multiplehits, 1)[0]
             setdamage = damage
             global uniquedamage
             uniquedamage = damage

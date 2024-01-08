@@ -1,45 +1,44 @@
 [
     "Bulbasaur",
     [
-        "Vine Whip",
-        "Growl",
         "Tackle",
-        "Cut"
-    ],
-    "Ekans",
-    [
-        "Bite",
-        "Glare",
-        "Toxic",
-        "Take Down"
-    ],
-    "Zubat",
-    [
-        "Bite",
-        "Supersonic",
-        "Haze",
-        "Toxic"
+        "Vine Whip",
+        "Bide",
+        "Rest"
     ],
     "Golem",
     [
+        "Tackle",
+        "Rock Throw",
         "Dig",
-        "Mimic",
+        "Mimic"
+    ],
+    "Pinsir",
+    [
+        "Vice Grip",
         "Bide",
-        "Rest"
+        "Rest",
+        "Cut"
+    ],
+    "Fearow",
+    [
+        "Peck",
+        "Growl",
+        "Leer",
+        "Fury Attack"
+    ],
+    "Ekans",
+    [
+        "Wrap",
+        "Leer",
+        "Bite",
+        "Glare"
     ],
     "Onix",
     [
         "Bind",
+        "Tackle",
         "Rage",
-        "Slam",
-        "Harden"
-    ],
-    "Poliwag",
-    [
-        "Water Gun",
-        "Water Gun",
-        "Rage",
-        "Rest",
-        "Psywave"
+        "Dig"
     ]
 ]
