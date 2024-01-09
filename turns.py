@@ -288,17 +288,17 @@ class functionality():
         
         if usetype == "Bug" and "Fire" == ptype or usetype == "Bug" and " Fire" == ptype:
             effective = "half"
-        if usetype == "Bug" and "Grass" == ptype:
+        if usetype == "Bug" and "Grass" == ptype or usetype == "Bug" and " Grass" == ptype:
             effective = "super"
-        if usetype == "Bug" and "Fighting" == ptype:
+        if usetype == "Bug" and "Fighting" == ptype or usetype == "Bug" and " Fighting" == ptype:
             effective = "half"
-        if usetype == "Bug" and "Poison" == ptype:
+        if usetype == "Bug" and "Poison" == ptype or usetype == "Bug" and " Poison" == ptype:
             effective = "half"
-        if usetype == "Bug" and "Flying" == ptype:
+        if usetype == "Bug" and "Flying" == ptype or usetype == "Bug" and " Flying" == ptype:
             effective = "half"
-        if usetype == "Bug" and "Psychic" == ptype:
+        if usetype == "Bug" and "Psychic" == ptype or usetype == "Bug" and " Psychic" == ptype:
             effective = "super"
-        if usetype == "Bug" and "Ghost" == ptype:
+        if usetype == "Bug" and "Ghost" == ptype or usetype == "Bug" and " Ghost" == ptype:
             effective = "half"
 
         if usetype == "Rock" and "Fire" == ptype:
