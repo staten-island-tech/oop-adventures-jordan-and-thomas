@@ -301,27 +301,27 @@ class functionality():
         if usetype == "Bug" and "Ghost" == ptype or usetype == "Bug" and " Ghost" == ptype:
             effective = "half"
 
-        if usetype == "Rock" and "Fire" == ptype:
+        if usetype == "Rock" and "Fire" == ptype or usetype == "Rock" and " Fire" == ptype:
             effective = "super"
-        if usetype == "Rock" and "Ice" == ptype:
+        if usetype == "Rock" and "Ice" == ptype or usetype == "Rock" and " Ice" == ptype:
             effective = "super"
-        if usetype == "Rock" and "Fighting" == ptype:
+        if usetype == "Rock" and "Fighting" == ptype or usetype == "Rock" and " Fighting" == ptype:
             effective = "half"
-        if usetype == "Rock" and "Ground" == ptype:
+        if usetype == "Rock" and "Ground" == ptype or usetype == "Rock" and " Ground" == ptype:
             effective = "half"
-        if usetype == "Rock" and "Flying" == ptype:
+        if usetype == "Rock" and "Flying" == ptype or usetype == "Rock" and " Flying" == ptype:
             effective = "super"
-        if usetype == "Rock" and "Bug" == ptype:
+        if usetype == "Rock" and "Bug" == ptype or usetype == "Rock" and " Bug" == ptype:
             effective = "super"
         
-        if usetype == "Ghost" and "Normal" == ptype:
+        if usetype == "Ghost" and "Normal" == ptype or usetype == "Ghost" and " Normal" == ptype:
             effective = "zero"
-        if usetype == "Ghost" and "Psychic" == ptype:
+        if usetype == "Ghost" and "Psychic" == ptype or usetype == "Ghost" and " Psychic" == ptype:
             effective = "super"
-        if usetype == "Ghost" and "Ghost" == ptype:
+        if usetype == "Ghost" and "Ghost" == ptype or usetype == "Ghost" and " Ghost" == ptype:
             effective = "super"
         
-        if usetype == "Dragon" and "Dragon" == ptype:
+        if usetype == "Dragon" and "Dragon" == ptype or usetype == "Dragon" and " Dragon" == ptype:
             effective = "super"
         return(effective)
 
@@ -574,7 +574,7 @@ class Turns(Mike):
         global twotype
         global movedamage
         global uniquedamage
-        while enemypartyhealth[1] != 0 or len(userparty) < 0:
+        while enemypartyhealth[1] != 0 or len(userparty) != 0:
             f = functionality()
             print("Switch Out Or Attack")
             userdo = input("What would you like to do: ")

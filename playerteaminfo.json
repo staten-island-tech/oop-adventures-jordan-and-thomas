@@ -1,31 +1,17 @@
 [
-    "Dragonite",
+    "Venusaur",
     [
-        "Strength",
-        "Surf",
-        "Substitute",
-        "Rest"
-    ],
-    "Sandslash",
-    [
-        "Strength",
         "Cut",
         "Substitute",
-        "Earthquake"
+        "Rest",
+        "Bide"
     ],
-    "Mew",
+    "Charizard",
     [
-        "Flash",
         "Strength",
-        "Surf",
-        "Fly"
-    ],
-    "Mewtwo",
-    [
-        "Flash",
-        "Strength",
-        "Substitute",
-        "Tri Attack"
+        "Fly",
+        "Cut",
+        "Substitute"
     ],
     "Dragonair",
     [
@@ -34,11 +20,25 @@
         "Rest",
         "Skull Bash"
     ],
-    "Dratini",
+    "Seadra",
     [
         "Surf",
         "Substitute",
         "Rest",
         "Skull Bash"
+    ],
+    "Mew",
+    [
+        "Flash",
+        "Strength",
+        "Surf",
+        "Fly"
+    ],
+    "Moltres",
+    [
+        "Fly",
+        "Substitute",
+        "Rest",
+        "Sky Attack"
     ]
 ]
