@@ -1,44 +1,44 @@
 [
-    "Squirtle",
+    "Clefairy",
     [
+        "Sing",
+        "Flash",
         "Strength",
-        "Surf",
+        "Substitute"
+    ],
+    "Clefable",
+    [
+        "Sing",
+        "Light Screen",
+        "Defense Curl",
+        "Growl"
+    ],
+    "Jigglypuff",
+    [
+        "Flash",
+        "Sing",
         "Substitute",
+        "Tri Attack"
+    ],
+    "Wigglytuff",
+    [
+        "Sing",
+        "Double-Edge",
+        "Body Slam",
         "Rest"
     ],
-    "Wartortle",
+    "Chansey",
     [
+        "Sing",
+        "Flash",
+        "Strength",
+        "Substitute"
+    ],
+    "Lapras",
+    [
+        "Sing",
         "Strength",
         "Surf",
-        "Substitute",
-        "Rest"
-    ],
-    "Blastoise",
-    [
-        "Strength",
-        "Surf",
-        "Substitute",
-        "Rest"
-    ],
-    "Butterfree",
-    [
-        "String Shot",
-        "Tackle",
-        "Harden",
-        "Flash"
-    ],
-    "Pidgey",
-    [
-        "Fly",
-        "Substitute",
-        "Rest",
-        "Sky Attack"
-    ],
-    "Pidgeotto",
-    [
-        "Fly",
-        "Substitute",
-        "Rest",
-        "Sky Attack"
+        "Substitute"
     ]
 ]

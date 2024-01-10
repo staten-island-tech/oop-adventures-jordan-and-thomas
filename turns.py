@@ -3,6 +3,7 @@ import time
 import decimal
 from decimal import Decimal
 from random import sample
+import random 
 
 from tryingtofix import Teambuilder
 
@@ -502,7 +503,8 @@ class functionality():
         for i in range(movelist):
             if move == moves[i]["name"]:
                 accnumber = moves[i]["accuracy"]
-        randnumb = sample(accuracycheck, 1)[0]
+        randnumb = random.randint(0,100)
+        print(randnumb)
         if randnumb < accnumber:
             movego = True
         if randnumb == accnumber:
