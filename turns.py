@@ -13,6 +13,7 @@ times = 1.5
 turn = 0
 #going = "You"
 multiplehits = [1, 2, 3, 4]
+accuracynumber = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100]
 test = open("move.json", encoding="utf8")
 moves = json.load(test)
 movelist = len(moves)
@@ -145,185 +146,184 @@ class functionality():
             if (moves[i]["name"]) == use:
                 usetype = (moves[i]["type"])
 
-        if usetype == "Normal" and "Rock" == ptype:
+        if usetype == "Normal" and "Rock" == ptype or usetype == "Normal" and " Rock" == ptype:
             effective = "half"
-        if usetype == "Normal" and "Ghost" == ptype:
+        if usetype == "Normal" and "Ghost" == ptype or usetype == "Normal" and " Ghost" == ptype:
             effective = "zero"
 
-        if usetype == "Fire" and "Fire" == ptype:
+        if usetype == "Fire" and "Fire" == ptype or usetype == "Fire" and " Fire" == ptype:
             effective = "half"
-        if usetype == "Fire" and "Water" == ptype:
+        if usetype == "Fire" and "Water" == ptype or usetype == "Fire" and " Water" == ptype:
             effective = "half"
-        if usetype == "Fire" and "Grass" == ptype:
+        if usetype == "Fire" and "Grass" == ptype or usetype == "Fire" and " Grass" == ptype:
             effective = "super"
-        if usetype == "Fire" and "Ice" == ptype:
+        if usetype == "Fire" and "Ice" == ptype or usetype == "Fire" and " Ice" == ptype:
             effective = "super"
-        if usetype == "Fire" and "Bug" == ptype:
+        if usetype == "Fire" and "Bug" == ptype or usetype == "Fire" and " Bug" == ptype:
             effective = "super"
-        if usetype == "Fire" and "Rock" == ptype:
+        if usetype == "Fire" and "Rock" == ptype or usetype == "Fire" and " Rock" == ptype:
             effective = "half"
-        if usetype == "Fire" and "Dragon" == ptype:
+        if usetype == "Fire" and "Dragon" == ptype or usetype == "Fire" and " Dragon" == ptype:
             effective = "half"
         
-        if usetype == "Water" and "Fire" == ptype:
+        if usetype == "Water" and "Fire" == ptype or usetype == "Water" and " Fire" == ptype:
             effective = "super"
-        if usetype == "Water" and "Water" == ptype:
+        if usetype == "Water" and "Water" == ptype or usetype == "Water" and " Water" == ptype:
             effective = "half"
-        if usetype == "Water" and "Grass" == ptype:
+        if usetype == "Water" and "Grass" == ptype or usetype == "Water" and " Grass" == ptype:
             effective = "half"
-        if usetype == "Water" and "Ground" == ptype:
+        if usetype == "Water" and "Ground" == ptype or usetype == "Water" and " Ground" == ptype:
             effective = "super"
-        if usetype == "Water" and "Rock" == ptype:
+        if usetype == "Water" and "Rock" == ptype or usetype == "Water" and " Rock" == ptype:
             effective = "super"
-        if usetype == "Water" and "Dragon" == ptype:
+        if usetype == "Water" and "Dragon" == ptype or usetype == "Water" and " Dragon" == ptype:
             effective = "half"
         
-        if usetype == "Electric" and "Water" == ptype:
+        if usetype == "Electric" and "Water" == ptype or usetype == "Electric" and " Water" == ptype:
             effective = "super"
-        if usetype == "Electic" and "Electirc" == ptype:
+        if usetype == "Electic" and "Electirc" == ptype or usetype == "Electric" and " Electric" == ptype:
             effective = "half"
-        if usetype == "Electric" and "Grass" == ptype:
+        if usetype == "Electric" and "Grass" == ptype or usetype == "Electric" and " Grass" == ptype:
             effective = "half"
-        if usetype == "Electric" and "Ground" == ptype:
+        if usetype == "Electric" and "Ground" == ptype or usetype == "Electric" and " Ground" == ptype:
             effective = "zero"
-        if usetype == "Electric" and "Flying" == ptype:
+        if usetype == "Electric" and "Flying" == ptype or usetype == "Electric" and " Flying" == ptype:
             effective = "super"
-        if usetype == "Electric" and "Dragon" == ptype:
+        if usetype == "Electric" and "Dragon" == ptype or usetype == "Electric" and " Dragon" == ptype:
             effective = "half"
 
-        if usetype == "Grass" and "Fire" == ptype:
+        if usetype == "Grass" and "Fire" == ptype or usetype == "Grass" and " Fire" == ptype:
             effective = "half"
-        if usetype == "Grass" and "Water" == ptype:
+        if usetype == "Grass" and "Water" == ptype or usetype == "Grass" and " Water" == ptype:
             effective = "super"
-        if usetype == "Grass" and "Grass" == ptype:
+        if usetype == "Grass" and "Grass" == ptype or usetype == "Grass" and " Grass" == ptype:
             effective = "half"
-        if usetype == "Grass" and "Poison" == ptype:
+        if usetype == "Grass" and "Poison" == ptype or usetype == "Grass" and " Poison" == ptype:
             effective = "half"
-        if usetype == "Grass" and "Ground" == ptype:
+        if usetype == "Grass" and "Ground" == ptype or usetype == "Grass" and " Ground" == ptype:
             effective = "super"
-        if usetype == "Grass" and "Flying" == ptype:
+        if usetype == "Grass" and "Flying" == ptype or usetype == "Grass" and " Flying" == ptype:
             effective = "half"
-        if usetype == "Grass" and "Bug" == ptype:
+        if usetype == "Grass" and "Bug" == ptype or usetype == "Grass" and " Bug" == ptype:
             effective = "half"
-        if usetype == "Grass" and "Rock" == ptype:
+        if usetype == "Grass" and "Rock" == ptype or usetype == "Grass" and " Rock" == ptype:
             effective = "super"
-        if usetype == "Grass" and "Dragon" == ptype:
+        if usetype == "Grass" and "Dragon" == ptype or usetype == "Grass" and " Dragon" == ptype:
             effective = "half"
         
-        if usetype == "Ice" and "Fire" == ptype:
+        if usetype == "Ice" and "Fire" == ptype or usetype == "Ice" and " Fire" == ptype:
             effective = "half"
-        if usetype == "Ice" and "Water" == ptype:
+        if usetype == "Ice" and "Water" == ptype or usetype == "Ice" and " Water" == ptype:
             effective = "half"
-        if usetype == "Ice" and "Grass" == ptype:
+        if usetype == "Ice" and "Grass" == ptype or usetype == "Ice" and " Grass" == ptype:
             effective = "super"
-        if usetype == "Ice" and "Ice" == ptype:
+        if usetype == "Ice" and "Ice" == ptype or usetype == "Ice" and " Ice" == ptype:
             effective = "half"
-        if usetype == "Ice" and "Ground" == ptype:
+        if usetype == "Ice" and "Ground" == ptype or usetype == "Ice" and " Ground" == ptype:
             effective = "super"
-        if usetype == "Ice" and "Flying" == ptype:
+        if usetype == "Ice" and "Flying" == ptype or usetype == "Ice" and " Flying" == ptype:
             effective = "super"
-        if usetype == "Ice" and "Dragon" == ptype:
+        if usetype == "Ice" and "Dragon" == ptype or usetype == "ICe" and " Dragon" == ptype:
             effective = "super"
         
-        if usetype == "Fighting" and "Normal" == ptype:
+        if usetype == "Fighting" and "Normal" == ptype or usetype == "Fighting" and " Normal" == ptype:
             effective = "super"
-        if usetype == "Fighting" and "Ice" == ptype:
+        if usetype == "Fighting" and "Ice" == ptype or usetype == "Fighting" and " Ice" == ptype:
             effective = "super"
-        if usetype == "Fighting" and "Poison" == ptype:
+        if usetype == "Fighting" and "Poison" == ptype or usetype == "Fighting" and " Poison" == ptype:
             effective = "half"
-        if usetype == "Fighting" and "Flying" == ptype:
+        if usetype == "Fighting" and "Flying" == ptype or usetype == "Fighting" and " Flying" == ptype:
             effective = "half"
-        if usetype == "Fighting" and "Psychic" == ptype:
+        if usetype == "Fighting" and "Psychic" == ptype or usetype == "Fighting" and " Psychic" == ptype:
             effective = "half"
-        if usetype == "Fighting" and "Bug" == ptype:
+        if usetype == "Fighting" and "Bug" == ptype or usetype == "Fighting" and " Flying" == ptype:
             effective = "half"
-        if usetype == "Fighting" and "Rock" == ptype:
+        if usetype == "Fighting" and "Rock" == ptype or usetype == "Fighting" and " Rock" == ptype:
             effective = "super"
-        if usetype == "Fighting" and "Ghost" == ptype:
+        if usetype == "Fighting" and "Ghost" == ptype or usetype == "Figthing" and " Ghost" == ptype:
             effective = "zero"
         
-        if usetype == "Poison" and "Grass" == ptype:
+        if usetype == "Poison" and "Grass" == ptype or usetype == "Poison" and " Grass" == ptype:
             effective = "super"
-        if usetype == "Poison" and "Poison" == ptype:
+        if usetype == "Poison" and "Poison" == ptype or usetype == "Poison" and " Poison" == ptype:
             effective = "half"
-        if usetype == "Poison" and "Ground" == ptype:
+        if usetype == "Poison" and "Ground" == ptype or usetype == "Poison" and " Ground" == ptype:
             effective = "half"
-        if usetype == "Poison" and "Rock" == ptype:
+        if usetype == "Poison" and "Rock" == ptype or usetype == "Poison" and " Rock" == ptype:
             effective = "half"
-        if usetype == "Poison" and "Ghost" == ptype:
+        if usetype == "Poison" and "Ghost" == ptype or usetype == "Poison" and " Ghost" == ptype:
             effective = "half"
 
-        if usetype == "Ground" and "Fire" == ptype:
+        if usetype == "Ground" and "Fire" == ptype or usetype == "Ground" and " Fire" == ptype:
             effective = "super"
-        if usetype == "Ground" and "Electric" == ptype:
+        if usetype == "Ground" and "Electric" == ptype or usetype == "Ground" and " Electric" == ptype:
             effective = "super"
-        if usetype == "Ground" and "Grass" == ptype:
+        if usetype == "Ground" and "Grass" == ptype or usetype == "Ground" and " Grass" == ptype:
             effective = "half"
-        if usetype == "Ground" and "Poison" == ptype:
+        if usetype == "Ground" and "Poison" == ptype or usetype == "Ground" and " Poison" == ptype:
             effective == "super"
-        if usetype == "Ground" and "Flying" == ptype:
+        if usetype == "Ground" and "Flying" == ptype or usetype == "Ground" and " Flying" == ptype:
             effective == "zero"
-        if usetype == "Ground" and "Bug" == ptype:
+        if usetype == "Ground" and "Bug" == ptype or usetype == "Ground" and " Bug" == ptype:
             effective == "half"
-        if usetype == "Ground" and "Rock" == ptype:
+        if usetype == "Ground" and "Rock" == ptype or usetype == "Ground" and " Rock" == ptype:
             effective = "super"
 
-        if usetype == "Flying" and "Electric" == ptype:
+        if usetype == "Flying" and "Electric" == ptype or usetype == "Flying" and " Electric" == ptype:
             effective = "half"
-        if usetype == "Flying" and "Grass" == ptype:
+        if usetype == "Flying" and "Grass" == ptype or usetype == "Flying" and " Grass" == ptype:
             effective = "super"
-        if usetype == "Flying" and "Fighting" == ptype:
+        if usetype == "Flying" and "Fighting" == ptype or usetype == "Flying" and " Fighting" == ptype:
             effective = "super"
-        if usetype == "Flying" and "Bug" == ptype:
+        if usetype == "Flying" and "Bug" == ptype or usetype == "Flying" and " Bug" == ptype:
             effective = "Bug"
-        if usetype == "Flying" and "Rock" == ptype:
+        if usetype == "Flying" and "Rock" == ptype or usetype == "Flying" and " Rock" == ptype:
             effective = "half"
         
-        if usetype == "Psychic" and "Fighting" == ptype:
+        if usetype == "Psychic" and "Fighting" == ptype or usetype == "Psychic" and " Fighting" == ptype:
             effective = "super"
-        if usetype == "Psychic" and "Poison" == ptype:
+        if usetype == "Psychic" and "Poison" == ptype or usetype == "Psychic" and " Poison" == ptype:
             effective = "super"
-        if usetype == "Psychic" and "Psychic" == ptype:
+        if usetype == "Psychic" and "Psychic" == ptype or usetype == "Psychic" and " Psychic" == ptype:
             effective = "half"
         
-        if usetype == "Bug" and "Fire" == ptype:
+        if usetype == "Bug" and "Fire" == ptype or usetype == "Bug" and " Fire" == ptype:
             effective = "half"
-        if usetype == "Bug" and "Grass" == ptype:
+        if usetype == "Bug" and "Grass" == ptype or usetype == "Bug" and " Grass" == ptype:
             effective = "super"
-        if usetype == "Bug" and "Fighting" == ptype:
+        if usetype == "Bug" and "Fighting" == ptype or usetype == "Bug" and " Fighting" == ptype:
             effective = "half"
-        if usetype == "Bug" and "Poison" == ptype:
+        if usetype == "Bug" and "Poison" == ptype or usetype == "Bug" and " Poison" == ptype:
             effective = "half"
-        if usetype == "Bug" and "Flying" == ptype:
+        if usetype == "Bug" and "Flying" == ptype or usetype == "Bug" and " Flying" == ptype:
             effective = "half"
-        if usetype == "Bug" and "Psychic" == ptype:
+        if usetype == "Bug" and "Psychic" == ptype or usetype == "Bug" and " Psychic" == ptype:
             effective = "super"
-        if usetype == "Bug" and "Ghost" == ptype:
+        if usetype == "Bug" and "Ghost" == ptype or usetype == "Bug" and " Ghost" == ptype:
             effective = "half"
 
-        if usetype == "Rock" and "Fire" == ptype:
+        if usetype == "Rock" and "Fire" == ptype or usetype == "Rock" and " Fire" == ptype:
             effective = "super"
-        if usetype == "Rock" and "Ice" == ptype:
+        if usetype == "Rock" and "Ice" == ptype or usetype == "Rock" and " Ice" == ptype:
             effective = "super"
-        if usetype == "Rock" and "Fighting" == ptype:
+        if usetype == "Rock" and "Fighting" == ptype or usetype == "Rock" and " Fighting" == ptype:
             effective = "half"
-        if usetype == "Rock" and "Ground" == ptype:
+        if usetype == "Rock" and "Ground" == ptype or usetype == "Rock" and " Ground" == ptype:
             effective = "half"
-        if usetype == "Rock" and "Flying" == ptype:
+        if usetype == "Rock" and "Flying" == ptype or usetype == "Rock" and " Flying" == ptype:
             effective = "super"
-        if usetype == "Rock" and "Bug" == ptype:
+        if usetype == "Rock" and "Bug" == ptype or usetype == "Rock" and " Bug" == ptype:
             effective = "super"
         
-        if usetype == "Ghost" and "Normal" == ptype:
+        if usetype == "Ghost" and "Normal" == ptype or usetype == "Ghost" and " Normal" == ptype:
             effective = "zero"
-        if usetype == "Ghost" and "Psychic" == ptype:
+        if usetype == "Ghost" and "Psychic" == ptype or usetype == "Ghost" and " Psychic" == ptype:
             effective = "super"
-        if usetype == "Ghost" and "Ghost" == ptype:
+        if usetype == "Ghost" and "Ghost" == ptype or usetype == "Ghost" and " Ghost" == ptype:
             effective = "super"
         
-        if usetype == "Dragon" and "Dragon" == ptype:
+        if usetype == "Dragon" and "Dragon" == ptype or usetype == "Dragon" and " Dragon" == ptype:
             effective = "super"
-        typeeffect[0] = effective
         return(effective)
 
     def damagecalc(damagecalc, move, attackingpk, enemypk):
@@ -363,56 +363,97 @@ class functionality():
         if moves[movenumber]["type"] in data[attacknumber]["Types"]:
             global stab
             stab = True
+        if not(moves[movenumber]["type"] in data[attacknumber]["Types"]):
+            stab = False
         f = functionality()
         if len(data[enemynumber]["Types"]) == 2:
             enemytype1 = (data[enemynumber]["Types"])[0]
             enemytype2 = (data[enemynumber]["Types"])[1]
             print(enemytype1)
             print(enemytype2)
-            f.supereffective(move, enemytype1)
+            typeeffect1 = f.supereffective(move, enemytype1)
+            print(typeeffect1)
             global meffective1
-            if typeeffect[0] == "super":
+            global typesuper1
+            typesuper1 = False
+            global typehalf1
+            typehalf1 = False
+            global typezero1
+            typezero1 = False
+            if typeeffect1 == "super":
+                typesuper1 = True
                 meffective1 = 2
-            if typeeffect[0] == "half":
+            if typeeffect1 == "half":
+                typehalf1 = True
                 meffective1 = 0.5
-            if typeeffect[0] == "zero":
+            if typeeffect1 == "zero":
+                typezero1 = True
                 meffective1 = 0
-            else:
+            if typesuper1 != True and typehalf1 != True and typezero1 != True:
                 meffective1 = 1
-            f.supereffective(move, enemytype2)
+            typeeffect2 = f.supereffective(move, enemytype2)
+            print(typeeffect2)
             global meffective2
-            if typeeffect[0] == "super":
+            global typesuper2
+            typesuper2 = False
+            global typehalf2
+            typehalf2 = False
+            global typezero2
+            typezero2 = False
+            if typeeffect2 == "super":
+                typesuper2 = True
                 meffective2 = 2
-            if typeeffect[0] == "half":
+            if typeeffect2 == "half":
+                typehalf2 = True
                 meffective2 = 0.5
-            if typeeffect[0] == "zero":
+            if typeeffect2 == "zero":
+                typezero2 = True
                 meffective2 = 0
-            else:
+            if typesuper2 != True and typehalf2 != True and typezero2 != True:
                 meffective2 = 1
+            print(meffective1)
+            print(meffective2)
             global twotype
             twotype = True
         if len(data[enemynumber]["Types"]) == 1:
             enemytype = (data[enemynumber]["Types"])[0]
-            f.supereffective(move, enemytype)
+            print(enemytype)
+            typeeffect = f.supereffective(move, enemytype)
+            print(typeeffect)
             global meffective
-            if typeeffect[0] == "super":
+            global typesuper
+            typesuper = False
+            global typehalf
+            typehalf = False
+            global typezero
+            typezero = False
+            if typeeffect == "super":
+                typesuper = True
                 meffective = 2
-            if typeeffect[0] == "half":
+            if typeeffect == "half":
+                typehalf = True
                 meffective = 0.5
-            if typeeffect[0] == "zero":
+                print("pluh")
+            if typeeffect == "zero":
+                typezero = True
                 meffective = 0
-            else:
+            if typesuper != True and typehalf != True and typezero != True:
                 meffective = 1
+            print(meffective)
         if stab == True:
             math5 *=  decimal.Decimal(1.5)
             print(math5)
-        if onetype == True:
+        if len(data[enemynumber]["Types"]) == 1:
             math5 *= decimal.Decimal(meffective)
             print(math5)
-        if twotype == True:
+        if len(data[enemynumber]["Types"]) == 2:
+            print(meffective1)
+            print(meffective2)
             meffective = decimal.Decimal(meffective1) * decimal.Decimal(meffective2)
+            print(meffective)
             math5 *= decimal.Decimal(meffective)
             print(math5)
+            print("two")
         global movedamage
         movedamage = round(math5)
         if moves[movenumber]["category"] == "None":
@@ -462,7 +503,21 @@ class functionality():
             if not "Poison" in data[enemynumber]["Types"]:
                 enemypk = "afflicted"
         return damage
+    def accuracycheck(accuracycheck, move):
+        for i in range(movelist):
+            if move == moves[i]["name"]:
+                accnumber = moves[i]["accuracy"]
+        randnumb = sample(accuracycheck, 1)[0]
+        if randnumb < accnumber:
+            movego = True
+        if randnumb == accnumber:
+            movego = True
+        if randnumb > accnumber:
+            movego = False
 
+        
+
+        
 
 
 
@@ -534,7 +589,7 @@ class Turns(Mike):
         global twotype
         global movedamage
         global uniquedamage
-        while enemypartyhealth[1] != 0 or len(userparty) < 0:
+        while enemypartyhealth[1] != 0 or len(userparty) != 0:
             f = functionality()
             print("Switch Out Or Attack")
             userdo = input("What would you like to do: ")
