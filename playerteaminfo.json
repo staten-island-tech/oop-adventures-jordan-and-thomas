@@ -1,40 +1,40 @@
 [
-    "Venusaur",
-    [
-        "Cut",
-        "Substitute",
-        "Rest",
-        "Bide"
-    ],
-    "Charizard",
+    "Squirtle",
     [
         "Strength",
+        "Surf",
+        "Substitute",
+        "Rest"
+    ],
+    "Wartortle",
+    [
+        "Strength",
+        "Surf",
+        "Substitute",
+        "Rest"
+    ],
+    "Blastoise",
+    [
+        "Strength",
+        "Surf",
+        "Substitute",
+        "Rest"
+    ],
+    "Butterfree",
+    [
+        "String Shot",
+        "Tackle",
+        "Harden",
+        "Flash"
+    ],
+    "Pidgey",
+    [
         "Fly",
-        "Cut",
-        "Substitute"
-    ],
-    "Dragonair",
-    [
-        "Surf",
         "Substitute",
         "Rest",
-        "Skull Bash"
+        "Sky Attack"
     ],
-    "Seadra",
-    [
-        "Surf",
-        "Substitute",
-        "Rest",
-        "Skull Bash"
-    ],
-    "Mew",
-    [
-        "Flash",
-        "Strength",
-        "Surf",
-        "Fly"
-    ],
-    "Moltres",
+    "Pidgeotto",
     [
         "Fly",
         "Substitute",

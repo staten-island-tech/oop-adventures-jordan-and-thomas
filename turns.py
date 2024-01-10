@@ -13,6 +13,7 @@ times = 1.5
 turn = 0
 #going = "You"
 multiplehits = [1, 2, 3, 4]
+accuracynumber = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100]
 test = open("move.json", encoding="utf8")
 moves = json.load(test)
 movelist = len(moves)
@@ -502,7 +503,21 @@ class functionality():
             if not "Poison" in data[enemynumber]["Types"]:
                 enemypk = "afflicted"
         return damage
+    def accuracycheck(accuracycheck, move):
+        for i in range(movelist):
+            if move == moves[i]["name"]:
+                accnumber = moves[i]["accuracy"]
+        randnumb = sample(accuracycheck, 1)[0]
+        if randnumb < accnumber:
+            movego = True
+        if randnumb == accnumber:
+            movego = True
+        if randnumb > accnumber:
+            movego = False
 
+        
+
+        
 
 
 
