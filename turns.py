@@ -352,14 +352,11 @@ class functionality():
         if moves[movenumber]["category"] == "None":
             attackingpower = userattack
             defendingpower = enemydefense
-        print
         math1 = decimal.Decimal(40) * decimal.Decimal(movepower)
         math2 = decimal.Decimal(attackingpower) / decimal.Decimal(defendingpower)
         math3 = decimal.Decimal(math2) * decimal.Decimal(math1)
         math4 = decimal.Decimal(math3) / decimal.Decimal(50)
         math5 = decimal.Decimal(math4) + decimal.Decimal(2)
-        print(math5)
-        print(len(data[enemynumber]["Types"]))
         if moves[movenumber]["type"] in data[attacknumber]["Types"]:
             global stab
             stab = True
@@ -589,6 +586,8 @@ class Turns(Mike):
         global twotype
         global movedamage
         global uniquedamage
+        global movego
+        print(movego)
         while enemypartyhealth[1] != 0 or len(userparty) != 0:
             f = functionality()
             print("Switch Out Or Attack")
