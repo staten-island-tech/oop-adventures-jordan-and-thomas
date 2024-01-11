@@ -912,12 +912,12 @@ class Mike(functionality):
                         #print("Raichu used Surf")
                     
                     if x == 5:
-                        enemypokemon = "Blizzard"
+                        enemymove = "Blizzard"
 
-    def Charizarddoing():
+    def Charizarddoing(turn):
         global enemymove
         global enemypokemon
-        Cmoves = ["Swords Dance", "Mega Punch", "Earthquake" ]
+        Cmoves = ["Swords Dance", "Mega Punch", "Earthquake", "Fly"]
         y = turn
         Joel = turn - y
         if Joel < 2:
@@ -925,33 +925,160 @@ class Mike(functionality):
         if Joel == 2 or Joel > 2:
             functionality.checks()
             if shouldiswitch != "yes":
-                functionality.supereffective("Fire Blast", currentpokemon)
+                functionality.supereffective("Mega Punch", currentpokemon)
                 if effective == "super":
-                    enemymove = "Fire Blast"
+                    enemymove = "Mega Punch"
                     #print("Raichu used Fire Blast")
 
                 if effective != "super":
-                    functionality.supereffective("Blizzard", currentpokemon)
+                    functionality.supereffective("Earthquake", currentpokemon)
                     if effective == "super":
-                        enemymove = "Blizzard"
+                        enemymove = "Earthquake"
                         #print("Raichu used Surf")
-                        
-                    if effective != "super":
-                        x = random.randrange(5)
-                        if x == 1 or x == 4:
-                            enemymove = "Agility"
-                            #print("Raichu used Agility")
-                           
-                        if x == 2:
-                            enemymove = "Wrap"
-                            #print("Raichu used Thunderbolt")
-                     
-                        if x == 3:
-                            enemymove = "Fire Blast"
-                            #print("Raichu used Surf")
                     
-                        if x == 5:
-                            enemypokemon = "Blizzard"
+                    if effective != "super":
+                        functionality.supereffective("Fly", currentpokemon)
+                        if effective == "super":
+                                enemymove = "Fly"
+       
+                        if effective != "super":
+                            x = random.randrange(3)
+                            if x == 1:
+                                enemymove = "Mega Punch"
+                                #print("Raichu used Agility")
+                           
+                            if x == 2:
+                                enemymove = "Earthquake"
+                                #print("Raichu used Thunderbolt")
+                     
+                            if x == 3:
+                                enemymove = "Fly"
+                                #print("Raichu used Surf")
+    
+    def Gengardoing():
+        global enemymove
+        global enemypokemon
+        Gmoves = ["Mega Drain", "Hypnosis", "Dream Eater", "Psychic"]
+       
+        functionality.checks()
+        if shouldiswitch != "yes":
+            functionality.supereffective("Psychic", currentpokemon)
+            if effective == "super":
+                enemymove = "Psychic"
+                #print("Raichu used Fire Blast")
+       
+            if effective != "super":
+                functionality.supereffective("Mega Drain", currentpokemon)
+                if effective == "super":
+                    enemymove = "Mega Drain"
+                if effective != "super":
+                    for i in range(userpartystatus):
+                        if currentpokemon == userpartystatus[i - 1]:
+                            x = userpartystatus[i]
+                            if x == "asleep":
+                                enemymove = "Dream Eater"
+                            if x != "asleep":
+                                enemymove = "Hypnosis"
+
+                            else:
+                                v = random.randrange(2)
+                                if v == 1:
+                                    enemymove = "Mega Drain"
+                                if v == 2:
+                                    enemymove = "Psychic"
+                                #print("Raichu used Agility")
+
+    def Blastoisedoing(turn):
+        global enemymove
+        global enemypokemon
+        Gmoves = ["Hydro Pump", "Toxic", "Bite", "Ice Beam"]
+        functionality.checks()
+        if shouldiswitch != "yes":
+                functionality.supereffective("Hydro Pump", currentpokemon)
+                if effective == "super":
+                    enemymove = "Hydro Pump"
+                    #print("Raichu used Fire Blast")
+
+                if effective != "super":
+                    functionality.supereffective("Bite", currentpokemon)
+                    if effective == "super":
+                        enemymove = "Bite"
+                        #print("Raichu used Surf")
+                    
+                    if effective != "super":
+                        functionality.supereffective("Ice Beam", currentpokemon)
+                        if effective == "super":
+                                enemymove = "Ice Beam"
+       
+                        if effective != "super":
+                            for i in range(userpartystatus):
+                                if currentpokemon == userpartystatus[i - 1]:
+                                    x = userpartystatus[i]
+                                    if x != "Poisoned":
+                                        enemymove = "Toxic"
+                                    if x == "Poisoned":
+                                        
+                                        x = random.randrange(3)
+                                        if x == 1:
+                                            enemymove = "Hydro Pump"
+                                            #print("Raichu used Agility")
+                           
+                                        if x == 2:
+                                            enemymove = "Bite"
+                                            #print("Raichu used Thunderbolt")
+                     
+                                        if x == 3:
+                                            enemymove = "Ice Beam"
+                                        #print("Raichu used Surf")
+    def Machampdoing():
+        global enemymove
+        global enemypokemon
+        Gmoves = ["Body Slam", "Earthquake", "Rock Slide", "Submission"]
+        functionality.checks()
+        if shouldiswitch != "yes":
+                functionality.supereffective("Body Slam", currentpokemon)
+                if effective == "super":
+                    enemymove = "Body Slam"
+                    #print("Raichu used Fire Blast")
+
+                if effective != "super":
+                    functionality.supereffective("Earthquake", currentpokemon)
+                    if effective == "super":
+                        enemymove = "Earthquake"
+                        #print("Raichu used Surf")
+                    
+                    if effective != "super":
+                        functionality.supereffective("Rock Slide", currentpokemon)
+                        if effective == "super":
+                                enemymove = "Rock Slide"
+       
+                        if effective != "super":
+                            functionality.supereffective("Submission", currentpokemon)
+                            if effective == "super":
+                                enemymove = "Submission"
+                            if effective != "super":
+                                x = random.randrange(4)
+                                if x == 1:
+                                    enemymove = "Body Slam"
+                                    #print("Raichu used Agility")
+                           
+                                if x == 2:
+                                    enemymove = "Earthquake"
+                                    #print("Raichu used Thunderbolt")
+                     
+                                if x == 3:
+                                    enemymove = "Rock Slide"
+                                    #print("Raichu used Surf")
+                                
+                                if x == 4:
+                                    enemymove = "Submission"
+    
+                           
+                         
+        
+        
+
+                    
 
 
 
