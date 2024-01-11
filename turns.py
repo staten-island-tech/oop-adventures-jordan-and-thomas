@@ -575,7 +575,7 @@ class Turns(Mike):
         global twotype
         global movedamage
         global uniquedamage
-        while enemypartyhealth[1] != 0 or len(userparty) != 0:
+        while len(userparty) != 0 or enemypartyhealth[1] != 0:
             f = functionality()
             print("Switch Out Or Attack")
             userdo = input("What would you like to do: ")
@@ -706,6 +706,7 @@ class Turns(Mike):
                                     death = True
                                     break
                             print(userparty)
+                            print(len(userparty))
                             newpk = input("Who will you switch into? ")
                             for i in range(len(userparty)):
                                 if newpk == userparty[i]:
