@@ -1,44 +1,44 @@
 [
-    "Sandslash",
-    [
-        "Earthquake",
-        "Strength",
-        "Cut",
-        "Substitute"
-    ],
-    "Mew",
-    [
-        "Flash",
-        "Strength",
-        "Surf",
-        "Fly"
-    ],
-    "Mewtwo",
-    [
-        "Flash",
-        "Strength",
-        "Substitute",
-        "Tri Attack"
-    ],
-    "Dragonite",
+    "Squirtle",
     [
         "Strength",
         "Surf",
         "Substitute",
         "Rest"
     ],
-    "Dragonair",
+    "Wartortle",
     [
+        "Strength",
         "Surf",
         "Substitute",
-        "Rest",
-        "Skull Bash"
+        "Rest"
     ],
-    "Dratini",
+    "Blastoise",
     [
+        "Strength",
         "Surf",
         "Substitute",
+        "Rest"
+    ],
+    "Butterfree",
+    [
+        "String Shot",
+        "Tackle",
+        "Harden",
+        "Flash"
+    ],
+    "Pidgey",
+    [
+        "Fly",
+        "Substitute",
         "Rest",
-        "Skull Bash"
+        "Sky Attack"
+    ],
+    "Pidgeotto",
+    [
+        "Fly",
+        "Substitute",
+        "Rest",
+        "Sky Attack"
     ]
 ]
