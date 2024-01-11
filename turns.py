@@ -356,6 +356,7 @@ class functionality():
         math3 = decimal.Decimal(math2) * decimal.Decimal(math1)
         math4 = decimal.Decimal(math3) / decimal.Decimal(50)
         math5 = decimal.Decimal(math4) + decimal.Decimal(2)
+        print(math5)
         if moves[movenumber]["type"] in data[attacknumber]["Types"]:
             global stab
             stab = True
@@ -407,15 +408,11 @@ class functionality():
                 meffective2 = 0
             if typesuper2 != True and typehalf2 != True and typezero2 != True:
                 meffective2 = 1
-            print(meffective1)
-            print(meffective2)
             global twotype
             twotype = True
         if len(data[enemynumber]["Types"]) == 1:
             enemytype = (data[enemynumber]["Types"])[0]
-            print(enemytype)
             typeeffect = f.supereffective(move, enemytype)
-            print(typeeffect)
             global meffective
             global typesuper
             typesuper = False
@@ -429,27 +426,18 @@ class functionality():
             if typeeffect == "half":
                 typehalf = True
                 meffective = 0.5
-                print("pluh")
             if typeeffect == "zero":
                 typezero = True
                 meffective = 0
             if typesuper != True and typehalf != True and typezero != True:
                 meffective = 1
-            print(meffective)
         if stab == True:
             math5 *=  decimal.Decimal(1.5)
-            print(math5)
         if len(data[enemynumber]["Types"]) == 1:
             math5 *= decimal.Decimal(meffective)
-            print(math5)
         if len(data[enemynumber]["Types"]) == 2:
-            print(meffective1)
-            print(meffective2)
             meffective = decimal.Decimal(meffective1) * decimal.Decimal(meffective2)
-            print(meffective)
             math5 *= decimal.Decimal(meffective)
-            print(math5)
-            print("two")
         global movedamage
         movedamage = round(math5)
         if moves[movenumber]["category"] == "None":
