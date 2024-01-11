@@ -44,6 +44,8 @@ global pokemonin
 pokemonin = "same"
 global enemyin
 enemyin = "same"
+global fullwipe
+fullwipe = False
 
 
 
@@ -575,7 +577,8 @@ class Turns(Mike):
         global twotype
         global movedamage
         global uniquedamage
-        while len(userparty) != 0 or enemypartyhealth[1] != 0:
+        global fullwipe
+        while fullwipe == False:
             f = functionality()
             print("Switch Out Or Attack")
             userdo = input("What would you like to do: ")
@@ -708,12 +711,15 @@ class Turns(Mike):
                             print(userparty)
                             print(len(userparty))
                             newpk = input("Who will you switch into? ")
-                            for i in range(len(userparty)):
-                                if newpk == userparty[i]:
-                                    currentpokemon = newpk
-                            for i in range(len(userpartyhealth)):
-                                if currentpokemon == userpartyhealth[i - 1]:
-                                    currenthealth = userpartyhealth[i]
+                            if len(userparty) > 0:
+                                for i in range(len(userparty)):
+                                    if newpk == userparty[i]:
+                                        currentpokemon = newpk
+                                for i in range(len(userpartyhealth)):
+                                    if currentpokemon == userpartyhealth[i - 1]:
+                                        currenthealth = userpartyhealth[i]
+                            if len(userparty) == 0:
+                                fullwipe = True
                     if gomove == False:
                         print(enemypokemon, "missed their attack!")
                     if death == False:
@@ -740,6 +746,7 @@ class Turns(Mike):
                                         print(enemypokemon, "has", enemyhealth, "health left")
                                     if enemyhealth == 0:
                                         print(enemypokemon, "fainted")
+                                        fullwipe = True
                                 enemypartyhealth[1] = enemyhealth
                                 if Weezer == False:
                                     print(currentpokemon, "missed their attack!")
