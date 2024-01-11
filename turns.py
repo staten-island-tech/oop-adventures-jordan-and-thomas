@@ -918,6 +918,37 @@ class Mike(functionality):
         global enemymove
         global enemypokemon
         Cmoves = ["Swords Dance", "Mega Punch", ]
+        y = turn
+        #y - turn
+        functionality.checks()
+        if shouldiswitch != "yes":
+            functionality.supereffective("Fire Blast", currentpokemon)
+            if effective == "super":
+                enemymove = "Fire Blast"
+                #print("Raichu used Fire Blast")
+
+            if effective != "super":
+                functionality.supereffective("Blizzard", currentpokemon)
+                if effective == "super":
+                    enemymove = "Blizzard"
+                    #print("Raichu used Surf")
+                        
+                if effective != "super":
+                    x = random.randrange(5)
+                    if x == 1 or x == 4:
+                        enemymove = "Agility"
+                        #print("Raichu used Agility")
+                           
+                    if x == 2:
+                        enemymove = "Wrap"
+                        #print("Raichu used Thunderbolt")
+                     
+                    if x == 3:
+                        enemymove = "Fire Blast"
+                        #print("Raichu used Surf")
+                    
+                    if x == 5:
+                        enemypokemon = "Blizzard"
 
 
 
