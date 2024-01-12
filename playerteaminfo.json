@@ -1,44 +1,44 @@
 [
-    "Bulbasaur",
-    [
-        "Tackle",
-        "Vine Whip",
-        "Growl",
-        "Cut"
-    ],
     "Golem",
     [
         "Tackle",
-        "Rest",
-        "Mimic",
-        "Dig"
+        "Dig",
+        "Rage",
+        "Bide"
+    ],
+    "Bulbasaur",
+    [
+        "Tackle",
+        "Growl",
+        "Cut",
+        "Rest"
     ],
     "Fearow",
     [
         "Peck",
-        "Fly",
+        "Growl",
         "Leer",
-        "Growl"
+        "Agility"
     ],
-    "Slowpoke",
+    "Ekans",
     [
-        "Mimic",
+        "Wrap",
+        "Leer",
+        "Bite",
+        "Glare"
+    ],
+    "Golbat",
+    [
+        "Leech Life",
+        "Bite",
+        "Supersonic",
+        "Haze"
+    ],
+    "Geodude",
+    [
+        "Tackle",
         "Bide",
         "Rest",
-        "Dig"
-    ],
-    "Onix",
-    [
-        "Bind",
-        "Tackle",
-        "Slam",
-        "Harden"
-    ],
-    "Beedrill",
-    [
-        "Rest",
-        "Cut",
-        "Harden",
         "Toxic"
     ]
 ]
