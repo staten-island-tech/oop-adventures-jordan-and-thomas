@@ -366,9 +366,9 @@ class functionality():
         
         if usetype == "Dragon" and "Dragon" in ptype:
             effective = "super"
-        print(effective)
+        
 
-    def typechart( enemypokemon, oppositepokemon):
+    def typechart(enemypokemon, oppositepokemon):
         global matchup
         matchup = "normal"
         for i in range(pokemonlist):
@@ -556,7 +556,7 @@ class functionality():
         
         if enemytype == "Dragon" and "Dragon" in ptype:
             matchup = "super"
-        print(matchup)
+        
 
 
     def pokemoninmoves(currentpokemon):
@@ -711,7 +711,9 @@ class functionality():
         for i in range(pokemonlist):
             if data[i]["Name"] == enemypokemon:
                 Types = data[i]["Types"]
+        
         functionality.typechart(enemypokemon, oppositepokemon)
+        print(matchup)
 
         for i in range(pokemonlist):
             if data[i]["Name"] == "Raichu":
