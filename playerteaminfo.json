@@ -1,40 +1,40 @@
 [
-    "Mew",
-    [
-        "Flash",
-        "Strength",
-        "Surf",
-        "Fly"
-    ],
-    "Mewtwo",
-    [
-        "Flash",
-        "Strength",
-        "Substitute",
-        "Tri Attack"
-    ],
-    "Dragonite",
+    "Squirtle",
     [
         "Strength",
         "Surf",
         "Substitute",
         "Rest"
     ],
-    "Dragonair",
+    "Wartortle",
     [
+        "Strength",
         "Surf",
         "Substitute",
-        "Rest",
-        "Skull Bash"
+        "Rest"
     ],
-    "Dratini",
+    "Blastoise",
     [
+        "Strength",
         "Surf",
         "Substitute",
-        "Rest",
-        "Skull Bash"
+        "Rest"
     ],
-    "Moltres",
+    "Butterfree",
+    [
+        "String Shot",
+        "Tackle",
+        "Harden",
+        "Flash"
+    ],
+    "Pidgey",
+    [
+        "Fly",
+        "Substitute",
+        "Rest",
+        "Sky Attack"
+    ],
+    "Pidgeotto",
     [
         "Fly",
         "Substitute",
