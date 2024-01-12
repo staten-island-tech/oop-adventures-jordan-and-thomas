@@ -1088,6 +1088,10 @@ class Schmovin(Mike):
             Mike.Raichudoing(turn)
         if enemypokemon == "Dragonite":
             Mike.DragoniteDoing(turn)
+        if enemypokemon == "Charizard":
+            Mike.Charizarddoing
+        if enemypokmeon == "Gengar":
+            Mike 
 
 
 
