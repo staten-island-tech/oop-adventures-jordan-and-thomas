@@ -353,6 +353,9 @@ class functionality():
         if moves[movenumber]["category"] == "None":
             attackingpower = userattack
             defendingpower = enemydefense
+        userspeed = data[attacknumber]["Speed Stat"]
+        threshold = userspeed / decimal.Decimal(2)
+        
         math1 = decimal.Decimal(40) * decimal.Decimal(movepower)
         math2 = decimal.Decimal(attackingpower) / decimal.Decimal(defendingpower)
         math3 = decimal.Decimal(math2) * decimal.Decimal(math1)
@@ -572,6 +575,7 @@ class Turns(Mike):
         global movedamage
         global uniquedamage
         global fullwipe
+        global enemyhealth
         while fullwipe == False:
             f = functionality()
             print("Switch Out Or Attack")
@@ -612,6 +616,33 @@ class Turns(Mike):
                     for i in range(len(userpartyhealth)):
                         if currentpokemon == userpartyhealth[i - 1]:
                             currenthealth = userpartyhealth[i]
+                            x = i
+                    if enemydamage == currenthealth or enemydamage > currenthealth:
+                        enemydamage = currenthealth
+                    print("Raichu used", enemymove, )
+                    print("Raichu did", enemydamage, "damage")
+                    currenthealth -= enemydamage
+                    print(currentpokemon, "has", currenthealth, "health left")
+                    userpartyhealth[x] = currenthealth
+                    if currenthealth == 0:
+                        for i in range(len(userparty)):
+                            if currentpokemon == userparty[i]:
+                                userparty.remove(userparty[i])
+                                break
+                        if len(userparty) > 0:
+                            newpk = input("Who will you switch into? ")
+                            for i in range(len(userparty)):
+                                if newpk == userparty[i]:
+                                    currentpokemon = newpk
+                            for i in range(len(userpartyhealth)):
+                                if currentpokemon == userpartyhealth[i - 1]:
+                                    currenthealth = userpartyhealth[i]
+                        if len(userparty) == 0:
+                            fullwipe = True
+                            break
+                if gomove == False:
+                    print(enemypokemon, "missed their attack!")
+            
             if userdo == "Attack" or userdo == "attack":
                 for i in range(inputteamlist):
                     if currentpokemon == inputteam[i - 1]:
@@ -665,14 +696,19 @@ class Turns(Mike):
                         currenthealth -= enemydamage
                         print(currentpokemon, "has", currenthealth, "health left")
                         userpartyhealth[x] = currenthealth
-                        global death
-                        death = False
                         if currenthealth == 0:
                             for i in range(len(userparty)):
                                 if currentpokemon == userparty[i]:
                                     userparty.remove(userparty[i])
-                                    death = True
-                                    break
+                            print(userparty)
+                            if len(userparty) > 0:
+                                newpk = input("Who will you switch into? ")
+                                for i in range(len(userparty)):
+                                    if newpk == userparty[i]:
+                                        currentpokemon = newpk
+                                for i in range(len(userpartyhealth)):
+                                    if currentpokemon == userpartyhealth[i - 1]:
+                                        currenthealth = userpartyhealth[i]
                             print(userparty)
                             print(len(userparty))
                             if len(userparty) > 0:
@@ -719,7 +755,6 @@ class Turns(Mike):
                                     death = True
                                     break
                             print(userparty)
-                            print(len(userparty))
                             if len(userparty) > 0:
                                 newpk = input("Who will you switch into? ")
                                 for i in range(len(userparty)):
