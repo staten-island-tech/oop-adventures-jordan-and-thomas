@@ -355,7 +355,11 @@ class functionality():
             defendingpower = enemydefense
         userspeed = data[attacknumber]["Speed Stat"]
         threshold = userspeed / decimal.Decimal(2)
-        
+        critchance = random.randint(0,255)
+        if threshold < critchance:
+            attackingpower *= 1.5
+            global crithappen
+            crithappen = True
         math1 = decimal.Decimal(40) * decimal.Decimal(movepower)
         math2 = decimal.Decimal(attackingpower) / decimal.Decimal(defendingpower)
         math3 = decimal.Decimal(math2) * decimal.Decimal(math1)
@@ -500,28 +504,6 @@ class functionality():
             movego = False
         return(movego)
 
-        
-
-        
-
-
-
-        
-
-
-
-
-
-
-            
-        
-        
-
-
-
-        
-
-        
  
 
         
@@ -576,16 +558,21 @@ class Turns(Mike):
         global uniquedamage
         global fullwipe
         global enemyhealth
+        global crithappen
         while fullwipe == False:
             f = functionality()
             print("Switch Out Or Attack")
-            userdo = input("What would you like to do: ")
+            userdo = "Haunted by Laufey"
+            while userdo != "Switch" or userdo != "switch" or userdo != "Switch Out" or userdo != "switch out" or userdo != "Switch Out" or userdo != "Attack" or userdo != "attack":
+                userdo = input("What would you like to do: ")
             if userdo == "Switch" or userdo == "switch" or userdo == "Switch Out" or userdo == "switch out" or userdo == "Switch out":
                 for i in range(len(userpartyhealth)):
                     if currentpokemon == userpartyhealth[i - 1]:
                         currenthealth = userpartyhealth[i]
                 print(userparty)
-                switchin = input("Pick a Pokemon to Switch into: ")
+                switchin = "Roses by Kanye West"
+                while not(switchin in userparty):
+                    switchin = input("Pick a Pokemon to Switch into: ")
                 print("You switched into", switchin)
                 currentpokemon = switchin
                 for i in range(len(userpartyhealth)):
@@ -601,6 +588,8 @@ class Turns(Mike):
                     enemydamage = currenthealth
                 print("Raichu used", enemymove)
                 print("Raichu did", enemydamage, "damage")
+                if crithappen == True:
+                    print("It was a crit!")
                 currenthealth = currenthealth - enemydamage
                 print(currentpokemon, "has", currenthealth, "health left")
                 userpartyhealth[x] = currenthealth
@@ -609,7 +598,9 @@ class Turns(Mike):
                         if currentpokemon == userparty[i]:
                             userparty.remove(i)
                     print(userparty)
-                    newpk = input("Who will you switch into? ")
+                    newpk = "Mercury by Steve Lacy"
+                    while not(newpk in userparty):
+                        newpk = input("Who will you switch into? ")
                     for i in range(len(userparty)):
                         if newpk == userparty[i]:
                             currentpokemon = newpk
@@ -630,7 +621,9 @@ class Turns(Mike):
                                 userparty.remove(userparty[i])
                                 break
                         if len(userparty) > 0:
-                            newpk = input("Who will you switch into? ")
+                            newpk = "Drive ME Crazy by Lil Yachty"
+                            while not(newpk in userparty):
+                                newpk = input("Who will you switch into? ")
                             for i in range(len(userparty)):
                                 if newpk == userparty[i]:
                                     currentpokemon = newpk
@@ -648,7 +641,9 @@ class Turns(Mike):
                     if currentpokemon == inputteam[i - 1]:
                         currentmoves = inputteam[i]
                         print(currentmoves)
-                use = input("Pick a move to use: ")
+                use = "Cactus by the Pixies"
+                while not(use in currentmoves):
+                    use = input("Pick a move to use: ")
                 time.sleep(times)
                 Turns.speedcheck(enemyspeed, currentspeed)
             
@@ -669,6 +664,8 @@ class Turns(Mike):
                                 if damage == enemyhealth or damage > enemyhealth:
                                     damage = enemyhealth
                                 print(currentpokemon, "did", damage, "damage")
+                                if crithappen == True:
+                                    print("It was a crit!")
                                 enemyhealth = enemyhealth - damage
                                 time.sleep(times)
                                 if enemyhealth > 0:
@@ -693,6 +690,8 @@ class Turns(Mike):
                             enemydamage = currenthealth
                         print("Raichu used", enemymove, )
                         print("Raichu did", enemydamage, "damage")
+                        if crithappen == True:
+                            print("It was a crit!")
                         currenthealth -= enemydamage
                         print(currentpokemon, "has", currenthealth, "health left")
                         userpartyhealth[x] = currenthealth
@@ -701,18 +700,11 @@ class Turns(Mike):
                                 if currentpokemon == userparty[i]:
                                     userparty.remove(userparty[i])
                             print(userparty)
-                            if len(userparty) > 0:
-                                newpk = input("Who will you switch into? ")
-                                for i in range(len(userparty)):
-                                    if newpk == userparty[i]:
-                                        currentpokemon = newpk
-                                for i in range(len(userpartyhealth)):
-                                    if currentpokemon == userpartyhealth[i - 1]:
-                                        currenthealth = userpartyhealth[i]
-                            print(userparty)
                             print(len(userparty))
                             if len(userparty) > 0:
-                                newpk = input("Who will you switch into? ")
+                                newpk = "Dumb by Nirvana"
+                                while not(newpk in userparty):
+                                    newpk = input("Who will you switch into? ")
                                 for i in range(len(userparty)):
                                     if newpk == userparty[i]:
                                         currentpokemon = newpk
@@ -743,6 +735,8 @@ class Turns(Mike):
                             enemydamage = currenthealth
                         print("Raichu used", enemymove, )
                         print("Raichu did", enemydamage, "damage")
+                        if crithappen == True:
+                            print("It was a crit!")
                         currenthealth -= enemydamage
                         print(currentpokemon, "has", currenthealth, "health left")
                         userpartyhealth[x] = currenthealth
@@ -756,7 +750,9 @@ class Turns(Mike):
                                     break
                             print(userparty)
                             if len(userparty) > 0:
-                                newpk = input("Who will you switch into? ")
+                                newpk = "Wesley's Theory by Kendrick Lamar"
+                                while not(newpk in userparty):
+                                    newpk = input("Who will you switch into? ")
                                 for i in range(len(userparty)):
                                     if newpk == userparty[i]:
                                         currentpokemon = newpk
@@ -773,8 +769,6 @@ class Turns(Mike):
                         going = "You"
                         print("You used", use)
                         time.sleep(times)
-                        # if move effect != None
-                        #Do effect
                         f = functionality()
                         for i in range(len(currentmoves)):
                             if currentmoves[i] == use:
@@ -786,6 +780,8 @@ class Turns(Mike):
                                     if damage == enemyhealth or damage > enemyhealth:
                                         damage = enemyhealth
                                     print(currentpokemon, "did", damage, "damage")
+                                    if crithappen == True:
+                                        print("It was a crit!")
                                     enemyhealth = enemyhealth - damage
                                     time.sleep(times)
                                     if enemyhealth > 0:
@@ -796,7 +792,6 @@ class Turns(Mike):
                                 enemypartyhealth[1] = enemyhealth
                                 if Weezer == False:
                                     print(currentpokemon, "missed their attack!")
-            
 
 
 
@@ -808,21 +803,4 @@ Turns.preturn(firstpokemon, enemypokemon1, "Elite Four Member Mike")
 Turns.turn(firstpokemon, enemypokemon1)
 
         
-#Mike's Team
-#Charizard
-#Dragonite
-#Raichu - Toxic, Thunderbolt, Double Team, Surf
-#Gengar
-#Blastoise
-#Machamp
 
-
-
-
-#Tims team
-#Pikachu - Toxic, Thunderbolt, Double Team, Surf
-#Gyarados - 
-#Moltres
-#Articuno
-#Venusaur
-#Mewtwo
