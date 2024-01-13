@@ -21,12 +21,14 @@ global m4
 global m4check
 global twomove
 global onemove
+global threemove
 class Teambuilder():
     def pickpokemon():
         p = True
         pcheck = True
         twomove = False
         onemove = False
+        threemove = False
         while p == True:
             playerpokemon = input("Type pokemon here ")
             if playerpokemon == "Magikarp":
@@ -35,13 +37,19 @@ class Teambuilder():
             if playerpokemon == "Caterpie":
                 moveamount[0] = 2
                 twomove = True
+            if playerpokemon == "Metapod":
+                moveamount[0] = 3
+                threemove = True
+            if playerpokemon == "Weedle":
+                moveamount[0] = 2
+                twomove = True
             if playerpokemon == "Kakuna":
                 moveamount[0] = 3
                 threemove = True
             if playerpokemon == "Ditto":
                 moveamount[0] = 1
                 onemove = True
-            if twomove == False and onemove == False:
+            if twomove == False and onemove == False and threemove == False:
                 moveamount[0] = 4
             for i in range(len(data)):
                 if playerpokemon == data[i]["Name"]:

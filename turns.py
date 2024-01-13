@@ -530,7 +530,7 @@ class functionality():
         if "Poison" in moves[movenumber]["effect"]:
             if moves[movenumber]["name"] == "Twineedle":
                 poisonchance = random.randint(0, 100)
-                twineedleprob = 20
+                twineedleprob = 100
                 if poisonchance < twineedleprob or poisonchance == twineedleprob:
                     for i in range(len(enemypartystatus)):
                         if enemypk == enemypartystatus[i - 1]:
@@ -661,8 +661,11 @@ class Turns(Mike):
                 userpartyhealth[x] = currenthealth
                 if currenthealth == 0:
                     for i in range(len(userparty)):
+                        print(len(userparty))
+                        print(userparty[i])
                         if currentpokemon == userparty[i]:
-                            userparty.remove(i)
+                            userparty.remove(userparty[i])
+                            break
                     print(userparty)
                     newpk = "Mercury by Steve Lacy"
                     while not(newpk in userparty):

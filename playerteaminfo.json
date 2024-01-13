@@ -6,6 +6,17 @@
         "Poison Sting",
         "Harden"
     ],
+    "Kakuna",
+    [
+        "String Shot",
+        "Poison Sting",
+        "Harden"
+    ],
+    "Weedle",
+    [
+        "String Shot",
+        "Poison Sting"
+    ],
     "Mew",
     [
         "Flash",
@@ -26,19 +37,5 @@
         "Surf",
         "Substitute",
         "Rest"
-    ],
-    "Dragonair",
-    [
-        "Surf",
-        "Substitute",
-        "Rest",
-        "Skull Bash"
-    ],
-    "Dratini",
-    [
-        "Surf",
-        "Substitute",
-        "Rest",
-        "Skull Bash"
     ]
 ]
