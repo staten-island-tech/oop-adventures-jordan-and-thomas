@@ -588,43 +588,30 @@ class Turns(Mike):
                     if currentpokemon == userpartyhealth[i - 1]:
                         currenthealth = userpartyhealth[i]
                         x = i
+                going = "Enemy"
+                time.sleep(times)
                 Mike.Raichudoing()
-                gomove = f.accuracycheck(enemymove)
-                if gomove == True:
-                    f.damagecalc(enemymove, enemypokemon, currentpokemon)
-                    enemydamage = movedamage
+                f.damagecalc(enemymove, enemypokemon1, currentpokemon)
+                enemydamage = movedamage
+                if enemydamage == currenthealth or enemydamage > currenthealth:
+                    enemydamage = currenthealth
+                print("Raichu used", enemymove)
+                print("Raichu did", enemydamage, "damage")
+                currenthealth = currenthealth - enemydamage
+                print(currentpokemon, "has", currenthealth, "health left")
+                userpartyhealth[x] = currenthealth
+                if currenthealth == 0:
+                    for i in range(len(userparty)):
+                        if currentpokemon == userparty[i]:
+                            userparty.remove(i)
+                    print(userparty)
+                    newpk = input("Who will you switch into? ")
+                    for i in range(len(userparty)):
+                        if newpk == userparty[i]:
+                            currentpokemon = newpk
                     for i in range(len(userpartyhealth)):
                         if currentpokemon == userpartyhealth[i - 1]:
                             currenthealth = userpartyhealth[i]
-                            x = i
-                    if enemydamage == currenthealth or enemydamage > currenthealth:
-                        enemydamage = currenthealth
-                    print("Raichu used", enemymove, )
-                    print("Raichu did", enemydamage, "damage")
-                    currenthealth -= enemydamage
-                    print(currentpokemon, "has", currenthealth, "health left")
-                    userpartyhealth[x] = currenthealth
-                    if currenthealth == 0:
-                        for i in range(len(userparty)):
-                            if currentpokemon == userparty[i]:
-                                userparty.remove(userparty[i])
-                                death = True
-                                break
-                        print(userparty)
-                        print(len(userparty))
-                        if len(userparty) > 0:
-                            newpk = input("Who will you switch into? ")
-                            for i in range(len(userparty)):
-                                if newpk == userparty[i]:
-                                    currentpokemon = newpk
-                            for i in range(len(userpartyhealth)):
-                                if currentpokemon == userpartyhealth[i - 1]:
-                                    currenthealth = userpartyhealth[i]
-                        if len(userparty) == 0:
-                            fullwipe = True
-                            break
-                if gomove == False:
-                    print(enemypokemon, "missed their attack!")
             if userdo == "Attack" or userdo == "attack":
                 for i in range(inputteamlist):
                     if currentpokemon == inputteam[i - 1]:
@@ -636,34 +623,31 @@ class Turns(Mike):
             
                 if "User" in goingfirst:
                     f = functionality()
-                    if death == False:
-                        time.sleep(times)
-                        going = "You"
-                        print("You used", use)
-                        time.sleep(times)
-                        # if move effect != None
-                        #Do effect
-                        f = functionality()
-                        for i in range(len(currentmoves)):
-                            if currentmoves[i] == use:
-                                Weezer = f.accuracycheck(use)
-                                if Weezer == True:
-                                    f.damagecalc(use, currentpokemon, enemypokemon1)
-                                    damage = movedamage
-                                    damage = f.specialeffect(use, damage, enemyspeed, enemypokemon, currentpokemon)
-                                    if damage == enemyhealth or damage > enemyhealth:
-                                        damage = enemyhealth
-                                    print(currentpokemon, "did", damage, "damage")
-                                    enemyhealth = enemyhealth - damage
-                                    time.sleep(times)
-                                    if enemyhealth > 0:
-                                        print(enemypokemon, "has", enemyhealth, "health left")
-                                    if enemyhealth == 0:
-                                        print(enemypokemon, "fainted")
-                                        fullwipe = True
-                                enemypartyhealth[1] = enemyhealth
-                                if Weezer == False:
-                                    print(currentpokemon, "missed their attack!")
+                    time.sleep(times)
+                    going = "You"
+                    print("You used", use)
+                    time.sleep(times)
+                    f = functionality()
+                    for i in range(len(currentmoves)):
+                        if currentmoves[i] == use:
+                            Weezer = f.accuracycheck(use)
+                            if Weezer == True:
+                                f.damagecalc(use, currentpokemon, enemypokemon1)
+                                damage = movedamage
+                                damage = f.specialeffect(use, damage, enemyspeed, enemypokemon, currentpokemon)
+                                if damage == enemyhealth or damage > enemyhealth:
+                                    damage = enemyhealth
+                                print(currentpokemon, "did", damage, "damage")
+                                enemyhealth = enemyhealth - damage
+                                time.sleep(times)
+                                if enemyhealth > 0:
+                                    print(enemypokemon, "has", enemyhealth, "health left")
+                                if enemyhealth == 0:
+                                    print(enemypokemon, "fainted")
+                                    fullwipe = True
+                            enemypartyhealth[1] = enemyhealth
+                            if Weezer == False:
+                                print(currentpokemon, "missed their attack!")
                     going = "Enemy"
                     Mike.Raichudoing()
                     gomove = f.accuracycheck(enemymove)
@@ -681,6 +665,7 @@ class Turns(Mike):
                         currenthealth -= enemydamage
                         print(currentpokemon, "has", currenthealth, "health left")
                         userpartyhealth[x] = currenthealth
+                        global death
                         death = False
                         if currenthealth == 0:
                             for i in range(len(userparty)):
@@ -725,6 +710,7 @@ class Turns(Mike):
                         currenthealth -= enemydamage
                         print(currentpokemon, "has", currenthealth, "health left")
                         userpartyhealth[x] = currenthealth
+                        global death
                         death = False
                         if currenthealth == 0:
                             for i in range(len(userparty)):
