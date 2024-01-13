@@ -1,4 +1,11 @@
 [
+    "Beedrill",
+    [
+        "Twineedle",
+        "String Shot",
+        "Poison Sting",
+        "Harden"
+    ],
     "Mew",
     [
         "Flash",
@@ -33,12 +40,5 @@
         "Substitute",
         "Rest",
         "Skull Bash"
-    ],
-    "Moltres",
-    [
-        "Fly",
-        "Substitute",
-        "Rest",
-        "Sky Attack"
     ]
 ]

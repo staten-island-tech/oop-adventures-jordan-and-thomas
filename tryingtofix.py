@@ -32,6 +32,12 @@ class Teambuilder():
             if playerpokemon == "Magikarp":
                 moveamount[0] = 2
                 twomove = True
+            if playerpokemon == "Caterpie":
+                moveamount[0] = 2
+                twomove = True
+            if playerpokemon == "Kakuna":
+                moveamount[0] = 3
+                threemove = True
             if playerpokemon == "Ditto":
                 moveamount[0] = 1
                 onemove = True
@@ -58,6 +64,11 @@ class Teambuilder():
             m2 = True
             m3 = True
             m4 = True
+        if moveamount[0] == 3:
+            m = True
+            m2 = True
+            m3 = True
+            m4 = False
         if moveamount[0] == 2:
             m = True
             m2 = True

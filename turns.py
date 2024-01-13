@@ -46,7 +46,7 @@ global enemyin
 enemyin = "same"
 global fullwipe
 fullwipe = False
-
+words = ["Switch", "switch", "Switch Out", "switch out", "Switch out", "Attack", "attack"]
 
 
 #enemyhealth = 200
@@ -91,6 +91,27 @@ for i in range(pokemonlist):
         sixthpkhealth = data[i]["Health Stat"]
 userpartyhealth = [inputteam[0], firstpkhealth, inputteam[2], secondpkhealth, inputteam[4], thirdpkhealth, inputteam[6], fourthpkhealth, inputteam[8], fifthpkhealth, inputteam[10], sixthpkhealth]
 enemypartyhealth = ["Raichu", 230]
+for i in range(pokemonlist):
+    if inputteam[0] == data[i]["Name"]:
+        global firstpkspeed
+        firstpkspeed = data[i]["Speed Stat"]
+    if inputteam[2] == data[i]["Name"]:
+        global secondpkspeed
+        secondpkspeed = data[i]["Speed Stat"]
+    if inputteam[4] == data[i]["Name"]:
+        global thirdpkspeed
+        thirdpkspeed = data[i]["Speed Stat"]
+    if inputteam[6] == data[i]["Name"]:
+        global fourthpkspeed
+        fourthpkspeed = data[i]["Speed Stat"]
+    if inputteam[8] == data[i]["Name"]:
+        global fifthpkspeed
+        fifthpkspeed = data[i]["Speed Stat"]
+    if inputteam[10] == data[i]["Name"]:
+        global sixthpkspeed
+        sixthpkspeed = data[i]["Speed Stat"]
+userpartyspeed = [inputteam[0], firstpkspeed, inputteam[2], secondpkspeed, inputteam[4], thirdpkspeed, inputteam[6], fourthpkspeed, inputteam[8], fifthpkspeed, inputteam[10], sixthpkspeed]
+enemypartyspeed = ["Raichu", 205]
 firstpokemon = inputteam[0]
 global currentpokemon
 currentpokemon = firstpokemon
@@ -354,12 +375,15 @@ class functionality():
             attackingpower = userattack
             defendingpower = enemydefense
         userspeed = data[attacknumber]["Speed Stat"]
-        threshold = userspeed / decimal.Decimal(2)
+        threshold = userspeed / decimal.Decimal(8)
+
         critchance = random.randint(0,255)
-        if threshold < critchance:
+        if threshold > critchance:
             attackingpower *= 1.5
             global crithappen
             crithappen = True
+        if threshold < critchance or threshold == critchance:
+            crithappen = False
         math1 = decimal.Decimal(40) * decimal.Decimal(movepower)
         math2 = decimal.Decimal(attackingpower) / decimal.Decimal(defendingpower)
         math3 = decimal.Decimal(math2) * decimal.Decimal(math1)
@@ -446,8 +470,16 @@ class functionality():
         movedamage = round(math5)
         if moves[movenumber]["category"] == "None":
             movedamage = 0
-    def specialeffect(specialeffect, move, damage, enemyspeed, enemypk, userpk):
+    def specialeffect(specialeffect, move, damage, enemyspeed, enemypk, userpk, enemypartystatus):
         f = functionality
+        global damageeffect
+        damageeffect = False
+        global newdamage
+        newdamage = False
+        global speedeffect
+        speedeffect = False
+        global newspeed
+        newspeed = False
         for i in range(movelist):
             if move == moves[i]["name"]:
                 movenumber = i
@@ -473,24 +505,43 @@ class functionality():
             print(userpk, "has", currenthealth, "health left")
         if "Hits2to5" in moves[movenumber]["effect"]:
             hitamount = sample(multiplehits, 1)[0]
+            for i in range(hitamount):
+                print(userpk, "did", setdamage, "damage")
+                print("It hit again!")
             setdamage = damage
             global uniquedamage
             uniquedamage = damage
             for i in range(hitamount):
                 print(userpk, "did", setdamage, "damage")
                 uniquedamage += setdamage
-            damage = uniquedamage
-            unique[0] = "Yah"
+            edamage = uniquedamage
+            damageeffect = True
         if "SpeedDown" in moves[movenumber]["effect"]:
             onestage = decimal.Decimal(2) / decimal.Decimal(3)
             enemyspeed *= onestage 
+            espeed = enemyspeed
+            speedeffect = True
+            print(enemypk, "had its speed go down!")
         if "HitsTwice" in moves[movenumber]["effect"]:
-            again = True
-            moveagain = 1
+            edamage = damage * 2
+            print(userpk, "did", damage, "damage")
+            print("It hit again!")
+            damageeffect = True
         if "Poison" in moves[movenumber]["effect"]:
-            if not "Poison" in data[enemynumber]["Types"]:
-                enemypk = "afflicted"
-        return damage
+            if moves[movenumber]["name"] == "Twineedle":
+                poisonchance = random.randint(0, 100)
+                twineedleprob = 20
+                if poisonchance < twineedleprob or poisonchance == twineedleprob:
+                    for i in range(len(enemypartystatus)):
+                        if enemypk == enemypartystatus[i - 1]:
+                            if not("Poison" in data[enemynumber]["Types"]):
+                                enemypartystatus[i] = "Poisoned"
+        if damageeffect == True:
+            newdamage = True
+            return(edamage)
+        if speedeffect == True:
+            newspeed = True
+            return(espeed)
     def accuracycheck(accuracycheck, move):
         for i in range(movelist):
             if move == moves[i]["name"]:
@@ -526,15 +577,15 @@ class Mike(functionality):
 
 
 
-goingfirst = []
+goingfirst = ["pluh"]
 class Turns(Mike):
     def speedcheck(enemyspeed, currentspeed):
         if enemyspeed > currentspeed:
-            goingfirst.append("Enemy")
+            goingfirst[0] = ("Enemy")
         if currentspeed > enemyspeed:
-            goingfirst.append("User")
+            goingfirst[0] = ("User")
         if enemyspeed == currentspeed:
-            goingfirst.append("Enemy")
+            goingfirst[0] = ("Enemy")
     
 
 
@@ -559,11 +610,14 @@ class Turns(Mike):
         global fullwipe
         global enemyhealth
         global crithappen
+        global enemyspeed
+        global newdamage
+        global newspeed
         while fullwipe == False:
             f = functionality()
             print("Switch Out Or Attack")
             userdo = "Haunted by Laufey"
-            while userdo != "Switch" or userdo != "switch" or userdo != "Switch Out" or userdo != "switch out" or userdo != "Switch Out" or userdo != "Attack" or userdo != "attack":
+            while not(userdo in words):
                 userdo = input("What would you like to do: ")
             if userdo == "Switch" or userdo == "switch" or userdo == "Switch Out" or userdo == "switch out" or userdo == "Switch out":
                 for i in range(len(userpartyhealth)):
@@ -579,11 +633,23 @@ class Turns(Mike):
                     if currentpokemon == userpartyhealth[i - 1]:
                         currenthealth = userpartyhealth[i]
                         x = i
+                for i in range(len(userpartyspeed)):
+                    if currentpokemon == userpartyspeed[i-1]:
+                        currentspeed = userpartyspeed[i]
                 going = "Enemy"
                 time.sleep(times)
                 Mike.Raichudoing()
+                gomove = f.accuracycheck(enemymove)
                 f.damagecalc(enemymove, enemypokemon1, currentpokemon)
                 enemydamage = movedamage
+                thing = f.specialeffect(enemymove, enemydamage, currentspeed, currentpokemon, enemypokemon, userpartystatus)
+                if newdamage == True:
+                    damage = thing
+                if newspeed == True:
+                    enemyspeed = thing
+                    for i in range(len(enemypartyspeed)):
+                        if enemypokemon == enemypartyspeed[i - 1]:
+                            enemypartyspeed[i] = enemyspeed 
                 if enemydamage == currenthealth or enemydamage > currenthealth:
                     enemydamage = currenthealth
                 print("Raichu used", enemymove)
@@ -630,6 +696,10 @@ class Turns(Mike):
                             for i in range(len(userpartyhealth)):
                                 if currentpokemon == userpartyhealth[i - 1]:
                                     currenthealth = userpartyhealth[i]
+                            for i in range(len(userpartyspeed)):
+                                if currentpokemon == userpartyspeed[i-1]:
+                                    currentspeed = userpartyspeed[i]
+                                    print(currentspeed)
                         if len(userparty) == 0:
                             fullwipe = True
                             break
@@ -645,6 +715,12 @@ class Turns(Mike):
                 while not(use in currentmoves):
                     use = input("Pick a move to use: ")
                 time.sleep(times)
+                for i in range(len(enemypartyspeed)):
+                    if enemypokemon == enemypartyspeed[i - 1]:
+                        enemyspeed = enemypartyspeed[i]
+                for i in range(len(userpartyspeed)):
+                    if currentpokemon == userpartyspeed[i - 1]:
+                        currentspeed = userpartyspeed[i]
                 Turns.speedcheck(enemyspeed, currentspeed)
             
                 if "User" in goingfirst:
@@ -652,15 +728,22 @@ class Turns(Mike):
                     time.sleep(times)
                     going = "You"
                     print("You used", use)
+                    Weezer = f.accuracycheck(use)
                     time.sleep(times)
                     f = functionality()
                     for i in range(len(currentmoves)):
                         if currentmoves[i] == use:
-                            Weezer = f.accuracycheck(use)
                             if Weezer == True:
                                 f.damagecalc(use, currentpokemon, enemypokemon1)
                                 damage = movedamage
-                                damage = f.specialeffect(use, damage, enemyspeed, enemypokemon, currentpokemon)
+                                thing = f.specialeffect(use, damage, enemyspeed, enemypokemon, currentpokemon, eliteteamstatus)
+                                if newdamage == True:
+                                    damage = thing
+                                if newspeed == True:
+                                    enemyspeed = thing
+                                    for i in range(len(enemypartyspeed)):
+                                        if enemypokemon == enemypartyspeed[i - 1]:
+                                            enemypartyspeed[i] = enemyspeed 
                                 if damage == enemyhealth or damage > enemyhealth:
                                     damage = enemyhealth
                                 print(currentpokemon, "did", damage, "damage")
@@ -668,20 +751,29 @@ class Turns(Mike):
                                     print("It was a crit!")
                                 enemyhealth = enemyhealth - damage
                                 time.sleep(times)
-                                if enemyhealth > 0:
-                                    print(enemypokemon, "has", enemyhealth, "health left")
-                                if enemyhealth == 0:
-                                    print(enemypokemon, "fainted")
-                                    fullwipe = True
-                            enemypartyhealth[1] = enemyhealth
-                            if Weezer == False:
-                                print(currentpokemon, "missed their attack!")
+                    if enemyhealth > 0:
+                        print(enemypokemon, "has", enemyhealth, "health left")
+                    if enemyhealth == 0:
+                        print(enemypokemon, "fainted")
+                        fullwipe = True
+                        break       
+                    enemypartyhealth[1] = enemyhealth
+                    if Weezer == False:
+                        print(currentpokemon, "missed their attack!")
                     going = "Enemy"
                     Mike.Raichudoing()
                     gomove = f.accuracycheck(enemymove)
                     if gomove == True:
                         f.damagecalc(enemymove, enemypokemon, currentpokemon)
                         enemydamage = movedamage
+                        thing = f.specialeffect(enemymove, enemydamage, currentspeed, currentpokemon, enemypokemon, userpartystatus)
+                        if newdamage == True:
+                            damage = thing
+                        if newspeed == True:
+                            currentspeed = thing
+                            for i in range(len(userpartyspeed)):
+                                if currentpokemon == userpartyspeed[i - 1]:
+                                    userpartyspeed[i] = currentspeed 
                         for i in range(len(userpartyhealth)):
                             if currentpokemon == userpartyhealth[i - 1]:
                                 currenthealth = userpartyhealth[i]
@@ -699,8 +791,8 @@ class Turns(Mike):
                             for i in range(len(userparty)):
                                 if currentpokemon == userparty[i]:
                                     userparty.remove(userparty[i])
+                                    break
                             print(userparty)
-                            print(len(userparty))
                             if len(userparty) > 0:
                                 newpk = "Dumb by Nirvana"
                                 while not(newpk in userparty):
@@ -711,6 +803,9 @@ class Turns(Mike):
                                 for i in range(len(userpartyhealth)):
                                     if currentpokemon == userpartyhealth[i - 1]:
                                         currenthealth = userpartyhealth[i]
+                                for i in range(len(userpartyspeed)):
+                                    if currentpokemon == userpartyspeed[i-1]:
+                                        currentspeed = userpartyspeed[i]
                             if len(userparty) == 0:
                                 fullwipe = True
                                 break
@@ -727,6 +822,14 @@ class Turns(Mike):
                     if gomove == True:
                         f.damagecalc(enemymove, enemypokemon, currentpokemon)
                         enemydamage = movedamage
+                        thing = f.specialeffect(enemymove, enemydamage, currentspeed, currentpokemon, enemypokemon, userpartystatus)
+                        if newdamage == True:
+                            damage = thing
+                        if newspeed == True:
+                            currentspeed = thing
+                            for i in range(len(userpartyspeed)):
+                                if currentpokemon == userpartyspeed[i - 1]:
+                                    userpartyspeed[i] = currentspeed 
                         for i in range(len(userpartyhealth)):
                             if currentpokemon == userpartyhealth[i - 1]:
                                 currenthealth = userpartyhealth[i]
@@ -759,6 +862,9 @@ class Turns(Mike):
                                 for i in range(len(userpartyhealth)):
                                     if currentpokemon == userpartyhealth[i - 1]:
                                         currenthealth = userpartyhealth[i]
+                                for i in range(len(userpartyspeed)):
+                                    if currentpokemon == userpartyspeed[i-1]:
+                                        currentspeed = userpartyspeed[i]
                             if len(userparty) == 0:
                                 fullwipe = True
                                 break
@@ -776,7 +882,14 @@ class Turns(Mike):
                                 if Weezer == True:
                                     f.damagecalc(use, currentpokemon, enemypokemon1)
                                     damage = movedamage
-                                    damage = f.specialeffect(use, damage, enemyspeed, enemypokemon, currentpokemon)
+                                    thing = f.specialeffect(use, damage, enemyspeed, enemypokemon, currentpokemon, eliteteamstatus)
+                                    if newdamage == True:
+                                        damage = thing
+                                    if newspeed == True:
+                                        enemyspeed = thing
+                                        for i in range(len(enemypartyspeed)):
+                                            if enemypokemon == enemypartyspeed[i - 1]:
+                                                enemypartyspeed[i] = enemyspeed
                                     if damage == enemyhealth or damage > enemyhealth:
                                         damage = enemyhealth
                                     print(currentpokemon, "did", damage, "damage")
@@ -792,6 +905,33 @@ class Turns(Mike):
                                 enemypartyhealth[1] = enemyhealth
                                 if Weezer == False:
                                     print(currentpokemon, "missed their attack!")
+        for i in range(len(userpartystatus)):
+            if userpartystatus[i] == "Poisoned":
+                for i in range(pokemonlist):
+                    if currentpokemon == data[i]["Name"]:
+                        fullhealth = data[i]["Health Stat"]
+                        poisondamage = decimal.Decimal(fullhealth) / 16
+                        currenthealth = currenthealth - poisondamage
+                        print(currentpokemon, "took", poisondamage, "from the poison!")
+                        for i in range(len(userpartyhealth)):
+                            if currentpokemon == userpartyhealth[i - 1]:
+                                userpartyhealth[i] == currenthealth
+        for i in range(len(eliteteamstatus)):
+            if eliteteamstatus[i] == "Poisoned":
+                for i in range(pokemonlist):
+                    if enemypokemon == data[i]["Name"]:
+                        fullhealth = data[i]["Health Stat"]
+                        poisondamage = decimal.Decimal(fullhealth) / 16
+                        enemyhealth = enemyhealth - poisondamage
+                        print(enemypokemon, "took", poisondamage, "from the poison!")
+                        for i in range(len(enemypartyhealth)):
+                            if enemypokemon == enemypartyhealth[i - 1]:
+                                enemypartyhealth[i] == enemyhealth
+                                print(enemyhealth[i])
+    
+
+
+                
 
 
 
