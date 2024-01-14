@@ -470,7 +470,7 @@ class functionality():
         movedamage = round(math5)
         if moves[movenumber]["category"] == "None":
             movedamage = 0
-    def specialeffect(specialeffect, move, damage, enemyspeed, enemypk, userpk, enemypartystatus):
+    def specialeffect(specialeffect, move, damage, enemyspeed, enemypk, userpk, enemypartystatus, enemymove):
         f = functionality
         global damageeffect
         damageeffect = False
@@ -483,6 +483,9 @@ class functionality():
         for i in range(movelist):
             if move == moves[i]["name"]:
                 movenumber = i
+        for i in range(movelist):
+            if move == moves[i]["name"]:
+                enemymovenumber = i
         for i in range(pokemonlist):
             if enemypk == data[i]["Name"]:
                 enemynumber = i
@@ -538,15 +541,26 @@ class functionality():
                                 enemypartystatus[i] = "Poisoned"
                                 print(enemypk, "got poisoned!")
         if "Paralyze" in moves[movenumber]["effect"]:
-            if moves[movenumber]["name"] == "Thunder":
-                paralyzechance = random.randint(0, 100)
+            if moves[movenumber]["name"] == "Thunder" or moves[movenumber]["name"] == "Thunder Punch" or moves[movenumber]["name"] == "Thunder Shock" or moves[movenumber]["name"] == "Thunderbolt":
                 thunderprob = 10
-                if paralyzechance < thunderprob or paralyzechance == thunderprob:
-                    for i in range(len(enemypartystatus)):
-                        if enemypk == enemypartystatus[i - 1]:
-                            if not("Electric" in data[enemynumber]["Types"]):
-                                enemypartystatus[i] = "Paralyzed"
-                                print(enemypokemon, "got paralyzed!")
+            paralyzechance = random.randint(0, 100)
+            if paralyzechance < thunderprob or paralyzechance == thunderprob:
+                for i in range(len(enemypartystatus)):
+                    if enemypk == enemypartystatus[i - 1]:
+                        if not("Electric" in data[enemynumber]["Types"]):
+                            enemypartystatus[i] = "Paralyzed"
+                            print(enemypokemon, "got paralyzed!")
+        if "AlwaysParalyze" in moves[movenumber]["effect"]:
+            for i in range(len(enemypartystatus)):
+                if enemypk == enemypartystatus[i - 1]:
+                    if not("Electric" in data[enemynumber]["Types"]):
+                        enemypartystatus[i] = "Paralyzed"
+                        print(enemypokemon, "got paralyzed!")
+        if "ItCounter" in moves[movenumber]["effect"]:
+            if "Enemy" in goingfirst:
+                if moves[enemymovenumber]["type"] == "Fighting"
+
+
         if damageeffect == True:
             newdamage = True
             return(edamage)
