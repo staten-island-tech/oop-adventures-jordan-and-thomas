@@ -1,17 +1,10 @@
 [
-    "Beedrill",
+    "Hitmonlee",
     [
-        "Twineedle",
-        "String Shot",
-        "Harden",
-        "Poison Sting"
-    ],
-    "Sandslash",
-    [
+        "Hi Jump Kick",
         "Strength",
-        "Cut",
         "Substitute",
-        "Rock Slide"
+        "Rest"
     ],
     "Mew",
     [
@@ -35,6 +28,13 @@
         "Rest"
     ],
     "Dragonair",
+    [
+        "Surf",
+        "Substitute",
+        "Rest",
+        "Skull Bash"
+    ],
+    "Dratini",
     [
         "Surf",
         "Substitute",

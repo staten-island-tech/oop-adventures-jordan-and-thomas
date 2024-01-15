@@ -2123,7 +2123,7 @@
     {
         "Name": "Mankey",
         "Types": [
-            "Fight"
+            "Fighting"
         ],
         "Learnable Moves": [
             "Scratch",
@@ -2169,7 +2169,7 @@
     {
         "Name": "Primeape",
         "Types": [
-            "Fight"
+            "Fighting"
         ],
         "Learnable Moves": [
             "Scratch",
@@ -2374,7 +2374,7 @@
         "Name": "Poliwrath",
         "Types": [
             "Water",
-            "Fight"
+            "Fighting"
         ],
         "Learnable Moves": [
             "Hypnosis",
@@ -2532,7 +2532,7 @@
     {
         "Name": "Machop",
         "Types": [
-            "Fight"
+            "Fighting"
         ],
         "Learnable Moves": [
             "Karate Chop",
@@ -2572,7 +2572,7 @@
     {
         "Name": "Machoke",
         "Types": [
-            "Fight"
+            "Fighting"
         ],
         "Learnable Moves": [
             "Karate Chop",
@@ -2612,7 +2612,7 @@
     {
         "Name": "Machamp",
         "Types": [
-            "Fight"
+            "Fighting"
         ],
         "Learnable Moves": [
             "Karate Chop",
@@ -4122,7 +4122,7 @@
     {
         "Name": "Hitmonlee",
         "Types": [
-            "Fight"
+            "Fighting"
         ],
         "Learnable Moves": [
             "Double Kick",
@@ -4160,7 +4160,7 @@
     {
         "Name": "Hitmonchan",
         "Types": [
-            "Fight"
+            "Fighting"
         ],
         "Learnable Moves": [
             "Comet Punch",
