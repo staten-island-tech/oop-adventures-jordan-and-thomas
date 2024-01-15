@@ -48,8 +48,6 @@ global fullwipe
 fullwipe = False
 words = ["Switch", "switch", "Switch Out", "switch out", "Switch out", "Attack", "attack"]
 
-youflinch = "no"
-enemyflinch = "no"
 
 #enemyhealth = 200
 #Pokemon.teambuilder()
@@ -556,27 +554,13 @@ class functionality():
                     if enemypk == enemypartystatus[i - 1]:
                         if not("Electric" in data[enemynumber]["Types"]):
                             enemypartystatus[i] = "Paralyzed"
-                            print(enemypokemon, "got paralyzed!")
+                            print(enemypk, "got paralyzed!")
         if "AlwaysParalyze" in moves[movenumber]["effect"]:
             for i in range(len(enemypartystatus)):
                 if enemypk == enemypartystatus[i - 1]:
                     if not("Electric" in data[enemynumber]["Types"]):
                         enemypartystatus[i] = "Paralyzed"
                         print(enemypokemon, "got paralyzed!")
-        if "Flinch" in moves[movenumber]["effect"]:
-            Turns.speedcheck(enemyspeed, currentspeed)
-    
-            flinch = random.randrange(10)
-            if "Enemy" in goingfirst:
-                if flinch == 1:
-                    print(currentpokemon, "flinched and was unable to move")
-                    youflinch = "yes"
-            if "User" in goingfirst:
-                if flinch == 1:
-                    print(enemypokemon, "flinched and was unable to move")
-                    enemyflinch = "no"
-
-                
         if "ItCounter" in moves[movenumber]["effect"]:
             if "Enemy" in goingfirst:
                 if moves[enemymovenumber]["type"] == "Fighting" or moves[enemymovenumber]["type"]:
@@ -601,20 +585,9 @@ class functionality():
             if flinchnumber < flinchchance or flinchnumber == flinchchance:
                 effect = True
                 eeffect = "Flinch"
-        if "SeismicToss" in moves[movenumber]["effect"]:
-            newattack = data[enemynumber]["Attack Stat"]
-            newdefense = data[enemynumber]["Defense Stat"]
-            newspecial = data[enemynumber]["Special Stat"]
-            newhealth = data[enemynumber]["Health Stat"]
-            newspeed = data[enemynumber]["Speed Stat"]
-            print(newattack)
-            print(newdefense)
-            print(newspecial)
-            print(newhealth)
-            print(newspeed)
-            newdata = newattack + newdefense + newspecial + newhealth + newspeed
-            ed = decimal.Deciaml(newdata) / decimal.Decimal(5)
-            edamage = round(ed)
+        if "Seismictoss" in moves[movenumber]["effect"]:
+            edamage = enemynumber
+            print(edamage)
             damageeffect = True
         if effect == True:
             neweffect = True
@@ -729,12 +702,13 @@ class Turns(Mike):
                 gomove = f.accuracycheck(enemymove)
                 if gomove == True:
                     for i in range(len(userpartystatus)):
-                        if userpartystatus[i] == "Paralyzed":
-                            paralyzechance = 25
-                            pchance = random.randint(0, 100)
-                            if pchance < paralyzechance or pchance == paralyzechance:
-                                paralyzed = True
-                                print(enemypokemon, "couldn't move because he was paralyzed")
+                        if currentpokemon == userpartystatus[i - 1]:
+                            if userpartystatus[i] == "Paralyzed":
+                                paralyzechance = 25
+                                pchance = random.randint(0, 100)
+                                if pchance < paralyzechance or pchance == paralyzechance:
+                                    paralyzed = True
+                                    print(enemypokemon, "couldn't move because he was paralyzed")
                     if paralyzed == False:
                         f.damagecalc(enemymove, enemypokemon1, currentpokemon)
                         enemydamage = movedamage
@@ -851,12 +825,13 @@ class Turns(Mike):
                         if currentmoves[i] == use:
                             if Weezer == True:
                                 for i in range(len(userpartystatus)):
-                                    if userpartystatus[i] == "Paralyzed":
-                                        paralyzechance = 25
-                                        pchance = random.randint(0, 100)
-                                        if pchance < paralyzechance or pchance == paralyzechance:
-                                            paralyzed = True
-                                            print(enemypokemon, "couldn't move because he was paralyzed")
+                                    if currentpokemon == userpartystatus[i - 1]:
+                                        if userpartystatus[i] == "Paralyzed":
+                                            paralyzechance = 25
+                                            pchance = random.randint(0, 100)
+                                            if pchance < paralyzechance or pchance == paralyzechance:
+                                                paralyzed = True
+                                                print(currentpokemon, "couldn't move because he was paralyzed")
                                 if paralyzed == False:
                                     f.damagecalc(use, currentpokemon, enemypokemon1)
                                     damage = movedamage
@@ -903,19 +878,19 @@ class Turns(Mike):
                                     newhealth = newhealth - 1
                                     userpartyhealth[i] = newhealth
                                     print(currentpokemon, "took damage from missing their move!")
-<<<<<<< HEAD
                                     print(currentpokemon, "has", newhealth, "health left")
                     going = "Enemy"
                     Mike.Raichudoing()
                     gomove = f.accuracycheck(enemymove)
                     if gomove == True and flinched == False:
-                        for i in range(len(userpartystatus)):
-                            if userpartystatus[i] == "Paralyzed":
-                                paralyzechance = 25
-                                pchance = random.randint(0, 100)
-                                if pchance < paralyzechance or pchance == paralyzechance:
-                                    paralyzed = True
-                                    print(enemypokemon, "couldn't move because he was paralyzed")
+                        for i in range(len(eliteteamstatus)):
+                            if enemypokemon == eliteteamstatus[i - 1]:
+                                if eliteteamstatus[i] == "Paralyzed":
+                                    paralyzechance = 25
+                                    pchance = random.randint(0, 100)
+                                    if pchance < paralyzechance or pchance == paralyzechance:
+                                        paralyzed = True
+                                        print(enemypokemon, "couldn't move because they were paralyzed")
                         if paralyzed == False:
                             f.damagecalc(enemymove, enemypokemon, currentpokemon)
                             enemydamage = movedamage
@@ -939,58 +914,28 @@ class Turns(Mike):
                                 print("It was a crit!")
                             currenthealth -= enemydamage
                             print(currentpokemon, "has", currenthealth, "health left")
-=======
-                                    print(currentpokemon, "has", currenthealth, "health left")
-                    if enemyflinch == "no":                
-                        going = "Enemy"
-                        Mike.Raichudoing()
-                        gomove = f.accuracycheck(enemymove)
-                        if gomove == True:
->>>>>>> 6d51e0e56ea041101cffcdde3a9e3b9cf0990bac
                             for i in range(len(userpartystatus)):
                                 if userpartystatus[i] == "Paralyzed":
-                                    paralyzechance = 25
-                                    pchance = random.randint(0, 100)
-                                    if pchance < paralyzechance or pchance == paralyzechance:
-                                        paralyzed = True
-                                        print(enemypokemon, "couldn't move because he was paralyzed")
-                            if paralyzed == False:
-                                f.damagecalc(enemymove, enemypokemon, currentpokemon)
-                                enemydamage = movedamage
-                                thing = f.specialeffect(enemymove, enemydamage, currentspeed, currentpokemon, enemypokemon, userpartystatus, use, damage, gomove, enemypartyhealth)
-                                if newdamage == True:
-                                    enemydamage = thing
-                                if newspeed == True:
-                                    currentspeed = thing
                                     for i in range(len(userpartyspeed)):
                                         if currentpokemon == userpartyspeed[i - 1]:
-                                            userpartyspeed[i] = currentspeed 
-                                for i in range(len(userpartyhealth)):
-                                    if currentpokemon == userpartyhealth[i - 1]:
-                                        currenthealth = userpartyhealth[i]
-                                        x = i
-                                if enemydamage == currenthealth or enemydamage > currenthealth:
-                                    enemydamage = currenthealth
-                                print("Raichu used", enemymove, )
-                                print("Raichu did", enemydamage, "damage")
-                                if crithappen == True:
-                                print("It was a crit!")
-                                currenthealth -= enemydamage
-                                print(currentpokemon, "has", currenthealth, "health left")
-                                for i in range(len(userpartystatus)):
-                                    if userpartystatus[i] == "Paralyzed":
-                                        for i in range(len(userpartyspeed)):
-                                            if currentpokemon == userpartyspeed[i - 1]:
-                                                speeddown = decimal.Decimal(1) / decimal.Decimal(4)
-                                                currentspeed = userpartyspeed[i]
-                                                cs = currentspeed * speeddown
-                                                currentspeed = round(cs)
-                                                userpartyspeed[i] = currentspeed
-                                userpartyhealth[x] = currenthealth
-                                if currenthealth == 0:
-                                    print(currentpokemon, "has fainted")
+                                            speeddown = decimal.Decimal(1) / decimal.Decimal(4)
+                                            currentspeed = userpartyspeed[i]
+                                            cs = currentspeed * speeddown
+                                            currentspeed = round(cs)
+                                            userpartyspeed[i] = currentspeed
+                            userpartyhealth[x] = currenthealth
+                            if currenthealth == 0:
+                                print(currentpokemon, "has fainted")
+                                for i in range(len(userparty)):
+                                    if currentpokemon == userparty[i]:
+                                        userparty.remove(userparty[i])
+                                        break
+                                print(userparty)
+                                if len(userparty) > 0:
+                                    newpk = "Dumb by Nirvana"
+                                    while not(newpk in userparty):
+                                        newpk = input("Who will you switch into? ")
                                     for i in range(len(userparty)):
-<<<<<<< HEAD
                                         if newpk == userparty[i]:
                                             currentpokemon = newpk
                                     for i in range(len(userpartyhealth)):
@@ -1014,38 +959,6 @@ class Turns(Mike):
                                     enemypartyhealth[i] = newhealth
                                     print(enemypokemon, "took damage from missing their move!")
                                     print(enemypokemon, "has", newhealth, "health left")
-=======
-                                        if currentpokemon == userparty[i]:
-                                            userparty.remove(userparty[i])
-                                            break
-                                    print(userparty)
-                                    if len(userparty) > 0:
-                                        newpk = "Dumb by Nirvana"
-                                        while not(newpk in userparty):
-                                            newpk = input("Who will you switch into? ")
-                                        for i in range(len(userparty)):
-                                            if newpk == userparty[i]:
-                                                currentpokemon = newpk
-                                        for i in range(len(userpartyhealth)):
-                                            if currentpokemon == userpartyhealth[i - 1]:
-                                                currenthealth = userpartyhealth[i]
-                                        for i in range(len(userpartyspeed)):
-                                            if currentpokemon == userpartyspeed[i-1]:
-                                                currentspeed = userpartyspeed[i]
-                                    if len(userparty) == 0:
-                                        fullwipe = True
-                                        break
-                        if gomove == False:
-                            print(enemypokemon, "missed their attack!")
-                            if enemymove == "Hi Jump Kick":
-                                for i in range(len(enemypartyhealth)):
-                                    if enemypokemon == enemypartyhealth[i - 1]:
-                                        newhealth = enemypartyhealth[i]
-                                        newhealth -= 1
-                                        enemypartyhealth[i] = newhealth
-                                        print(enemypokemon, "took damage from missing their move!")
-                                        print(enemypokemon, "has", enemyhealth, "health left")
->>>>>>> 6d51e0e56ea041101cffcdde3a9e3b9cf0990bac
             
                 
                
@@ -1056,13 +969,14 @@ class Turns(Mike):
                     Mike.Raichudoing()
                     gomove = f.accuracycheck(enemymove)
                     if gomove == True:
-                        for i in range(len(userpartystatus)):
-                            if userpartystatus[i] == "Paralyzed":
-                                paralyzechance = 25
-                                pchance = random.randint(0, 100)
-                                if pchance < paralyzechance or pchance == paralyzechance:
-                                    paralyzed = True
-                                    print(enemypokemon, "couldn't move because he was paralyzed")
+                        for i in range(len(eliteteamstatus)):
+                            if enemypokemon == eliteteamstatus[i - 1]:
+                                if eliteteamstatus[i] == "Paralyzed":
+                                    paralyzechance = 25
+                                    pchance = random.randint(0, 100)
+                                    if pchance < paralyzechance or pchance == paralyzechance:
+                                        paralyzed = True
+                                        print(enemypokemon, "couldn't move because he was paralyzed")
                         if paralyzed == False:
                             f.damagecalc(enemymove, enemypokemon, currentpokemon)
                             enemydamage = movedamage
@@ -1139,7 +1053,7 @@ class Turns(Mike):
                                     print(enemypokemon, "took damage from missing their move!")
                                     print(enemypokemon, "has", newhealth, "health left")
             
-                    if death == False and youflinch == "no":
+                    if death == False:
                         time.sleep(times)
                         going = "You"
                         print("You used", use)
@@ -1150,12 +1064,13 @@ class Turns(Mike):
                                 Weezer = f.accuracycheck(use)
                                 if Weezer == True and flinched == False:
                                     for i in range(len(userpartystatus)):
-                                        if userpartystatus[i] == "Paralyzed":
-                                            paralyzechance = 25
-                                            pchance = random.randint(0, 100)
-                                            if pchance < paralyzechance or pchance == paralyzechance:
-                                                paralyzed = True
-                                                print(enemypokemon, "couldn't move because he was paralyzed")
+                                        if currentpokemon == userpartystatus[i - 1]:
+                                            if userpartystatus[i] == "Paralyzed":
+                                                paralyzechance = 25
+                                                pchance = random.randint(0, 100)
+                                                if pchance < paralyzechance or pchance == paralyzechance:
+                                                    paralyzed = True
+                                                    print(currentpokemon, "couldn't move because they were paralyzed")
                                     if paralyzed == False:
                                         f.damagecalc(use, currentpokemon, enemypokemon1)
                                         damage = movedamage

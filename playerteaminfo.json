@@ -8,10 +8,17 @@
     ],
     "Hitmonlee",
     [
+        "Seismic Toss",
         "Strength",
         "Substitute",
-        "Rest",
-        "Skull Bash"
+        "Rest"
+    ],
+    "Hitmonchan",
+    [
+        "Seismic Toss",
+        "Strength",
+        "Substitute",
+        "Rest"
     ],
     "Mew",
     [
@@ -33,12 +40,5 @@
         "Surf",
         "Substitute",
         "Rest"
-    ],
-    "Dragonair",
-    [
-        "Surf",
-        "Substitute",
-        "Rest",
-        "Skull Bash"
     ]
 ]
