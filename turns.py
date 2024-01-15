@@ -531,6 +531,20 @@ class functionality():
             espeed = enemyspeed
             speedeffect = True
             print(enemypk, "had its speed go down!")
+        if "SpeedSharpUp" in moves[movenumber]["effect"]:
+            if going == "Enemy":
+                twostage = decimal.Decimal(4) / decimal.Deciaml(3)
+                enemyspeed *= twostage
+                espeed = enemyspeed
+                speedeffect = True
+                print(enemypk, "had its speed sharply raised!")
+        if "WrapEffect" in moves[movenumber]["effect"]:
+            Poyo = random.randrange(4)
+            Caps = turn
+            if Poyo = 1:
+                while turn - Caps < 2:
+                    
+ 
         if "HitsTwice" in moves[movenumber]["effect"]:
             edamage = damage * 2
             print(userpk, "used", move)
