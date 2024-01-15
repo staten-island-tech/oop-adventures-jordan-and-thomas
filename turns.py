@@ -1,6 +1,5 @@
 import json
-from effects import effect
-from effects import Using
+
 import time
 from tryingtofix import Teambuilder
 from tryingtofix import *
@@ -138,32 +137,32 @@ class functionality():
             oppositehealth = enemyhealth
         if going == "Enemy":
             oppositehealth = currenthealth
-        
-    
+
+
     def oppositepokemon(going, currentpokemon, enemypokemon):
         global oppositepokemon
         if going == "You":
             oppositepokemon = enemypokemon
         if going == "Enemy":
             oppositepokemon = currentpokemon
-    
+
     def afflicted(oppositepokemon, oppositehealth, pokemonin, endofturn, turn):
-        
+
         if pokemonin == "afflicted":
             if endofturn == "end":
                 N = 1
                 damage = N * oppositehealth/16
                 if turn + 1:
                     N += 1
-    
+
     def dead(oppositehealth, oppositepokemon):
         if oppositehealth == 0:
             if going == "Enemy":
                 global currentpokemon
                 yourdeadguys.append(currentpokemon)
-                
+
                 print(oppositepokemon, "has fainted")
-                
+
                 print(yourteam)
                 switchin = input("Pick a Pokemon to switch in: ")
                 if switchin in yourdeadguys or switchin not in yourteam:
@@ -173,20 +172,20 @@ class functionality():
             if going == "You":
                 Mikesdeadguys.append(oppositepokemon)
                 #switch in good
-        
-    
+
+
     def supereffective(supereffective, use, opptype):
         global effective
         effective = "normal"
         #for i in range(pokemonlist):
-            
+
             #if opptype in (data[i]["Types"]):
               #  ptype = (data[i]["Types"])
         ptype = opptype
         for i in range(movelist):
             if (moves[i]["name"]) == use:
                 usetype = (moves[i]["type"])
-        
+
 
         if usetype == "Normal" and "Rock" in ptype:
             effective = "half"
@@ -207,7 +206,7 @@ class functionality():
             effective = "half"
         if usetype == "Fire" and "Dragon" in ptype:
             effective = "half"
-        
+
         if usetype == "Water" and "Fire" in ptype:
             effective = "super"
         if usetype == "Water" and "Water" in ptype:
@@ -220,7 +219,7 @@ class functionality():
             effective = "super"
         if usetype == "Water" and "Dragon" in ptype:
             effective = "half"
-        
+
         if usetype == "Electric" and "Water" in ptype:
             effective = "super"
         if usetype == "Electic" and "Electirc" in ptype:
@@ -252,7 +251,7 @@ class functionality():
             effective = "super"
         if usetype == "Grass" and "Dragon" in ptype:
             effective = "half"
-        
+
         if usetype == "Ice" and "Fire" in ptype:
             effective = "half"
         if usetype == "Ice" and "Water" in ptype:
@@ -267,7 +266,7 @@ class functionality():
             effective = "super"
         if usetype == "Ice" and "Dragon" in ptype:
             effective = "super"
-        
+
         if usetype == "Fighting" and "Normal" in ptype:
             effective = "super"
         if usetype == "Fighting" and "Ice" in ptype:
@@ -284,7 +283,7 @@ class functionality():
             effective = "super"
         if usetype == "Fighting" and "Ghost" in ptype:
             effective = "zero"
-        
+
         if usetype == "Poison" and "Grass" in ptype:
             effective = "super"
         if usetype == "Poison" and "Poison" in ptype:
@@ -321,14 +320,14 @@ class functionality():
             effective = "Bug"
         if usetype == "Flying" and "Rock" in ptype:
             effective = "half"
-        
+
         if usetype == "Psychic" and "Fighting" in ptype:
             effective = "super"
         if usetype == "Psychic" and "Poison" in ptype:
             effective = "super"
         if usetype == "Psychic" and "Psychic" in ptype:
             effective = "half"
-        
+
         if usetype == "Bug" and "Fire" in ptype:
             effective = "half"
         if usetype == "Bug" and "Grass" in ptype:
@@ -356,27 +355,37 @@ class functionality():
             effective = "super"
         if usetype == "Rock" and "Bug" in ptype:
             effective = "super"
-        
+
         if usetype == "Ghost" and "Normal" in ptype:
             effective = "zero"
         if usetype == "Ghost" and "Psychic" in ptype:
             effective = "super"
         if usetype == "Ghost" and "Ghost" in ptype:
             effective = "super"
-        
+
         if usetype == "Dragon" and "Dragon" in ptype:
             effective = "super"
-        
+
 
     def typechart(enemypokemon, oppositepokemon):
         global matchup
+        global matchup1
+        Doit = "yes"
         matchup = "normal"
+        matchup1 = "normal"
         for i in range(pokemonlist):
             if (data[i]["Name"]) == oppositepokemon:
                 ptype = (data[i]["Types"])
         for i in range(pokemonlist):
             if (data[i]["Name"]) == enemypokemon:
-                enemytype = (data[i]["Types"])
+                enemytypes = (data[i]["Types"])
+        enemytype = enemytypes[0]
+        if len(enemytypes) == 1:
+          Doit = "no"
+          
+        if len(enemytypes) == 2:
+          enemytype2 = enemytypes[1]
+        #if len(types) == 2: 2 variables
 
         if enemytype == "Normal" and "Rock" in ptype:
             matchup = "half"
@@ -397,7 +406,7 @@ class functionality():
             matchup = "half"
         if enemytype == "Fire" and "Dragon" in ptype:
             matchup = "half"
-        
+
         if enemytype == "Water" and "Fire" in ptype:
             matchup = "super"
         if enemytype == "Water" and "Water" in ptype:
@@ -410,7 +419,7 @@ class functionality():
             matchup = "super"
         if enemytype == "Water" and "Dragon" in ptype:
             matchup = "half"
-        
+
         if enemytype == "Electric" and "Water" in ptype:
             matchup = "super"
         if enemytype == "Electic" and "Electirc" in ptype:
@@ -442,7 +451,7 @@ class functionality():
             matchup = "super"
         if enemytype == "Grass" and "Dragon" in ptype:
             matchup = "half"
-        
+
         if enemytype == "Ice" and "Fire" in ptype:
             matchup = "half"
         if enemytype == "Ice" and "Water" in ptype:
@@ -457,7 +466,7 @@ class functionality():
             matchup = "super"
         if enemytype == "Ice" and "Dragon" in ptype:
             matchup = "super"
-        
+
         if enemytype == "Fighting" and "Normal" in ptype:
             matchup = "super"
         if enemytype == "Fighting" and "Ice" in ptype:
@@ -474,7 +483,7 @@ class functionality():
             matchup = "super"
         if enemytype == "Fighting" and "Ghost" in ptype:
             matchup = "zero"
-        
+
         if enemytype == "Poison" and "Grass" in ptype:
             matchup = "super"
         if enemytype == "Poison" and "Poison" in ptype:
@@ -511,14 +520,14 @@ class functionality():
             matchup = "Bug"
         if enemytype == "Flying" and "Rock" in ptype:
             matchup = "half"
-        
+
         if enemytype == "Psychic" and "Fighting" in ptype:
             matchup = "super"
         if enemytype == "Psychic" and "Poison" in ptype:
             matchup = "super"
         if enemytype == "Psychic" and "Psychic" in ptype:
             matchup = "half"
-        
+
         if enemytype == "Bug" and "Fire" in ptype:
             matchup = "half"
         if enemytype == "Bug" and "Grass" in ptype:
@@ -546,17 +555,195 @@ class functionality():
             matchup = "super"
         if enemytype == "Rock" and "Bug" in ptype:
             matchup = "super"
-        
+
         if enemytype == "Ghost" and "Normal" in ptype:
             matchup = "zero"
         if enemytype == "Ghost" and "Psychic" in ptype:
             matchup = "super"
         if enemytype == "Ghost" and "Ghost" in ptype:
             matchup = "super"
-        
+
         if enemytype == "Dragon" and "Dragon" in ptype:
             matchup = "super"
-        
+        if Doit == "yes":
+          if enemytype2 == "Normal" and "Rock" in ptype:
+            matchup1 = "half"
+          if enemytype2 == "Normal" and "Ghost" in ptype:
+            matchup1 = "zero"
+
+          if enemytype2 == "Fire" and "Fire" in ptype:
+            matchup1 = "half"
+          if enemytype2 == "Fire" and "Water" in ptype:
+            matchup1 = "half"
+          if enemytype2 == "Fire" and "Grass" in ptype:
+            matchup1 = "super"
+          if enemytype2 == "Fire" and "Ice" in ptype:
+            matchup1 = "super"
+          if enemytype2 == "Fire" and "Bug" in ptype:
+            matchup1 = "super"
+          if enemytype2 == "Fire" and "Rock" in ptype:
+            matchup1 = "half"
+          if enemytype2 == "Fire" and "Dragon" in ptype:
+            matchup1 = "half"
+
+          if enemytype2 == "Water" and "Fire" in ptype:
+            matchup1 = "super"
+          if enemytype2 == "Water" and "Water" in ptype:
+            matchup1 = "half"
+          if enemytype2 == "Water" and "Grass" in ptype:
+            matchup1 = "half"
+          if enemytype2 == "Water" and "Ground" in ptype:
+            matchup1 = "super"
+          if enemytype2 == "Water" and "Rock" in ptype:
+            matchup1 = "super"
+          if enemytype2 == "Water" and "Dragon" in ptype:
+            matchup1 = "half"
+
+          if enemytype2 == "Electric" and "Water" in ptype:
+            matchup1 = "super"
+          if enemytype2 == "Electic" and "Electirc" in ptype:
+            matchup1 = "half"
+          if enemytype2 == "Electric" and "Grass" in ptype:
+            matchup1 = "half"
+          if enemytype2 == "Electric" and "Ground" in ptype:
+            matchup1 = "zero"
+          if enemytype2 == "Electric" and "Flying" in ptype:
+            matchup1 = "super"
+          if enemytype2 == "Electric" and "Dragon" in ptype:
+            matchup1 = "half"
+
+          if enemytype2 == "Grass" and "Fire" in ptype:
+            matchup1 = "half"
+          if enemytype2 == "Grass" and "Water" in ptype:
+            matchup1 = "super"
+          if enemytype2 == "Grass" and "Grass" in ptype:
+            matchup1 = "half"
+          if enemytype2 == "Grass" and "Poison" in ptype:
+            matchup1 = "half"
+          if enemytype2 == "Grass" and "Ground" in ptype:
+            matchup1 = "super"
+          if enemytype2 == "Grass" and "Flying" in ptype:
+            matchup1 = "half"
+          if enemytype2 == "Grass" and "Bug" in ptype:
+            matchup1 = "half"
+          if enemytype2 == "Grass" and "Rock" in ptype:
+            matchup1 = "super"
+          if enemytype2 == "Grass" and "Dragon" in ptype:
+            matchup1 = "half"
+
+          if enemytype2 == "Ice" and "Fire" in ptype:
+            matchup1 = "half"
+          if enemytype2 == "Ice" and "Water" in ptype:
+            matchup1 = "half"
+          if enemytype2 == "Ice" and "Grass" in ptype:
+            matchup1 = "super"
+          if enemytype2 == "Ice" and "Ice" in ptype:
+            matchup1 = "half"
+          if enemytype2 == "Ice" and "Ground" in ptype:
+            matchup1 = "super"
+          if enemytype2 == "Ice" and "Flying" in ptype:
+            matchup1 = "super"
+          if enemytype2 == "Ice" and "Dragon" in ptype:
+            matchup1 = "super"
+
+          if enemytype2 == "Fighting" and "Normal" in ptype:
+            matchup1 = "super"
+          if enemytype2 == "Fighting" and "Ice" in ptype:
+            matchup1 = "super"
+          if enemytype2 == "Fighting" and "Poison" in ptype:
+            matchup1 = "half"
+          if enemytype2 == "Fighting" and "Flying" in ptype:
+            matchup1 = "half"
+          if enemytype2 == "Fighting" and "Psychic" in ptype:
+            matchup1 = "half"
+          if enemytype2 == "Fighting" and "Bug" in ptype:
+            matchup1 = "half"
+          if enemytype2 == "Fighting" and "Rock" in ptype:
+            matchup1 = "super"
+          if enemytype2 == "Fighting" and "Ghost" in ptype:
+            matchup1 = "zero"
+
+          if enemytype2 == "Poison" and "Grass" in ptype:
+            matchup1 = "super"
+          if enemytype2 == "Poison" and "Poison" in ptype:
+            matchup1 = "half"
+          if enemytype2 == "Poison" and "Ground" in ptype:
+            matchup1 = "half"
+          if enemytype2 == "Poison" and "Rock" in ptype:
+            matchup1 = "half"
+          if enemytype2 == "Poison" and "Ghost" in ptype:
+            matchup1 = "half"
+
+          if enemytype2 == "Ground" and "Fire" in ptype:
+            matchup1 = "super"
+          if enemytype2 == "Ground" and "Electric" in ptype:
+            matchup1 = "super"
+          if enemytype2 == "Ground" and "Grass" in ptype:
+            matchup1 = "half"
+          if enemytype2 == "Ground" and "Poison" in ptype:
+            matchup1 == "super"
+          if enemytype2 == "Ground" and "Flying" in ptype:
+            matchup1 == "zero"
+          if enemytype2 == "Ground" and "Bug" in ptype:
+            matchup1 == "half"
+          if enemytype2 == "Ground" and "Rock" in ptype:
+            matchup1 = "super"
+
+          if enemytype2 == "Flying" and "Electric" in ptype:
+            matchup1 = "half"
+          if enemytype2 == "Flying" and "Grass" in ptype:
+            matchup1 = "super"
+          if enemytype2 == "Flying" and "Fighting" in ptype:
+            matchup1 = "super"
+          if enemytype2 == "Flying" and "Bug" in ptype:
+            matchup1 = "Bug"
+          if enemytype2 == "Flying" and "Rock" in ptype:
+            matchup1 = "half"
+
+          if enemytype2 == "Psychic" and "Fighting" in ptype:
+            matchup1 = "super"
+          if enemytype2 == "Psychic" and "Poison" in ptype:
+            matchup1 = "super"
+          if enemytype2 == "Psychic" and "Psychic" in ptype:
+            matchup1 = "half"
+
+          if enemytype2 == "Bug" and "Fire" in ptype:
+            matchup1 = "half"
+          if enemytype2 == "Bug" and "Grass" in ptype:
+            matchup1 = "super"
+          if enemytype2 == "Bug" and "Fighting" in ptype:
+            matchup1 = "half"
+          if enemytype2 == "Bug" and "Poison" in ptype:
+            matchup1 = "half"
+          if enemytype2 == "Bug" and "Flying" in ptype:
+            matchup1 = "half"
+          if enemytype2 == "Bug" and "Psychic" in ptype:
+            matchup1 = "super"
+          if enemytype2 == "Bug" and "Ghost" in ptype:
+            matchup1 = "half"
+
+          if enemytype2 == "Rock" and "Fire" in ptype:
+            matchup1 = "super"
+          if enemytype2 == "Rock" and "Ice" in ptype:
+            matchup1 = "super"
+          if enemytype2 == "Rock" and "Fighting" in ptype:
+            matchup1 = "half"
+          if enemytype2 == "Rock" and "Ground" in ptype:
+            matchup1 = "half"
+          if enemytype2 == "Rock" and "Flying" in ptype:
+            matchup1 = "super"
+          if enemytype2 == "Rock" and "Bug" in ptype:
+            matchup1 = "super"
+
+          if enemytype2 == "Ghost" and "Normal" in ptype:
+            matchup1 = "zero"
+          if enemytype2 == "Ghost" and "Psychic" in ptype:
+            matchup1 = "super"
+          if enemytype2 == "Ghost" and "Ghost" in ptype:
+            matchup1 = "super"
+
+          if enemytype2 == "Dragon" and "Dragon" in ptype:
+            matchup1 = "super"
 
 
     def pokemoninmoves(currentpokemon):
@@ -700,7 +887,7 @@ class functionality():
                 enemypk = "afflicted"
         return damage
 
- 
+
     def checks(enemypokemo, oppositepokemon):
         global enemypokemon
         global enemyspeed
@@ -711,7 +898,6 @@ class functionality():
         for i in range(pokemonlist):
             if data[i]["Name"] == enemypokemon:
                 Types = data[i]["Types"]
-        
         functionality.typechart(enemypokemon, oppositepokemon)
         print(matchup)
 
@@ -737,21 +923,27 @@ class functionality():
         #type chart code for each, make variable each specific pokemons effectiveness
         #for range of 6 or 5- if variablle equals super, then repeat with normal
 
-        if matchup == "half" or "none":
+        if matchup == "half" or "zero" or matchup1 == "half" or "zero":
             functionality.typechart("Raichu", oppositepokemon)
             R = matchup
+            R1 = matchup1
             functionality.typechart("Dragonite", oppositepokemon)
             D = matchup
+            D1 = matchup1
             functionality.typechart("Charizard", oppositepokemon)
             C = matchup
+            C1 = matchup1
             functionality.typechart("Gengar", oppositepokemon)
             G = matchup
+            G1 = matchup1
             functionality.typechart("Blastoise", oppositepokemon)
             B = matchup
+            B1 = matchup1
             functionality.typechart("Machamp", oppositepokemon)
             M = matchup
-            if R != "half" or "none" and "Raichu" not in Mikesdeadguys:
-                
+            M1 = matchup1
+            if R != "half" and R != "zero" and R != "normal" and R1 != "normal" and R1 != "half" and R1 != "zero" and "Raichu" not in Mikesdeadguys:
+
                 enemypokemon = "Raichu"
                 for i in range(len(data)):
                     if enemypokemon == data[i]["Name"]:
@@ -759,16 +951,16 @@ class functionality():
                         enemyhealth = data[i]["Health Stat"]
                 print("Mike M switched into", enemypokemon)
                 shouldiswitch = "yes"
-                
-            elif D != "half" or "none" and "Dragonite" not in Mikesdeadguys:
+
+            elif D != "half" and D != "zero" and D != "normal" and D1 != "normal" and D1 != "half" and D1 != "zero" and "Dragonite" not in Mikesdeadguys:
                 enemypokemon = "Dragonite"
                 if enemypokemon == data[i]["Name"]:
                         enemyspeed = data[i]["Speed Stat"]
                         enemyhealth = data[i]["Health Stat"]
                 print("Mike M switched into Dragonite")
                 shouldiswitch = "yes"
-                
-            elif C != "half" or "none" and "Charizard" not in Mikesdeadguys:
+
+            elif C != "half" and C != "zero" and C != "normal" and C1 != "normal" and C1 != "half" and C1 != "zero" and "Charizard" not in Mikesdeadguys:
                 enemypokemon = "Charizard"
                 if enemypokemon == data[i]["Name"]:
                         enemyspeed = data[i]["Speed Stat"]
@@ -776,7 +968,7 @@ class functionality():
                 print("Mike M switched into Charizard")
                 shouldiswitch = "yes"
 
-            elif G != "half" or "none" and "Gengar" not in Mikesdeadguys:
+            elif G != "half" and G != "zero" and G != "normal" and G1 != "normal" and G1 != "half" and G1 != "zero" and "Gengar" not in Mikesdeadguys:
                 enemypokemon = "Gengar"
                 if enemypokemon == data[i]["Name"]:
                         enemyspeed = data[i]["Speed Stat"]
@@ -784,7 +976,7 @@ class functionality():
                 print("Mike M switched into Gengar")
                 shouldiswitch = "yes"
 
-            elif B != "half" or "none" and "Blastoise" not in Mikesdeadguys:
+            elif B != "half" and B != "zero" and B != "normal" and B1 != "normal" and B1 != "half" and B1 != "zero" and "Blastoise" not in Mikesdeadguys:
                 enemypokemon = "Blastoise"
                 if enemypokemon == data[i]["Name"]:
                         enemyspeed = data[i]["Speed Stat"]
@@ -792,7 +984,7 @@ class functionality():
                 print("Mike M switched into Blastoise")
                 shouldiswitch = "yes"
 
-            elif M != "half" or "none" and "Machamp" not in Mikesdeadguys:
+            elif M != "half" and M != "zero" and M != "normal" and M1 != "normal" and M1 != "half" and M1 != "zero"and "Machamp" not in Mikesdeadguys:
                 enemypokemon = "Machamp"
                 if enemypokemon == data[i]["Name"]:
                         enemyspeed = data[i]["Speed Stat"]
@@ -833,7 +1025,7 @@ class functionality():
                         print("Mike M switched into Machamp")
                         shouldiswitch = "yes"
                         caniswitch = "yes"
-                    
+
 
     def Mikesdeadpks(enemyhealth, oppositepokemon):
         global enemypokemon
@@ -853,7 +1045,7 @@ class functionality():
             functionality.typechart("Machamp", oppositepokemon)
             M = matchup
             if R != "half" or "none" and "Raichu" not in Mikesdeadguys:
-                
+
                 enemypokemon = "Raichu"
                 for i in range(len(data)):
                     if enemypokemon == data[i]["Name"]:
@@ -861,7 +1053,7 @@ class functionality():
                         enemyhealth = data[i]["Health Stat"]
                 print("Mike M switched into", enemypokemon)
                 shouldiswitch = "yes"
-                
+
             elif D != "half" or "none" and "Dragonite" not in Mikesdeadguys:
                 enemypokemon = "Dragonite"
                 if enemypokemon == data[i]["Name"]:
@@ -869,7 +1061,7 @@ class functionality():
                         enemyhealth = data[i]["Health Stat"]
                 print("Mike M switched into Dragonite")
                 shouldiswitch = "yes"
-                
+
             elif C != "half" or "none" and "Charizard" not in Mikesdeadguys:
                 enemypokemon = "Charizard"
                 if enemypokemon == data[i]["Name"]:
@@ -937,7 +1129,7 @@ class functionality():
                         caniswitch = "yes"
 
 
-    
+
 
 
 
@@ -946,15 +1138,15 @@ class functionality():
 class Mike(functionality):
     MikeTeam = ["Raichu", "Dragonite", "Charizard", "Gengar", "Blastoise", "Machamp"]
 
-    
-        
-   
 
 
 
 
 
-        
+
+
+
+
     def Raichudoing(turn):
         global enemymove
         global enemypokemon
@@ -967,12 +1159,12 @@ class Mike(functionality):
             if "Poison" not in ptype:
                 #print("Raichu used Toxic")
                 enemymove = "Toxic"
-               
+
             else:
                 enemymove = "Double Team"
                 #print("Raichu used Double Team")
-               
-        
+
+
         if turn != 0:
             functionality.checks(enemypokemon, currentpokemon)
             if shouldiswitch != "yes":
@@ -986,7 +1178,7 @@ class Mike(functionality):
                     if effective == "super":
                         enemymove = "Surf"
                         #print("Raichu used Surf")
-                        
+
                     if effective != "super":
                         for i in range(userpartystatus):
                             if currentpokemon == userpartystatus[i - 1]:
@@ -998,22 +1190,22 @@ class Mike(functionality):
                                     if x == 1 or x == 4:
                                         enemymove = "Double Team"
                                         #print("Raichu used Double Team")
-                           
+
                                     if x == 2:
                                         enemymove = "Thunderbolt"
                                         #print("Raichu used Thunderbolt")
-                     
+
                                     if x == 3:
                                         enemymove = "Surf"
                                         #print("Raichu used Surf")
-                           
-                
-    
+
+
+
     def DragoniteDoing(turn):
         global enemymove
         global enemypokemon
         Dmoves = ["Agility", "Wrap", "Fire Blast", "Blizzard"]
-       
+
         functionality.checks(enemypokemon, currentpokemon)
         if shouldiswitch != "yes":
             functionality.supereffective("Fire Blast", currentpokemon)
@@ -1026,21 +1218,21 @@ class Mike(functionality):
                 if effective == "super":
                     enemymove = "Blizzard"
                     #print("Raichu used Surf")
-                        
+
                 if effective != "super":
                     x = random.randrange(5)
                     if x == 1 or x == 4:
                         enemymove = "Agility"
                         #print("Raichu used Agility")
-                           
+
                     if x == 2:
                         enemymove = "Wrap"
                         #print("Raichu used Thunderbolt")
-                     
+
                     if x == 3:
                         enemymove = "Fire Blast"
                         #print("Raichu used Surf")
-                    
+
                     if x == 5:
                         enemymove = "Blizzard"
 
@@ -1065,38 +1257,38 @@ class Mike(functionality):
                     if effective == "super":
                         enemymove = "Earthquake"
                         #print("Raichu used Surf")
-                    
+
                     if effective != "super":
                         functionality.supereffective("Fly", currentpokemon)
                         if effective == "super":
                                 enemymove = "Fly"
-       
+
                         if effective != "super":
                             x = random.randrange(3)
                             if x == 1:
                                 enemymove = "Mega Punch"
                                 #print("Raichu used Agility")
-                           
+
                             if x == 2:
                                 enemymove = "Earthquake"
                                 #print("Raichu used Thunderbolt")
-                     
+
                             if x == 3:
                                 enemymove = "Fly"
                                 #print("Raichu used Surf")
-    
+
     def Gengardoing():
         global enemymove
         global enemypokemon
         Gmoves = ["Mega Drain", "Hypnosis", "Dream Eater", "Psychic"]
-       
+
         functionality.checks(enemypokemon, currentpokemon)
         if shouldiswitch != "yes":
             functionality.supereffective("Psychic", currentpokemon)
             if effective == "super":
                 enemymove = "Psychic"
                 #print("Raichu used Fire Blast")
-       
+
             if effective != "super":
                 functionality.supereffective("Mega Drain", currentpokemon)
                 if effective == "super":
@@ -1134,12 +1326,12 @@ class Mike(functionality):
                     if effective == "super":
                         enemymove = "Bite"
                         #print("Raichu used Surf")
-                    
+
                     if effective != "super":
                         functionality.supereffective("Ice Beam", currentpokemon)
                         if effective == "super":
                                 enemymove = "Ice Beam"
-       
+
                         if effective != "super":
                             for i in range(userpartystatus):
                                 if currentpokemon == userpartystatus[i - 1]:
@@ -1147,16 +1339,16 @@ class Mike(functionality):
                                     if x != "Poisoned":
                                         enemymove = "Toxic"
                                     if x == "Poisoned":
-                                        
+
                                         x = random.randrange(3)
                                         if x == 1:
                                             enemymove = "Hydro Pump"
                                             #print("Raichu used Agility")
-                           
+
                                         if x == 2:
                                             enemymove = "Bite"
                                             #print("Raichu used Thunderbolt")
-                     
+
                                         if x == 3:
                                             enemymove = "Ice Beam"
                                         #print("Raichu used Surf")
@@ -1176,12 +1368,12 @@ class Mike(functionality):
                     if effective == "super":
                         enemymove = "Earthquake"
                         #print("Raichu used Surf")
-                    
+
                     if effective != "super":
                         functionality.supereffective("Rock Slide", currentpokemon)
                         if effective == "super":
                                 enemymove = "Rock Slide"
-       
+
                         if effective != "super":
                             functionality.supereffective("Submission", currentpokemon)
                             if effective == "super":
@@ -1191,24 +1383,24 @@ class Mike(functionality):
                                 if x == 1:
                                     enemymove = "Body Slam"
                                     #print("Raichu used Agility")
-                           
+
                                 if x == 2:
                                     enemymove = "Earthquake"
                                     #print("Raichu used Thunderbolt")
-                     
+
                                 if x == 3:
                                     enemymove = "Rock Slide"
                                     #print("Raichu used Surf")
-                                
+
                                 if x == 4:
                                     enemymove = "Submission"
-    
-                           
-                         
-        
-        
 
-                    
+
+
+
+
+
+
 
 
 
@@ -1230,28 +1422,28 @@ class Schmovin(Mike):
 
 
 
-            
-        
-    
-        
+
+
+
+
 
 
 
 goingfirst = []
 class Turns(Mike):
-    
+
     def speedcheck(enemyspeed, currentspeed):
         if enemyspeed > currentspeed:
             goingfirst.append("Enemy")
         if currentspeed > enemyspeed:
             goingfirst.append("User")
-    
+
     def speedstat(currentpokemon):
         global currentspeed
         for i in range(pokemonlist):
             if data[i]["Name"] == currentpokemon:
                 currentspeed = data[i]["Speed Stat"]
-    
+
     def enemyspeed(enemypokemon):
         global enemyspeed
         for i in range(pokemonlist):
@@ -1327,9 +1519,9 @@ class Turns(Mike):
                 use = input("Pick a move to use: ")
                 time.sleep(times)
                 Turns.speedcheck(enemyspeed, currentspeed)
-            
+
                 if "User" in goingfirst:
-               
+
                     global enemyhealth
                     going = "You"
                     print("You used", use)
@@ -1384,8 +1576,8 @@ class Turns(Mike):
                                 currenthealth = userpartyhealth[i]
                     turn =+1
                     print(turn)
-                
-               
+
+
 
                 if "Enemy" in goingfirst:
                     f = functionality()
@@ -1444,30 +1636,30 @@ class Turns(Mike):
                                     print(enemypokemon1, "fainted")
                     enemypartyhealth[1] = enemyhealth
                     functionality.Mikesdeadpks(enemyhealth, currentpokemon)
-                    
+
                     turn =+1
                     print(turn)
-            
+
 
 
 
 
 time.sleep(2)        
-      
+
 
 Turns.preturn(firstpokemon, enemypokemon, "Elite Four Member Mike")
 Turns.turn(firstpokemon, enemypokemon)
-            
 
 
 
 
-          
 
 
 
 
-        
+
+
+
 
 
 
@@ -1479,4 +1671,4 @@ Turns.turn(firstpokemon, enemypokemon)
 #Moltres
 #Articuno
 #Venusaur
-#Mewtwo
+#Mewtwo#Mewtwo
