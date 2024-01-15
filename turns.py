@@ -1239,7 +1239,7 @@ class Mike(functionality):
     def Charizarddoing(turn):
         global enemymove
         global enemypokemon
-        Cmoves = ["Swords Dance", "Mega Punch", "Earthquake", "Fly"]
+        Cmoves = ["Swords Dance", "Mega Punch", "Earthquake", "Strength"]
         y = turn
         Joel = turn - y
         if Joel < 2:
@@ -1274,7 +1274,7 @@ class Mike(functionality):
                                 #print("Raichu used Thunderbolt")
 
                             if x == 3:
-                                enemymove = "Fly"
+                                enemymove = "Strength"
                                 #print("Raichu used Surf")
 
     def Gengardoing():
