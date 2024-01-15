@@ -1,31 +1,10 @@
 [
-    "Beedrill",
-    [
-        "String Shot",
-        "Poison Sting",
-        "Harden",
-        "Cut"
-    ],
-    "Hitmonlee",
-    [
-        "Seismic Toss",
-        "Strength",
-        "Substitute",
-        "Rest"
-    ],
-    "Hitmonchan",
-    [
-        "Seismic Toss",
-        "Strength",
-        "Substitute",
-        "Rest"
-    ],
     "Mew",
     [
+        "Double Team",
         "Flash",
         "Strength",
-        "Surf",
-        "Fly"
+        "Surf"
     ],
     "Mewtwo",
     [
@@ -36,9 +15,30 @@
     ],
     "Dragonite",
     [
+        "Double Team",
         "Strength",
+        "Surf",
+        "Substitute"
+    ],
+    "Dragonair",
+    [
+        "Double Team",
         "Surf",
         "Substitute",
         "Rest"
+    ],
+    "Dratini",
+    [
+        "Surf",
+        "Substitute",
+        "Rest",
+        "Skull Bash"
+    ],
+    "Moltres",
+    [
+        "Fly",
+        "Substitute",
+        "Rest",
+        "Sky Attack"
     ]
 ]
