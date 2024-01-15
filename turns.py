@@ -1204,7 +1204,7 @@ class Mike(functionality):
     def DragoniteDoing(turn):
         global enemymove
         global enemypokemon
-        Dmoves = ["Agility", "Wrap", "Fire Blast", "Blizzard"]
+        Dmoves = ["Agility", "Slam", "Fire Blast", "Blizzard"]
 
         functionality.checks(enemypokemon, currentpokemon)
         if shouldiswitch != "yes":
@@ -1226,7 +1226,7 @@ class Mike(functionality):
                         #print("Raichu used Agility")
 
                     if x == 2:
-                        enemymove = "Wrap"
+                        enemymove = "Slam"
                         #print("Raichu used Thunderbolt")
 
                     if x == 3:
