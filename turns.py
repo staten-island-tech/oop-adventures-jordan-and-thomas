@@ -1168,6 +1168,14 @@ class Turns(Mike):
                             for i in range(len(userpartyhealth)):
                                 if currentpokemon == userpartyhealth[i - 1]:
                                     userpartyhealth[i] == currenthealth
+            for i in range(len(userpartystatus)):
+                if userpartystatus[i] == "Toxic":
+                    for i in range(pokemonlist):
+                        if currentpokemon == data[i]["Name"]:
+                            fullhealth = data[i]["Health Stat"]
+                            poisond = decimal.Decimal(fullhealth) / 16
+                            poisondamage = round(poisond)
+                            
             if currenthealth == 0:
                 print(currentpokemon, "has fainted")
                 for i in range(len(userparty)):
