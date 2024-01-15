@@ -480,6 +480,10 @@ class functionality():
         speedeffect = False
         global newspeed
         newspeed = False
+        global effect
+        effect = False
+        global neweffect
+        neweffect = False
         for i in range(movelist):
             if move == moves[i]["name"]:
                 movenumber = i
@@ -575,9 +579,30 @@ class functionality():
                 edamage = 0
                 damageeffect = True
                 print("The move missed!")
-
-
-
+        if "Flinch13" in moves[movenumber]["effect"]:
+            flinchnumber = random.randint(0, 100)
+            flinchchance = 30
+            if flinchnumber < flinchchance or flinchnumber == flinchchance:
+                effect = True
+                eeffect = "Flinch"
+        if "SeismicToss" in moves[movenumber]["effect"]:
+            newattack = data[enemynumber]["Attack Stat"]
+            newdefense = data[enemynumber]["Defense Stat"]
+            newspecial = data[enemynumber]["Special Stat"]
+            newhealth = data[enemynumber]["Health Stat"]
+            newspeed = data[enemynumber]["Speed Stat"]
+            print(newattack)
+            print(newdefense)
+            print(newspecial)
+            print(newhealth)
+            print(newspeed)
+            newdata = newattack + newdefense + newspecial + newhealth + newspeed
+            ed = decimal.Deciaml(newdata) / decimal.Decimal(5)
+            edamage = round(ed)
+            damageeffect = True
+        if effect == True:
+            neweffect = True
+            return(eeffect)
         if damageeffect == True:
             newdamage = True
             return(edamage)
@@ -612,7 +637,7 @@ class Ai():
 class Mike(functionality):
     def Raichudoing():
         global enemymove
-        enemymove = "Flash"
+        enemymove = "Thunderbolt"
         return(enemymove)
 
 
@@ -656,7 +681,9 @@ class Turns(Mike):
         global newdamage
         global newspeed
         global paralyzed
-        paralyzed == False
+        paralyzed = False
+        global flinched
+        flinched = False
         while fullwipe == False:
             f = functionality()
             print("Switch Out Or Attack")
@@ -770,14 +797,14 @@ class Turns(Mike):
                                     break
                 if gomove == False:
                     print(enemypokemon, "missed their attack!")
-                    if enemymove == "Hi Jump Kick":
+                    if enemymove == "Hi Jump Kick" or enemymove == "Jump Kick":
                         for i in range(len(enemypartyhealth)):
                             if enemypokemon == enemypartyhealth[i - 1]:
                                 newhealth = enemypartyhealth[i]
-                                newhealth -= 1
+                                newhealth = newhealth - 1
                                 enemypartyhealth[i] = newhealth
                                 print(enemypokemon, "took damage from missing their move!")
-                                print(enemypokemon, "has", enemyhealth, "health left")
+                                print(enemypokemon, "has", newhealth, "health left")
             
             if userdo == "Attack" or userdo == "attack":
                 for i in range(inputteamlist):
@@ -825,6 +852,9 @@ class Turns(Mike):
                                         for i in range(len(enemypartyspeed)):
                                             if enemypokemon == enemypartyspeed[i - 1]:
                                                 enemypartyspeed[i] = enemyspeed 
+                                    if neweffect == True:
+                                        if thing == "Flinch":
+                                            flinched = True
                                     if damage == enemyhealth or damage > enemyhealth:
                                         damage = enemyhealth
                                     print(currentpokemon, "did", damage, "damage")
@@ -850,18 +880,18 @@ class Turns(Mike):
                     enemypartyhealth[1] = enemyhealth
                     if Weezer == False:
                         print(currentpokemon, "missed their attack!")
-                        if use == "Hi Jump Kick":
+                        if use == "Hi Jump Kick" or use == "Jump Kick":
                             for i in range(len(userpartyhealth)):
                                 if currentpokemon == userpartyhealth[i - 1]:
                                     newhealth = userpartyhealth[i]
-                                    newhealth -= 1
+                                    newhealth = newhealth - 1
                                     userpartyhealth[i] = newhealth
                                     print(currentpokemon, "took damage from missing their move!")
-                                    print(currentpokemon, "has", currenthealth, "health left")
+                                    print(currentpokemon, "has", newhealth, "health left")
                     going = "Enemy"
                     Mike.Raichudoing()
                     gomove = f.accuracycheck(enemymove)
-                    if gomove == True:
+                    if gomove == True and flinched == False:
                         for i in range(len(userpartystatus)):
                             if userpartystatus[i] == "Paralyzed":
                                 paralyzechance = 25
@@ -925,16 +955,18 @@ class Turns(Mike):
                                 if len(userparty) == 0:
                                     fullwipe = True
                                     break
+                    if flinched == True:
+                        print(enemypokemon, "flinched!")
                     if gomove == False:
                         print(enemypokemon, "missed their attack!")
-                        if enemymove == "Hi Jump Kick":
+                        if enemymove == "Hi Jump Kick" or enemymove == "Jump Kick":
                             for i in range(len(enemypartyhealth)):
                                 if enemypokemon == enemypartyhealth[i - 1]:
                                     newhealth = enemypartyhealth[i]
-                                    newhealth -= 1
+                                    newhealth = newhealth - 1
                                     enemypartyhealth[i] = newhealth
                                     print(enemypokemon, "took damage from missing their move!")
-                                    print(enemypokemon, "has", enemyhealth, "health left")
+                                    print(enemypokemon, "has", newhealth, "health left")
             
                 
                
@@ -963,6 +995,9 @@ class Turns(Mike):
                                 for i in range(len(userpartyspeed)):
                                     if currentpokemon == userpartyspeed[i - 1]:
                                         userpartyspeed[i] = currentspeed 
+                            if neweffect == True:
+                                if thing == "Flinch":
+                                    flinched = True
                             for i in range(len(userpartyhealth)):
                                 if currentpokemon == userpartyhealth[i - 1]:
                                     currenthealth = userpartyhealth[i]
@@ -1016,14 +1051,14 @@ class Turns(Mike):
                             break
                     if gomove == False:
                         print(enemypokemon, "missed their attack!")
-                        if enemymove == "Hi Jump Kick":
+                        if enemymove == "Hi Jump Kick" or enemymove == "Jump Kick":
                             for i in range(len(enemypartyhealth)):
                                 if enemypokemon == enemypartyhealth[i - 1]:
                                     newhealth = enemypartyhealth[i]
-                                    newhealth -= 1
+                                    newhealth = newhealth - 1
                                     enemypartyhealth[i] = newhealth
                                     print(enemypokemon, "took damage from missing their move!")
-                                    print(enemypokemon, "has", enemyhealth, "health left")
+                                    print(enemypokemon, "has", newhealth, "health left")
             
                     if death == False:
                         time.sleep(times)
@@ -1034,7 +1069,7 @@ class Turns(Mike):
                         for i in range(len(currentmoves)):
                             if currentmoves[i] == use:
                                 Weezer = f.accuracycheck(use)
-                                if Weezer == True:
+                                if Weezer == True and flinched == False:
                                     for i in range(len(userpartystatus)):
                                         if userpartystatus[i] == "Paralyzed":
                                             paralyzechance = 25
@@ -1075,16 +1110,18 @@ class Turns(Mike):
                                         print(enemypokemon, "fainted")
                                         fullwipe = True
                                 enemypartyhealth[1] = enemyhealth
+                                if flinched == True:
+                                    print(currentpokemon, "flinched!")
                                 if Weezer == False:
                                     print(currentpokemon, "missed their attack!")
-                                    if use == "Hi Jump Kick":
+                                    if use == "Hi Jump Kick" or use == "Jump Kick":
                                         for i in range(len(userpartyhealth)):
                                             if currentpokemon == userpartyhealth[i - 1]:
                                                 newhealth = userpartyhealth[i]
                                                 newhealth = newhealth - 1
                                                 userpartyhealth[i] = newhealth
                                                 print(currentpokemon, "took damage from missing their move!")
-                                                print(currentpokemon, "has", currenthealth, "health left")
+                                                print(currentpokemon, "has", newhealth, "health left")
             
 
             for i in range(len(userpartystatus)):

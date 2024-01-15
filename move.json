@@ -137,7 +137,7 @@
         "type": "Fighting",
         "category": "Physical",
         "power": 85,
-        "accuracy": 10,
+        "accuracy": 90,
         "PP": 20,
         "effect": [
             "MissDoD"
