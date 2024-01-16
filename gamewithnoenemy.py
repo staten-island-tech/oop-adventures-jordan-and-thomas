@@ -130,6 +130,7 @@ for i in range(len(data)):
     if currentpokemon == data[i]["Name"]:
         currentspeed = data[i]["Speed Stat"]
         currenthealth = data[i]["Health Stat"]
+goingfirst = ["pluh"]
 
 
 
@@ -662,16 +663,73 @@ class Ai():
 
 
 class Mike(functionality):
-    def Raichudoing():
+    def enemydoing(enemydoing, enemypokemon):
         global enemymove
-        enemymove = "Thunderbolt"
-        return(enemymove)
+        if enemypokemon == "Raichu":
+            silly = random.randint(0, 4)
+            if silly == 1:
+                enemymove = "Thunderbolt"
+            if silly == 2:
+                enemymove = "Thunder Wave"
+            if silly == 3:
+                enemymove = "Submission"
+            if silly == 4:
+                enemymove = "Surf"
+        if enemypokemon == "Dragonite":
+            zany = random.randint(0, 4)
+            if zany == 1:
+                enemymove = "Agility"
+            if zany == 2:
+                enemymove = "Slam"
+            if zany == 3:
+                enemymove = "Fire Blast"
+            if zany == 4:
+                enemymove = "Blizzard"
+        if enemypokemon == "Charizard"
+            goofy = random.randint(0, 4)
+            if goofy == 1:
+                enemymove = "Swords Dance"
+            if goofy == 2:
+                enemymove = "Mega Punch"
+            if goofy == 3:
+                enemymove = "Earthquake"
+            if goofy == 4:
+                enemymove = "Strength"
+        if enemypokemon == "Gengar":
+            tomfoolery = random.randint(0, 4)
+            if tomfoolery == 1:
+                enemymove = "Mega Drain"
+            if tomfoolery == 2:
+                enemymove = "Dream Eater"
+            if tomfoolery == 3:
+                enemymove = " Hypnosis"
+            if tomfoolery == 4:
+                enemymove = "Psychic"
+        if enemypokemon == "Blastoise":
+            buffoonery = random.randint(0, 4)
+            if buffoonery == 1:
+                enemymove = "Hydro Pump"
+            if buffoonery == 2:
+                enemymove = "Toxic"
+            if buffoonery == 3:
+                enemymove = "Bite"
+            if buffoonery == 4:
+                enemymove = "Ice Beam"
+        if enemypokemon == "Machamp":
+            lobotomy = random.randit(0, 4)
+            if lobotomy == 1:
+                enemymove = "Body Slam"
+            if lobotomy == 2:
+                enemymove = "Earthquake"
+            if lobotomy == 3:
+                enemymove = "Rock Slide"
+            if lobotomy == 4:
+                enemymove = "Submission"
 
 
 
 
 
-goingfirst = ["pluh"]
 class Turns(Mike):
     def speedcheck(enemyspeed, currentspeed):
         if enemyspeed > currentspeed:
@@ -1288,8 +1346,8 @@ class Turns(Mike):
         
       
 
-Turns.preturn(firstpokemon, enemypokemon1, "Elite Four Member Mike")
-Turns.turn(firstpokemon, enemypokemon1)
+Turns.preturn(firstpokemon, enemypokemon, "Elite Four Member Mike")
+Turns.turn(firstpokemon, enemypokemon)
 
         
 
