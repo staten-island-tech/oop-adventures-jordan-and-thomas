@@ -175,15 +175,13 @@ class functionality():
                 #switch in good
 
 
-    def supereffective(supereffective, use, currentpokemon):
+    def supereffective(supereffective, use, ptype):
         global effective
         effective = "normal"
         for i in range(movelist):
             if (moves[i]["name"]) == use:
                 usetype = (moves[i]["type"])
-        for i in range(pokemonlist):
-            if data[i]["Name"] == currentpokemon:
-                ptype = data[i]["Types"]
+        
 
 
         if usetype == "Normal" and "Rock" == ptype or usetype == "Normal" and " Rock" == ptype:
@@ -1199,6 +1197,10 @@ class Mike(functionality):
         global enemymove
         global enemypokemon
         Rmoves = ["Double Team", "Toxic", "Thunderbolt", "Surf"]
+        for i in range(pokemonlist):
+          if data[i]["Name"] == currentpokemon:
+            oscar = i
+        Alek = data[oscar]["Types"][0]
         if turn == 0:
             enemypokemon = "Raichu"
             for i in range(pokemonlist):
@@ -1218,13 +1220,13 @@ class Mike(functionality):
                 if currentpokemon == data[i]["Name"]:
                     functionality.checks(enemypokemon, currentpokemon)
             if shouldiswitch != "yes":
-                functionality.supereffective("Thunderbolt", currentpokemon)
+                functionality.supereffective("why", "Thunderbolt", Alek)
                 if effective == "super":
                     enemymove = "Thunderbolt"
                     #print("Raichu used Thunderbolt")
 
                 if effective != "super":
-                    functionality.supereffective("Surf", currentpokemon)
+                    functionality.supereffective("why", "Surf", Alek)
                     if effective == "super":
                         enemymove = "Surf"
                         #print("Raichu used Surf")
@@ -1255,16 +1257,20 @@ class Mike(functionality):
         global enemymove
         global enemypokemon
         Dmoves = ["Agility", "Slam", "Fire Blast", "Blizzard"]
+        for i in range(pokemonlist):
+          if data[i]["Name"] == currentpokemon:
+            oscar = i
+        Alek = data[oscar]["Types"][0]
 
         functionality.checks(enemypokemon, currentpokemon)
         if shouldiswitch != "yes":
-            functionality.supereffective("Fire Blast", currentpokemon)
+            functionality.supereffective("why", "Fire Blast", Alek)
             if effective == "super":
                 enemymove = "Fire Blast"
                 #print("Raichu used Fire Blast")
 
             if effective != "super":
-                functionality.supereffective("Blizzard", currentpokemon)
+                functionality.supereffective("why", "Blizzard", Alek)
                 if effective == "super":
                     enemymove = "Blizzard"
                     #print("Raichu used Surf")
@@ -1290,6 +1296,10 @@ class Mike(functionality):
         global enemymove
         global enemypokemon
         Cmoves = ["Swords Dance", "Mega Punch", "Earthquake", "Strength"]
+        for i in range(pokemonlist):
+          if data[i]["Name"] == currentpokemon:
+            oscar = i
+        Alek = data[oscar]["Types"][0]
         y = turn
         Joel = turn - y
         if Joel < 2:
@@ -1297,21 +1307,21 @@ class Mike(functionality):
         if Joel == 2 or Joel > 2:
             functionality.checks(enemypokemon, currentpokemon)
             if shouldiswitch != "yes":
-                functionality.supereffective("Mega Punch", currentpokemon)
+                functionality.supereffective("why", "Mega Punch", Alek)
                 if effective == "super":
                     enemymove = "Mega Punch"
                     #print("Raichu used Fire Blast")
 
                 if effective != "super":
-                    functionality.supereffective("Earthquake", currentpokemon)
+                    functionality.supereffective("why", "Earthquake", Alek)
                     if effective == "super":
                         enemymove = "Earthquake"
                         #print("Raichu used Surf")
 
                     if effective != "super":
-                        functionality.supereffective("Fly", currentpokemon)
+                        functionality.supereffective("why", "Strength", Alek)
                         if effective == "super":
-                                enemymove = "Fly"
+                                enemymove = "Strength"
 
                         if effective != "super":
                             x = random.randrange(3)
@@ -1331,16 +1341,20 @@ class Mike(functionality):
         global enemymove
         global enemypokemon
         Gmoves = ["Mega Drain", "Hypnosis", "Dream Eater", "Psychic"]
+        for i in range(pokemonlist):
+          if data[i]["Name"] == currentpokemon:
+            oscar = i
+        Alek = data[oscar]["Types"][0]
 
         functionality.checks(enemypokemon, currentpokemon)
         if shouldiswitch != "yes":
-            functionality.supereffective("Psychic", currentpokemon)
+            functionality.supereffective("why", "Psychic", Alek)
             if effective == "super":
                 enemymove = "Psychic"
                 #print("Raichu used Fire Blast")
 
             if effective != "super":
-                functionality.supereffective("Mega Drain", currentpokemon)
+                functionality.supereffective("why", "Mega Drain", Alek)
                 if effective == "super":
                     enemymove = "Mega Drain"
                 if effective != "super":
@@ -1364,21 +1378,25 @@ class Mike(functionality):
         global enemymove
         global enemypokemon
         Gmoves = ["Hydro Pump", "Toxic", "Bite", "Ice Beam"]
+        for i in range(pokemonlist):
+          if data[i]["Name"] == currentpokemon:
+            oscar = i
+        Alek = data[oscar]["Types"][0]
         functionality.checks(enemypokemon, currentpokemon)
         if shouldiswitch != "yes":
-                functionality.supereffective("Hydro Pump", currentpokemon)
+                functionality.supereffective("why", "Hydro Pump", Alek)
                 if effective == "super":
                     enemymove = "Hydro Pump"
                     #print("Raichu used Fire Blast")
 
                 if effective != "super":
-                    functionality.supereffective("Bite", currentpokemon)
+                    functionality.supereffective("why", "Bite", Alek)
                     if effective == "super":
                         enemymove = "Bite"
                         #print("Raichu used Surf")
 
                     if effective != "super":
-                        functionality.supereffective("Ice Beam", currentpokemon)
+                        functionality.supereffective("why", "Ice Beam", Alek)
                         if effective == "super":
                                 enemymove = "Ice Beam"
 
@@ -1406,26 +1424,30 @@ class Mike(functionality):
         global enemymove
         global enemypokemon
         Gmoves = ["Body Slam", "Earthquake", "Rock Slide", "Submission"]
+        for i in range(pokemonlist):
+          if data[i]["Name"] == currentpokemon:
+            oscar = i
+        Alek = data[oscar]["Types"][0]
         functionality.checks(enemypokemon, currentpokemon)
         if shouldiswitch != "yes":
-                functionality.supereffective("Body Slam", currentpokemon)
+                functionality.supereffective("why", "Body Slam", Alek)
                 if effective == "super":
                     enemymove = "Body Slam"
                     #print("Raichu used Fire Blast")
 
                 if effective != "super":
-                    functionality.supereffective("Earthquake", currentpokemon)
+                    functionality.supereffective("why", "Earthquake", Alek)
                     if effective == "super":
                         enemymove = "Earthquake"
                         #print("Raichu used Surf")
 
                     if effective != "super":
-                        functionality.supereffective("Rock Slide", currentpokemon)
+                        functionality.supereffective("why", "Rock Slide", Alek)
                         if effective == "super":
                                 enemymove = "Rock Slide"
 
                         if effective != "super":
-                            functionality.supereffective("Submission", currentpokemon)
+                            functionality.supereffective("why","Submission", Alek)
                             if effective == "super":
                                 enemymove = "Submission"
                             if effective != "super":
