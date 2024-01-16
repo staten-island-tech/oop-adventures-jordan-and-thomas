@@ -46,8 +46,8 @@ enemyin = "same"
 global fullwipe
 fullwipe = False
 words = ["Switch", "switch", "Switch Out", "switch out", "Switch out", "Attack", "attack"]
-global turn
-turn = 1
+global turns
+turns = 1
 global evilturn
 evilturn = 1
 
@@ -2171,9 +2171,9 @@ class Turns(Mike):
                                 for i in range(len(userpartyhealth)):
                                     if currentpokemon == userpartyhealth[i - 1]:
                                         userpartyhealth[i] = currenthealth
-                        turn += 1
+                        turns += 1
                     if userpartystatus[i] != "Toxic":
-                        turn = 1
+                        turns = 1
             if currenthealth == 0:
                 print(currentpokemon, "has fainted")
                 for i in range(len(userparty)):
