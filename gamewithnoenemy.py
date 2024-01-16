@@ -68,7 +68,7 @@ pluh = open("playerteaminfo.json", encoding="utf8")
 inputteam = json.load(pluh)
 inputteamlist = len(inputteam)
 enemyteam = ["Raichu", ["Thunderbolt", "Thunder Wave", "Submission", "Surf"], "Dragonite", ["Agility", "Slam", "Fire Blast", "Blizzard"], "Charizard", ["Swords Dance", "Mega Punch", "Earthquake", "Strength"], "Gengar", ["Mega Drain", "Dream Eater", "Hypnosis", "Psychic"], "Blastoise", ["Hydro Pump", "Toxic", "Bite", "Ice Beam"], "Machamp", ["Body Slam", "Earthquake", "Rock Slide", "Submission"]]
-enemypary = [enemyteam[0], enemyteam[2], enemyteam[4], enemyteam[6], enemyteam[8], enemyteam[10]]
+enemyparty = [enemyteam[0], enemyteam[2], enemyteam[4], enemyteam[6], enemyteam[8], enemyteam[10]]
 userparty = [inputteam[0], inputteam[2], inputteam[4], inputteam[6], inputteam[8], inputteam[10]]
 userpartystatus = [inputteam[0], "none", inputteam[2], "none", inputteam[4], "none", inputteam[6], "none", inputteam[8], "none", inputteam[10], "none"]
 eliteteamstatus = ["Raichu", "none"]
@@ -974,7 +974,18 @@ class Turns(Mike):
                                 enemyparty.remove(enemyparty[i])
                         pleasemrwhalengivemeagoodgrade = random.randint(0, len(enemyparty))
                         pluh = pleasemrwhalengivemeagoodgrade - 1
-                        
+                        enemypokemon = enemyparty[pluh]
+                        for i in range(len(enemypartyhealth)):
+                            if enemypokemon == enemypartyhealth[i - 1]:
+                                enemyhealth = enemypartyhealth[i]
+                        for i in range(len(enemypartyspeed)):
+                            if enemypokemon == enemypartyspeed[i-1]:
+                                enemyspeed = enemypartyspeed[i]
+                if len(enemyparty) == 0:
+                    break
+
+
+
                                 
                     enemypartyhealth[1] = enemyhealth
                     if Weezer == False:
@@ -1220,8 +1231,21 @@ class Turns(Mike):
                                                             enemyspeed = round(cs)
                                                             enemypartyspeed[i] = enemyspeed
                                     if enemyhealth == 0:
-                                        print(enemypokemon, "fainted")
-                                        fullwipe = True
+                                        print(enemypokemon, "has fainted")
+                                        for i in range(len(enemyparty)):
+                                            if enemypokemon == enemyparty[i]:
+                                                enemyparty.remove(enemyparty[i])
+                                        pleasemrwhalengivemeagoodgrade = random.randint(0, len(enemyparty))
+                                        pluh = pleasemrwhalengivemeagoodgrade - 1
+                                        enemypokemon = enemyparty[pluh]
+                                        for i in range(len(enemypartyhealth)):
+                                                if enemypokemon == enemypartyhealth[i - 1]:
+                                                    enemyhealth = enemypartyhealth[i]
+                                        for i in range(len(enemypartyspeed)):
+                                            if enemypokemon == enemypartyspeed[i-1]:
+                                                enemyspeed = enemypartyspeed[i]
+                if len(enemyparty) == 0:
+                    break
                                 if flinched == True:
                                     print(currentpokemon, "flinched!")
                                 if Weezer == False:
