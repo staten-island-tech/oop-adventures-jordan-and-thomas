@@ -1,10 +1,10 @@
 [
     "Mew",
     [
-        "Double Team",
         "Flash",
         "Strength",
-        "Surf"
+        "Surf",
+        "Fly"
     ],
     "Mewtwo",
     [
@@ -15,26 +15,26 @@
     ],
     "Dragonite",
     [
-        "Double Team",
         "Strength",
-        "Surf",
-        "Substitute"
-    ],
-    "Dragonair",
-    [
-        "Double Team",
         "Surf",
         "Substitute",
         "Rest"
     ],
-    "Dratini",
+    "Moltres",
     [
-        "Surf",
+        "Fly",
         "Substitute",
         "Rest",
-        "Skull Bash"
+        "Sky Attack"
     ],
-    "Moltres",
+    "Zapdos",
+    [
+        "Flash",
+        "Fly",
+        "Substitute",
+        "Thunder Wave"
+    ],
+    "Articuno",
     [
         "Fly",
         "Substitute",

@@ -126,6 +126,11 @@ for i in range(len(data)):
     if currentpokemon == data[i]["Name"]:
         currentspeed = data[i]["Speed Stat"]
         currenthealth = data[i]["Health Stat"]
+global enemyasleep
+global youasleep
+enemyasleep = "no" 
+youasleep = "no"
+Mikesdeadguys = []
 
 
 
@@ -157,14 +162,9 @@ class functionality():
         global enemypokemon
         enemypokemon = newpokemon
 
-    def dead(oppositehealth):
-        if oppositehealth == 0:
-            global currentpokemon
-            
-            print(oppositepokemon, "has fainted")
-            print(userparty)
-            switchin = input("Pick a Pokemon to switch in: ")
-            currentpokemon = switchin
+    def dead(dead, oppositehealth, oppositepokemon):
+        if going == "You":
+            Mikesdeadguys.append(oppositepokemon)
     
     def supereffective(supereffective, use, ptype):
         global effective
@@ -474,7 +474,7 @@ class functionality():
         movedamage = round(math5)
         if moves[movenumber]["category"] == "None":
             movedamage = 0
-    def specialeffect(specialeffect, move, damage, enemyspeed, enemypk, userpk, enemypartystatus, enemymove, enemydamage, movego, userpartyhealth, enemypartyaccuracy):
+    def specialeffect(specialeffect, move, damage, enemyspeed, enemypk, userpk, enemypartystatus, enemymove, enemydamage, movego, userpartyhealth, enemypartyaccuracy, userpartyspeed):
         f = functionality
         global damageeffect
         damageeffect = False
@@ -534,8 +534,7 @@ class functionality():
             speedeffect = True
             print(enemypk, "had its speed go down!")
         if "SpeedSharpUp" in moves[movenumber]["effect"]:
-        
-                twostag = ememyspeed / 100
+                twostag = enemyspeed / 100
                 twostage = twostag * 20
                 enemyspeed += twostage
                 espeed = enemyspeed
@@ -552,10 +551,6 @@ class functionality():
             print(enemypk, "had its attack sharply raised!")
 
         if "Sleep" in moves[movenumber]["effect"]:
-            global enemyasleep
-            global youasleep
-            enemyasleep = "no"
-            youasleep = "no"
             for i in range(len(enemypartystatus)):
                 if enemypk == enemypartystatus[i - 1]:
                     enemypartystatus[i] = "Sleep"
@@ -1045,143 +1040,143 @@ def typechart(enemypokemon, oppositepokemon):
 
           if enemytype2 == "Dragon" and "Dragon" in ptype:
             matchup1 = "super"
-    def checks(enemypokemo, oppositepokemon):
-        global enemypokemon
-        global enemyspeed
-        global enemyhealth
-        enemypokemon = enemypokemo
-        global shouldiswitch
-        shouldiswitch = "no"
-        for i in range(pokemonlist):
-            if data[i]["Name"] == enemypokemon:
-                Types = data[i]["Types"]
-        functionality.typechart(enemypokemon, oppositepokemon)
-        print(matchup)
+def checks(enemypokemo, oppositepokemon):
+    global enemypokemon
+    global enemyspeed
+    global enemyhealth
+    enemypokemon = enemypokemo
+    global shouldiswitch
+    shouldiswitch = "no"
+    for i in range(pokemonlist):
+        if data[i]["Name"] == enemypokemon:
+            Types = data[i]["Types"]
+    functionality.typechart(enemypokemon, oppositepokemon)
+    print(matchup)
 
-        for i in range(pokemonlist):
-            if data[i]["Name"] == "Raichu":
-                RTypes = data[i]["Types"]
-        for i in range(pokemonlist):
-            if data[i]["Name"] == "Dragonite":
-                DTypes = data[i]["Types"]
-        for i in range(pokemonlist):
-            if data[i]["Name"] == "Charizard":
-                CTypes = data[i]["Types"]
-        for i in range(pokemonlist):
-            if data[i]["Name"] == "Gengar":
-                GTypes = data[i]["Types"]
-        for i in range(pokemonlist):
-            if data[i]["Name"] == "Blastoise":
-                BTypes = data[i]["Types"]
-        for i in range(pokemonlist):
-            if data[i]["Name"] == "Machamp":
-                MTypes = data[i]["Types"]
+    for i in range(pokemonlist):
+        if data[i]["Name"] == "Raichu":
+            RTypes = data[i]["Types"]
+    for i in range(pokemonlist):
+        if data[i]["Name"] == "Dragonite":
+            DTypes = data[i]["Types"]
+    for i in range(pokemonlist):
+        if data[i]["Name"] == "Charizard":
+            CTypes = data[i]["Types"]
+    for i in range(pokemonlist):
+        if data[i]["Name"] == "Gengar":
+            GTypes = data[i]["Types"]
+    for i in range(pokemonlist):
+        if data[i]["Name"] == "Blastoise":
+            BTypes = data[i]["Types"]
+    for i in range(pokemonlist):
+        if data[i]["Name"] == "Machamp":
+            MTypes = data[i]["Types"]
 
         #type chart code for each, make variable each specific pokemons effectiveness
         #for range of 6 or 5- if variablle equals super, then repeat with normal
 
-        if matchup == "half" or "zero" or matchup1 == "half" or "zero":
-            functionality.typechart("Raichu", oppositepokemon)
-            R = matchup
-            R1 = matchup1
-            functionality.typechart("Dragonite", oppositepokemon)
-            D = matchup
-            D1 = matchup1
-            functionality.typechart("Charizard", oppositepokemon)
-            C = matchup
-            C1 = matchup1
-            functionality.typechart("Gengar", oppositepokemon)
-            G = matchup
-            G1 = matchup1
-            functionality.typechart("Blastoise", oppositepokemon)
-            B = matchup
-            B1 = matchup1
-            functionality.typechart("Machamp", oppositepokemon)
-            M = matchup
-            M1 = matchup1
-            if R != "half" and R != "zero" and R != "normal" and R1 != "normal" and R1 != "half" and R1 != "zero" and "Raichu" not in Mikesdeadguys:
+    if matchup == "half" or "zero" or matchup1 == "half" or "zero":
+        functionality.typechart("Raichu", oppositepokemon)
+        R = matchup
+        R1 = matchup1
+        functionality.typechart("Dragonite", oppositepokemon)
+        D = matchup
+        D1 = matchup1
+        functionality.typechart("Charizard", oppositepokemon)
+        C = matchup
+        C1 = matchup1
+        functionality.typechart("Gengar", oppositepokemon)
+        G = matchup
+        G1 = matchup1
+        functionality.typechart("Blastoise", oppositepokemon)
+        B = matchup
+        B1 = matchup1
+        functionality.typechart("Machamp", oppositepokemon)
+        M = matchup
+        M1 = matchup1
+        if R != "half" and R != "zero" and R != "normal" and R1 != "normal" and R1 != "half" and R1 != "zero" and "Raichu" not in Mikesdeadguys:
 
-                enemypokemon = "Raichu"
-                for i in range(len(data)):
-                    if enemypokemon == data[i]["Name"]:
-                        enemyspeed = data[i]["Speed Stat"]
-                        enemyhealth = data[i]["Health Stat"]
-                print("Mike M switched into", enemypokemon)
-                shouldiswitch = "yes"
-
-            elif D != "half" and D != "zero" and D != "normal" and D1 != "normal" and D1 != "half" and D1 != "zero" and "Dragonite" not in Mikesdeadguys:
-                enemypokemon = "Dragonite"
+            enemypokemon = "Raichu"
+            for i in range(len(data)):
                 if enemypokemon == data[i]["Name"]:
-                        enemyspeed = data[i]["Speed Stat"]
-                        enemyhealth = data[i]["Health Stat"]
-                print("Mike M switched into Dragonite")
-                shouldiswitch = "yes"
+                    enemyspeed = data[i]["Speed Stat"]
+                    enemyhealth = data[i]["Health Stat"]
+            print("Mike M switched into", enemypokemon)
+            shouldiswitch = "yes"
 
-            elif C != "half" and C != "zero" and C != "normal" and C1 != "normal" and C1 != "half" and C1 != "zero" and "Charizard" not in Mikesdeadguys:
-                enemypokemon = "Charizard"
-                if enemypokemon == data[i]["Name"]:
-                        enemyspeed = data[i]["Speed Stat"]
-                        enemyhealth = data[i]["Health Stat"]
-                print("Mike M switched into Charizard")
-                shouldiswitch = "yes"
+        elif D != "half" and D != "zero" and D != "normal" and D1 != "normal" and D1 != "half" and D1 != "zero" and "Dragonite" not in Mikesdeadguys:
+            enemypokemon = "Dragonite"
+            if enemypokemon == data[i]["Name"]:
+                    enemyspeed = data[i]["Speed Stat"]
+                    enemyhealth = data[i]["Health Stat"]
+            print("Mike M switched into Dragonite")
+            shouldiswitch = "yes"
 
-            elif G != "half" and G != "zero" and G != "normal" and G1 != "normal" and G1 != "half" and G1 != "zero" and "Gengar" not in Mikesdeadguys:
-                enemypokemon = "Gengar"
-                if enemypokemon == data[i]["Name"]:
-                        enemyspeed = data[i]["Speed Stat"]
-                        enemyhealth = data[i]["Health Stat"]
-                print("Mike M switched into Gengar")
-                shouldiswitch = "yes"
+        elif C != "half" and C != "zero" and C != "normal" and C1 != "normal" and C1 != "half" and C1 != "zero" and "Charizard" not in Mikesdeadguys:
+            enemypokemon = "Charizard"
+            if enemypokemon == data[i]["Name"]:
+                    enemyspeed = data[i]["Speed Stat"]
+                    enemyhealth = data[i]["Health Stat"]
+            print("Mike M switched into Charizard")
+            shouldiswitch = "yes"
 
-            elif B != "half" and B != "zero" and B != "normal" and B1 != "normal" and B1 != "half" and B1 != "zero" and "Blastoise" not in Mikesdeadguys:
-                enemypokemon = "Blastoise"
-                if enemypokemon == data[i]["Name"]:
-                        enemyspeed = data[i]["Speed Stat"]
-                        enemyhealth = data[i]["Health Stat"]
-                print("Mike M switched into Blastoise")
-                shouldiswitch = "yes"
+        elif G != "half" and G != "zero" and G != "normal" and G1 != "normal" and G1 != "half" and G1 != "zero" and "Gengar" not in Mikesdeadguys:
+            enemypokemon = "Gengar"
+            if enemypokemon == data[i]["Name"]:
+                    enemyspeed = data[i]["Speed Stat"]
+                    enemyhealth = data[i]["Health Stat"]
+            print("Mike M switched into Gengar")
+            shouldiswitch = "yes"
 
-            elif M != "half" and M != "zero" and M != "normal" and M1 != "normal" and M1 != "half" and M1 != "zero"and "Machamp" not in Mikesdeadguys:
-                enemypokemon = "Machamp"
-                if enemypokemon == data[i]["Name"]:
-                        enemyspeed = data[i]["Speed Stat"]
-                        enemyhealth = data[i]["Health Stat"]
-                print("Mike M switched into Machamp")
-                shouldiswitch = "yes"
-            else: 
-                caniswitch = "no"
-                while caniswitch == "no":
-                    p = random.randrange(6)
-                    if p == 1 and "Raichu" not in Mikesdeadguys:
-                         enemypokemon = "Raichu"
-                         print("Mike M switched into", enemypokemon)
-                         shouldiswitch = "yes"
-                         caniswitch = "yes"
-                    if p == 2 and "Dragonite" not in Mikesdeadguys:
-                        enemypokemon = "Dragonite"
-                        print("Mike M switched into Dragonite")
-                        shouldiswitch = "yes"
-                        caniswitch = "yes"
-                    if p == 3 and "Charizard" not in Mikesdeadguys:
-                        enemypokemon = "Charizard"
-                        print("Mike M switched into Charizard")
-                        shouldiswitch = "yes"
-                        caniswitch = "yes"
-                    if p == 4 and "Gengar" not in Mikesdeadguys:
-                        enemypokemon = "Gengar"
-                        print("Mike M switched into Gengar")
-                        shouldiswitch = "yes"
-                        caniswitch = "yes"
-                    if p == 5 and "Blastoise" not in Mikesdeadguys:
-                        enemypokemon = "Blastoise"
-                        print("Mike M switched into Blastoise")
-                        shouldiswitch = "yes"
-                        caniswitch = "yes"
-                    if p == 6 and "Machamp" not in Mikesdeadguys:
-                        enemypokemon = "Machamp"
-                        print("Mike M switched into Machamp")
-                        shouldiswitch = "yes"
-                        caniswitch = "yes"
+        elif B != "half" and B != "zero" and B != "normal" and B1 != "normal" and B1 != "half" and B1 != "zero" and "Blastoise" not in Mikesdeadguys:
+            enemypokemon = "Blastoise"
+            if enemypokemon == data[i]["Name"]:
+                    enemyspeed = data[i]["Speed Stat"]
+                    enemyhealth = data[i]["Health Stat"]
+            print("Mike M switched into Blastoise")
+            shouldiswitch = "yes"
+
+        elif M != "half" and M != "zero" and M != "normal" and M1 != "normal" and M1 != "half" and M1 != "zero"and "Machamp" not in Mikesdeadguys:
+            enemypokemon = "Machamp"
+            if enemypokemon == data[i]["Name"]:
+                    enemyspeed = data[i]["Speed Stat"]
+                    enemyhealth = data[i]["Health Stat"]
+            print("Mike M switched into Machamp")
+            shouldiswitch = "yes"
+        else: 
+            caniswitch = "no"
+            while caniswitch == "no":
+                p = random.randrange(6)
+                if p == 1 and "Raichu" not in Mikesdeadguys:
+                    enemypokemon = "Raichu"
+                    print("Mike M switched into", enemypokemon)
+                    shouldiswitch = "yes"
+                    caniswitch = "yes"
+                if p == 2 and "Dragonite" not in Mikesdeadguys:
+                    enemypokemon = "Dragonite"
+                    print("Mike M switched into Dragonite")
+                    shouldiswitch = "yes"
+                    caniswitch = "yes"
+                if p == 3 and "Charizard" not in Mikesdeadguys:
+                    enemypokemon = "Charizard"
+                    print("Mike M switched into Charizard")
+                    shouldiswitch = "yes"
+                    caniswitch = "yes"
+                if p == 4 and "Gengar" not in Mikesdeadguys:
+                    enemypokemon = "Gengar"
+                    print("Mike M switched into Gengar")
+                    shouldiswitch = "yes"
+                    caniswitch = "yes"
+                if p == 5 and "Blastoise" not in Mikesdeadguys:
+                    enemypokemon = "Blastoise"
+                    print("Mike M switched into Blastoise")
+                    shouldiswitch = "yes"
+                    caniswitch = "yes"
+                if p == 6 and "Machamp" not in Mikesdeadguys:
+                    enemypokemon = "Machamp"
+                    print("Mike M switched into Machamp")
+                    shouldiswitch = "yes"
+                    caniswitch = "yes"
 
 
     def Mikesdeadpks(enemyhealth, oppositepokemon):
@@ -1304,7 +1299,7 @@ class Mike(functionality):
 
 
 
-    def Raichudoing(turn):
+    def Raichudoing(raichudoing, turn):
         global enemymove
         global enemypokemon
         Rmoves = ["Double Team", "Toxic", "Thunderbolt", "Surf"]
@@ -1625,6 +1620,7 @@ class Turns(Mike):
         paralyzed = False
         global flinched
         flinched = False
+        global enemyasleep
         while fullwipe == False:
             f = functionality()
             print("Switch Out Or Attack")
@@ -1650,7 +1646,7 @@ class Turns(Mike):
                         currentspeed = userpartyspeed[i]
                 going = "Enemy"
                 time.sleep(times)
-                Mike.Raichudoing()
+                Mike.Raichudoing(turn)
                 for i in range(len(enemypartyaccuracy)):
                     if enemypokemon == enemypartyaccuracy[i - 1]:
                         accuracy = enemypartyaccuracy[i]
@@ -1852,15 +1848,15 @@ class Turns(Mike):
                     if enemyasleep == "yes":
                         snore = random.randrange(4)
                         if snore == 1:
-                            for i in range(len(enemypartystatus)):
-                                if enemypartystatus[i - 1] == enemypokemon:
-                                    enemypartystatus[i] == "none"
+                            for i in range(len(eliteteamstatus)):
+                                if eliteteamstatus[i - 1] == enemypokemon:
+                                    eliteteamstatus[i] == "none"
                             print(enemypokemon, "woke up!")
                             enemyasleep == "no"
                         else:
                             print(enemypokemon, "is fast asleep")
                     if enemyasleep != "yes":
-                        Mike.Raichudoing()
+                        Mike.Raichudoing(turn)
                         for i in range(len(enemypartyaccuracy)):
                             if enemypokemon == enemypartyaccuracy[i - 1]:
                                 accuracy = enemypartyaccuracy[i]
@@ -1950,9 +1946,9 @@ class Turns(Mike):
                     if enemyasleep == "yes":
                         snore = random.randrange(4)
                         if snore == 1:
-                            for i in range(len(enemypartystatus)):
-                                if enemypartystatus[i - 1] == enemypokemon:
-                                    enemypartystatus[i] == "none"
+                            for i in range(len(eliteteamstatus)):
+                                if eliteteamstatus[i - 1] == enemypokemon:
+                                    eliteteamstatus[i] == "none"
                             print(enemypokemon, "woke up!")
                             enemyasleep == "no"
                         else:
@@ -1960,7 +1956,7 @@ class Turns(Mike):
                     if enemyasleep != "yes":
                         f = functionality()
                         going = "Enemy"
-                        Mike.Raichudoing()
+                        Mike.Raichudoing(turn)
                         for i in range(len(enemypartyaccuracy)):
                             if enemypokemon == enemypartyaccuracy[i - 1]:
                                 accuracy = enemypartyaccuracy[i]
@@ -2056,7 +2052,7 @@ class Turns(Mike):
                         time.sleep(times)
                         going = "You"
                         if youasleep == "yes":
-                        snore = random.randrange(4)
+                            snore = random.randrange(4)
                         if snore == 1:
                             for i in range(len(userpartystatus)):
                                 if userpartystatus[i - 1] == currentpokemon:
@@ -2148,7 +2144,6 @@ class Turns(Mike):
                                     if currentpokemon == userpartyhealth[i - 1]:
                                         userpartyhealth[i] = currenthealth
             for i in range(len(userpartystatus)):
-                global turn
                 if currentpokemon == userpartystatus[i - 1]:
                     if userpartystatus[i] == "Toxic":
                         for i in range(pokemonlist):
