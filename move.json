@@ -382,7 +382,7 @@
         "accuracy": 100,
         "PP": 10,
         "effect": [
-            "HealHalf"
+            "HealHalfD"
         ]
     },
     {
