@@ -651,17 +651,541 @@ class functionality():
 
     
 
+    def checks(enemypokemo, oppositepokemon):
+        global enemypokemon
+        global enemyspeed
+        global enemyhealth
+        enemypokemon = enemypokemo
+        global shouldiswitch
+        shouldiswitch = "no"
+        for i in range(pokemonlist):
+            if data[i]["Name"] == enemypokemon:
+                Types = data[i]["Types"]
+        functionality.typechart(enemypokemon, oppositepokemon)
+        print(matchup)
 
+        for i in range(pokemonlist):
+            if data[i]["Name"] == "Raichu":
+                RTypes = data[i]["Types"]
+        for i in range(pokemonlist):
+            if data[i]["Name"] == "Dragonite":
+                DTypes = data[i]["Types"]
+        for i in range(pokemonlist):
+            if data[i]["Name"] == "Charizard":
+                CTypes = data[i]["Types"]
+        for i in range(pokemonlist):
+            if data[i]["Name"] == "Gengar":
+                GTypes = data[i]["Types"]
+        for i in range(pokemonlist):
+            if data[i]["Name"] == "Blastoise":
+                BTypes = data[i]["Types"]
+        for i in range(pokemonlist):
+            if data[i]["Name"] == "Machamp":
+                MTypes = data[i]["Types"]
+
+        #type chart code for each, make variable each specific pokemons effectiveness
+        #for range of 6 or 5- if variablle equals super, then repeat with normal
+
+        if matchup == "half" or "zero" or matchup1 == "half" or "zero":
+            functionality.typechart("Raichu", oppositepokemon)
+            R = matchup
+            R1 = matchup1
+            functionality.typechart("Dragonite", oppositepokemon)
+            D = matchup
+            D1 = matchup1
+            functionality.typechart("Charizard", oppositepokemon)
+            C = matchup
+            C1 = matchup1
+            functionality.typechart("Gengar", oppositepokemon)
+            G = matchup
+            G1 = matchup1
+            functionality.typechart("Blastoise", oppositepokemon)
+            B = matchup
+            B1 = matchup1
+            functionality.typechart("Machamp", oppositepokemon)
+            M = matchup
+            M1 = matchup1
+            if R != "half" and R != "zero" and R != "normal" and R1 != "normal" and R1 != "half" and R1 != "zero" and "Raichu" not in Mikesdeadguys:
+
+                enemypokemon = "Raichu"
+                for i in range(len(data)):
+                    if enemypokemon == data[i]["Name"]:
+                        enemyspeed = data[i]["Speed Stat"]
+                        enemyhealth = data[i]["Health Stat"]
+                print("Mike M switched into", enemypokemon)
+                shouldiswitch = "yes"
+
+            elif D != "half" and D != "zero" and D != "normal" and D1 != "normal" and D1 != "half" and D1 != "zero" and "Dragonite" not in Mikesdeadguys:
+                enemypokemon = "Dragonite"
+                if enemypokemon == data[i]["Name"]:
+                        enemyspeed = data[i]["Speed Stat"]
+                        enemyhealth = data[i]["Health Stat"]
+                print("Mike M switched into Dragonite")
+                shouldiswitch = "yes"
+
+            elif C != "half" and C != "zero" and C != "normal" and C1 != "normal" and C1 != "half" and C1 != "zero" and "Charizard" not in Mikesdeadguys:
+                enemypokemon = "Charizard"
+                if enemypokemon == data[i]["Name"]:
+                        enemyspeed = data[i]["Speed Stat"]
+                        enemyhealth = data[i]["Health Stat"]
+                print("Mike M switched into Charizard")
+                shouldiswitch = "yes"
+
+            elif G != "half" and G != "zero" and G != "normal" and G1 != "normal" and G1 != "half" and G1 != "zero" and "Gengar" not in Mikesdeadguys:
+                enemypokemon = "Gengar"
+                if enemypokemon == data[i]["Name"]:
+                        enemyspeed = data[i]["Speed Stat"]
+                        enemyhealth = data[i]["Health Stat"]
+                print("Mike M switched into Gengar")
+                shouldiswitch = "yes"
+
+            elif B != "half" and B != "zero" and B != "normal" and B1 != "normal" and B1 != "half" and B1 != "zero" and "Blastoise" not in Mikesdeadguys:
+                enemypokemon = "Blastoise"
+                if enemypokemon == data[i]["Name"]:
+                        enemyspeed = data[i]["Speed Stat"]
+                        enemyhealth = data[i]["Health Stat"]
+                print("Mike M switched into Blastoise")
+                shouldiswitch = "yes"
+
+            elif M != "half" and M != "zero" and M != "normal" and M1 != "normal" and M1 != "half" and M1 != "zero"and "Machamp" not in Mikesdeadguys:
+                enemypokemon = "Machamp"
+                if enemypokemon == data[i]["Name"]:
+                        enemyspeed = data[i]["Speed Stat"]
+                        enemyhealth = data[i]["Health Stat"]
+                print("Mike M switched into Machamp")
+                shouldiswitch = "yes"
+            else: 
+                caniswitch = "no"
+                while caniswitch == "no":
+                    p = random.randrange(6)
+                    if p == 1 and "Raichu" not in Mikesdeadguys:
+                         enemypokemon = "Raichu"
+                         print("Mike M switched into", enemypokemon)
+                         shouldiswitch = "yes"
+                         caniswitch = "yes"
+                    if p == 2 and "Dragonite" not in Mikesdeadguys:
+                        enemypokemon = "Dragonite"
+                        print("Mike M switched into Dragonite")
+                        shouldiswitch = "yes"
+                        caniswitch = "yes"
+                    if p == 3 and "Charizard" not in Mikesdeadguys:
+                        enemypokemon = "Charizard"
+                        print("Mike M switched into Charizard")
+                        shouldiswitch = "yes"
+                        caniswitch = "yes"
+                    if p == 4 and "Gengar" not in Mikesdeadguys:
+                        enemypokemon = "Gengar"
+                        print("Mike M switched into Gengar")
+                        shouldiswitch = "yes"
+                        caniswitch = "yes"
+                    if p == 5 and "Blastoise" not in Mikesdeadguys:
+                        enemypokemon = "Blastoise"
+                        print("Mike M switched into Blastoise")
+                        shouldiswitch = "yes"
+                        caniswitch = "yes"
+                    if p == 6 and "Machamp" not in Mikesdeadguys:
+                        enemypokemon = "Machamp"
+                        print("Mike M switched into Machamp")
+                        shouldiswitch = "yes"
+                        caniswitch = "yes"
+
+
+    def Mikesdeadpks(enemyhealth, oppositepokemon):
+        global enemypokemon
+        if enemyhealth == 0:
+            print(enemypokemon, "has fainted")
+            Mikesdeadguys.append(enemypokemon)
+            functionality.typechart("Raichu", oppositepokemon)
+            R = matchup
+            functionality.typechart("Dragonite", oppositepokemon)
+            D = matchup
+            functionality.typechart("Charizard", oppositepokemon)
+            C = matchup
+            functionality.typechart("Gengar", oppositepokemon)
+            G = matchup
+            functionality.typechart("Blastoise", oppositepokemon)
+            B = matchup
+            functionality.typechart("Machamp", oppositepokemon)
+            M = matchup
+            if R != "half" or "none" and "Raichu" not in Mikesdeadguys:
+
+                enemypokemon = "Raichu"
+                for i in range(len(data)):
+                    if enemypokemon == data[i]["Name"]:
+                        enemyspeed = data[i]["Speed Stat"]
+                        enemyhealth = data[i]["Health Stat"]
+                print("Mike M switched into", enemypokemon)
+                shouldiswitch = "yes"
+
+            elif D != "half" or "none" and "Dragonite" not in Mikesdeadguys:
+                enemypokemon = "Dragonite"
+                if enemypokemon == data[i]["Name"]:
+                        enemyspeed = data[i]["Speed Stat"]
+                        enemyhealth = data[i]["Health Stat"]
+                print("Mike M switched into Dragonite")
+                shouldiswitch = "yes"
+
+            elif C != "half" or "none" and "Charizard" not in Mikesdeadguys:
+                enemypokemon = "Charizard"
+                if enemypokemon == data[i]["Name"]:
+                        enemyspeed = data[i]["Speed Stat"]
+                        enemyhealth = data[i]["Health Stat"]
+                print("Mike M switched into Charizard")
+                shouldiswitch = "yes"
+
+            elif G != "half" or "none" and "Gengar" not in Mikesdeadguys:
+                enemypokemon = "Gengar"
+                if enemypokemon == data[i]["Name"]:
+                        enemyspeed = data[i]["Speed Stat"]
+                        enemyhealth = data[i]["Health Stat"]
+                print("Mike M switched into Gengar")
+                shouldiswitch = "yes"
+
+            elif B != "half" or "none" and "Blastoise" not in Mikesdeadguys:
+                enemypokemon = "Blastoise"
+                if enemypokemon == data[i]["Name"]:
+                        enemyspeed = data[i]["Speed Stat"]
+                        enemyhealth = data[i]["Health Stat"]
+                print("Mike M switched into Blastoise")
+                shouldiswitch = "yes"
+
+            elif M != "half" or "none" and "Machamp" not in Mikesdeadguys:
+                enemypokemon = "Machamp"
+                if enemypokemon == data[i]["Name"]:
+                        enemyspeed = data[i]["Speed Stat"]
+                        enemyhealth = data[i]["Health Stat"]
+                print("Mike M switched into Machamp")
+                shouldiswitch = "yes"
+            else: 
+                caniswitch = "no"
+                while caniswitch == "no":
+                    p = random.randrange(6)
+                    if p == 1 and "Raichu" not in Mikesdeadguys:
+                         enemypokemon = "Raichu"
+                         print("Mike M switched into", enemypokemon)
+                         shouldiswitch = "yes"
+                         caniswitch = "yes"
+                    if p == 2 and "Dragonite" not in Mikesdeadguys:
+                        enemypokemon = "Dragonite"
+                        print("Mike M switched into Dragonite")
+                        shouldiswitch = "yes"
+                        caniswitch = "yes"
+                    if p == 3 and "Charizard" not in Mikesdeadguys:
+                        enemypokemon = "Charizard"
+                        print("Mike M switched into Charizard")
+                        shouldiswitch = "yes"
+                        caniswitch = "yes"
+                    if p == 4 and "Gengar" not in Mikesdeadguys:
+                        enemypokemon = "Gengar"
+                        print("Mike M switched into Gengar")
+                        shouldiswitch = "yes"
+                        caniswitch = "yes"
+                    if p == 5 and "Blastoise" not in Mikesdeadguys:
+                        enemypokemon = "Blastoise"
+                        print("Mike M switched into Blastoise")
+                        shouldiswitch = "yes"
+                        caniswitch = "yes"
+                    if p == 6 and "Machamp" not in Mikesdeadguys:
+                        enemypokemon = "Machamp"
+                        print("Mike M switched into Machamp")
+                        shouldiswitch = "yes"
+                        caniswitch = "yes"
+
+
+
+
+
+
+
+
+class Mike(functionality):
+    MikeTeam = ["Raichu", "Dragonite", "Charizard", "Gengar", "Blastoise", "Machamp"]
+
+
+
+
+
+
+
+
+
+
+    def Raichudoing(turn):
+        global enemymove
+        global enemypokemon
+        Rmoves = ["Double Team", "Toxic", "Thunderbolt", "Surf"]
+        if turn == 0:
+            enemypokemon = "Raichu"
+            for i in range(pokemonlist):
+                if (data[i]["Name"]) == currentpokemon:
+                    ptype = (data[i]["Types"])
+            if "Poison" not in ptype:
+                #print("Raichu used Toxic")
+                enemymove = "Toxic"
+
+            else:
+                enemymove = "Double Team"
+                #print("Raichu used Double Team")
+
+
+        if turn != 0:
+            functionality.checks(enemypokemon, currentpokemon)
+            if shouldiswitch != "yes":
+                functionality.supereffective("Thunderbolt", currentpokemon)
+                if effective == "super":
+                    enemymove = "Thunderbolt"
+                    #print("Raichu used Thunderbolt")
+
+                if effective != "super":
+                    functionality.supereffective("Surf", currentpokemon)
+                    if effective == "super":
+                        enemymove = "Surf"
+                        #print("Raichu used Surf")
+
+                    if effective != "super":
+                        for i in range(userpartystatus):
+                            if currentpokemon == userpartystatus[i - 1]:
+                                x = userpartystatus[i]
+                                if x != "Poisoned":
+                                    enemymove = "Toxic"
+                                if x == "Poisoned":
+                                    x = random.randrange(4)
+                                    if x == 1 or x == 4:
+                                        enemymove = "Double Team"
+                                        #print("Raichu used Double Team")
+
+                                    if x == 2:
+                                        enemymove = "Thunderbolt"
+                                        #print("Raichu used Thunderbolt")
+
+                                    if x == 3:
+                                        enemymove = "Surf"
+                                        #print("Raichu used Surf")
+
+
+
+    def DragoniteDoing(turn):
+        global enemymove
+        global enemypokemon
+        Dmoves = ["Agility", "Slam", "Fire Blast", "Blizzard"]
+
+        functionality.checks(enemypokemon, currentpokemon)
+        if shouldiswitch != "yes":
+            functionality.supereffective("Fire Blast", currentpokemon)
+            if effective == "super":
+                enemymove = "Fire Blast"
+                #print("Raichu used Fire Blast")
+
+            if effective != "super":
+                functionality.supereffective("Blizzard", currentpokemon)
+                if effective == "super":
+                    enemymove = "Blizzard"
+                    #print("Raichu used Surf")
+
+                if effective != "super":
+                    x = random.randrange(5)
+                    if x == 1 or x == 4:
+                        enemymove = "Agility"
+                        #print("Raichu used Agility")
+
+                    if x == 2:
+                        enemymove = "Slam"
+                        #print("Raichu used Thunderbolt")
+
+                    if x == 3:
+                        enemymove = "Fire Blast"
+                        #print("Raichu used Surf")
+
+                    if x == 5:
+                        enemymove = "Blizzard"
+
+    def Charizarddoing(turn):
+        global enemymove
+        global enemypokemon
+        Cmoves = ["Swords Dance", "Mega Punch", "Earthquake", "Strength"]
+        y = turn
+        Joel = turn - y
+        if Joel < 2:
+            enemymove = "Swords Dance"
+        if Joel == 2 or Joel > 2:
+            functionality.checks(enemypokemon, currentpokemon)
+            if shouldiswitch != "yes":
+                functionality.supereffective("Mega Punch", currentpokemon)
+                if effective == "super":
+                    enemymove = "Mega Punch"
+                    #print("Raichu used Fire Blast")
+
+                if effective != "super":
+                    functionality.supereffective("Earthquake", currentpokemon)
+                    if effective == "super":
+                        enemymove = "Earthquake"
+                        #print("Raichu used Surf")
+
+                    if effective != "super":
+                        functionality.supereffective("Fly", currentpokemon)
+                        if effective == "super":
+                                enemymove = "Fly"
+
+                        if effective != "super":
+                            x = random.randrange(3)
+                            if x == 1:
+                                enemymove = "Mega Punch"
+                                #print("Raichu used Agility")
+
+                            if x == 2:
+                                enemymove = "Earthquake"
+                                #print("Raichu used Thunderbolt")
+
+                            if x == 3:
+                                enemymove = "Strength"
+                                #print("Raichu used Surf")
+
+    def Gengardoing():
+        global enemymove
+        global enemypokemon
+        Gmoves = ["Mega Drain", "Hypnosis", "Dream Eater", "Psychic"]
+
+        functionality.checks(enemypokemon, currentpokemon)
+        if shouldiswitch != "yes":
+            functionality.supereffective("Psychic", currentpokemon)
+            if effective == "super":
+                enemymove = "Psychic"
+                #print("Raichu used Fire Blast")
+
+            if effective != "super":
+                functionality.supereffective("Mega Drain", currentpokemon)
+                if effective == "super":
+                    enemymove = "Mega Drain"
+                if effective != "super":
+                    for i in range(userpartystatus):
+                        if currentpokemon == userpartystatus[i - 1]:
+                            x = userpartystatus[i]
+                            if x == "asleep":
+                                enemymove = "Dream Eater"
+                            if x != "asleep":
+                                enemymove = "Hypnosis"
+
+                            else:
+                                v = random.randrange(2)
+                                if v == 1:
+                                    enemymove = "Mega Drain"
+                                if v == 2:
+                                    enemymove = "Psychic"
+                                #print("Raichu used Agility")
+
+    def Blastoisedoing(turn):
+        global enemymove
+        global enemypokemon
+        Gmoves = ["Hydro Pump", "Toxic", "Bite", "Ice Beam"]
+        functionality.checks(enemypokemon, currentpokemon)
+        if shouldiswitch != "yes":
+                functionality.supereffective("Hydro Pump", currentpokemon)
+                if effective == "super":
+                    enemymove = "Hydro Pump"
+                    #print("Raichu used Fire Blast")
+
+                if effective != "super":
+                    functionality.supereffective("Bite", currentpokemon)
+                    if effective == "super":
+                        enemymove = "Bite"
+                        #print("Raichu used Surf")
+
+                    if effective != "super":
+                        functionality.supereffective("Ice Beam", currentpokemon)
+                        if effective == "super":
+                                enemymove = "Ice Beam"
+
+                        if effective != "super":
+                            for i in range(userpartystatus):
+                                if currentpokemon == userpartystatus[i - 1]:
+                                    x = userpartystatus[i]
+                                    if x != "Poisoned":
+                                        enemymove = "Toxic"
+                                    if x == "Poisoned":
+
+                                        x = random.randrange(3)
+                                        if x == 1:
+                                            enemymove = "Hydro Pump"
+                                            #print("Raichu used Agility")
+
+                                        if x == 2:
+                                            enemymove = "Bite"
+                                            #print("Raichu used Thunderbolt")
+
+                                        if x == 3:
+                                            enemymove = "Ice Beam"
+                                        #print("Raichu used Surf")
+    def Machampdoing():
+        global enemymove
+        global enemypokemon
+        Gmoves = ["Body Slam", "Earthquake", "Rock Slide", "Submission"]
+        functionality.checks(enemypokemon, currentpokemon)
+        if shouldiswitch != "yes":
+                functionality.supereffective("Body Slam", currentpokemon)
+                if effective == "super":
+                    enemymove = "Body Slam"
+                    #print("Raichu used Fire Blast")
+
+                if effective != "super":
+                    functionality.supereffective("Earthquake", currentpokemon)
+                    if effective == "super":
+                        enemymove = "Earthquake"
+                        #print("Raichu used Surf")
+
+                    if effective != "super":
+                        functionality.supereffective("Rock Slide", currentpokemon)
+                        if effective == "super":
+                                enemymove = "Rock Slide"
+
+                        if effective != "super":
+                            functionality.supereffective("Submission", currentpokemon)
+                            if effective == "super":
+                                enemymove = "Submission"
+                            if effective != "super":
+                                x = random.randrange(4)
+                                if x == 1:
+                                    enemymove = "Body Slam"
+                                    #print("Raichu used Agility")
+
+                                if x == 2:
+                                    enemymove = "Earthquake"
+                                    #print("Raichu used Thunderbolt")
+
+                                if x == 3:
+                                    enemymove = "Rock Slide"
+                                    #print("Raichu used Surf")
+
+                                if x == 4:
+                                    enemymove = "Submission"
+
+
+
+
+
+
+
+
+
+
+class Schmovin(Mike):
+    def Whosmovin(enemypokemon):
+        if enemypokemon == "Raichu":
+            Mike.Raichudoing(turn)
+        if enemypokemon == "Dragonite":
+            Mike.DragoniteDoing(turn)
+        if enemypokemon == "Charizard":
+            Mike.Charizarddoing(turn)
+        if enemypokemon == "Gengar":
+            Mike.Gengardoing()
+        if enemypokemon == "Blastoise":
+            Mike.Blastoisedoing()
+        if enemypokemon == "Machamp":
+            Mike.Machampdoing()
 class Ai():
     def supereffectivecheck(usermovetype):
         print("placeholder")
 
 
-class Mike(functionality):
-    def Raichudoing():
-        global enemymove
-        enemymove = "Thunderbolt"
-        return(enemymove)
 
 
 
