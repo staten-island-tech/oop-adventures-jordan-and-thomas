@@ -187,7 +187,7 @@ class functionality():
                 usetype = (moves[i]["type"])
 
 
-        if usetype == "Normal" and "Rock" in ptype:
+        if usetype == "Normal" and "Rock" in ptype or usetype == "Normal" and " Rock" in ptype:
             effective = "half"
         if usetype == "Normal" and "Ghost" in ptype:
             effective = "zero"
@@ -1679,8 +1679,6 @@ class Turns(Mike):
                     functionality.Mikesdeadpks(enemyhealth, currentpokemon)
 
                     turn =+1
-                    print(turn)
-
 
 
 
