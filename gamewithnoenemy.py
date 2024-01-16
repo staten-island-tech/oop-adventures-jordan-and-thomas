@@ -1,9 +1,5 @@
 import json
-
 import time
-from tryingtofix import Teambuilder
-times = 1.5
-import random
 import decimal
 from decimal import Decimal
 from random import sample
@@ -97,7 +93,7 @@ for i in range(pokemonlist):
         global sixthpkhealth
         sixthpkhealth = data[i]["Health Stat"]
 userpartyhealth = [inputteam[0], firstpkhealth, inputteam[2], secondpkhealth, inputteam[4], thirdpkhealth, inputteam[6], fourthpkhealth, inputteam[8], fifthpkhealth, inputteam[10], sixthpkhealth]
-enemypartyhealth = ["Raichu", 230]
+enemypartyhealth = ["Raichu", 230, "Dragonite", 292, "Charizard", 266, "Gengar", 230, "Blastoise", 268, "Machamp", 290]
 for i in range(pokemonlist):
     if inputteam[0] == data[i]["Name"]:
         global firstpkspeed
@@ -118,7 +114,7 @@ for i in range(pokemonlist):
         global sixthpkspeed
         sixthpkspeed = data[i]["Speed Stat"]
 userpartyspeed = [inputteam[0], firstpkspeed, inputteam[2], secondpkspeed, inputteam[4], thirdpkspeed, inputteam[6], fourthpkspeed, inputteam[8], fifthpkspeed, inputteam[10], sixthpkspeed]
-enemypartyspeed = ["Raichu", 205]
+enemypartyspeed = ["Raichu", 205, "Dragonite", "Charizard", "Gengar", 225, "Blastoise", 161, "Machamp", 115]
 userpartyaccuracy = [inputteam[0], 1, inputteam[2], 1, inputteam[4], 1, inputteam[6], 1, inputteam[8], 1, inputteam[10], 1]
 enemypartyaccuracy = ["Raichu", 1]
 firstpokemon = inputteam[0]
@@ -1158,7 +1154,6 @@ class Turns(Mike):
                                     if enemyhealth == 0:
                                         print(enemypokemon, "fainted")
                                         fullwipe = True
-                                enemypartyhealth[1] = enemyhealth
                                 if flinched == True:
                                     print(currentpokemon, "flinched!")
                                 if Weezer == False:
