@@ -9,7 +9,6 @@ from tryingtofix import Teambuilder
 
 times = 1.5
 
-turn = 0
 #going = "You"
 multiplehits = [1, 2, 3, 4]
 accuracynumber = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100]
@@ -47,7 +46,10 @@ enemyin = "same"
 global fullwipe
 fullwipe = False
 words = ["Switch", "switch", "Switch Out", "switch out", "Switch out", "Attack", "attack"]
-
+global turn
+turn = 1
+global evilturn
+evilturn = 1
 
 #enemyhealth = 200
 #Pokemon.teambuilder()
@@ -532,17 +534,17 @@ class functionality():
             speedeffect = True
             print(enemypk, "had its speed go down!")
         if "SpeedSharpUp" in moves[movenumber]["effect"]:
-            if going == "Enemy":
-                twostage = decimal.Decimal(4) / decimal.Deciaml(3)
-                enemyspeed *= twostage
-                espeed = enemyspeed
-                speedeffect = True
-                print(enemypk, "had its speed sharply raised!")
+            twostage = decimal.Decimal(5) / decimal.Deciaml(3)
+            enemyspeed *= twostage
+            espeed = enemyspeed
+            speedeffect = True
+            print(userpk, "had its speed sharply raised!")
         if "WrapEffect" in moves[movenumber]["effect"]:
             Poyo = random.randrange(4)
             Caps = turn
-            if Poyo = 1:
+            if Poyo == 1:
                 while turn - Caps < 2:
+                    print("Pluh")
                     
  
         if "HitsTwice" in moves[movenumber]["effect"]:
@@ -1168,28 +1170,42 @@ class Turns(Mike):
             
 
             for i in range(len(userpartystatus)):
-                if userpartystatus[i] == "Poisoned":
-                    for i in range(pokemonlist):
-                        if currentpokemon == data[i]["Name"]:
-                            fullhealth = data[i]["Health Stat"]
-                            poisond = decimal.Decimal(fullhealth) / 16
-                            poisondamage = round(poisond)
-                            if poisondamage > currenthealth:
-                                poisondamage = currenthealth
-                            currenthealth = currenthealth - poisondamage
-                            print(currentpokemon, "took", poisondamage, "damage from the poison!")
-                            print(currentpokemon, "has", currenthealth, "health left")
-                            for i in range(len(userpartyhealth)):
-                                if currentpokemon == userpartyhealth[i - 1]:
-                                    userpartyhealth[i] == currenthealth
+                if currentpokemon == userpartystatus[i - 1]:
+                    if userpartystatus[i] == "Poisoned":
+                        for i in range(pokemonlist):
+                            if currentpokemon == data[i]["Name"]:
+                                fullhealth = data[i]["Health Stat"]
+                                poisond = decimal.Decimal(fullhealth) / 16
+                                poisondamage = round(poisond)
+                                if poisondamage > currenthealth:
+                                    poisondamage = currenthealth
+                                currenthealth = currenthealth - poisondamage
+                                print(currentpokemon, "took", poisondamage, "damage from the poison!")
+                                print(currentpokemon, "has", currenthealth, "health left")
+                                for i in range(len(userpartyhealth)):
+                                    if currentpokemon == userpartyhealth[i - 1]:
+                                        userpartyhealth[i] = currenthealth
             for i in range(len(userpartystatus)):
-                if userpartystatus[i] == "Toxic":
-                    for i in range(pokemonlist):
-                        if currentpokemon == data[i]["Name"]:
-                            fullhealth = data[i]["Health Stat"]
-                            poisond = decimal.Decimal(fullhealth) / 16
-                            poisondamage = round(poisond)
-                            
+                global turn
+                if currentpokemon == userpartystatus[i - 1]:
+                    if userpartystatus[i] == "Toxic":
+                        for i in range(pokemonlist):
+                            if currentpokemon == data[i]["Name"]:
+                                fullhealth = data[i]["Health Stat"]
+                                poisond = decimal.Decimal(fullhealth) / 16
+                                pd = round(poisond)
+                                poisondamage = pd * turn
+                                if poisondamage > currenthealth:
+                                    poisondamage = currenthealth 
+                                currenthealth = currenthealth - poisondamage
+                                print(currentpokemon, "took", poisondamage, "from the toxic!")
+                                print(currentpokemon, "has", currenthealth, "health left")
+                                for i in range(len(userpartyhealth)):
+                                    if currentpokemon == userpartyhealth[i - 1]:
+                                        userpartyhealth[i] = currenthealth
+                        turn += 1
+                    if userpartystatus[i] != "Toxic":
+                        turn = 1
             if currenthealth == 0:
                 print(currentpokemon, "has fainted")
                 for i in range(len(userparty)):
@@ -1217,20 +1233,43 @@ class Turns(Mike):
 
 
             for i in range(len(eliteteamstatus)):
-                if eliteteamstatus[i] == "Poisoned":
-                    for i in range(pokemonlist):
-                        if enemypokemon == data[i]["Name"]:
-                            fullhealth = data[i]["Health Stat"]
-                            poisond = decimal.Decimal(fullhealth) / 16
-                            poisondamage = round(poisond)
-                            if poisondamage > enemyhealth:
-                                poisondamage = enemyhealth
-                            enemyhealth = enemyhealth - poisondamage
-                            print(enemypokemon, "took", poisondamage, "damage from the poison!")
-                            print(enemypokemon, "has", enemyhealth, "health left")
-                            for i in range(len(enemypartyhealth)):
-                                if enemypokemon == enemypartyhealth[i - 1]:
-                                    enemypartyhealth[i] = enemyhealth
+                if enemypokemon == eliteteamstatus[i - 1]:
+                    if eliteteamstatus[i] == "Poisoned":
+                        for i in range(pokemonlist):
+                            if enemypokemon == data[i]["Name"]:
+                                fullhealth = data[i]["Health Stat"]
+                                poisond = decimal.Decimal(fullhealth) / 16
+                                poisondamage = round(poisond)
+                                if poisondamage > enemyhealth:
+                                    poisondamage = enemyhealth
+                                enemyhealth = enemyhealth - poisondamage
+                                print(enemypokemon, "took", poisondamage, "damage from the poison!")
+                                print(enemypokemon, "has", enemyhealth, "health left")
+                                for i in range(len(enemypartyhealth)):
+                                    if enemypokemon == enemypartyhealth[i - 1]:
+                                        enemypartyhealth[i] = enemyhealth
+            for i in range(len(eliteteamstatus)):
+                global evilturn
+                if enemypokemon == eliteteamstatus[i - 1]:
+                    if eliteteamstatus[i] == "Toxic":
+                        for i in range(pokemonlist):
+                            if enemypokemon == data[i]["Name"]:
+                                fullhealth = data[i]["Health Stat"]
+                                poisond = decimal.Decimal(fullhealth) / 16
+                                pd = round(poisond)
+                                poisondamage = pd * turn
+                                if poisondamage > enemyhealth:
+                                    poisondamage = enemyhealth 
+                                enemyhealth = enemyhealth - poisondamage
+                                print(enemypokemon, "took", poisondamage, "from the toxic!")
+                                print(enemypokemon, "has", enemyhealth, "health left")
+                                for i in range(len(enemypartyhealth)):
+                                    if enemypokemon == enemypartyhealth[i - 1]:
+                                        enemypartyhealth[i] == enemyhealth
+                        evilturn += 1
+                    if eliteteamstatus[huh] != "Toxic":
+                        evilturn = 1
+                                    
             if enemyhealth == 0:
                 print(enemypokemon, "has fainted")
                 break
