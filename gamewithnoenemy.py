@@ -67,7 +67,8 @@ tb.teambuilder()
 pluh = open("playerteaminfo.json", encoding="utf8")
 inputteam = json.load(pluh)
 inputteamlist = len(inputteam)
-enemyparty = ["Raichu", ["Thunderbolt", "Thunder Wave", "Submission", "Surf"], "Dragonite", ["Agility", "Slam", "Fire Blast", "Blizzard"], "Charizard", ["Swords Dance", "Mega Punch", "Earthquake", "Strength"], "Gengar", ["Mega Drain", "Dream Eater", "Hypnosis", "Psychic"], "Blastoise", ["Hydro Pump", "Toxic", "Bite", "Ice Beam"], "Machamp", ["Body Slam", "Earthquake", "Rock Slide", "Submission"]]
+enemyteam = ["Raichu", ["Thunderbolt", "Thunder Wave", "Submission", "Surf"], "Dragonite", ["Agility", "Slam", "Fire Blast", "Blizzard"], "Charizard", ["Swords Dance", "Mega Punch", "Earthquake", "Strength"], "Gengar", ["Mega Drain", "Dream Eater", "Hypnosis", "Psychic"], "Blastoise", ["Hydro Pump", "Toxic", "Bite", "Ice Beam"], "Machamp", ["Body Slam", "Earthquake", "Rock Slide", "Submission"]]
+enemypary = [enemyteam[0], enemyteam[2], enemyteam[4], enemyteam[6], enemyteam[8], enemyteam[10]]
 userparty = [inputteam[0], inputteam[2], inputteam[4], inputteam[6], inputteam[8], inputteam[10]]
 userpartystatus = [inputteam[0], "none", inputteam[2], "none", inputteam[4], "none", inputteam[6], "none", inputteam[8], "none", inputteam[10], "none"]
 eliteteamstatus = ["Raichu", "none"]
@@ -685,7 +686,7 @@ class Mike(functionality):
                 enemymove = "Fire Blast"
             if zany == 4:
                 enemymove = "Blizzard"
-        if enemypokemon == "Charizard"
+        if enemypokemon == "Charizard":
             goofy = random.randint(0, 4)
             if goofy == 1:
                 enemymove = "Swords Dance"
@@ -967,9 +968,14 @@ class Turns(Mike):
                                         enemyspeed = round(cs)
                                         enemypartyspeed[i] = enemyspeed
                     if enemyhealth == 0:
-                        print(enemypokemon, "fainted")
-                        fullwipe = True
-                        break       
+                        print(enemypokemon, "has fainted")
+                        for i in range(len(enemyparty)):
+                            if enemypokemon == enemyparty[i]:
+                                enemyparty.remove(enemyparty[i])
+                        pleasemrwhalengivemeagoodgrade = random.randint(0, len(enemyparty))
+                        pluh = pleasemrwhalengivemeagoodgrade - 1
+                        
+                                
                     enemypartyhealth[1] = enemyhealth
                     if Weezer == False:
                         print(currentpokemon, "missed their attack!")
