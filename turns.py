@@ -984,7 +984,7 @@ class functionality():
             functionality.typechart("Machamp", oppositepokemon)
             M = matchup
             M1 = matchup1
-            if R != "half" and R != "zero" and R != "normal" and R1 != "normal" and R1 != "half" and R1 != "zero" and "Raichu" not in Mikesdeadguys:
+            if R != "half" and R != "zero" and R != "normal" or R1 != "normal" and R1 != "half" and R1 != "zero" and "Raichu" not in Mikesdeadguys:
 
                 enemypokemon = "Raichu"
                 for i in range(len(data)):
@@ -994,7 +994,7 @@ class functionality():
                 print("Mike M switched into", enemypokemon)
                 shouldiswitch = "yes"
 
-            elif D != "half" and D != "zero" and D != "normal" and D1 != "normal" and D1 != "half" and D1 != "zero" and "Dragonite" not in Mikesdeadguys:
+            elif D != "half" and D != "zero" and D != "normal" or D1 != "normal" and D1 != "half" and D1 != "zero" and "Dragonite" not in Mikesdeadguys:
                 enemypokemon = "Dragonite"
                 if enemypokemon == data[i]["Name"]:
                         enemyspeed = data[i]["Speed Stat"]
@@ -1002,7 +1002,7 @@ class functionality():
                 print("Mike M switched into Dragonite")
                 shouldiswitch = "yes"
 
-            elif C != "half" and C != "zero" and C != "normal" and C1 != "normal" and C1 != "half" and C1 != "zero" and "Charizard" not in Mikesdeadguys:
+            elif C != "half" and C != "zero" and C != "normal" or C1 != "normal" and C1 != "half" and C1 != "zero" and "Charizard" not in Mikesdeadguys:
                 enemypokemon = "Charizard"
                 if enemypokemon == data[i]["Name"]:
                         enemyspeed = data[i]["Speed Stat"]
@@ -1010,7 +1010,7 @@ class functionality():
                 print("Mike M switched into Charizard")
                 shouldiswitch = "yes"
 
-            elif G != "half" and G != "zero" and G != "normal" and G1 != "normal" and G1 != "half" and G1 != "zero" and "Gengar" not in Mikesdeadguys:
+            elif G != "half" and G != "zero" and G != "normal" or G1 != "normal" and G1 != "half" and G1 != "zero" and "Gengar" not in Mikesdeadguys:
                 enemypokemon = "Gengar"
                 if enemypokemon == data[i]["Name"]:
                         enemyspeed = data[i]["Speed Stat"]
@@ -1018,7 +1018,7 @@ class functionality():
                 print("Mike M switched into Gengar")
                 shouldiswitch = "yes"
 
-            elif B != "half" and B != "zero" and B != "normal" and B1 != "normal" and B1 != "half" and B1 != "zero" and "Blastoise" not in Mikesdeadguys:
+            elif B != "half" and B != "zero" and B != "normal" or B1 != "normal" and B1 != "half" and B1 != "zero" and "Blastoise" not in Mikesdeadguys:
                 enemypokemon = "Blastoise"
                 if enemypokemon == data[i]["Name"]:
                         enemyspeed = data[i]["Speed Stat"]
@@ -1026,7 +1026,7 @@ class functionality():
                 print("Mike M switched into Blastoise")
                 shouldiswitch = "yes"
 
-            elif M != "half" and M != "zero" and M != "normal" and M1 != "normal" and M1 != "half" and M1 != "zero"and "Machamp" not in Mikesdeadguys:
+            elif M != "half" and M != "zero" and M != "normal" or M1 != "normal" and M1 != "half" and M1 != "zero"and "Machamp" not in Mikesdeadguys:
                 enemypokemon = "Machamp"
                 if enemypokemon == data[i]["Name"]:
                         enemyspeed = data[i]["Speed Stat"]
