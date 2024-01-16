@@ -131,6 +131,8 @@ global youasleep
 enemyasleep = "no" 
 youasleep = "no"
 Mikesdeadguys = []
+global turn
+turn = 0
 
 
 
@@ -560,15 +562,14 @@ class functionality():
                     if enemypk == currentpokemon:
                         youasleep = "yes" 
         if "DreamEatEffect" in moves[movenumber]["effect"]:  
-            global damage
             if going == "Enemy":
                 if youasleep == "no":
                     damage = 0
                     print("Nothing Happened")
             if going == "User":
-                if enemyasleep == "no"
-                damage = 0
-                print("Nothing Happened")
+                if enemyasleep == "no":
+                    damage = 0
+                    print("Nothing Happened")
  
         if "HitsTwice" in moves[movenumber]["effect"]:
             edamage = damage * 2
