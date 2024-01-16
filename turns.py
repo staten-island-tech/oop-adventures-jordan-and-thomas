@@ -788,6 +788,15 @@ class functionality():
         if moves[movenumber]["category"] == "None":
             attackingpower = userattack
             defendingpower = enemydefense
+        userspeed = data[attacknumber]["Speed Stat"]
+        threshold = userspeed / decimal.Decimal(8)
+        critchance = random.randint(0,255)
+        if threshold > critchance:
+            attackingpower *= 1.5
+            global crithappen
+            crithappen = True
+        if threshold < critchance or threshold == critchance:
+            crithappen = False
         math1 = decimal.Decimal(40) * decimal.Decimal(movepower)
         math2 = decimal.Decimal(attackingpower) / decimal.Decimal(defendingpower)
         math3 = decimal.Decimal(math2) * decimal.Decimal(math1)
@@ -796,45 +805,78 @@ class functionality():
         if moves[movenumber]["type"] in data[attacknumber]["Types"]:
             global stab
             stab = True
+        if not(moves[movenumber]["type"] in data[attacknumber]["Types"]):
+            stab = False
         f = functionality()
         if len(data[enemynumber]["Types"]) == 2:
             enemytype1 = (data[enemynumber]["Types"])[0]
             enemytype2 = (data[enemynumber]["Types"])[1]
-            f.supereffective(move, enemytype1)
+            typeeffect1 = f.supereffective(move, enemytype1)
             global meffective1
-            if typeeffect[0] == "super":
+            global typesuper1
+            typesuper1 = False
+            global typehalf1
+            typehalf1 = False
+            global typezero1
+            typezero1 = False
+            if typeeffect1 == "super":
+                typesuper1 = True
                 meffective1 = 2
-            if typeeffect[0] == "half":
+            if typeeffect1 == "half":
+                typehalf1 = True
                 meffective1 = 0.5
-            if typeeffect[0] == "zero":
+            if typeeffect1 == "zero":
+                typezero1 = True
                 meffective1 = 0
-            f.supereffective(move, enemytype2)
+            if typesuper1 != True and typehalf1 != True and typezero1 != True:
+                meffective1 = 1
+            typeeffect2 = f.supereffective(move, enemytype2)
             global meffective2
-            if typeeffect[0] == "super":
+            global typesuper2
+            typesuper2 = False
+            global typehalf2
+            typehalf2 = False
+            global typezero2
+            typezero2 = False
+            if typeeffect2 == "super":
+                typesuper2 = True
                 meffective2 = 2
-            if typeeffect[0] == "half":
+            if typeeffect2 == "half":
+                typehalf2 = True
                 meffective2 = 0.5
-            if typeeffect[0] == "zero":
+            if typeeffect2 == "zero":
+                typezero2 = True
                 meffective2 = 0
+            if typesuper2 != True and typehalf2 != True and typezero2 != True:
+                meffective2 = 1
             global twotype
             twotype = True
         if len(data[enemynumber]["Types"]) == 1:
             enemytype = (data[enemynumber]["Types"])[0]
-            f.supereffective(move, enemytype)
+            typeeffect = f.supereffective(move, enemytype)
             global meffective
-            if typeeffect[0] == "super":
+            global typesuper
+            typesuper = False
+            global typehalf
+            typehalf = False
+            global typezero
+            typezero = False
+            if typeeffect == "super":
+                typesuper = True
                 meffective = 2
-            if typeeffect[0] == "half":
+            if typeeffect == "half":
+                typehalf = True
                 meffective = 0.5
-            if typeeffect[0] == "zero":
+            if typeeffect == "zero":
+                typezero = True
                 meffective = 0
-            global onetype
-            onetype = True
+            if typesuper != True and typehalf != True and typezero != True:
+                meffective = 1
         if stab == True:
             math5 *=  decimal.Decimal(1.5)
-        if onetype == True:
+        if len(data[enemynumber]["Types"]) == 1:
             math5 *= decimal.Decimal(meffective)
-        if twotype == True:
+        if len(data[enemynumber]["Types"]) == 2:
             meffective = decimal.Decimal(meffective1) * decimal.Decimal(meffective2)
             math5 *= decimal.Decimal(meffective)
         global movedamage
@@ -1433,7 +1475,7 @@ goingfirst = []
 class Turns(Mike):
 
     def speedcheck(enemyspeed, currentspeed):
-        if enemyspeed > currentspeed:
+        if enemyspeed > currentspeed or enemyspeed == currentspeed:
             goingfirst.append("Enemy")
         if currentspeed > enemyspeed:
             goingfirst.append("User")
@@ -1575,7 +1617,6 @@ class Turns(Mike):
                             if currentpokemon == userpartyhealth[i - 1]:
                                 currenthealth = userpartyhealth[i]
                     turn =+1
-                    print(turn)
 
 
 
