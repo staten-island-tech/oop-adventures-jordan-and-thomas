@@ -58,8 +58,6 @@ paralyzed = False
 global enemypokemon
 global enemyspeed
 global enemyhealth
-enemypokemon1 = "Raichu"
-enemypokemon = enemypokemon1
 for i in range(len(data)):
     if enemypokemon == data[i]["Name"]:
         enemyspeed = data[i]["Speed Stat"]
@@ -69,7 +67,7 @@ tb.teambuilder()
 pluh = open("playerteaminfo.json", encoding="utf8")
 inputteam = json.load(pluh)
 inputteamlist = len(inputteam)
-enemyparty = ["Raichu", ["Thunderbolt", "Thunder Wave", "Submission", "Surf"], "Dragonite", ["Agility", "Slam", "Fire Blast", "Blizzard"] "Charizard", ["Swords Dance", "Mega Punch", "Earthquake", "Strength"], "Gengar", ["Mega Drain", "Dream Eater", "Hypnosis", "Psychic"], "Blastoise", ["Hydro Pump", "Toxic", "Bite", "Ice Beam"] "Machamp"]
+enemyparty = ["Raichu", ["Thunderbolt", "Thunder Wave", "Submission", "Surf"], "Dragonite", ["Agility", "Slam", "Fire Blast", "Blizzard"], "Charizard", ["Swords Dance", "Mega Punch", "Earthquake", "Strength"], "Gengar", ["Mega Drain", "Dream Eater", "Hypnosis", "Psychic"], "Blastoise", ["Hydro Pump", "Toxic", "Bite", "Ice Beam"], "Machamp", ["Body Slam", "Earthquake", "Rock Slide", "Submission"]]
 userparty = [inputteam[0], inputteam[2], inputteam[4], inputteam[6], inputteam[8], inputteam[10]]
 userpartystatus = [inputteam[0], "none", inputteam[2], "none", inputteam[4], "none", inputteam[6], "none", inputteam[8], "none", inputteam[10], "none"]
 eliteteamstatus = ["Raichu", "none"]
@@ -118,7 +116,12 @@ enemypartyspeed = ["Raichu", 205, "Dragonite", 165, "Charizard", 205, "Gengar", 
 userpartyaccuracy = [inputteam[0], 1, inputteam[2], 1, inputteam[4], 1, inputteam[6], 1, inputteam[8], 1, inputteam[10], 1]
 enemypartyaccuracy = ["Raichu", 1, "Dragonite", 1, "Charizard", 1, "Gengar", 1, "Blastoise", 1, "Machamp", 1]
 firstpokemon = inputteam[0]
-firstenemypokemon = 
+firstenemypokemon = enemyparty[0]
+enemypokemon = firstenemypokemon
+for i in range(len(data)):
+    if enemypokemon == data[i]["Name"]:
+        enemyspeed = data[i]["Speed Stat"]
+        enemyhealth = data[i]["Health Stat"]
 global currentpokemon
 currentpokemon = firstpokemon
 global currentspeed
