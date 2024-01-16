@@ -175,12 +175,16 @@ class functionality():
                 #switch in good
 
 
-    def supereffective(supereffective, use, ptype):
+    def supereffective(supereffective, use, currentpokemon):
         global effective
         effective = "normal"
         for i in range(movelist):
             if (moves[i]["name"]) == use:
                 usetype = (moves[i]["type"])
+        for i in range(pokemonlist):
+            if data[i]["Name"] == currentpokemon:
+                ptype = data[i]["Types"]
+
 
         if usetype == "Normal" and "Rock" == ptype or usetype == "Normal" and " Rock" == ptype:
             effective = "half"
@@ -967,7 +971,7 @@ class functionality():
         #type chart code for each, make variable each specific pokemons effectiveness
         #for range of 6 or 5- if variablle equals super, then repeat with normal
 
-        if matchup == "half" or "zero" or matchup1 == "half" or "zero":
+        if matchup == "half" or matchup == "zero" or matchup1 == "half" or matchup1 == "zero":
             functionality.typechart("Raichu", oppositepokemon)
             R = matchup
             R1 = matchup1
