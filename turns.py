@@ -1461,7 +1461,7 @@ class Schmovin(Mike):
         if enemypokemon == "Gengar":
             Mike.Gengardoing()
         if enemypokemon == "Blastoise":
-            Mike.Blastoisedoing()
+            Mike.Blastoisedoing(turn)
         if enemypokemon == "Machamp":
             Mike.Machampdoing()
 
@@ -1535,13 +1535,13 @@ class Turns(Mike):
                         x = i
                 going = "Enemy"
                 time.sleep(times)
-                Mike.Raichudoing()
+                Schmovin.Whosmovin()
                 f.damagecalc(enemymove, enemypokemon1, currentpokemon)
                 enemydamage = movedamage
                 if enemydamage == currenthealth or enemydamage > currenthealth:
                     enemydamage = currenthealth
-                print("Raichu used", enemymove)
-                print("Raichu did", enemydamage, "damage")
+                print(enemypokemon, "used", enemymove)
+                print(enemypokemon, "did", enemydamage, "damage")
                 currenthealth = currenthealth - enemydamage
                 print(currentpokemon, "has", currenthealth, "health left")
                 userpartyhealth[x] = currenthealth
