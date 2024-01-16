@@ -1267,7 +1267,7 @@ class Turns(Mike):
                                     if enemypokemon == enemypartyhealth[i - 1]:
                                         enemypartyhealth[i] == enemyhealth
                         evilturn += 1
-                    if eliteteamstatus[huh] != "Toxic":
+                    if eliteteamstatus[i] != "Toxic":
                         evilturn = 1
                                     
             if enemyhealth == 0:
