@@ -114,9 +114,9 @@ for i in range(pokemonlist):
         global sixthpkspeed
         sixthpkspeed = data[i]["Speed Stat"]
 userpartyspeed = [inputteam[0], firstpkspeed, inputteam[2], secondpkspeed, inputteam[4], thirdpkspeed, inputteam[6], fourthpkspeed, inputteam[8], fifthpkspeed, inputteam[10], sixthpkspeed]
-enemypartyspeed = ["Raichu", 205, "Dragonite", "Charizard", "Gengar", 225, "Blastoise", 161, "Machamp", 115]
+enemypartyspeed = ["Raichu", 205, "Dragonite", 165, "Charizard", 205, "Gengar", 225, "Blastoise", 161, "Machamp", 115]
 userpartyaccuracy = [inputteam[0], 1, inputteam[2], 1, inputteam[4], 1, inputteam[6], 1, inputteam[8], 1, inputteam[10], 1]
-enemypartyaccuracy = ["Raichu", 1]
+enemypartyaccuracy = ["Raichu", 1, "Dragonite", 1, "Charizard", 1, "Gengar", 1, "Blastoise", 1, "Machamp", 1]
 firstpokemon = inputteam[0]
 global currentpokemon
 currentpokemon = firstpokemon
