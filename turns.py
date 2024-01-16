@@ -2,7 +2,6 @@ import json
 
 import time
 from tryingtofix import Teambuilder
-from tryingtofix import *
 times = 1.5
 import random
 import decimal
