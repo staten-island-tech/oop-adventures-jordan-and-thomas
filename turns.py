@@ -563,7 +563,17 @@ class functionality():
                     if enemypk == enemypokemon:
                         enemyasleep = "yes"
                     if enemypk == currentpokemon:
-                        youasleep = "yes"            
+                        youasleep = "yes" 
+        if "DreamEatEffect" in moves[movenumber]["effect"]:  
+            global damage
+            if going == "Enemy":
+                if youasleep == "no":
+                    damage = 0
+                    print("Nothing Happened")
+            if going == "User":
+                if enemyasleep == "no"
+                damage = 0
+                print("Nothing Happened")
  
         if "HitsTwice" in moves[movenumber]["effect"]:
             edamage = damage * 2
