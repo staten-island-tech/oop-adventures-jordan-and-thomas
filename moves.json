@@ -63,7 +63,7 @@
         "accuracy": 70,
         "PP": 10,
         "effect": [
-            "Paralyze"
+
         ]
     },
     {
@@ -74,7 +74,7 @@
         "accuracy": 100,
         "PP": 15,
         "effect": [
-            "Paralyze"
+
         ]
     },
     {
@@ -85,7 +85,7 @@
         "accuracy": 100,
         "PP": 30,
         "effect": [
-            "Paralyze"
+
         ]
     },
     {
@@ -96,7 +96,7 @@
         "accuracy": 100,
         "PP": 20,
         "effect": [
-            "AlwaysParalyze"
+ 
         ]
     },
     {
@@ -107,7 +107,7 @@
         "accuracy": 100,
         "PP": 15,
         "effect": [
-            "Paralyze"
+
         ]
     },
     {

@@ -12,7 +12,7 @@ times = 1.5
 #going = "You"
 multiplehits = [1, 2, 3, 4]
 accuracynumber = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100]
-test = open("move.json", encoding="utf8")
+test = open("moves.json", encoding="utf8")
 moves = json.load(test)
 movelist = len(moves)
 
@@ -605,7 +605,6 @@ class functionality():
                 eeffect = "Flinch"
         if "Seismictoss" in moves[movenumber]["effect"]:
             edamage = enemynumber
-            print(edamage)
             damageeffect = True
         if "AccuracyDown" in moves[movenumber]["effect"]:
             newaccuracy = decimal.Decimal(2) / decimal.Decimal(3)
@@ -628,15 +627,12 @@ class functionality():
         if speedeffect == True:
             newspeed = True
             return(espeed)
-    def accuracycheck(accuracycheck, move, accuracy, userpk, userpartyaccuracy):
+    def accuracycheck(accuracycheck, move, accuracy):
         for i in range(movelist):
             if move == moves[i]["name"]:
                 anumber = moves[i]["accuracy"]
                 accnumber = anumber * accuracy
-                print(accuracy, "accuracy")
-                print(accnumber, "accnumber")
         randnumb = random.randint(0,100)
-        print(randnumb)
         if randnumb < accnumber:
             movego = True
         if randnumb == accnumber:
@@ -658,14 +654,14 @@ class Ai():
 
 
 class Mike(functionality):
-    def enemydoing(enemydoing, enemypokemon):
+    def enemydoing(enemypokemon):
         global enemymove
         if enemypokemon == "Raichu":
             silly = random.randint(0, 4)
             if silly == 1:
                 enemymove = "Thunderbolt"
             if silly == 2:
-                enemymove = "Thunder Wave"
+                enemymove = "Mega Punch"
             if silly == 3:
                 enemymove = "Submission"
             if silly == 4:
@@ -683,7 +679,7 @@ class Mike(functionality):
         if enemypokemon == "Charizard":
             goofy = random.randint(0, 4)
             if goofy == 1:
-                enemymove = "Swords Dance"
+                enemymove = "Flamethrower"
             if goofy == 2:
                 enemymove = "Mega Punch"
             if goofy == 3:
@@ -695,9 +691,9 @@ class Mike(functionality):
             if tomfoolery == 1:
                 enemymove = "Mega Drain"
             if tomfoolery == 2:
-                enemymove = "Dream Eater"
+                enemymove = "Thunderbolt"
             if tomfoolery == 3:
-                enemymove = " Hypnosis"
+                enemymove = "Mega Punch"
             if tomfoolery == 4:
                 enemymove = "Psychic"
         if enemypokemon == "Blastoise":
@@ -764,6 +760,7 @@ class Turns(Mike):
         paralyzed = False
         global flinched
         flinched = False
+        global enemypokemon
         while fullwipe == False:
             f = functionality()
             print("Switch Out Or Attack")
@@ -789,11 +786,11 @@ class Turns(Mike):
                         currentspeed = userpartyspeed[i]
                 going = "Enemy"
                 time.sleep(times)
-                Mike.Raichudoing()
+                Mike.enemydoing(enemypokemon)
                 for i in range(len(enemypartyaccuracy)):
                     if enemypokemon == enemypartyaccuracy[i - 1]:
                         accuracy = enemypartyaccuracy[i]
-                gomove = f.accuracycheck(enemymove, accuracy, enemypokemon, enemypartyaccuracy)
+                gomove = f.accuracycheck(enemymove, accuracy)
                 if gomove == True:
                     for i in range(len(userpartystatus)):
                         if currentpokemon == userpartystatus[i - 1]:
@@ -915,7 +912,7 @@ class Turns(Mike):
                     for i in range(len(userpartyaccuracy)):
                         if currentpokemon == userpartyaccuracy[i - 1]:
                             accuracy = userpartyaccuracy[i]
-                    Weezer = f.accuracycheck(use, accuracy, currentpokemon, userpartyaccuracy)
+                    Weezer = f.accuracycheck(use, accuracy)
                     time.sleep(times)
                     f = functionality()
                     for i in range(len(currentmoves)):
@@ -975,8 +972,8 @@ class Turns(Mike):
                         for i in range(len(enemypartyspeed)):
                             if enemypokemon == enemypartyspeed[i-1]:
                                 enemyspeed = enemypartyspeed[i]
-                if len(enemyparty) == 0:
-                    break
+                    if len(enemyparty) == 0:
+                        break
 
 
 
@@ -993,11 +990,11 @@ class Turns(Mike):
                                     print(currentpokemon, "took damage from missing their move!")
                                     print(currentpokemon, "has", newhealth, "health left")
                     going = "Enemy"
-                    Mike.Raichudoing()
+                    Mike.enemydoing(enemypokemon)
                     for i in range(len(enemypartyaccuracy)):
                         if enemypokemon == enemypartyaccuracy[i - 1]:
                             accuracy = enemypartyaccuracy[i]
-                    gomove = f.accuracycheck(enemymove, accuracy, enemypokemon, enemypartyaccuracy)
+                    gomove = f.accuracycheck(enemymove, accuracy)
                     if gomove == True and flinched == False:
                         for i in range(len(eliteteamstatus)):
                             if enemypokemon == eliteteamstatus[i - 1]:
@@ -1082,12 +1079,11 @@ class Turns(Mike):
                 if "Enemy" in goingfirst:
                     f = functionality()
                     going = "Enemy"
-                    Mike.Raichudoing()
+                    Mike.enemydoing(enemypokemon)
                     for i in range(len(enemypartyaccuracy)):
                         if enemypokemon == enemypartyaccuracy[i - 1]:
                             accuracy = enemypartyaccuracy[i]
-                    gomove = f.accuracycheck(enemymove, accuracy, enemypokemon, enemypartyaccuracy)
-                    print(eliteteamstatus)
+                    gomove = f.accuracycheck(enemymove, accuracy)
                     if gomove == True:
                         for i in range(len(eliteteamstatus)):
                             if enemypokemon == eliteteamstatus[i - 1]:
@@ -1185,7 +1181,7 @@ class Turns(Mike):
                                 for i in range(len(userpartyaccuracy)):
                                     if currentpokemon == userpartyaccuracy[i - 1]:
                                         accuracy = userpartyaccuracy[i]
-                                Weezer = f.accuracycheck(use, accuracy, currentpokemon, userpartyaccuracy)
+                                Weezer = f.accuracycheck(use, accuracy)
                                 if Weezer == True and flinched == False:
                                     for i in range(len(userpartystatus)):
                                         if currentpokemon == userpartystatus[i - 1]:
