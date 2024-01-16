@@ -1470,7 +1470,7 @@ class Turns(Mike):
         global twotype
         global movedamage
         global uniquedamage
-        while enemypartyhealth[1] != 0 or len(userparty) < 0:
+        while enemypartyhealth[1] != 0 or len(yourteam) < 0:
             global turn
             f = functionality()
             print("Switch Out Or Attack")
@@ -1479,7 +1479,7 @@ class Turns(Mike):
                 for i in range(len(userpartyhealth)):
                     if currentpokemon == userpartyhealth[i - 1]:
                         currenthealth = userpartyhealth[i]
-                print(userparty)
+                print(yourteam)
                 switchin = input("Pick a Pokemon to Switch into: ")
                 print("You switched into", switchin)
                 currentpokemon = switchin
@@ -1500,13 +1500,13 @@ class Turns(Mike):
                 print(currentpokemon, "has", currenthealth, "health left")
                 userpartyhealth[x] = currenthealth
                 if currenthealth == 0:
-                    for i in range(len(userparty)):
-                        if currentpokemon == userparty[i]:
-                            userparty.remove(i)
-                    print(userparty)
+                    for i in range(len(yourteam)):
+                        if currentpokemon == yourteam[i]:
+                            yourteam.remove(i)
+                    print(yourteam)
                     newpk = input("Who will you switch into? ")
-                    for i in range(len(userparty)):
-                        if newpk == userparty[i]:
+                    for i in range(len(yourteam)):
+                        if newpk == yourteam[i]:
                             currentpokemon = newpk
                     for i in range(len(userpartyhealth)):
                         if currentpokemon == userpartyhealth[i - 1]:
@@ -1563,13 +1563,13 @@ class Turns(Mike):
                     #here down = deaD
                     userpartyhealth[i] = currenthealth
                     if currenthealth == 0:
-                        for i in range(len(userparty)):
-                            if currentpokemon == userparty[i]:
-                                userparty.remove[i]
-                        print(userparty)
+                        for i in range(len(yourteam)):
+                            if currentpokemon == yourteam[i]:
+                                yourteam.remove[i]
+                        print(yourteam)
                         newpk = input("Who will you switch into? ")
-                        for i in range(len(userparty)):
-                            if newpk == userparty[i]:
+                        for i in range(len(yourteam)):
+                            if newpk == yourteam[i]:
                                 currentpokemon = newpk
                         for i in range(len(userpartyhealth)):
                             if currentpokemon == userpartyhealth[i - 1]:
@@ -1599,15 +1599,15 @@ class Turns(Mike):
                     global death
                     death = False
                     if currenthealth == 0:
-                        for i in range(len(userparty)):
-                            if currentpokemon == userparty[i]:
-                                userparty.remove(userparty[i])
+                        for i in range(len(yourteam)):
+                            if currentpokemon == yourteam[i]:
+                                yourteam.remove(yourteam[i])
                                 death = True
                                 break
-                        print(userparty)
+                        print(yourteam)
                         newpk = input("Who will you switch into? ")
-                        for i in range(len(userparty)):
-                            if newpk == userparty[i]:
+                        for i in range(len(yourteam)):
+                            if newpk == yourteam[i]:
                                 currentpokemon = newpk
                         for i in range(len(userpartyhealth)):
                             if currentpokemon == userpartyhealth[i - 1]:

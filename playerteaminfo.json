@@ -1,44 +1,44 @@
 [
-    "Golem",
+    "Mew",
     [
-        "Tackle",
-        "Dig",
-        "Rage",
-        "Bide"
+        "Flash",
+        "Strength",
+        "Surf",
+        "Fly"
     ],
-    "Bulbasaur",
+    "Mewtwo",
     [
-        "Tackle",
-        "Growl",
-        "Cut",
+        "Flash",
+        "Strength",
+        "Substitute",
+        "Tri Attack"
+    ],
+    "Dragonite",
+    [
+        "Strength",
+        "Surf",
+        "Substitute",
         "Rest"
     ],
-    "Fearow",
+    "Moltres",
     [
-        "Peck",
-        "Growl",
-        "Leer",
-        "Agility"
-    ],
-    "Ekans",
-    [
-        "Wrap",
-        "Leer",
-        "Bite",
-        "Glare"
-    ],
-    "Golbat",
-    [
-        "Leech Life",
-        "Bite",
-        "Supersonic",
-        "Haze"
-    ],
-    "Geodude",
-    [
-        "Tackle",
-        "Bide",
+        "Fly",
+        "Substitute",
         "Rest",
-        "Toxic"
+        "Sky Attack"
+    ],
+    "Zapdos",
+    [
+        "Flash",
+        "Fly",
+        "Substitute",
+        "Thunder Wave"
+    ],
+    "Articuno",
+    [
+        "Fly",
+        "Substitute",
+        "Rest",
+        "Sky Attack"
     ]
 ]
