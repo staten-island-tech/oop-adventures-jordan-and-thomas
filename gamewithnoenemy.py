@@ -16,7 +16,7 @@ test = open("move.json", encoding="utf8")
 moves = json.load(test)
 movelist = len(moves)
 
-quiz = open("pokemon.json", encoding="utf8")
+quiz = open("data.json", encoding="utf8")
 data = json.load(quiz)
 pokemonlist = len(data)
 
@@ -58,16 +58,12 @@ paralyzed = False
 global enemypokemon
 global enemyspeed
 global enemyhealth
-for i in range(len(data)):
-    if enemypokemon == data[i]["Name"]:
-        enemyspeed = data[i]["Speed Stat"]
-        enemyhealth = data[i]["Health Stat"]
 tb = Teambuilder()
 tb.teambuilder()
 pluh = open("playerteaminfo.json", encoding="utf8")
 inputteam = json.load(pluh)
 inputteamlist = len(inputteam)
-enemyteam = ["Raichu", ["Thunderbolt", "Thunder Wave", "Submission", "Surf"], "Dragonite", ["Agility", "Slam", "Fire Blast", "Blizzard"], "Charizard", ["Swords Dance", "Mega Punch", "Earthquake", "Strength"], "Gengar", ["Mega Drain", "Dream Eater", "Hypnosis", "Psychic"], "Blastoise", ["Hydro Pump", "Toxic", "Bite", "Ice Beam"], "Machamp", ["Body Slam", "Earthquake", "Rock Slide", "Submission"]]
+enemyteam = ["Raichu", ["Thunderbolt", "Mega Punch", "Submission", "Surf"], "Dragonite", ["Agility", "Slam", "Fire Blast", "Blizzard"], "Charizard", ["Flamethrower", "Mega Punch", "Earthquake", "Strength"], "Gengar", ["Mega Drain", "Mega Punch", "Thunderbolt", "Psychic"], "Blastoise", ["Hydro Pump", "Toxic", "Bite", "Ice Beam"], "Machamp", ["Body Slam", "Earthquake", "Rock Slide", "Submission"]]
 enemyparty = [enemyteam[0], enemyteam[2], enemyteam[4], enemyteam[6], enemyteam[8], enemyteam[10]]
 userparty = [inputteam[0], inputteam[2], inputteam[4], inputteam[6], inputteam[8], inputteam[10]]
 userpartystatus = [inputteam[0], "none", inputteam[2], "none", inputteam[4], "none", inputteam[6], "none", inputteam[8], "none", inputteam[10], "none"]
@@ -119,6 +115,10 @@ enemypartyaccuracy = ["Raichu", 1, "Dragonite", 1, "Charizard", 1, "Gengar", 1, 
 firstpokemon = inputteam[0]
 firstenemypokemon = enemyparty[0]
 enemypokemon = firstenemypokemon
+for i in range(len(data)):
+    if enemypokemon == data[i]["Name"]:
+        enemyspeed = data[i]["Speed Stat"]
+        enemyhealth = data[i]["Health Stat"]
 for i in range(len(data)):
     if enemypokemon == data[i]["Name"]:
         enemyspeed = data[i]["Speed Stat"]
@@ -545,14 +545,6 @@ class functionality():
             espeed = enemyspeed
             speedeffect = True
             print(userpk, "had its speed sharply raised!")
-        if "WrapEffect" in moves[movenumber]["effect"]:
-            Poyo = random.randrange(4)
-            Caps = turn
-            if Poyo == 1:
-                while turn - Caps < 2:
-                    print("Pluh")
-                    
- 
         if "HitsTwice" in moves[movenumber]["effect"]:
             edamage = damage * 2
             print(userpk, "used", move)
@@ -560,15 +552,17 @@ class functionality():
             print("It hit again!")
             damageeffect = True
         if "Poison" in moves[movenumber]["effect"] or " Poison" in moves[movenumber]["effect"]:
+            poisonchance = random.randint(0, 100)
             if moves[movenumber]["name"] == "Twineedle":
-                poisonchance = random.randint(0, 100)
-                twineedleprob = 20
-                if poisonchance < twineedleprob or poisonchance == twineedleprob:
-                    for i in range(len(enemypartystatus)):
-                        if enemypk == enemypartystatus[i - 1]:
-                            if not("Poison" in data[enemynumber]["Types"]):
-                                enemypartystatus[i] = "Poisoned"
-                                print(enemypk, "got poisoned!")
+                prob = 20
+            if moves[movenumber]["name"] == "Toxic":
+                prob = 100
+            if poisonchance < prob or poisonchance == prob:
+                for i in range(len(enemypartystatus)):
+                    if enemypk == enemypartystatus[i - 1]:
+                        if not("Poison" in data[enemynumber]["Types"]):
+                            enemypartystatus[i] = "Poisoned"
+                            print(enemypk, "got poisoned!")
         if "Paralyze" in moves[movenumber]["effect"]:
             if moves[movenumber]["name"] == "Thunder" or moves[movenumber]["name"] == "Thunder Punch" or moves[movenumber]["name"] == "Thunder Shock" or moves[movenumber]["name"] == "Thunderbolt":
                 thunderprob = 10
@@ -1244,8 +1238,6 @@ class Turns(Mike):
                                         for i in range(len(enemypartyspeed)):
                                             if enemypokemon == enemypartyspeed[i-1]:
                                                 enemyspeed = enemypartyspeed[i]
-                if len(enemyparty) == 0:
-                    break
                                 if flinched == True:
                                     print(currentpokemon, "flinched!")
                                 if Weezer == False:
@@ -1258,6 +1250,8 @@ class Turns(Mike):
                                                 userpartyhealth[i] = newhealth
                                                 print(currentpokemon, "took damage from missing their move!")
                                                 print(currentpokemon, "has", newhealth, "health left")
+                    if len(enemyparty) == 0:
+                        break
             
 
             for i in range(len(userpartystatus)):

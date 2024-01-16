@@ -1526,7 +1526,7 @@
         "accuracy": 85,
         "PP": 10,
         "effect": [
-            "ToxicEffect"
+            "Poison"
         ]
     },
     {
