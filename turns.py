@@ -1105,7 +1105,7 @@ class functionality():
             B = matchup
             functionality.typechart("Machamp", oppositepokemon)
             M = matchup
-            if R != "half" or "none" and "Raichu" not in Mikesdeadguys:
+            if R != "half" and R != "none" and "Raichu" not in Mikesdeadguys:
 
                 enemypokemon = "Raichu"
                 for i in range(len(data)):
@@ -1115,7 +1115,7 @@ class functionality():
                 print("Mike M switched into", enemypokemon)
                 shouldiswitch = "yes"
 
-            elif D != "half" or "none" and "Dragonite" not in Mikesdeadguys:
+            elif D != "half" and D != "none" and "Dragonite" not in Mikesdeadguys:
                 enemypokemon = "Dragonite"
                 if enemypokemon == data[i]["Name"]:
                         enemyspeed = data[i]["Speed Stat"]
@@ -1123,7 +1123,7 @@ class functionality():
                 print("Mike M switched into Dragonite")
                 shouldiswitch = "yes"
 
-            elif C != "half" or "none" and "Charizard" not in Mikesdeadguys:
+            elif C != "half" and C != "none" and "Charizard" not in Mikesdeadguys:
                 enemypokemon = "Charizard"
                 if enemypokemon == data[i]["Name"]:
                         enemyspeed = data[i]["Speed Stat"]
@@ -1131,7 +1131,7 @@ class functionality():
                 print("Mike M switched into Charizard")
                 shouldiswitch = "yes"
 
-            elif G != "half" or "none" and "Gengar" not in Mikesdeadguys:
+            elif G != "half" and G != "none" and "Gengar" not in Mikesdeadguys:
                 enemypokemon = "Gengar"
                 if enemypokemon == data[i]["Name"]:
                         enemyspeed = data[i]["Speed Stat"]
@@ -1139,7 +1139,7 @@ class functionality():
                 print("Mike M switched into Gengar")
                 shouldiswitch = "yes"
 
-            elif B != "half" or "none" and "Blastoise" not in Mikesdeadguys:
+            elif B != "half" and B != "none" and "Blastoise" not in Mikesdeadguys:
                 enemypokemon = "Blastoise"
                 if enemypokemon == data[i]["Name"]:
                         enemyspeed = data[i]["Speed Stat"]
@@ -1147,7 +1147,7 @@ class functionality():
                 print("Mike M switched into Blastoise")
                 shouldiswitch = "yes"
 
-            elif M != "half" or "none" and "Machamp" not in Mikesdeadguys:
+            elif M != "half" and M != "none" and "Machamp" not in Mikesdeadguys:
                 enemypokemon = "Machamp"
                 if enemypokemon == data[i]["Name"]:
                         enemyspeed = data[i]["Speed Stat"]
@@ -1557,7 +1557,7 @@ class Turns(Mike):
         global twotype
         global movedamage
         global uniquedamage
-        while enemypartyhealth[1] != 0 or len(yourteam) < 0:
+        while len(Mikesdeadguys) < 6 or len(yourteam) > 0:
             global turn
             f = functionality()
             print("Switch Out Or Attack")
