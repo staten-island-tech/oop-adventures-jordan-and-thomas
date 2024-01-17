@@ -43,8 +43,8 @@ global enemyin
 enemyin = "same"
 global itch
 itch = False
-userpartyaccuracy = [inputteam[0], 1, inputteam[2], 1, inputteam[4], 1, inputteam[6], 1, inputteam[8], 1, inputteam[10], 1]
 
+AshMustard = "Why you leave us"
 
 
 #enemyhealth = 200
@@ -88,7 +88,7 @@ for i in range(pokemonlist):
         global sixthpkhealth
         sixthpkhealth = data[i]["Health Stat"]
 userpartyhealth = [inputteam[0], firstpkhealth, inputteam[2], secondpkhealth, inputteam[4], thirdpkhealth, inputteam[6], fourthpkhealth, inputteam[8], fifthpkhealth, inputteam[10], sixthpkhealth]
-enemypartyhealth = ["Raichu", 230, "Dragonite", 292, "Charizard", 266, "Gengar", 230, "Blastoise", 268, "Machamp", 290]
+enemypartyhealth = ["Raichu", 230]
 firstpokemon = inputteam[0]
 global currentpokemon
 currentpokemon = firstpokemon
@@ -104,7 +104,6 @@ pokemonmoves = []
 allpokemon = []
 for i in range(len(data)):
             allpokemon.append(data[i]["Name"])
-enemypartyaccuracy = ["Raichu", 1, "Dragonite", 1, "Charizard", 1, "Gengar", 1, "Blastoise", 1, "Machamp", 1]
 
 
 
@@ -934,19 +933,6 @@ class functionality():
             if not "Poison" in data[enemynumber]["Types"]:
                 enemypk = "afflicted"
         return damage
-    def accuracycheck(accuracycheck, move, accuracy):
-        for i in range(movelist):
-            if move == moves[i]["name"]:
-                anumber = moves[i]["accuracy"]
-                accnumber = anumber * accuracy
-        randnumb = random.randint(0,100)
-        if randnumb < accnumber:
-            movego = True
-        if randnumb == accnumber:
-            movego = True
-        if randnumb > accnumber:
-            movego = False
-        return(movego)
 
 
     def checks(enemypokemo, oppositepokemon):
@@ -1010,7 +996,7 @@ class functionality():
                     if enemypokemon == data[i]["Name"]:
                         enemyspeed = data[i]["Speed Stat"]
                         enemyhealth = data[i]["Health Stat"]
-                print("Mike M switched into", enemypokemon)
+                print("Mike M switched into Raichu")
                 shouldiswitch = "yes"
 
             elif D != "half" and D != "zero" and D != "normal" or D1 != "normal" and D1 != "half" and D1 != "zero" and "Dragonite" not in Mikesdeadguys:
@@ -1088,8 +1074,13 @@ class functionality():
                         caniswitch = "yes"
 
 
-    def Mikesdeadpks(enemyhealth, oppositepokemon):
+    def Mikesdeadpks(enemyhealt, oppositepokemon):
+        
         global enemypokemon
+        global enemyhealth
+        global enemyspeed
+        enemyhealth = enemyhealt
+
         if enemyhealth == 0:
             print(enemypokemon, "has fainted")
             Mikesdeadguys.append(enemypokemon)
@@ -1105,17 +1096,17 @@ class functionality():
             B = matchup
             functionality.typechart("Machamp", oppositepokemon)
             M = matchup
-            if R != "half" and R != "none" and "Raichu" not in Mikesdeadguys:
+            if R != "half" or R != "none" and "Raichu" not in Mikesdeadguys:
 
                 enemypokemon = "Raichu"
                 for i in range(len(data)):
                     if enemypokemon == data[i]["Name"]:
                         enemyspeed = data[i]["Speed Stat"]
                         enemyhealth = data[i]["Health Stat"]
-                print("Mike M switched into", enemypokemon)
+                print("Mike M switched into Raichu")
                 shouldiswitch = "yes"
 
-            elif D != "half" and D != "none" and "Dragonite" not in Mikesdeadguys:
+            elif D != "half" or D != "none" and "Dragonite" not in Mikesdeadguys:
                 enemypokemon = "Dragonite"
                 if enemypokemon == data[i]["Name"]:
                         enemyspeed = data[i]["Speed Stat"]
@@ -1123,7 +1114,8 @@ class functionality():
                 print("Mike M switched into Dragonite")
                 shouldiswitch = "yes"
 
-            elif C != "half" and C != "none" and "Charizard" not in Mikesdeadguys:
+
+            elif C != "half" or C != "none" and "Charizard" not in Mikesdeadguys:
                 enemypokemon = "Charizard"
                 if enemypokemon == data[i]["Name"]:
                         enemyspeed = data[i]["Speed Stat"]
@@ -1131,7 +1123,7 @@ class functionality():
                 print("Mike M switched into Charizard")
                 shouldiswitch = "yes"
 
-            elif G != "half" and G != "none" and "Gengar" not in Mikesdeadguys:
+            elif G != "half" or G != "none" and "Gengar" not in Mikesdeadguys:
                 enemypokemon = "Gengar"
                 if enemypokemon == data[i]["Name"]:
                         enemyspeed = data[i]["Speed Stat"]
@@ -1139,7 +1131,7 @@ class functionality():
                 print("Mike M switched into Gengar")
                 shouldiswitch = "yes"
 
-            elif B != "half" and B != "none" and "Blastoise" not in Mikesdeadguys:
+            elif B != "half" or B != "none" and "Blastoise" not in Mikesdeadguys:
                 enemypokemon = "Blastoise"
                 if enemypokemon == data[i]["Name"]:
                         enemyspeed = data[i]["Speed Stat"]
@@ -1147,7 +1139,7 @@ class functionality():
                 print("Mike M switched into Blastoise")
                 shouldiswitch = "yes"
 
-            elif M != "half" and M != "none" and "Machamp" not in Mikesdeadguys:
+            elif M != "half" or M != "none" and "Machamp" not in Mikesdeadguys:
                 enemypokemon = "Machamp"
                 if enemypokemon == data[i]["Name"]:
                         enemyspeed = data[i]["Speed Stat"]
@@ -1557,7 +1549,7 @@ class Turns(Mike):
         global twotype
         global movedamage
         global uniquedamage
-        while len(Mikesdeadguys) < 6 or len(yourteam) > 0:
+        while AshMustard == "Why you leave us":
             global turn
             f = functionality()
             print("Switch Out Or Attack")
@@ -1576,33 +1568,28 @@ class Turns(Mike):
                         x = i
                 going = "Enemy"
                 time.sleep(times)
-                Schmovin.Whosmovin()
-                for i in range(len(enemypartyaccuracy)):
-                    if enemypokemon == enemypartyaccuracy[i - 1]:
-                        accuracy = enemypartyaccuracy[i]
-                gomove = f.accuracycheck(enemymove, accuracy)
-                if gomove == True:
-                    f.damagecalc(enemymove, enemypokemon1, currentpokemon)
-                    enemydamage = movedamage
-                    if enemydamage == currenthealth or enemydamage > currenthealth:
-                        enemydamage = currenthealth
-                    print(enemypokemon, "used", enemymove)
-                    print(enemypokemon, "did", enemydamage, "damage")
-                    currenthealth = currenthealth - enemydamage
-                    print(currentpokemon, "has", currenthealth, "health left")
-                    userpartyhealth[x] = currenthealth
-                    if currenthealth == 0:
-                        for i in range(len(yourteam)):
-                            if currentpokemon == yourteam[i]:
-                                yourteam.remove(i)
-                        print(yourteam)
-                        newpk = input("Who will you switch into? ")
-                        for i in range(len(yourteam)):
-                            if newpk == yourteam[i]:
-                                currentpokemon = newpk
-                        for i in range(len(userpartyhealth)):
-                            if currentpokemon == userpartyhealth[i - 1]:
-                                currenthealth = userpartyhealth[i]
+                Schmovin.Whosmovin(enemypokemon)
+                f.damagecalc(enemymove, enemypokemon1, currentpokemon)
+                enemydamage = movedamage
+                if enemydamage == currenthealth or enemydamage > currenthealth:
+                    enemydamage = currenthealth
+                print(enemypokemon, "used", enemymove)
+                print(enemypokemon, "did", enemydamage, "damage")
+                currenthealth = currenthealth - enemydamage
+                print(currentpokemon, "has", currenthealth, "health left")
+                userpartyhealth[x] = currenthealth
+                if currenthealth == 0:
+                    for i in range(len(yourteam)):
+                        if currentpokemon == yourteam[i]:
+                            yourteam.remove(i)
+                    print(yourteam)
+                    newpk = input("Who will you switch into? ")
+                    for i in range(len(yourteam)):
+                        if newpk == yourteam[i]:
+                            currentpokemon = newpk
+                    for i in range(len(userpartyhealth)):
+                        if currentpokemon == userpartyhealth[i - 1]:
+                            currenthealth = userpartyhealth[i]
             if userdo == "Attack" or userdo == "attack":
                 for i in range(inputteamlist):
                     if currentpokemon == inputteam[i - 1]:
@@ -1617,29 +1604,24 @@ class Turns(Mike):
                     global enemyhealth
                     going = "You"
                     print("You used", use)
-                    for i in range(len(userpartyaccuracy)):
-                        if currentpokemon == userpartyaccuracy[i - 1]:
-                            accuracy = userpartyaccuracy[i]
-                    Weezer = f.accuracycheck(use, accuracy)
                     time.sleep(times)
                     # if move effect != None
                     #Do effect\
                     f = functionality()
                     for i in range(len(currentmoves)):
                         if currentmoves[i]== use:
-                            if Weezer == True:
-                                f.damagecalc(use, currentpokemon, enemypokemon1)
-                                damage = movedamage
-                                f.specialeffect(use, damage, enemyspeed, enemypokemon1, currentpokemon)
-                                if damage == enemyhealth or damage > enemyhealth:
-                                    damage = enemyhealth
-                                print("It did", damage, "damage")
-                                enemyhealth = enemyhealth - damage
-                                time.sleep(times)
-                                if enemyhealth > 0:
-                                    print(enemypokemon1, "has", enemyhealth, "health left")
-                                if enemyhealth == 0:
-                                    print(enemypokemon1, "fainted")
+                            f.damagecalc(use, currentpokemon, enemypokemon1)
+                            damage = movedamage
+                            f.specialeffect(use, damage, enemyspeed, enemypokemon1, currentpokemon)
+                            if damage == enemyhealth or damage > enemyhealth:
+                                damage = enemyhealth
+                            print("It did", damage, "damage")
+                            enemyhealth = enemyhealth - damage
+                            time.sleep(times)
+                            if enemyhealth > 0:
+                                print(enemypokemon1, "has", enemyhealth, "health left")
+                            if enemyhealth == 0:
+                                print(enemypokemon1, "fainted")
                     enemypartyhealth[1] = enemyhealth
                     functionality.Mikesdeadpks(enemyhealth, currentpokemon)
                     going = "Enemy"

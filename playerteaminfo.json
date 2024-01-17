@@ -1,44 +1,44 @@
 [
-    "Mew",
+    "Golem",
     [
-        "Flash",
-        "Strength",
-        "Surf",
-        "Fly"
+        "Tackle",
+        "Dig",
+        "Earthquake",
+        "Mimic"
     ],
-    "Mewtwo",
+    "Golbat",
     [
-        "Flash",
-        "Strength",
-        "Substitute",
-        "Tri Attack"
+        "Bite",
+        "Rest",
+        "Haze",
+        "Toxic"
     ],
-    "Dragonite",
+    "Onix",
     [
-        "Strength",
-        "Surf",
-        "Substitute",
+        "Tackle",
+        "Slam",
+        "Bind",
+        "Harden"
+    ],
+    "Abra",
+    [
+        "Teleport",
+        "Toxic",
+        "Mega Punch",
         "Rest"
     ],
-    "Moltres",
+    "Fearow",
     [
         "Fly",
-        "Substitute",
-        "Rest",
-        "Sky Attack"
+        "Growl",
+        "Leer",
+        "Peck"
     ],
-    "Zapdos",
+    "Muk",
     [
-        "Flash",
-        "Fly",
-        "Substitute",
-        "Thunder Wave"
-    ],
-    "Articuno",
-    [
-        "Fly",
-        "Substitute",
-        "Rest",
-        "Sky Attack"
+        "Pound",
+        "Disable",
+        "Sludge",
+        "Harden"
     ]
 ]
