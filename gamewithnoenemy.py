@@ -661,16 +661,12 @@ class Mike(functionality):
             silly = random.randint(0, 4)
             if silly == 1:
                 enemymove = "Thunderbolt"
-                print("1")
             if silly == 2:
                 enemymove = "Mega Punch"
-                print("2")
             if silly == 3:
                 enemymove = "Submission"
-                print("3")
             if silly == 4:
                 enemymove = "Surf"
-                print("4")
         if enemypokemon == "Dragonite":
             zany = random.randint(0, 4)
             if zany == 1:
@@ -712,7 +708,7 @@ class Mike(functionality):
             if buffoonery == 4:
                 enemymove = "Ice Beam"
         if enemypokemon == "Machamp":
-            lobotomy = random.randit(0, 4)
+            lobotomy = random.randint(0, 4)
             if lobotomy == 1:
                 enemymove = "Body Slam"
             if lobotomy == 2:
@@ -1232,6 +1228,7 @@ class Turns(Mike):
                                         pleasemrwhalengivemeagoodgrade = random.randint(0, len(enemyparty))
                                         pluh = pleasemrwhalengivemeagoodgrade - 1
                                         enemypokemon = enemyparty[pluh]
+                                        print("Mike switched into", enemypokemon)
                                         for i in range(len(enemypartyhealth)):
                                                 if enemypokemon == enemypartyhealth[i - 1]:
                                                     enemyhealth = enemypartyhealth[i]
