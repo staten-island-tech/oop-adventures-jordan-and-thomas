@@ -44,6 +44,7 @@ enemyin = "same"
 global itch
 itch = False
 
+AshMustard = "Why you leave us"
 
 
 #enemyhealth = 200
@@ -1073,9 +1074,13 @@ class functionality():
                         caniswitch = "yes"
 
 
-    def Mikesdeadpks(enemyhealth, oppositepokemon):
+    def Mikesdeadpks(enemyhealt, oppositepokemon):
         
         global enemypokemon
+        global enemyhealth
+        global enemyspeed
+        enemyhealth = enemyhealt
+
         if enemyhealth == 0:
             print(enemypokemon, "has fainted")
             Mikesdeadguys.append(enemypokemon)
@@ -1544,7 +1549,7 @@ class Turns(Mike):
         global twotype
         global movedamage
         global uniquedamage
-        while len(Mikesdeadguys) < 6 or len(yourteam) == 0:
+        while AshMustard == "Why you leave us":
             global turn
             f = functionality()
             print("Switch Out Or Attack")
