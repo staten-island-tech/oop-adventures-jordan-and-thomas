@@ -1,44 +1,44 @@
 [
     "Golem",
     [
+        "Tackle",
         "Earthquake",
-        "Strength",
-        "Substitute",
-        "Rock Slide"
+        "Rage",
+        "Rock Throw"
     ],
-    "Mew",
+    "Venusaur",
     [
-        "Flash",
-        "Strength",
-        "Surf",
-        "Fly"
+        "Tackle",
+        "Razor Leaf",
+        "Vine Whip",
+        "Cut"
     ],
-    "Mewtwo",
+    "Fearow",
     [
-        "Flash",
-        "Strength",
-        "Substitute",
-        "Tri Attack"
+        "Peck",
+        "Razor Wind",
+        "Hyper Beam",
+        "Rage"
     ],
-    "Dragonite",
+    "Tentacruel",
     [
-        "Strength",
-        "Surf",
-        "Substitute",
-        "Rest"
+        "Acid",
+        "Water Gun",
+        "Hydro Pump",
+        "Surf"
     ],
-    "Moltres",
+    "Alakazam",
     [
-        "Fly",
-        "Substitute",
-        "Rest",
-        "Sky Attack"
+        "Psychic",
+        "Psybeam",
+        "Dig",
+        "Double Team"
     ],
-    "Zapdos",
+    "Charizard",
     [
-        "Flash",
-        "Fly",
-        "Substitute",
-        "Thunder Wave"
+        "Flamethrower",
+        "Scratch",
+        "Earthquake",
+        "Mega Punch"
     ]
 ]
