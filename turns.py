@@ -98,6 +98,8 @@ for i in range(len(data)):
     if currentpokemon == data[i]["Name"]:
         currentspeed = data[i]["Speed Stat"]
         currenthealth = data[i]["Health Stat"]
+userpartyaccuracy = [inputteam[0], 1, inputteam[2], 1, inputteam[4], 1, inputteam[6], 1, inputteam[8], 1, inputteam[10], 1]
+enemypartyaccuracy = ["Raichu", 1, "Dragonite", 1, "Charizard", 1, "Gengar", 1, "Blastoise", 1, "Machamp", 1]
 pknumber = [1]
 playerteam = []
 pokemonmoves = []
@@ -801,7 +803,6 @@ class functionality():
         math3 = decimal.Decimal(math2) * decimal.Decimal(math1)
         math4 = decimal.Decimal(math3) / decimal.Decimal(50)
         math5 = decimal.Decimal(math4) + decimal.Decimal(2)
-        print(math5)
         if moves[movenumber]["type"] in data[attacknumber]["Types"]:
             global stab
             stab = True
@@ -1569,27 +1570,34 @@ class Turns(Mike):
                 going = "Enemy"
                 time.sleep(times)
                 Schmovin.Whosmovin(enemypokemon)
-                f.damagecalc(enemymove, enemypokemon1, currentpokemon)
-                enemydamage = movedamage
-                if enemydamage == currenthealth or enemydamage > currenthealth:
-                    enemydamage = currenthealth
-                print(enemypokemon, "used", enemymove)
-                print(enemypokemon, "did", enemydamage, "damage")
-                currenthealth = currenthealth - enemydamage
-                print(currentpokemon, "has", currenthealth, "health left")
-                userpartyhealth[x] = currenthealth
-                if currenthealth == 0:
-                    for i in range(len(yourteam)):
-                        if currentpokemon == yourteam[i]:
-                            yourteam.remove(i)
-                    print(yourteam)
-                    newpk = input("Who will you switch into? ")
-                    for i in range(len(yourteam)):
-                        if newpk == yourteam[i]:
-                            currentpokemon = newpk
-                    for i in range(len(userpartyhealth)):
-                        if currentpokemon == userpartyhealth[i - 1]:
-                            currenthealth = userpartyhealth[i]
+                for i in range(len(enemypartyaccuracy)):
+                    if enemypokemon == enemypartyaccuracy[i - 1]:
+                        accuracy = enemypartyaccuracy[i]
+                gomove = f.accuracycheck(enemymove, accuracy)
+                if gomove == True:
+                    f.damagecalc(enemymove, enemypokemon1, currentpokemon)
+                    enemydamage = movedamage
+                    if enemydamage == currenthealth or enemydamage > currenthealth:
+                        enemydamage = currenthealth
+                    print(enemypokemon, "used", enemymove)
+                    print(enemypokemon, "did", enemydamage, "damage")
+                    currenthealth = currenthealth - enemydamage
+                    print(currentpokemon, "has", currenthealth, "health left")
+                    userpartyhealth[x] = currenthealth
+                    if currenthealth == 0:
+                        for i in range(len(yourteam)):
+                            if currentpokemon == yourteam[i]:
+                                yourteam.remove(i)
+                        print(yourteam)
+                        newpk = input("Who will you switch into? ")
+                        for i in range(len(yourteam)):
+                            if newpk == yourteam[i]:
+                                currentpokemon = newpk
+                        for i in range(len(userpartyhealth)):
+                            if currentpokemon == userpartyhealth[i - 1]:
+                                currenthealth = userpartyhealth[i]
+                if gomove == False:
+                    print(enemypokemon, "missed their attack!")
             if userdo == "Attack" or userdo == "attack":
                 for i in range(inputteamlist):
                     if currentpokemon == inputteam[i - 1]:
