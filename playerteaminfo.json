@@ -4,41 +4,39 @@
         "Tackle",
         "Earthquake",
         "Rage",
-        "Rock Throw"
+        "Bide"
     ],
     "Venusaur",
     [
-        "Tackle",
-        "Razor Leaf",
         "Vine Whip",
-        "Cut"
+        "Tackle",
+        "Rage",
+        "Growl"
     ],
-    "Fearow",
+    "Beedrill",
     [
-        "Peck",
-        "Razor Wind",
-        "Hyper Beam",
+        "Mimic",
+        "Swift",
+        "Bide",
         "Rage"
     ],
-    "Tentacruel",
+    "Golbat",
     [
-        "Acid",
-        "Water Gun",
-        "Hydro Pump",
-        "Surf"
+        "Bite",
+        "Screech",
+        "Swift",
+        "Rest"
     ],
-    "Alakazam",
+    "Snorlax",
     [
-        "Psychic",
-        "Psybeam",
-        "Dig",
-        "Double Team"
+        "Ice Beam",
+        "Surf",
+        "Bide",
+        "Rest"
     ],
-    "Charizard",
+    "Weedle",
     [
-        "Flamethrower",
-        "Scratch",
-        "Earthquake",
-        "Mega Punch"
+        "String Shot",
+        "Poison Sting"
     ]
 ]
