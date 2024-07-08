@@ -950,7 +950,9 @@ class functionality():
             if data[i]["Name"] == enemypokemon:
                 Types = data[i]["Types"]
         functionality.typechart(enemypokemon, oppositepokemon)
-       
+        print(matchup)
+        print("matchup")
+        
 
         for i in range(pokemonlist):
             if data[i]["Name"] == "Raichu":
@@ -1090,7 +1092,7 @@ class functionality():
                         caniswitch = "yes"
                     if p == 5 and "Blastoise" not in Mikesdeadguys and enemypokemon != "Blastoise":
                         enemypokemon = "Blastoise"
-                        printM("Mike M switched into Blastoise")
+                        print("Mike M switched into Blastoise")
                         shouldiswitch = "yes"
                         caniswitch = "yes"
                     if p == 6 and "Machamp" not in Mikesdeadguys and enemypokemon != "Machamp":
@@ -1519,7 +1521,7 @@ class Mike(functionality):
 class Schmovin(Mike):
     def Whosmovin(pokemon):
         print("Bababruhie")
-        print(enemypokemon)
+        print(pokemon)
       
         if pokemon == "Raichu":
             Mike.Raichudoing(turn, enemypokemon)
@@ -1789,7 +1791,7 @@ time.sleep(2)
 Turns.preturn(firstpokemon, enemypokemon, "Elite Four Member Mike")
 Turns.turn(firstpokemon, Kaifat)
 time.sleep(2)
-
+print(len(Mikesdeadguys))
 if len(Mikesdeadguys) == 6:
   print("Congratulations! You have defeated Elite For Member Mike!")
 

@@ -4,39 +4,41 @@
         "Tackle",
         "Earthquake",
         "Rage",
-        "Bide"
+        "Mimic"
     ],
     "Venusaur",
     [
-        "Vine Whip",
         "Tackle",
-        "Rage",
-        "Growl"
-    ],
-    "Beedrill",
-    [
-        "Mimic",
-        "Swift",
-        "Bide",
-        "Rage"
-    ],
-    "Golbat",
-    [
-        "Bite",
-        "Screech",
-        "Swift",
-        "Rest"
+        "Growl",
+        "Vine Whip",
+        "Cut"
     ],
     "Snorlax",
     [
         "Ice Beam",
-        "Surf",
+        "Psychic",
         "Bide",
-        "Rest"
+        "Reflect"
     ],
-    "Weedle",
+    "Alakazam",
     [
-        "String Shot",
-        "Poison Sting"
+        "Psychic",
+        "Flash",
+        "Rage",
+        "Mimic"
+    ],
+    "Golbat",
+    [
+        "Mega Drain",
+        "Swift",
+        "Rest",
+        "Bite"
+    ],
+    "Tentacruel",
+    [
+        "Acid",
+        "Surf",
+        "Cut",
+        "Ice Beam"
     ]
 ]
