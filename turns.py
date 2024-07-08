@@ -365,17 +365,17 @@ class functionality():
         return(effective)
 
 
-    def typechart(enemypokemon, oppositepokemon):
+    def typechart(enemypokemon, currentpokemon):
         global matchup
         global matchup1
         Doit = "yes"
         matchup = "normal"
         matchup1 = "normal"
         for i in range(pokemonlist):
-            if (data[i]["Name"]) == oppositepokemon:
+            if (data[i]["Name"]) == currentpokemon:
                 ptype = (data[i]["Types"])
         for i in range(pokemonlist):
-            if (data[i]["Name"]) == enemypokemon:
+            if (data[i]["Name"]) == currentpokemon:
                 enemytypes = (data[i]["Types"])
         enemytype = enemytypes[0]
         if len(enemytypes) == 1:
@@ -949,7 +949,7 @@ class functionality():
         for i in range(pokemonlist):
             if data[i]["Name"] == enemypokemon:
                 Types = data[i]["Types"]
-        functionality.typechart(enemypokemon, oppositepokemon)
+        functionality.typechart(enemypokemon, currentpokemon)
         print(matchup)
         print("matchup")
         
@@ -977,22 +977,22 @@ class functionality():
         #for range of 6 or 5- if variablle equals super, then repeat with normal
 
         if matchup == "half" or matchup == "zero" or matchup1 == "half" or matchup1 == "zero":
-            functionality.typechart("Raichu", oppositepokemon)
+            functionality.typechart("Raichu", currentpokemon)
             R = matchup
             R1 = matchup1
-            functionality.typechart("Dragonite", oppositepokemon)
+            functionality.typechart("Dragonite", currentpokemon)
             D = matchup
             D1 = matchup1
-            functionality.typechart("Charizard", oppositepokemon)
+            functionality.typechart("Charizard", currentpokemon)
             C = matchup
             C1 = matchup1
-            functionality.typechart("Gengar", oppositepokemon)
+            functionality.typechart("Gengar", currentpokemon)
             G = matchup
             G1 = matchup1
-            functionality.typechart("Blastoise", oppositepokemon)
+            functionality.typechart("Blastoise", currentpokemon)
             B = matchup
             B1 = matchup1
-            functionality.typechart("Machamp", oppositepokemon)
+            functionality.typechart("Machamp", currentpokemon)
             M = matchup
             M1 = matchup1
             if "Raichu" not in Mikesdeadguys and R != "half" and R != "zero" and R != "normal" or R1 != "normal" and R1 != "half" and R1 != "zero":
@@ -1109,17 +1109,17 @@ class functionality():
             print(enemypokemon, "has fainted")
             Mikesdeadguys.append(enemypokemon)
             
-            functionality.typechart("Raichu", oppositepokemon)
+            functionality.typechart("Raichu", currentpokemon)
             R = matchup
-            functionality.typechart("Dragonite", oppositepokemon)
+            functionality.typechart("Dragonite", currentpokemon)
             D = matchup
-            functionality.typechart("Charizard", oppositepokemon)
+            functionality.typechart("Charizard", currentpokemon)
             C = matchup
-            functionality.typechart("Gengar", oppositepokemon)
+            functionality.typechart("Gengar", currentpokemon)
             G = matchup
-            functionality.typechart("Blastoise", oppositepokemon)
+            functionality.typechart("Blastoise", currentpokemon)
             B = matchup
-            functionality.typechart("Machamp", oppositepokemon)
+            functionality.typechart("Machamp", currentpokemon)
             M = matchup
             if "Raichu" not in Mikesdeadguys:
                 
