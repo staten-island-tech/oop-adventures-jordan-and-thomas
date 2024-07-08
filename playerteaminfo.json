@@ -3,27 +3,20 @@
     [
         "Earthquake",
         "Tackle",
-        "Rage",
+        "Mimic",
         "Dig"
     ],
     "Venusaur",
     [
         "Tackle",
         "Vine Whip",
-        "Mega Drain",
+        "Rage",
         "Mimic"
-    ],
-    "Beedrill",
-    [
-        "Bide",
-        "Swift",
-        "Cut",
-        "Harden"
     ],
     "Alakazam",
     [
         "Psychic",
-        "Flash",
+        "Teleport",
         "Rage",
         "Dig"
     ],
@@ -38,5 +31,12 @@
     [
         "Poison Sting",
         "String Shot"
+    ],
+    "Rhyhorn",
+    [
+        "Earthquake",
+        "Thunder",
+        "Dig",
+        "Mimic"
     ]
 ]
