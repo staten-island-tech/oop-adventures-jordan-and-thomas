@@ -1,44 +1,42 @@
 [
-    "Golem",
+    "Charizard",
     [
         "Earthquake",
-        "Tackle",
-        "Rage",
-        "Mimic"
+        "Swift",
+        "Cut",
+        "Fly"
     ],
-    "Venusaur",
+    "Ekans",
     [
-        "Vine Whip",
-        "Growl",
-        "Rage",
-        "Mimic"
-    ],
-    "Golbat",
-    [
-        "Bite",
-        "Rest",
-        "Rage",
-        "Haze"
-    ],
-    "Alakazam",
-    [
-        "Psychic",
-        "Flash",
-        "Rage",
-        "Dig"
+        "Acid",
+        "Leer",
+        "Bide",
+        "Toxic"
     ],
     "Fearow",
     [
         "Peck",
-        "Bide",
         "Leer",
-        "Swift"
+        "Growl",
+        "Rest"
     ],
-    "Tentacool",
+    "Bulbasaur",
     [
-        "Surf",
         "Rage",
-        "Acid",
-        "Bide"
+        "Bide",
+        "Rest",
+        "Cut"
+    ],
+    "Abra",
+    [
+        "Toxic",
+        "Teleport",
+        "Rest",
+        "Flash"
+    ],
+    "Weedle",
+    [
+        "Poison Sting",
+        "String Shot"
     ]
 ]

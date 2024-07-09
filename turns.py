@@ -892,6 +892,8 @@ class functionality():
             movedamage = 0
       else:
         movedamage = 0
+        #if typesuper == True or typesuper2 == True or typesuper1 == True:
+            #print("It was supereffective!")
     def specialeffect(specialeffect, move, damage, enemyspeed, enemypk, userpk):
         f = functionality
         for i in range(movelist):
@@ -1288,6 +1290,7 @@ class Mike(functionality):
                                         enemymove = "Toxic"
                                     if z != "None":
                                         e = random.randrange(4)
+                                        print(e,"random number")
                                         if e == 1 or e == 4:
                                             enemymove = "Double Team"
                                             #print("Raichu used Double Team")
@@ -1319,14 +1322,15 @@ class Mike(functionality):
                 enemymove = "Fire Blast"
                 #print("Raichu used Fire Blast")
 
-            if effective != "super":
+            elif effective != "super":
                 functionality.supereffective("why", "Blizzard", Alek)
                 if effective == "super":
                     enemymove = "Blizzard"
                     #print("Raichu used Surf")
 
-                if effective != "super":
+                elif effective != "super":
                     d = random.randrange(5)
+                    print(d)
                     if d == 1 or d == 4:
                         enemymove = "Agility"
                         #print("Raichu used Agility")
@@ -1375,6 +1379,7 @@ class Mike(functionality):
 
                         if effective != "super":
                             c = random.randrange(3)
+                            print(c)
                             if c == 1:
                                 enemymove = "Mega Punch"
                                 #print("Raichu used Agility")
@@ -1408,7 +1413,7 @@ class Mike(functionality):
                 if effective == "super":
                     enemymove = "Mega Drain"
                 if effective != "super":
-                    for i in range(userpartystatus):
+                    for i in range(len(userpartystatus)-1):
                         if currentpokemon == userpartystatus[i - 1]:
                             y = userpartystatus[i]
                             if y == "asleep":
@@ -1418,6 +1423,7 @@ class Mike(functionality):
 
                             else:
                                 v = random.randrange(2)
+                                print(v)
                                 if v == 1:
                                     enemymove = "Mega Drain"
                                 if v == 2:
@@ -1529,8 +1535,8 @@ class Mike(functionality):
 
 class Schmovin(Mike):
     def Whosmovin(pokemon):
-        print("Bababruhie")
-        print(pokemon)
+        
+        
       
         if pokemon == "Raichu":
             Mike.Raichudoing(turn, enemypokemon)
@@ -1628,9 +1634,11 @@ class Turns(Mike):
                 print(currentpokemon, "has", currenthealth, "health left")
                 userpartyhealth[x] = currenthealth
                 if currenthealth == 0:
-                    for i in range(len(yourteam)):
-                        if currentpokemon == yourteam.index(i):
-                            yourteam.remove(i)
+                    
+                    for i in range(len(yourteam)-1):
+                        if currentpokemon == yourteam[i]:
+                            yourteam.remove(currentpokemon)
+                        
                     print(yourteam)
                     newpk = input("Who will you switch into? ")
                     for i in range(len(yourteam)):
@@ -1722,8 +1730,7 @@ class Turns(Mike):
                     
                     print("Before")
                     Schmovin.Whosmovin(enemypokemon)
-                    print(enemymove)
-                    print("Por favor")
+                
                     #if he switches out he shouldnt also attack which is why
                     #enemymove isnt updating after the switch.
                     #Since he no attack, enemymove doesn't change but damage calc is still pulling the enemymove variable
@@ -1740,8 +1747,13 @@ class Turns(Mike):
                         if enemydamage == currenthealth or enemydamage > currenthealth:
                             enemydamage = currenthealth
                         print(enemypokemon, "used", enemymove,)
+                        time.sleep(1)
+                        if typesuper1 == True or typesuper2 == True:
+                            print("It was supereffective!")
+                            time.sleep(0.5)
                         print(enemypokemon, "did", enemydamage, "damage")
                         currenthealth -= enemydamage
+                        time.sleep(1)
                         print(currentpokemon, "has", currenthealth, "health left")
                         userpartyhealth[x] = currenthealth
                         #global Death
@@ -1777,6 +1789,9 @@ class Turns(Mike):
                                 damage = f.specialeffect(use, damage, enemyspeed, enemypokemon, currentpokemon)
                                 if damage == enemyhealth or damage > enemyhealth:
                                     damage = enemyhealth
+                                if typesuper1 == True or typesuper2 == True:
+                                    print("It was supereffective!")
+                                    time.sleep(0.5)
                                 print(currentpokemon, "did", damage, "damage")
                                 enemyhealth = enemyhealth - damage
                                 time.sleep(times)
@@ -1800,9 +1815,9 @@ time.sleep(2)
 Turns.preturn(firstpokemon, enemypokemon, "Elite Four Member Mike")
 Turns.turn(firstpokemon, Kaifat)
 time.sleep(2)
-print(len(Mikesdeadguys))
+
 if len(Mikesdeadguys) == 6:
-  print("Congratulations! You have defeated Elite For Member Mike!")
+  print("Congratulations!\nYou have defeated Elite Four Member Mike!")
 
 if len(yourteam) == 0:
   print("You have no more pokemon left to battle with\n You have lost the battle\n GAME OVER")
