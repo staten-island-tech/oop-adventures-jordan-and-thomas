@@ -171,7 +171,7 @@ class functionality():
                     switchin = input("Pick a Pokemon to switch in to:")
                 currentpokemon = switchin
             if going == "You":
-                Mikesdeadguys.append(oppositepokemon)
+                Mikesdeadguys.append(enemypokemon)
                 #switch in good
 
 
@@ -365,17 +365,17 @@ class functionality():
         return(effective)
 
 
-    def typechart(enemypokemon, currentpokemon):
+    def typechart(enemypokemon, oppositepokemon):
         global matchup
         global matchup1
         Doit = "yes"
         matchup = "normal"
         matchup1 = "normal"
         for i in range(pokemonlist):
-            if (data[i]["Name"]) == currentpokemon:
+            if (data[i]["Name"]) == oppositepokemon:
                 ptype = (data[i]["Types"])
         for i in range(pokemonlist):
-            if (data[i]["Name"]) == currentpokemon:
+            if (data[i]["Name"]) == enemypokemon:
                 enemytypes = (data[i]["Types"])
         enemytype = enemytypes[0]
         if len(enemytypes) == 1:
@@ -383,7 +383,9 @@ class functionality():
 
         if len(enemytypes) == 2:
           enemytype2 = enemytypes[1]
+          
         #if len(types) == 2: 2 variables
+        
 
         if enemytype == "Normal" and "Rock" in ptype:
             matchup = "half"
@@ -949,8 +951,8 @@ class functionality():
         for i in range(pokemonlist):
             if data[i]["Name"] == enemypokemon:
                 Types = data[i]["Types"]
-        functionality.typechart(enemypokemon, currentpokemon)
-        print(matchup)
+        functionality.typechart(enemypokemon, oppositepokemon)
+        print(matchup, matchup1)
         print("matchup")
         
 
@@ -977,25 +979,31 @@ class functionality():
         #for range of 6 or 5- if variablle equals super, then repeat with normal
 
         if matchup == "half" or matchup == "zero" or matchup1 == "half" or matchup1 == "zero":
-            functionality.typechart("Raichu", currentpokemon)
+            functionality.typechart("Raichu", oppositepokemon)
             R = matchup
             R1 = matchup1
-            functionality.typechart("Dragonite", currentpokemon)
+            
+            functionality.typechart("Dragonite", oppositepokemon)
             D = matchup
             D1 = matchup1
-            functionality.typechart("Charizard", currentpokemon)
+            
+            functionality.typechart("Charizard", oppositepokemon)
             C = matchup
             C1 = matchup1
-            functionality.typechart("Gengar", currentpokemon)
+            
+            functionality.typechart("Gengar", oppositepokemon)
             G = matchup
             G1 = matchup1
-            functionality.typechart("Blastoise", currentpokemon)
+           
+            functionality.typechart("Blastoise", oppositepokemon)
             B = matchup
             B1 = matchup1
-            functionality.typechart("Machamp", currentpokemon)
+            
+            functionality.typechart("Machamp", oppositepokemon)
             M = matchup
             M1 = matchup1
-            if "Raichu" not in Mikesdeadguys and R != "half" and R != "zero" and R != "normal" or R1 != "normal" and R1 != "half" and R1 != "zero":
+            
+            if "Raichu" not in Mikesdeadguys and R != "half" and R != "zero" and R != "normal" or R1 != "normal" and R1 != "half" and R1 != "zero" and enemypokemon != "Raichu":
 
                 enemypokemon = "Raichu"
                 for i in range(pokemonlist):
@@ -1066,40 +1074,40 @@ class functionality():
                 shouldiswitch = "yes"
                 enemymove = "Nothing"
                 return enemypokemon
-            else: 
-                caniswitch = "no"
-                while caniswitch == "no":
-                    p = random.randrange(6)
-                    if p == 1 and "Raichu" not in Mikesdeadguys and enemypokemon != "Raichu":
-                         enemypokemon = "Raichu"
-                         print("Mike M switched into", enemypokemon)
-                         shouldiswitch = "yes"
-                         caniswitch = "yes"
-                    if p == 2 and "Dragonite" not in Mikesdeadguys and enemypokemon != "Dragonite":
-                        enemypokemon = "Dragonite"
-                        print("Mike M switched into Dragonite")
-                        shouldiswitch = "yes"
-                        caniswitch = "yes"
-                    if p == 3 and "Charizard" not in Mikesdeadguys and enemypokemon != "Charizard":
-                        enemypokemon = "Charizard"
-                        print("Mike M switched into Charizard")
-                        shouldiswitch = "yes"
-                        caniswitch = "yes"
-                    if p == 4 and "Gengar" not in Mikesdeadguys and enemypokemon != "Gengar":
-                        enemypokemon = "Gengar"
-                        print("Mike M switched into Gengar")
-                        shouldiswitch = "yes"
-                        caniswitch = "yes"
-                    if p == 5 and "Blastoise" not in Mikesdeadguys and enemypokemon != "Blastoise":
-                        enemypokemon = "Blastoise"
-                        print("Mike M switched into Blastoise")
-                        shouldiswitch = "yes"
-                        caniswitch = "yes"
-                    if p == 6 and "Machamp" not in Mikesdeadguys and enemypokemon != "Machamp":
-                        enemypokemon = "Machamp"
-                        print("Mike M switched into Machamp")
-                        shouldiswitch = "yes"
-                        caniswitch = "yes"
+            #else: 
+                #caniswitch = "no"
+                #while caniswitch == "no":
+                 #   p = random.randrange(6)
+                  #  if p == 1 and "Raichu" not in Mikesdeadguys and enemypokemon != "Raichu":
+                   #      enemypokemon = "Raichu"
+                    #     print("Mike M switched into", enemypokemon)
+                     #    shouldiswitch = "yes"
+                      #   caniswitch = "yes"
+                    #if p == 2 and "Dragonite" not in Mikesdeadguys and enemypokemon != "Dragonite":
+                     #   enemypokemon = "Dragonite"
+                      #  print("Mike M switched into Dragonite")
+                       # shouldiswitch = "yes"
+                        #caniswitch = "yes"
+                    #if p == 3 and "Charizard" not in Mikesdeadguys and enemypokemon != "Charizard":
+                     #   enemypokemon = "Charizard"
+                      #  print("Mike M switched into Charizard")
+                       # shouldiswitch = "yes"
+                        #caniswitch = "yes"
+                    #if p == 4 and "Gengar" not in Mikesdeadguys and enemypokemon != "Gengar":
+                     #   enemypokemon = "Gengar"
+                      #  print("Mike M switched into Gengar")
+                       # shouldiswitch = "yes"
+                        #caniswitch = "yes"
+                    #if p == 5 and "Blastoise" not in Mikesdeadguys and enemypokemon != "Blastoise":
+                     #   enemypokemon = "Blastoise"
+                      #  print("Mike M switched into Blastoise")
+                       # shouldiswitch = "yes"
+                        #caniswitch = "yes"
+                    #if p == 6 and "Machamp" not in Mikesdeadguys and enemypokemon != "Machamp":
+                     #   enemypokemon = "Machamp"
+                      #  print("Mike M switched into Machamp")
+                       # shouldiswitch = "yes"
+                        #caniswitch = "yes"
               
 
     def Mikesdeadpks(enemyhealt, oppositepokemon):
@@ -1109,17 +1117,17 @@ class functionality():
             print(enemypokemon, "has fainted")
             Mikesdeadguys.append(enemypokemon)
             
-            functionality.typechart("Raichu", currentpokemon)
+            functionality.typechart("Raichu", oppositepokemon)
             R = matchup
-            functionality.typechart("Dragonite", currentpokemon)
+            functionality.typechart("Dragonite", oppositepokemon)
             D = matchup
-            functionality.typechart("Charizard", currentpokemon)
+            functionality.typechart("Charizard", oppositepokemon)
             C = matchup
-            functionality.typechart("Gengar", currentpokemon)
+            functionality.typechart("Gengar", oppositepokemon)
             G = matchup
-            functionality.typechart("Blastoise", currentpokemon)
+            functionality.typechart("Blastoise", oppositepokemon)
             B = matchup
-            functionality.typechart("Machamp", currentpokemon)
+            functionality.typechart("Machamp", oppositepokemon)
             M = matchup
             if "Raichu" not in Mikesdeadguys:
                 
@@ -1304,6 +1312,7 @@ class Mike(functionality):
         Alek = data[oscar]["Types"][0]
 
         functionality.checks(currentpokemon)
+        print(shouldiswitch,"\n shouldiswitch after Ddoing")
         if shouldiswitch != "yes":
             functionality.supereffective("why", "Fire Blast", Alek)
             if effective == "super":

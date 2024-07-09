@@ -3,40 +3,42 @@
     [
         "Earthquake",
         "Tackle",
-        "Mimic",
-        "Dig"
+        "Rage",
+        "Mimic"
     ],
     "Venusaur",
     [
-        "Tackle",
         "Vine Whip",
+        "Growl",
         "Rage",
         "Mimic"
+    ],
+    "Golbat",
+    [
+        "Bite",
+        "Rest",
+        "Rage",
+        "Haze"
     ],
     "Alakazam",
     [
         "Psychic",
-        "Teleport",
+        "Flash",
         "Rage",
         "Dig"
     ],
-    "Snorlax",
+    "Fearow",
     [
-        "Ice Beam",
+        "Peck",
+        "Bide",
+        "Leer",
+        "Swift"
+    ],
+    "Tentacool",
+    [
         "Surf",
-        "Fire Blast",
-        "Psywave"
-    ],
-    "Weedle",
-    [
-        "Poison Sting",
-        "String Shot"
-    ],
-    "Rhyhorn",
-    [
-        "Earthquake",
-        "Thunder",
-        "Dig",
-        "Mimic"
+        "Rage",
+        "Acid",
+        "Bide"
     ]
 ]
