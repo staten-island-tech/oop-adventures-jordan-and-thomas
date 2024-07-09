@@ -902,6 +902,7 @@ class functionality():
         for i in range(pokemonlist):
             if enemypk == data[i]["Name"]:
                 enemynumber = i
+
         if "HealHalfD" in moves[movenumber]["effect"]:
             for i in range(pokemonlist):
                 if userpk == data[i]["Name"]:
@@ -1561,14 +1562,15 @@ class Schmovin(Mike):
 
 
 
-goingfirst = []
+#goingfirst = []
 class Turns(Mike):
 
     def speedcheck(enemyspeed, currentspeed):
+        global goingfirst
         if enemyspeed > currentspeed or enemyspeed == currentspeed:
-            goingfirst.append("Enemy")
+            goingfirst = "Enemy"
         if currentspeed > enemyspeed:
-            goingfirst.append("User")
+            goingfirst = "User"
 
     def speedstat(currentpokemon):
         global currentspeed
@@ -1658,7 +1660,7 @@ class Turns(Mike):
                 time.sleep(times)
                 Turns.speedcheck(enemyspeed, currentspeed)
 
-                if "User" in goingfirst:
+                if goingfirst == 'User':
 
                     global enemyhealth
                     going = "You"
@@ -1724,7 +1726,7 @@ class Turns(Mike):
 
 
 
-                if "Enemy" in goingfirst:
+                if goingfirst == "Enemy":
                     f = functionality()
                     going = "Enemy"
                     
