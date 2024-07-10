@@ -1,42 +1,40 @@
 [
-    "Charizard",
+    "Jolteon",
     [
-        "Earthquake",
+        "Bite",
         "Swift",
-        "Cut",
-        "Fly"
+        "Thunderbolt",
+        "Rage"
     ],
-    "Ekans",
+    "Bulbasaur",
     [
-        "Acid",
-        "Leer",
-        "Bide",
-        "Toxic"
+        "Tackle",
+        "Vine Whip",
+        "Mega Drain",
+        "Bide"
     ],
     "Fearow",
     [
         "Peck",
-        "Leer",
         "Growl",
-        "Rest"
+        "Leer",
+        "Mimic"
     ],
-    "Bulbasaur",
+    "Beedrill",
     [
-        "Rage",
-        "Bide",
+        "Mimic",
+        "Swift",
         "Rest",
-        "Cut"
-    ],
-    "Abra",
-    [
-        "Toxic",
-        "Teleport",
-        "Rest",
-        "Flash"
+        "Bide"
     ],
     "Weedle",
     [
         "Poison Sting",
+        "String Shot"
+    ],
+    "Caterpie",
+    [
+        "Tackle",
         "String Shot"
     ]
 ]
