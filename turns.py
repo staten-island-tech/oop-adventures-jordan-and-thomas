@@ -36,7 +36,7 @@ global twotype
 twotype = False
 global onetype
 onetype = False
-endofturn = "no"
+
 global pokemonin
 pokemonin = "same"
 global enemyin
@@ -66,7 +66,7 @@ inputteamlist = len(inputteam)
 enemyparty = ["Raichu", ["Toxic", "Double Team", "Thunderbolt", "Surf"]]
 yourteam = [inputteam[0], inputteam[2], inputteam[4], inputteam[6], inputteam[8], inputteam[10]]
 userpartystatus = [inputteam[0], "none", inputteam[2], "none", inputteam[4], "none", inputteam[6], "none", inputteam[8], "none", inputteam[10], "none"]
-eliteteamstatus = ["Raichu", "none"]
+eliteteamstatus = ["Raichu", "none", "Dragonite", "none", "Charizard", "none", "Gengar", "none", "Blastoise", "none", "Machamp", "none"]
 for i in range(pokemonlist):
     if inputteam[0] == data[i]["Name"]:
         global firstpkhealth
@@ -112,7 +112,7 @@ Mikesdeadguys = []
 currentpokemon = yourteam[0]    
 
 
-endofturn = "no"
+
 
 pokemonin = "same"
 
@@ -147,14 +147,53 @@ class functionality():
         if going == "Enemy":
             oppositepokemon = currentpokemon
 
-    def afflicted(oppositepokemon, oppositehealth, pokemonin, endofturn, turn):
+    def afflicted(Near, Mello, Chen):
+        global enemyhealth
+        global currenthealth
 
-        if pokemonin == "afflicted":
-            if endofturn == "end":
-                N = 1
-                damage = N * oppositehealth/16
-                if turn + 1:
-                    N += 1
+        global N
+        global M
+        currenthealth = Chen
+        for i in range(len(userpartystatus)):
+            if currentpokemon == userpartystatus[i - 1]:
+
+                if userpartystatus[i] == "Poison":
+                    for i in range(pokemonlist):
+                        if currentpokemon == data[i]["Name"]:
+                            startinghealth = data[i]["Health Stat"]
+                    BigD = Near * startinghealth/16
+                    damage = round(BigD,0)
+                    currenthealth = currenthealth - damage
+                    time.sleep(1)
+                    print(currentpokemon, "took", damage, "damage due to Poison")
+                    time.sleep(1)
+                    print(currentpokemon, "has", currenthealth, "health left")
+                    Near += 1
+                    N = Near
+                    print(N)
+                    time.sleep(1)
+
+        for i in range(len(eliteteamstatus)):
+            if enemypokemon == eliteteamstatus[i - 1]:
+                if eliteteamstatus[i] == "Poison":
+                    for i in range(pokemonlist):
+                        if enemypokemon == data[i]["Name"]:
+                            enemystartinghealth = data[i]["Health Stat"]
+                    BigE = Mello * enemystartinghealth/16
+                    damage = round(BigE,0)
+                    enemyhealth = enemyhealth - damage
+                    time.sleep(1)
+                    print(enemypokemon, "took", damage, "damage due to Poison")
+                    time.sleep(1)
+                    print(enemypokemon, "has", enemyhealth, "health left")
+                    Mello += 1
+                    M = Mello
+                    time.sleep(1)
+        
+        #if pokemonin == "afflicted":
+         #   
+          #  damage = Near * oppositehealth/16
+           # Near += 1
 
     def dead(oppositehealth, oppositepokemon):
         if oppositehealth == 0:
@@ -762,7 +801,7 @@ class functionality():
         #if currentpokemon == teaminfo[10]:
         #    currentmoves = teaminfo[11]
 
-    def damagecalc(damagecalc, move, attackingpk, enemypk):\
+    def damagecalc(damagecalc, move, attackingpk, enemypk):
         
       if move != "Nothing":
         global typesuper1
@@ -947,13 +986,13 @@ class functionality():
             again = True
             moveagain = 1
         if "Poison" in moves[movenumber]["effect"]:
-            for i in range(len(userpartystatus)):
-                if currentpokemon == userpartystatus[i - 1]:
-                    userpartystatus[i] = "Poison"
-            PrintPoison = "yes"
-            DoDamage = "no"
             if not "Poison" in data[enemynumber]["Types"]:
-                enemypk = "afflicted"
+                for i in range(len(userpartystatus)):
+                    if currentpokemon == userpartystatus[i - 1]:
+                        userpartystatus[i] = "Poison"
+                PrintPoison = "yes"
+                DoDamage = "no"
+            
         return damage
       
 
@@ -1298,26 +1337,26 @@ class Mike(functionality):
                         enemymove = "Surf"
                         #print("Raichu used Surf")
 
-                        if effective != "super":
-                            for i in range(len(userpartystatus)):
-                                if currentpokemon == userpartystatus[i - 1]:
-                                    z = userpartystatus[i]
-                                    if z != "Poison":
-                                        enemymove = "Toxic"
-                            print(z, "status")
-                            if z == "Poison":
-                                e = random.randrange(4)
-                                print(e,"random number")
-                                if e == 1 or e == 4:
-                                    enemymove = "Double Team"
+                    if effective != "super":
+                        for i in range(len(userpartystatus)):
+                            if currentpokemon == userpartystatus[i - 1]:
+                                z = userpartystatus[i]
+                                if z != "Poison":
+                                    enemymove = "Toxic"
+                        print(z, "status")
+                        if z == "Poison":
+                            e = random.randrange(4)
+                            print(e,"random number")
+                            if e == 1 or e == 4:
+                                enemymove = "Double Team"
                                             #print("Raichu used Double Team")
 
-                                if e == 2:
-                                    enemymove = "Thunderbolt"
+                            if e == 2:
+                                enemymove = "Thunderbolt"
                                             #print("Raichu used Thunderbolt")
 
-                                if e == 3:
-                                    enemymove = "Surf"
+                            if e == 3:
+                                enemymove = "Surf"
                                             #print("Raichu used Surf")
             print(enemymove)
             return enemypokemon
@@ -1623,9 +1662,14 @@ class Turns(Mike):
         global movedamage
         global uniquedamage
         global turn
-        turn = 1
+        turn = 0
+        
+        N = 1
+        
+        M = 1
         while Kaifat == "very":
-            
+            turn += 1
+            print(turn, "turn before")
             f = functionality()
             print("Switch Out Or Attack")
             userdo = input("What would you like to do: ")
@@ -1762,9 +1806,11 @@ class Turns(Mike):
                         for i in range(len(userpartyhealth)):
                             if currentpokemon == userpartyhealth[i - 1]:
                                 currenthealth = userpartyhealth[i]
+                    
+                    functionality.afflicted(N,M, currenthealth)
                     if len(yourteam) == 0:
                       Kaifat = "no"
-                    turn =+ 1
+                    
 
 
 

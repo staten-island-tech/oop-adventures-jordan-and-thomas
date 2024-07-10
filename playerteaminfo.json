@@ -2,37 +2,37 @@
     "Jolteon",
     [
         "Tackle",
-        "Thunderbolt",
-        "Flash",
-        "Bite"
+        "Growl",
+        "Bite",
+        "Flash"
     ],
     "Bulbasaur",
     [
-        "Tackle",
         "Growl",
+        "Rage",
+        "Bide",
+        "Tackle"
+    ],
+    "Bellsprout",
+    [
+        "Growth",
+        "Wrap",
+        "Mimic",
+        "Bide"
+    ],
+    "Gloom",
+    [
+        "Absorb",
+        "Bide",
         "Rest",
         "Cut"
     ],
-    "Fearow",
+    "Onix",
     [
-        "Peck",
-        "Growl",
-        "Leer",
-        "Bide"
-    ],
-    "Ekans",
-    [
-        "Wrap",
-        "Leer",
-        "Acid",
-        "Toxic"
-    ],
-    "Abra",
-    [
-        "Teleport",
-        "Toxic",
-        "Flash",
-        "Rest"
+        "Tackle",
+        "Rage",
+        "Slam",
+        "Harden"
     ],
     "Caterpie",
     [
