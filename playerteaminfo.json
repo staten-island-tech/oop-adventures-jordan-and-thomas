@@ -1,44 +1,42 @@
 [
     "Golem",
     [
-        "Tackle",
         "Earthquake",
+        "Tackle",
         "Rage",
-        "Mimic"
+        "Dig"
     ],
     "Venusaur",
     [
         "Tackle",
-        "Growl",
         "Vine Whip",
-        "Cut"
+        "Mega Drain",
+        "Mimic"
     ],
-    "Snorlax",
+    "Beedrill",
     [
-        "Ice Beam",
-        "Psychic",
         "Bide",
-        "Reflect"
+        "Swift",
+        "Cut",
+        "Harden"
     ],
     "Alakazam",
     [
         "Psychic",
         "Flash",
         "Rage",
-        "Mimic"
+        "Dig"
     ],
-    "Golbat",
+    "Snorlax",
     [
-        "Mega Drain",
-        "Swift",
-        "Rest",
-        "Bite"
-    ],
-    "Tentacruel",
-    [
-        "Acid",
+        "Ice Beam",
         "Surf",
-        "Cut",
-        "Ice Beam"
+        "Fire Blast",
+        "Psywave"
+    ],
+    "Weedle",
+    [
+        "Poison Sting",
+        "String Shot"
     ]
 ]
