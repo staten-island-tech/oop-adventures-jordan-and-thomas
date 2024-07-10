@@ -6,8 +6,8 @@ times = 1.5
 import random
 import decimal
 from decimal import Decimal
-global turn
-turn = 1
+#global turn
+#turn = 1
 #going = "You"
 
 test = open("moves.json", encoding="utf8")
@@ -762,8 +762,16 @@ class functionality():
         #if currentpokemon == teaminfo[10]:
         #    currentmoves = teaminfo[11]
 
-    def damagecalc(damagecalc, move, attackingpk, enemypk):
+    def damagecalc(damagecalc, move, attackingpk, enemypk):\
+        
       if move != "Nothing":
+        global typesuper1
+        typesuper1 = False
+        global typesuper2
+        typesuper2 = False
+        global typesuper
+        typesuper = False
+
         for i in range(movelist):
             if move == moves[i]["name"]:
                 movenumber = i
@@ -815,8 +823,7 @@ class functionality():
             enemytype2 = (data[enemynumber]["Types"])[1]
             typeeffect1 = f.supereffective(move, enemytype1)
             global meffective1
-            global typesuper1
-            typesuper1 = False
+            
             global typehalf1
             typehalf1 = False
             global typezero1
@@ -834,8 +841,7 @@ class functionality():
                 meffective1 = 1
             typeeffect2 = f.supereffective(move, enemytype2)
             global meffective2
-            global typesuper2
-            typesuper2 = False
+            
             global typehalf2
             typehalf2 = False
             global typezero2
@@ -857,8 +863,7 @@ class functionality():
             enemytype = (data[enemynumber]["Types"])[0]
             typeeffect = f.supereffective(move, enemytype)
             global meffective
-            global typesuper
-            typesuper = False
+            
             global typehalf
             typehalf = False
             global typezero
@@ -895,6 +900,11 @@ class functionality():
         #if typesuper == True or typesuper2 == True or typesuper1 == True:
             #print("It was supereffective!")
     def specialeffect(specialeffect, move, damage, enemyspeed, enemypk, userpk):
+        global PrintPoison
+        global DoDamage
+
+        PrintPoison = "no"
+        DoDamage = "yes"
         f = functionality
         for i in range(movelist):
             if move == moves[i]["name"]:
@@ -937,6 +947,11 @@ class functionality():
             again = True
             moveagain = 1
         if "Poison" in moves[movenumber]["effect"]:
+            for i in range(len(userpartystatus)):
+                if currentpokemon == userpartystatus[i - 1]:
+                    userpartystatus[i] = "Poison"
+            PrintPoison = "yes"
+            DoDamage = "no"
             if not "Poison" in data[enemynumber]["Types"]:
                 enemypk = "afflicted"
         return damage
@@ -1244,7 +1259,7 @@ class Mike(functionality):
 
     def Raichudoing(turn, enemypokemon):
         global enemymove
-        
+        print(turn,"turn at start of raichu doing")
         Rmoves = ["Double Team", "Toxic", "Thunderbolt", "Surf"]
         
         
@@ -1252,7 +1267,7 @@ class Mike(functionality):
           if data[i]["Name"] == currentpokemon:
             oscar = i
         Alek = data[oscar]["Types"][0]
-        if turn == 0:
+        if turn == 1:
            
             for i in range(pokemonlist):
                 if (data[i]["Name"]) == currentpokemon:
@@ -1264,14 +1279,14 @@ class Mike(functionality):
             else:
                 enemymove = "Double Team"
                 #print("Raichu used Double Team")
+            
 
-
-        if turn != 0:
+        if turn != 1:
             
         
             enemypokemon = functionality.checks(currentpokemon)
             
-            if shouldiswitch == "no":
+            if shouldiswitch != "yes":
                 functionality.supereffective("why", "Thunderbolt", Alek)
                 if effective == "super":
                     enemymove = "Thunderbolt"
@@ -1284,26 +1299,29 @@ class Mike(functionality):
                         #print("Raichu used Surf")
 
                         if effective != "super":
-                            for i in range(userpartystatus):
+                            for i in range(len(userpartystatus)):
                                 if currentpokemon == userpartystatus[i - 1]:
                                     z = userpartystatus[i]
-                                    if z == "None":
+                                    if z != "Poison":
                                         enemymove = "Toxic"
-                                    if z != "None":
-                                        e = random.randrange(4)
-                                        print(e,"random number")
-                                        if e == 1 or e == 4:
-                                            enemymove = "Double Team"
+                            print(z, "status")
+                            if z == "Poison":
+                                e = random.randrange(4)
+                                print(e,"random number")
+                                if e == 1 or e == 4:
+                                    enemymove = "Double Team"
                                             #print("Raichu used Double Team")
 
-                                        if e == 2:
-                                            enemymove = "Thunderbolt"
+                                if e == 2:
+                                    enemymove = "Thunderbolt"
                                             #print("Raichu used Thunderbolt")
 
-                                        if e == 3:
-                                            enemymove = "Surf"
+                                if e == 3:
+                                    enemymove = "Surf"
                                             #print("Raichu used Surf")
+            print(enemymove)
             return enemypokemon
+            
 
 
     def DragoniteDoing(turn):
@@ -1604,8 +1622,10 @@ class Turns(Mike):
         global twotype
         global movedamage
         global uniquedamage
+        global turn
+        turn = 1
         while Kaifat == "very":
-            global turn
+            
             f = functionality()
             print("Switch Out Or Attack")
             userdo = input("What would you like to do: ")
@@ -1627,11 +1647,20 @@ class Turns(Mike):
                 
                 
                 f.damagecalc(enemymove, enemypokemon, currentpokemon)
+                f.specialeffect(enemymove,damage,enemyspeed,enemypokemon,currentpokemon)
                 enemydamage = movedamage
                 if enemydamage == currenthealth or enemydamage > currenthealth:
                     enemydamage = currenthealth
                 print(enemypokemon, "used", enemymove)
-                print(enemypokemon, "did", enemydamage, "damage")
+                if PrintPoison != "no":
+                        print(currentpokemon, "has been poisoned!")
+                if DoDamage == "yes":
+                    print(enemypokemon, "did", enemydamage, "damage")
+                    time.sleep(1)
+                    if typesuper1 == True or typesuper2 == True or typesuper == True:
+                        print("It was supereffective!")
+                        time.sleep(0.5)
+                
                 currenthealth = currenthealth - enemydamage
                 print(currentpokemon, "has", currenthealth, "health left")
                 userpartyhealth[x] = currenthealth
@@ -1676,7 +1705,12 @@ class Turns(Mike):
                             f.specialeffect(use, damage, enemyspeed, enemypokemon, currentpokemon)
                             if damage == enemyhealth or damage > enemyhealth:
                                 damage = enemyhealth
-                            print("It did", damage, "damage")
+                            if DoDamage == "yes":
+                                    time.sleep(1)
+                                    if typesuper1 == True or typesuper2 == True or typesuper == True:
+                                        print("It was supereffective!")
+                                        time.sleep(0.5)
+                                    print("It did", damage, "damage")
                             enemyhealth = enemyhealth - damage
                             time.sleep(times)
                             if enemyhealth > 0:
@@ -1695,6 +1729,7 @@ class Turns(Mike):
                     Schmovin.Whosmovin(enemypokemon)
                     #Mike.Raichudoing(turn)
                     f.damagecalc(enemymove, enemypokemon, currentpokemon)
+                    f.specialeffect(enemymove,damage,enemyspeed,enemypokemon,currentpokemon)
                     enemydamage = movedamage
                     for i in range(len(userpartyhealth)):
                         if currentpokemon == userpartyhealth[i - 1]:
@@ -1702,7 +1737,14 @@ class Turns(Mike):
                     if enemydamage == currenthealth or enemydamage > currenthealth:
                         enemydamage = currenthealth
                     print(enemypokemon, "used", enemymove)
-                    print(enemypokemon, "did", enemydamage, "damage")
+                    if PrintPoison != "no":
+                        print(currentpokemon, "has been poisoned!")
+                    if DoDamage == "yes":
+                        print(enemypokemon, "did", enemydamage, "damage")
+                        time.sleep(1)
+                        if typesuper1 == True or typesuper2 == True or typesuper == True:
+                            print("It was supereffective!")
+                            time.sleep(0.5)
                     
                     currenthealth -= enemydamage
                     print(currentpokemon, "has", currenthealth, "health left")
@@ -1722,7 +1764,7 @@ class Turns(Mike):
                                 currenthealth = userpartyhealth[i]
                     if len(yourteam) == 0:
                       Kaifat = "no"
-                    turn =+1
+                    turn =+ 1
 
 
 
@@ -1741,6 +1783,8 @@ class Turns(Mike):
                     print(shouldiswitch)
                     if shouldiswitch != "yes":
                         f.damagecalc(enemymove, enemypokemon, currentpokemon)
+                        f.specialeffect(enemymove,damage,enemyspeed,enemypokemon,currentpokemon)
+
                         enemydamage = movedamage
                         for i in range(len(userpartyhealth)):
                             if currentpokemon == userpartyhealth[i - 1]:
@@ -1749,11 +1793,15 @@ class Turns(Mike):
                         if enemydamage == currenthealth or enemydamage > currenthealth:
                             enemydamage = currenthealth
                         print(enemypokemon, "used", enemymove,)
-                        time.sleep(1)
-                        if typesuper1 == True or typesuper2 == True:
-                            print("It was supereffective!")
-                            time.sleep(0.5)
-                        print(enemypokemon, "did", enemydamage, "damage")
+                        if PrintPoison != "no":
+                            print(currentpokemon, "has been poisoned!")
+                        
+                        if DoDamage == "yes":
+                            print(enemypokemon, "did", enemydamage, "damage")
+                            time.sleep(1)
+                            if typesuper1 == True or typesuper2 == True or typesuper == True:
+                                print("It was supereffective!")
+                                time.sleep(0.5)
                         currenthealth -= enemydamage
                         time.sleep(1)
                         print(currentpokemon, "has", currenthealth, "health left")
@@ -1791,10 +1839,13 @@ class Turns(Mike):
                                 damage = f.specialeffect(use, damage, enemyspeed, enemypokemon, currentpokemon)
                                 if damage == enemyhealth or damage > enemyhealth:
                                     damage = enemyhealth
-                                if typesuper1 == True or typesuper2 == True:
-                                    print("It was supereffective!")
-                                    time.sleep(0.5)
-                                print(currentpokemon, "did", damage, "damage")
+                          
+                                if DoDamage == "yes":
+                                    print(currentpokemon, "did", damage, "damage")
+                                    time.sleep(1)
+                                    if typesuper1 == True or typesuper2 == True or typesuper == True:
+                                        print("It was supereffective!")
+                                        time.sleep(0.5)
                                 enemyhealth = enemyhealth - damage
                                 time.sleep(times)
                                 if enemyhealth > 0:
@@ -1806,7 +1857,7 @@ class Turns(Mike):
                     print(enemypokemon)
                     if len(Mikesdeadguys) == 6:
                       Kaifat = "no"
-                    turn =+1
+                    turn += 1
 
 
 
