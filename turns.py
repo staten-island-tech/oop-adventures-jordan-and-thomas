@@ -46,6 +46,11 @@ itch = False
 global Kaifat
 Kaifat = "very"
 global enemytypes
+
+global N
+N = 1
+global M
+M = 1
 #enemyhealth = 200
 #Pokemon.teambuilder()
 
@@ -147,31 +152,36 @@ class functionality():
         if going == "Enemy":
             oppositepokemon = currentpokemon
 
-    def afflicted(Near, Mello, Chen):
+    def afflicted(Near, Mello, currenthealth):
         global enemyhealth
-        global currenthealth
+        global Afterhealth
 
         global N
         global M
-        currenthealth = Chen
+        print(N, "N")
+        print(Near, "Near")
+        Afterhealth = currenthealth
         for i in range(len(userpartystatus)):
             if currentpokemon == userpartystatus[i - 1]:
 
                 if userpartystatus[i] == "Poison":
+                    
                     for i in range(pokemonlist):
                         if currentpokemon == data[i]["Name"]:
                             startinghealth = data[i]["Health Stat"]
                     BigD = Near * startinghealth/16
-                    damage = round(BigD,0)
-                    currenthealth = currenthealth - damage
+                    damage = round(BigD)
+                    Afterhealth -= damage
                     time.sleep(1)
                     print(currentpokemon, "took", damage, "damage due to Poison")
                     time.sleep(1)
-                    print(currentpokemon, "has", currenthealth, "health left")
+                    print(currentpokemon, "has", Afterhealth, "health left")
                     Near += 1
                     N = Near
                     print(N)
+                    
                     time.sleep(1)
+                    return currenthealth
 
         for i in range(len(eliteteamstatus)):
             if enemypokemon == eliteteamstatus[i - 1]:
@@ -985,6 +995,8 @@ class functionality():
         if "HitsTwice" in moves[movenumber]["effect"]:
             again = True
             moveagain = 1
+
+
         if "Poison" in moves[movenumber]["effect"]:
             if not "Poison" in data[enemynumber]["Types"]:
                 for i in range(len(userpartystatus)):
@@ -1664,12 +1676,10 @@ class Turns(Mike):
         global turn
         turn = 0
         
-        N = 1
-        
-        M = 1
+      
         while Kaifat == "very":
             turn += 1
-            print(turn, "turn before")
+            #print(turn, "turn before")
             f = functionality()
             print("Switch Out Or Attack")
             userdo = input("What would you like to do: ")
@@ -1806,8 +1816,11 @@ class Turns(Mike):
                         for i in range(len(userpartyhealth)):
                             if currentpokemon == userpartyhealth[i - 1]:
                                 currenthealth = userpartyhealth[i]
-                    
+                    print(currenthealth, "before afflicted")
                     functionality.afflicted(N,M, currenthealth)
+                    currenthealth = Afterhealth
+                    print(currenthealth, "after afflicted")
+                    print(Afterhealth, "after afflicted")
                     if len(yourteam) == 0:
                       Kaifat = "no"
                     

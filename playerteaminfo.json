@@ -2,41 +2,43 @@
     "Jolteon",
     [
         "Tackle",
-        "Growl",
         "Bite",
-        "Flash"
+        "Thunder",
+        "Mimic"
     ],
     "Bulbasaur",
     [
-        "Growl",
-        "Rage",
-        "Bide",
-        "Tackle"
-    ],
-    "Bellsprout",
-    [
-        "Growth",
-        "Wrap",
+        "Tackle",
         "Mimic",
-        "Bide"
+        "Growl",
+        "Rage"
     ],
     "Gloom",
     [
         "Absorb",
         "Bide",
-        "Rest",
-        "Cut"
+        "Cut",
+        "Rest"
     ],
-    "Onix",
+    "Golbat",
+    [
+        "Screech",
+        "Bide",
+        "Swift",
+        "Rest"
+    ],
+    "Golem",
     [
         "Tackle",
+        "Counter",
         "Rage",
-        "Slam",
-        "Harden"
+        "Dig"
     ],
-    "Caterpie",
+    "Squirtle",
     [
         "Tackle",
-        "String Shot"
+        "Surf",
+        "Counter",
+        "Dig"
     ]
 ]
