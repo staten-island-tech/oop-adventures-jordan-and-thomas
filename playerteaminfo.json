@@ -2,23 +2,23 @@
     "Jolteon",
     [
         "Tackle",
-        "Thunder",
-        "Toxic",
-        "Bite"
+        "Growl",
+        "Bite",
+        "Thunder"
     ],
     "Bulbasaur",
     [
         "Tackle",
-        "Rage",
-        "Mimic",
-        "Bide"
-    ],
-    "Fearow",
-    [
-        "Peck",
         "Growl",
-        "Leer",
-        "Bide"
+        "Bide",
+        "Rage"
+    ],
+    "Golbat",
+    [
+        "Bite",
+        "Bide",
+        "Swift",
+        "Rest"
     ],
     "Golem",
     [
@@ -27,18 +27,18 @@
         "Mimic",
         "Dig"
     ],
-    "Abra",
+    "Gloom",
     [
-        "Teleport",
-        "Toxic",
-        "Flash",
-        "Rest"
+        "Absorb",
+        "Bide",
+        "Rest",
+        "Cut"
     ],
-    "Tentacool",
+    "Squirtle",
     [
-        "Acid",
-        "Rage",
-        "Mimic",
-        "Bide"
+        "Tackle",
+        "Surf",
+        "Counter",
+        "Dig"
     ]
 ]

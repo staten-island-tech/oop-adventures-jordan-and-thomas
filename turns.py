@@ -1750,6 +1750,7 @@ class Turns(Mike):
                 for i in range(len(userpartyhealth)):
                     if currentpokemon == userpartyhealth[i - 1]:
                         currenthealth = userpartyhealth[i]
+                print(currenthealth, "start")
                 for i in range(inputteamlist):
                     if currentpokemon == inputteam[i - 1]:
                         currentmoves = inputteam[i]
@@ -1848,7 +1849,7 @@ class Turns(Mike):
                                 #dead below
                                 for i in range(len(userpartyhealth)):
                                     if currentpokemon == userpartyhealth[i - 1]:
-                                        Afterhealth = userpartyhealth[i]
+                                        userpartyhealth[i] = Afterhealth
                                 
 
                     PrintPoison = "no"
@@ -1865,6 +1866,7 @@ class Turns(Mike):
                         for i in range(len(userpartyhealth)):
                             if currentpokemon == userpartyhealth[i - 1]:
                                 currenthealth = userpartyhealth[i]
+                    print(currenthealth, "end")
                     if len(yourteam) == 0:
                       Kaifat = "no"
                     
