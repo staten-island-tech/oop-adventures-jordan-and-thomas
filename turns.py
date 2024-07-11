@@ -51,6 +51,8 @@ global N
 N = 1
 global M
 M = 1
+
+
 #enemyhealth = 200
 #Pokemon.teambuilder()
 
@@ -181,7 +183,7 @@ class functionality():
                     print(N)
                     
                     time.sleep(1)
-                    return currenthealth
+                    return Afterhealth
 
         for i in range(len(eliteteamstatus)):
             if enemypokemon == eliteteamstatus[i - 1]:
@@ -952,8 +954,7 @@ class functionality():
         global PrintPoison
         global DoDamage
 
-        PrintPoison = "no"
-        DoDamage = "yes"
+        
         f = functionality
         for i in range(movelist):
             if move == moves[i]["name"]:
@@ -1021,8 +1022,8 @@ class functionality():
             if data[i]["Name"] == enemypokemon:
                 Types = data[i]["Types"]
         functionality.typechart(enemypokemon, oppositepokemon)
-        print(matchup, matchup1)
-        print("matchup")
+        #print(matchup, matchup1)
+        #print("matchup")
         
 
         for i in range(pokemonlist):
@@ -1355,7 +1356,7 @@ class Mike(functionality):
                                 z = userpartystatus[i]
                                 if z != "Poison":
                                     enemymove = "Toxic"
-                        print(z, "status")
+                        
                         if z == "Poison":
                             e = random.randrange(4)
                             print(e,"random number")
@@ -1370,7 +1371,7 @@ class Mike(functionality):
                             if e == 3:
                                 enemymove = "Surf"
                                             #print("Raichu used Surf")
-            print(enemymove)
+            
             return enemypokemon
             
 
@@ -1675,6 +1676,15 @@ class Turns(Mike):
         global uniquedamage
         global turn
         turn = 0
+
+        global PrintPoison
+        global DoDamage
+
+        PrintPoison = "no"
+        DoDamage = "yes"
+
+        global Afterhealth
+        Afterhealth = 0
         
       
         while Kaifat == "very":
@@ -1703,8 +1713,10 @@ class Turns(Mike):
                 f.damagecalc(enemymove, enemypokemon, currentpokemon)
                 f.specialeffect(enemymove,damage,enemyspeed,enemypokemon,currentpokemon)
                 enemydamage = movedamage
+                
                 if enemydamage == currenthealth or enemydamage > currenthealth:
                     enemydamage = currenthealth
+                    
                 print(enemypokemon, "used", enemymove)
                 if PrintPoison != "no":
                         print(currentpokemon, "has been poisoned!")
@@ -1735,6 +1747,9 @@ class Turns(Mike):
             if len(yourteam) == 0:
               Kaifat = "no"
             if userdo == "Attack" or userdo == "attack":
+                for i in range(len(userpartyhealth)):
+                    if currentpokemon == userpartyhealth[i - 1]:
+                        currenthealth = userpartyhealth[i]
                 for i in range(inputteamlist):
                     if currentpokemon == inputteam[i - 1]:
                         currentmoves = inputteam[i]
@@ -1760,11 +1775,11 @@ class Turns(Mike):
                             if damage == enemyhealth or damage > enemyhealth:
                                 damage = enemyhealth
                             if DoDamage == "yes":
-                                    time.sleep(1)
-                                    if typesuper1 == True or typesuper2 == True or typesuper == True:
-                                        print("It was supereffective!")
-                                        time.sleep(0.5)
-                                    print("It did", damage, "damage")
+                                time.sleep(1)
+                                if typesuper1 == True or typesuper2 == True or typesuper == True:
+                                    print("It was supereffective!")
+                                    time.sleep(0.5)
+                                print("It did", damage, "damage")
                             enemyhealth = enemyhealth - damage
                             time.sleep(times)
                             if enemyhealth > 0:
@@ -1785,11 +1800,14 @@ class Turns(Mike):
                     f.damagecalc(enemymove, enemypokemon, currentpokemon)
                     f.specialeffect(enemymove,damage,enemyspeed,enemypokemon,currentpokemon)
                     enemydamage = movedamage
-                    for i in range(len(userpartyhealth)):
-                        if currentpokemon == userpartyhealth[i - 1]:
-                            currenthealth = userpartyhealth[i]
+                    print(currenthealth, "after calc")
+                    #for i in range(len(userpartyhealth)):
+                     #   if currentpokemon == userpartyhealth[i - 1]:
+                      #      currenthealth = userpartyhealth[i]
+                    print(enemydamage, "enemydamage after damage calc")
                     if enemydamage == currenthealth or enemydamage > currenthealth:
                         enemydamage = currenthealth
+                        print(enemydamage, "enemydamage after == or > than")
                     print(enemypokemon, "used", enemymove)
                     if PrintPoison != "no":
                         print(currentpokemon, "has been poisoned!")
@@ -1799,8 +1817,9 @@ class Turns(Mike):
                         if typesuper1 == True or typesuper2 == True or typesuper == True:
                             print("It was supereffective!")
                             time.sleep(0.5)
-                    
+                    #health already reset at this point
                     currenthealth -= enemydamage
+                    print(currenthealth, "after")
                     print(currentpokemon, "has", currenthealth, "health left")
                     #here down = deaD
                     userpartyhealth[i] = currenthealth
@@ -1816,11 +1835,36 @@ class Turns(Mike):
                         for i in range(len(userpartyhealth)):
                             if currentpokemon == userpartyhealth[i - 1]:
                                 currenthealth = userpartyhealth[i]
+
                     print(currenthealth, "before afflicted")
                     functionality.afflicted(N,M, currenthealth)
-                    currenthealth = Afterhealth
-                    print(currenthealth, "after afflicted")
-                    print(Afterhealth, "after afflicted")
+                    for i in range(len(userpartystatus)):
+                        if currentpokemon == userpartystatus[i - 1]:
+                            if userpartystatus[i] == "Poison":
+                                currenthealth = Afterhealth
+                    
+                                print(currenthealth, "after afflicted")
+                                print(Afterhealth, "after afflicted")
+                                #dead below
+                                for i in range(len(userpartyhealth)):
+                                    if currentpokemon == userpartyhealth[i - 1]:
+                                        Afterhealth = userpartyhealth[i]
+                                
+
+                    PrintPoison = "no"
+                    DoDamage = "yes"
+                    if currenthealth == 0:
+                        for i in range(len(yourteam)):
+                            if currentpokemon == yourteam[i]:
+                                yourteam.remove[i]
+                        print(yourteam)
+                        newpk = input("Who will you switch into? ")
+                        for i in range(len(yourteam)):
+                            if newpk == yourteam[i]:
+                                currentpokemon = newpk
+                        for i in range(len(userpartyhealth)):
+                            if currentpokemon == userpartyhealth[i - 1]:
+                                currenthealth = userpartyhealth[i]
                     if len(yourteam) == 0:
                       Kaifat = "no"
                     
