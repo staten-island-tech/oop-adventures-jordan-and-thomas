@@ -173,6 +173,8 @@ class functionality():
                             startinghealth = data[i]["Health Stat"]
                     BigD = Near * startinghealth/16
                     damage = round(BigD)
+                    if damage == currenthealth or damage > currenthealth:
+                        damage = currenthealth
                     Afterhealth -= damage
                     time.sleep(1)
                     print(currentpokemon, "took", damage, "damage due to Poison")
@@ -193,6 +195,8 @@ class functionality():
                             enemystartinghealth = data[i]["Health Stat"]
                     BigE = Mello * enemystartinghealth/16
                     damage = round(BigE,0)
+                    if damage == enemyhealth or damage > enemyhealth:
+                        damage = enemyhealth
                     enemyhealth = enemyhealth - damage
                     time.sleep(1)
                     print(enemypokemon, "took", damage, "damage due to Poison")
@@ -1354,22 +1358,23 @@ class Mike(functionality):
                         for i in range(len(userpartystatus)):
                             if currentpokemon == userpartystatus[i - 1]:
                                 z = userpartystatus[i]
-                                if z != "Poison":
+                                print(z)
+                                if z == "None":
                                     enemymove = "Toxic"
                         
-                        if z == "Poison":
-                            e = random.randrange(4)
-                            print(e,"random number")
-                            if e == 1 or e == 4:
-                                enemymove = "Double Team"
+                                if z != "None":
+                                    e = random.randrange(4)
+                                    print(e,"random number")
+                                    if e == 1 or e == 4:
+                                        enemymove = "Double Team"
                                             #print("Raichu used Double Team")
 
-                            if e == 2:
-                                enemymove = "Thunderbolt"
+                                    if e == 2:
+                                        enemymove = "Thunderbolt"
                                             #print("Raichu used Thunderbolt")
 
-                            if e == 3:
-                                enemymove = "Surf"
+                                    if e == 3:
+                                        enemymove = "Surf"
                                             #print("Raichu used Surf")
             
             return enemypokemon
@@ -1827,7 +1832,7 @@ class Turns(Mike):
                     if currenthealth == 0:
                         for i in range(len(yourteam)):
                             if currentpokemon == yourteam[i]:
-                                yourteam.remove[i]
+                                yourteam.remove(i)
                         print(yourteam)
                         newpk = input("Who will you switch into? ")
                         for i in range(len(yourteam)):
@@ -1855,9 +1860,9 @@ class Turns(Mike):
                     PrintPoison = "no"
                     DoDamage = "yes"
                     if currenthealth == 0:
-                        for i in range(len(yourteam)):
+                        for i in range(len(yourteam)-1):
                             if currentpokemon == yourteam[i]:
-                                yourteam.remove[i]
+                                yourteam.remove(currentpokemon)
                         print(yourteam)
                         newpk = input("Who will you switch into? ")
                         for i in range(len(yourteam)):
@@ -1960,6 +1965,36 @@ class Turns(Mike):
                     enemypartyhealth[1] = enemyhealth
                     functionality.Mikesdeadpks(enemyhealth, currentpokemon)
                     print(enemypokemon)
+
+                    functionality.afflicted(N,M, currenthealth)
+                    for i in range(len(userpartystatus)):
+                        if currentpokemon == userpartystatus[i - 1]:
+                            if userpartystatus[i] == "Poison":
+                                currenthealth = Afterhealth
+                    
+                                print(currenthealth, "after afflicted")
+                                print(Afterhealth, "after afflicted")
+                                #dead below
+                                for i in range(len(userpartyhealth)):
+                                    if currentpokemon == userpartyhealth[i - 1]:
+                                        userpartyhealth[i] = Afterhealth
+                                
+
+                    PrintPoison = "no"
+                    DoDamage = "yes"
+                    if currenthealth == 0:
+                        for i in range(len(yourteam)):
+                            if currentpokemon == yourteam[i]:
+                                yourteam.remove(i)
+                        print(yourteam)
+                        newpk = input("Who will you switch into? ")
+                        for i in range(len(yourteam)):
+                            if newpk == yourteam[i]:
+                                currentpokemon = newpk
+                        for i in range(len(userpartyhealth)):
+                            if currentpokemon == userpartyhealth[i - 1]:
+                                currenthealth = userpartyhealth[i]
+
                     if len(Mikesdeadguys) == 6:
                       Kaifat = "no"
                     turn += 1
