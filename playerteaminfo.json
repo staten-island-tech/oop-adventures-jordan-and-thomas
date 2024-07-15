@@ -1,44 +1,45 @@
 [
-    "Jolteon",
+    "Dragonite",
     [
-        "Tackle",
-        "Bite",
-        "Mimic",
-        "Thunder"
+        "Hyper Beam",
+        "Hyper Beam",
+        "Ice Beam",
+        "Thunder",
+        "Fire Blast"
     ],
-    "Bulbasaur",
+    "Scyther",
     [
-        "Tackle",
-        "Rage",
-        "Mimic",
-        "Bide"
+        "Quick Attack",
+        "Wing Attack",
+        "Hyper Beam",
+        "Double-Edge"
     ],
-    "Golbat",
+    "Electrode",
     [
-        "Rage",
-        "Bite",
-        "Bide",
+        "Thunder",
+        "Explosion",
+        "Rest",
         "Swift"
     ],
-    "Golem",
+    "Aerodactyl",
     [
-        "Tackle",
-        "Counter",
-        "Rage",
-        "Dig"
+        "Sky Attack",
+        "Hyper Beam",
+        "Fire Blast",
+        "Razor Wind"
     ],
-    "Abra",
+    "Dugtrio",
     [
-        "Teleport",
-        "Toxic",
-        "Rest",
-        "Flash"
+        "Earthquake",
+        "Body Slam",
+        "Hyper Beam",
+        "Fissure"
     ],
-    "Onix",
+    "Gyarados",
     [
-        "Tackle",
-        "Bide",
-        "Bind",
-        "Rest"
+        "Blizzard",
+        "Surf",
+        "Skull Bash",
+        "Thunderbolt"
     ]
 ]
