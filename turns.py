@@ -1044,8 +1044,8 @@ class functionality():
             if data[i]["Name"] == enemypokemon:
                 Types = data[i]["Types"]
         functionality.typechart(enemypokemon, oppositepokemon)
-        #print(matchup, matchup1)
-        #print("matchup")
+        print(matchup, matchup1)
+        print("matchup")
         
 
         for i in range(pokemonlist):
@@ -1094,7 +1094,7 @@ class functionality():
             functionality.typechart("Machamp", oppositepokemon)
             M = matchup
             M1 = matchup1
-            
+            print("Raichu",R,R1,"Dragonite",D,D1,"Charizard",C,C1,"Genhar",G,G1,"Blastoise",B,B1,"Machamp",M,M1)
             if "Raichu" not in Mikesdeadguys and R != "half" and R != "zero" and R != "normal" or R1 != "normal" and R1 != "half" and R1 != "zero" and enemypokemon != "Raichu":
 
                 enemypokemon = "Raichu"
@@ -1552,14 +1552,16 @@ class Mike(functionality):
                                 enemymove = "Ice Beam"
 
                         if effective != "super":
+                            print("not super")
                             for i in range(userpartystatus):
                                 if currentpokemon == userpartystatus[i - 1]:
                                     x = userpartystatus[i]
-                                    if x != "Poisoned":
+                                    if x == "None":
                                         enemymove = "Toxic"
-                                    if x == "Poisoned":
+                                    if x != "None":
 
                                         b = random.randrange(3)
+                                        print(b,"Pleses beee here")
                                         if b == 1:
                                             enemymove = "Hydro Pump"
                                             #print("Raichu used Agility")

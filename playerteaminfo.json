@@ -2,43 +2,43 @@
     "Golem",
     [
         "Tackle",
+        "Harden",
         "Earthquake",
-        "Counter",
-        "Dig"
+        "Rage"
     ],
     "Bulbasaur",
     [
         "Tackle",
         "Mimic",
-        "Rage",
-        "Growl"
-    ],
-    "Beedrill",
-    [
-        "Mimic",
-        "Rage",
-        "Swift",
-        "Bide"
+        "Bide",
+        "Rage"
     ],
     "Golbat",
     [
-        "Rage",
         "Bite",
-        "Mimic",
-        "Swift"
+        "Bide",
+        "Swift",
+        "Rest"
     ],
-    "Geodude",
-    [
-        "Tackle",
-        "Rage",
-        "Dig",
-        "Mimic"
-    ],
-    "Snorlax",
+    "Gloom",
     [
         "Mimic",
         "Bide",
-        "Fire Blast",
-        "Ice Beam"
+        "Rest",
+        "Cut"
+    ],
+    "Alakazam",
+    [
+        "Psychic",
+        "Flash",
+        "Dig",
+        "Mimic"
+    ],
+    "Seel",
+    [
+        "Rage",
+        "Growl",
+        "Bide",
+        "Rest"
     ]
 ]
