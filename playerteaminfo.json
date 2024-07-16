@@ -1,45 +1,44 @@
 [
-    "Dragonite",
+    "Golem",
     [
-        "Hyper Beam",
-        "Hyper Beam",
-        "Ice Beam",
-        "Thunder",
-        "Fire Blast"
+        "Tackle",
+        "Earthquake",
+        "Counter",
+        "Dig"
     ],
-    "Scyther",
+    "Bulbasaur",
     [
-        "Quick Attack",
-        "Wing Attack",
-        "Hyper Beam",
-        "Double-Edge"
+        "Tackle",
+        "Mimic",
+        "Rage",
+        "Growl"
     ],
-    "Electrode",
+    "Beedrill",
     [
-        "Thunder",
-        "Explosion",
-        "Rest",
+        "Mimic",
+        "Rage",
+        "Swift",
+        "Bide"
+    ],
+    "Golbat",
+    [
+        "Rage",
+        "Bite",
+        "Mimic",
         "Swift"
     ],
-    "Aerodactyl",
+    "Geodude",
     [
-        "Sky Attack",
-        "Hyper Beam",
+        "Tackle",
+        "Rage",
+        "Dig",
+        "Mimic"
+    ],
+    "Snorlax",
+    [
+        "Mimic",
+        "Bide",
         "Fire Blast",
-        "Razor Wind"
-    ],
-    "Dugtrio",
-    [
-        "Earthquake",
-        "Body Slam",
-        "Hyper Beam",
-        "Fissure"
-    ],
-    "Gyarados",
-    [
-        "Blizzard",
-        "Surf",
-        "Skull Bash",
-        "Thunderbolt"
+        "Ice Beam"
     ]
 ]

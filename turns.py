@@ -962,11 +962,14 @@ class functionality():
         global EnemyPoisoned
 
         print(going, "going at beginning of special effect")
-        
+        print(move, "move in special effect")
+        movenumber = 6
+
         f = functionality
-        for i in range(movelist):
-            if move == moves[i]["name"]:
-                movenumber = i
+        if move != "Nothing":
+            for i in range(movelist):
+                if move == moves[i]["name"]:
+                    movenumber = i
         for i in range(pokemonlist):
             if enemypk == data[i]["Name"]:
                 enemynumber = i
@@ -1036,7 +1039,7 @@ class functionality():
         global enemymove
         
         global shouldiswitch
-        shouldiswitch = "no"
+        print("checks is running")
         for i in range(pokemonlist):
             if data[i]["Name"] == enemypokemon:
                 Types = data[i]["Types"]
@@ -1710,6 +1713,8 @@ class Turns(Mike):
         global Afterhealth
         Afterhealth = 0
         
+        global shouldiswitch
+        shouldiswitch = "no"
       
         while Kaifat == "very":
             turn += 1
@@ -1924,9 +1929,10 @@ class Turns(Mike):
                     print(shouldiswitch)
                     if shouldiswitch != "yes":
                         f.damagecalc(enemymove, enemypokemon, currentpokemon)
-                        f.specialeffect(enemymove,damage,enemyspeed,enemypokemon,currentpokemon, going)
-
                         enemydamage = movedamage
+                        f.specialeffect(enemymove,enemydamage,enemyspeed,enemypokemon,currentpokemon, going)
+
+                        #enemydamage = movedamage
                         for i in range(len(userpartyhealth)):
                             if currentpokemon == userpartyhealth[i - 1]:
                                 currenthealth = userpartyhealth[i]
