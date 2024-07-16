@@ -1,44 +1,44 @@
 [
-    "Golem",
+    "Nidoking",
     [
-        "Tackle",
-        "Harden",
         "Earthquake",
-        "Rage"
+        "Ice Beam",
+        "Surf",
+        "Thunderbolt"
     ],
-    "Bulbasaur",
+    "Venusaur",
     [
-        "Tackle",
-        "Mimic",
-        "Bide",
-        "Rage"
-    ],
-    "Golbat",
-    [
-        "Bite",
-        "Bide",
-        "Swift",
+        "Razor Leaf",
+        "Mega Drain",
+        "Toxic",
         "Rest"
     ],
-    "Gloom",
+    "Snorlax",
     [
-        "Mimic",
-        "Bide",
-        "Rest",
-        "Cut"
+        "Surf",
+        "Ice Beam",
+        "Fire Blast",
+        "Thunder"
     ],
     "Alakazam",
     [
         "Psychic",
         "Flash",
-        "Dig",
-        "Mimic"
-    ],
-    "Seel",
-    [
         "Rage",
-        "Growl",
-        "Bide",
-        "Rest"
+        "Dig"
+    ],
+    "Gyarados",
+    [
+        "Bite",
+        "Thunderbolt",
+        "Hydro Pump",
+        "Strength"
+    ],
+    "Ekans",
+    [
+        "Wrap",
+        "Leer",
+        "Acid",
+        "Toxic"
     ]
 ]

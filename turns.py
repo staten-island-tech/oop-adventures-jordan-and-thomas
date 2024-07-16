@@ -238,6 +238,8 @@ class functionality():
         for i in range(movelist):
             if (moves[i]["name"]) == use:
                 usetype = (moves[i]["type"])
+        #print(usetype, effective, "usetype effective in supereffective")
+        #print(ptype, "ptype")
 
 
 
@@ -419,6 +421,7 @@ class functionality():
 
         if usetype == "Dragon" and "Dragon" == ptype or usetype == "Dragon" and " Dragon" == ptype:
             effective = "super"
+        #print(effective, "effective at end")
         return(effective)
 
 
@@ -1115,6 +1118,7 @@ class functionality():
                         enemyspeed = data[i]["Speed Stat"]
                         enemyhealth = data[i]["Health Stat"]
                 print("Mike M switched into Dragonite")
+                print(Mikesdeadguys)
                 shouldiswitch = "yes"
                 enemymove = "Nothing"
                 return enemypokemon
@@ -1208,6 +1212,7 @@ class functionality():
         if enemyhealt == 0:
             print(enemypokemon, "has fainted")
             Mikesdeadguys.append(enemypokemon)
+            print(Mikesdeadguys)
             
             functionality.typechart("Raichu", oppositepokemon)
             R = matchup
@@ -1331,15 +1336,15 @@ class Mike(functionality):
 
 
 
-    def Raichudoing(turn, enemypokemon):
+    def Raichudoing(turn, enemypokemon,currentpokemon):
         global enemymove
-        print(turn,"turn at start of raichu doing")
+        #print(turn,"turn at start of raichu doing")
         Rmoves = ["Double Team", "Toxic", "Thunderbolt", "Surf"]
         
         
         for i in range(pokemonlist):
-          if data[i]["Name"] == currentpokemon:
-            oscar = i
+            if data[i]["Name"] == currentpokemon:
+                oscar = i
         Alek = data[oscar]["Types"][0]
         if turn == 1:
            
@@ -1399,7 +1404,7 @@ class Mike(functionality):
             
 
 
-    def DragoniteDoing(turn):
+    def DragoniteDoing(turn,currentpokemon):
         global enemymove
         global enemypokemon
         Dmoves = ["Agility", "Slam", "Fire Blast", "Blizzard"]
@@ -1440,7 +1445,7 @@ class Mike(functionality):
                     if d == 5:
                         enemymove = "Blizzard"
 
-    def Charizarddoing(turn):
+    def Charizarddoing(turn,currentpokemon):
         global enemymove
         global enemypokemon
         Cmoves = ["Swords Dance", "Mega Punch", "Earthquake", "Strength"]
@@ -1486,7 +1491,7 @@ class Mike(functionality):
                                 enemymove = "Strength"
                                 #print("Raichu used Surf")
 
-    def Gengardoing():
+    def Gengardoing(currentpokemon):
         global enemymove
         global enemypokemon
         Gmoves = ["Mega Drain", "Hypnosis", "Dream Eater", "Psychic"]
@@ -1524,10 +1529,10 @@ class Mike(functionality):
                                     enemymove = "Psychic"
                                 #print("Raichu used Agility")
 
-    def Blastoisedoing(turn):
+    def Blastoisedoing(turn,currentpokemon):
         global enemymove
         global enemypokemon
-        
+        #print(currentpokemon, "currentpokemon at start of blastoise doing")
         Bmoves = ["Hydro Pump", "Toxic", "Bite", "Ice Beam"]
         for i in range(pokemonlist):
           if data[i]["Name"] == currentpokemon:
@@ -1536,6 +1541,7 @@ class Mike(functionality):
         functionality.checks(currentpokemon)
         if shouldiswitch != "yes":
                 functionality.supereffective("why", "Hydro Pump", Alek)
+                #print(effective, "effective in balstoise doing after supereffective")
                 if effective == "super":
                     enemymove = "Hydro Pump"
                     #print("Raichu used Fire Blast")
@@ -1552,8 +1558,8 @@ class Mike(functionality):
                                 enemymove = "Ice Beam"
 
                         if effective != "super":
-                            print("not super")
-                            for i in range(userpartystatus):
+                            #print("not super")
+                            for i in range(len(userpartystatus)-1):
                                 if currentpokemon == userpartystatus[i - 1]:
                                     x = userpartystatus[i]
                                     if x == "None":
@@ -1561,7 +1567,7 @@ class Mike(functionality):
                                     if x != "None":
 
                                         b = random.randrange(3)
-                                        print(b,"Pleses beee here")
+                                        #print(b,"Pleses beee here")
                                         if b == 1:
                                             enemymove = "Hydro Pump"
                                             #print("Raichu used Agility")
@@ -1573,7 +1579,7 @@ class Mike(functionality):
                                         if b == 3:
                                             enemymove = "Ice Beam"
                                         #print("Raichu used Surf")
-    def Machampdoing():
+    def Machampdoing(currentpokemon):
         global enemymove
         global enemypokemon
         Mmoves = ["Body Slam", "Earthquake", "Rock Slide", "Submission"]
@@ -1630,22 +1636,22 @@ class Mike(functionality):
 
 
 class Schmovin(Mike):
-    def Whosmovin(pokemon):
+    def Whosmovin(pokemon, currentpokemon):
         
         
       
         if pokemon == "Raichu":
-            Mike.Raichudoing(turn, enemypokemon)
+            Mike.Raichudoing(turn, enemypokemon,currentpokemon)
         if pokemon == "Dragonite":
-            Mike.DragoniteDoing(turn)
+            Mike.DragoniteDoing(turn,currentpokemon)
         if pokemon == "Charizard":
-            Mike.Charizarddoing(turn)
+            Mike.Charizarddoing(turn,currentpokemon)
         if pokemon == "Gengar":
-            Mike.Gengardoing()
+            Mike.Gengardoing(currentpokemon)
         if pokemon == "Blastoise":
-            Mike.Blastoisedoing(turn)
+            Mike.Blastoisedoing(turn,currentpokemon)
         if pokemon == "Machamp":
-            Mike.Machampdoing()
+            Mike.Machampdoing(currentpokemon)
 
 
 
@@ -1738,7 +1744,8 @@ class Turns(Mike):
                         x = i
                 going = "Enemy"
                 time.sleep(times)
-                Schmovin.Whosmovin(enemypokemon)
+                #print(currentpokemon, "before whosmovin")
+                Schmovin.Whosmovin(enemypokemon, currentpokemon)
                 
                 
                 f.damagecalc(enemymove, enemypokemon, currentpokemon)
@@ -1776,13 +1783,18 @@ class Turns(Mike):
                     for i in range(len(userpartyhealth)):
                         if currentpokemon == userpartyhealth[i - 1]:
                             currenthealth = userpartyhealth[i]
+                PrintPoison = "no"
+                EnemyPoisoned = "no"
+                shouldiswitch = "no"
+                DoDamage = "yes"
+
             if len(yourteam) == 0:
               Kaifat = "no"
             if userdo == "Attack" or userdo == "attack":
                 for i in range(len(userpartyhealth)):
                     if currentpokemon == userpartyhealth[i - 1]:
                         currenthealth = userpartyhealth[i]
-                print(currenthealth, "start")
+                #print(currenthealth, "start")
                 for i in range(inputteamlist):
                     if currentpokemon == inputteam[i - 1]:
                         currentmoves = inputteam[i]
@@ -1830,17 +1842,17 @@ class Turns(Mike):
                     enemypartyhealth[1] = enemyhealth
                     
                     functionality.Mikesdeadpks(enemyhealth, currentpokemon)
-                    print(enemypokemon)
+                    #print(enemypokemon)
                     if len(Mikesdeadguys) == 6:
                       Kaifat = "no"
                     going = "Enemy"
                     time.sleep(times)
-                    Schmovin.Whosmovin(enemypokemon)
+                    Schmovin.Whosmovin(enemypokemon,currentpokemon)
                     #Mike.Raichudoing(turn)
                     f.damagecalc(enemymove, enemypokemon, currentpokemon)
                     f.specialeffect(enemymove,damage,enemyspeed,enemypokemon,currentpokemon, going)
                     enemydamage = movedamage
-                    print(currenthealth, "after calc")
+                    #print(currenthealth, "after calc")
                     #for i in range(len(userpartyhealth)):
                      #   if currentpokemon == userpartyhealth[i - 1]:
                       #      currenthealth = userpartyhealth[i]
@@ -1876,7 +1888,7 @@ class Turns(Mike):
                             if currentpokemon == userpartyhealth[i - 1]:
                                 currenthealth = userpartyhealth[i]
 
-                    print(currenthealth, "before afflicted")
+                    #print(currenthealth, "before afflicted")
                     functionality.afflicted(N,M, currenthealth, currentpokemon)
 
                     functionality.Mikesdeadpks(enemyhealth, currentpokemon)
@@ -1897,6 +1909,7 @@ class Turns(Mike):
                     PrintPoison = "no"
                     DoDamage = "yes"
                     EnemyPoisoned = "no"
+                    shouldiswitch = "no"
                     if currenthealth == 0:
                         for i in range(len(yourteam)-1):
                             if currentpokemon == yourteam[i]:
@@ -1909,7 +1922,7 @@ class Turns(Mike):
                         for i in range(len(userpartyhealth)):
                             if currentpokemon == userpartyhealth[i - 1]:
                                 currenthealth = userpartyhealth[i]
-                    print(currenthealth, "end")
+                    #print(currenthealth, "end")
                     if len(yourteam) == 0:
                       Kaifat = "no"
                     
@@ -1920,15 +1933,15 @@ class Turns(Mike):
                     f = functionality()
                     going = "Enemy"
                     
-                    print("Before")
-                    Schmovin.Whosmovin(enemypokemon)
+                    #print("Before")
+                    Schmovin.Whosmovin(enemypokemon,currentpokemon)
                 
                     #if he switches out he shouldnt also attack which is why
                     #enemymove isnt updating after the switch.
                     #Since he no attack, enemymove doesn't change but damage calc is still pulling the enemymove variable
                     global death
                     death = False
-                    print(shouldiswitch)
+                    #print(shouldiswitch)
                     if shouldiswitch != "yes":
                         f.damagecalc(enemymove, enemypokemon, currentpokemon)
                         enemydamage = movedamage
@@ -2006,7 +2019,7 @@ class Turns(Mike):
                                     print(enemypokemon, "fainted")
                     enemypartyhealth[1] = enemyhealth
                     functionality.Mikesdeadpks(enemyhealth, currentpokemon)
-                    print(enemypokemon)
+                    #print(enemypokemon)
 
                     functionality.afflicted(N,M, currenthealth, currentpokemon)
 
@@ -2028,6 +2041,8 @@ class Turns(Mike):
                     PrintPoison = "no"
                     DoDamage = "yes"
                     EnemyPoisoned = "no"
+                    shouldiswitch = "no"
+
                     if currenthealth == 0:
                         for i in range(len(yourteam)):
                             if currentpokemon == yourteam[i]:
