@@ -1111,17 +1111,18 @@ class functionality():
                 enemymove = "Nothing"
                 return enemypokemon
 
-            elif "Dragonite" not in Mikesdeadguys and D != "half" and D != "zero" and D != "normal" or D1 != "normal" and D1 != "half" and D1 != "zero":
-                enemypokemon = "Dragonite"
-                for i in range(pokemonlist):
-                  if enemypokemon == data[i]["Name"]:
-                        enemyspeed = data[i]["Speed Stat"]
-                        enemyhealth = data[i]["Health Stat"]
-                print("Mike M switched into Dragonite")
-                print(Mikesdeadguys)
-                shouldiswitch = "yes"
-                enemymove = "Nothing"
-                return enemypokemon
+            elif "Dragonite" not in Mikesdeadguys:
+                if D != "half" and D != "zero" and D != "normal" or D1 != "normal" and D1 != "half" and D1 != "zero":
+                    enemypokemon = "Dragonite"
+                    for i in range(pokemonlist):
+                        if enemypokemon == data[i]["Name"]:
+                            enemyspeed = data[i]["Speed Stat"]
+                            enemyhealth = data[i]["Health Stat"]
+                    print("Mike M switched into Dragonite")
+                    print(Mikesdeadguys)
+                    shouldiswitch = "yes"
+                    enemymove = "Nothing"
+                    return enemypokemon
 
             elif "Charizard" not in Mikesdeadguys and C != "half" and C != "zero" and C != "normal" or C1 != "normal" and C1 != "half" and C1 != "zero":
                 enemypokemon = "Charizard"
