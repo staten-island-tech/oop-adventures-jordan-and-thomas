@@ -959,7 +959,7 @@ class functionality():
         movedamage = 0
         #if typesuper == True or typesuper2 == True or typesuper1 == True:
             #print("It was supereffective!")
-    def specialeffect(specialeffect, move, damage, enemyspeed, enemypk, userpk, going):
+    def specialeffect(specialeffect, move, damage, enemyspeedph, currentspeedph, enemypk, userpk, going):
         global PrintPoison
         global DoDamage
         global EnemyPoisoned
@@ -967,6 +967,15 @@ class functionality():
         global uniquedamage
         global Diduniquedamagehappen
         Diduniquedamagehappen = "no"
+
+        global enemyspeed
+        global currentspeed
+
+        global TwoHitDamage
+        global Didithittwice
+        Didithittwice = "no"
+
+
         print(going, "going at beginning of special effect")
         print(move, "move in special effect")
         movenumber = 6
@@ -1004,7 +1013,7 @@ class functionality():
 
         if "Hits2to5" in moves[movenumber]["effect"]:
             hitamount = random.randrange(5)
-            if hitamount == 1:
+            if hitamount == 1 or hitamount == 0:
                 hitamount = 2
             setdamage = damage
             global uniquedamage
@@ -1012,17 +1021,36 @@ class functionality():
             for i in range(hitamount):
                 print(userpk, "did", setdamage, "damage")
                 uniquedamage += setdamage
+            uniquedamage -= setdamage
             Diduniquedamagehappen = "yes"
+            DoDamage = "no"
             print("It hit", hitamount, "times!")
             #damage = uniquedamage
             unique[0] = "Yah"
 
         if "SpeedDown" in moves[movenumber]["effect"]:
-            onestage = decimal.Decimal(2) / decimal.Decimal(3)
-            enemyspeed *= onestage 
+            if going == "User":
+                onestage = decimal.Decimal(2) / decimal.Decimal(3)
+                enemyspeedph *= onestage 
+                enemyspeed = round(enemyspeedph)
+                print(enemypokemon,"'s speed fell!")
+                print(enemyspeed)
+            if going == "Enemy":
+                Eonestage = decimal.Decimal(2) / decimal.Decimal(3)
+                currentspeedph *= Eonestage 
+                currentspeed = round(currentspeedph)
+                print(currentpokemon,"'s speed fell!")
+                print(currentspeed)
+            
         if "HitsTwice" in moves[movenumber]["effect"]:
-            again = True
-            moveagain = 1
+            for i in range(2):
+                print(userpk, "did", damage, "damage")
+            startdamage = damage
+            TwoHitDamage = startdamage *2
+            DoDamage = "no"
+            Didithittwice = "yes"
+            
+
 
 
         if "Poison" in moves[movenumber]["effect"]:
@@ -1251,6 +1279,7 @@ class functionality():
                       enemyhealth = (data[i]["Health Stat"])
                 print("Mike M switched into", enemypokemon)
                 shouldiswitch = "yes"
+                return enemypokemon
 
             elif "Dragonite" not in Mikesdeadguys:
                 enemypokemon = "Dragonite"
@@ -1260,6 +1289,7 @@ class functionality():
                         enemyhealth = data[i]["Health Stat"]
                 print("Mike M switched into Dragonite")
                 shouldiswitch = "yes"
+                return enemypokemon
 
             elif "Charizard" not in Mikesdeadguys:
                 enemypokemon = "Charizard"
@@ -1269,6 +1299,7 @@ class functionality():
                         enemyhealth = data[i]["Health Stat"]
                 print("Mike M switched into Charizard")
                 shouldiswitch = "yes"
+                return enemypokemon
 
             elif "Gengar" not in Mikesdeadguys:
                 enemypokemon = "Gengar"
@@ -1278,6 +1309,7 @@ class functionality():
                         enemyhealth = data[i]["Health Stat"]
                 print("Mike M switched into Gengar")
                 shouldiswitch = "yes"
+                return enemypokemon
 
             elif "Blastoise" not in Mikesdeadguys:
                 enemypokemon = "Blastoise"
@@ -1287,6 +1319,7 @@ class functionality():
                         enemyhealth = data[i]["Health Stat"]
                 print("Mike M switched into Blastoise")
                 shouldiswitch = "yes"
+                return enemypokemon
 
             elif "Machamp" not in Mikesdeadguys:
                 enemypokemon = "Machamp"
@@ -1296,6 +1329,8 @@ class functionality():
                         enemyhealth = data[i]["Health Stat"]
                 print("Mike M switched into Machamp")
                 shouldiswitch = "yes"
+                return enemypokemon
+
             elif len(Mikesdeadguys) == 6:
               print("Mike has no more pokemon left")
             else: 
@@ -1408,7 +1443,7 @@ class Mike(functionality):
                                         enemymove = "Double Team"
                                             #print("Raichu used Double Team")
 
-                                    if e == 2:
+                                    if e == 2 or e == 0:
                                         enemymove = "Thunderbolt"
                                             #print("Raichu used Thunderbolt")
 
@@ -1454,7 +1489,7 @@ class Mike(functionality):
                         enemymove = "Slam"
                         #print("Raichu used Thunderbolt")
 
-                    if d == 3:
+                    if d == 3 or d == 0:
                         enemymove = "Fire Blast"
                         #print("Raichu used Surf")
 
@@ -1503,7 +1538,7 @@ class Mike(functionality):
                             enemymove = "Strength"
                                 #print("Raichu used Surf")
                             
-                        if c == 4 or c == 5:
+                        if c == 4 or c == 5 or c == 0:
                             enemymove = "Swords Dance"
 
     def Gengardoing(currentpokemon):
@@ -1540,7 +1575,7 @@ class Mike(functionality):
                                 print(v)
                                 if v == 1:
                                     enemymove = "Mega Drain"
-                                if v == 2:
+                                if v == 2 or v == 0:
                                     enemymove = "Psychic"
                                 #print("Raichu used Agility")
 
@@ -1583,7 +1618,7 @@ class Mike(functionality):
 
                                         b = random.randrange(3)
                                         #print(b,"Pleses beee here")
-                                        if b == 1:
+                                        if b == 1 or b == 0:
                                             enemymove = "Hydro Pump"
                                             #print("Raichu used Agility")
 
@@ -1626,7 +1661,7 @@ class Mike(functionality):
                                 enemymove = "Submission"
                             if effective != "super":
                                 m = random.randrange(4)
-                                if m == 1:
+                                if m == 1 or m == 0:
                                     enemymove = "Body Slam"
                                     #print("Raichu used Agility")
 
@@ -1744,6 +1779,9 @@ class Turns(Mike):
         global Diduniquedamagehappen
         Diduniquedamagehappen = "no"
 
+        global Didithittwice
+        Didithittwice = "no"
+
         while Kaifat == "very":
             turn += 1
             #print(turn, "turn before")
@@ -1770,10 +1808,13 @@ class Turns(Mike):
                 
                 f.damagecalc(enemymove, enemypokemon, currentpokemon)
                 damage = movedamage
-                f.specialeffect(enemymove,damage,enemyspeed,enemypokemon,currentpokemon, going)
+                f.specialeffect(enemymove,damage,enemyspeed,currentspeed, enemypokemon,currentpokemon, going)
 
                 if Diduniquedamagehappen != "no":
                     movedamage = uniquedamage
+
+                if Didithittwice != "no":
+                    movedamage = TwoHitDamage
 
                 enemydamage = movedamage
                 
@@ -1812,6 +1853,7 @@ class Turns(Mike):
                 shouldiswitch = "no"
                 DoDamage = "yes"
                 Diduniquedamagehappen = "no"
+                Didithittwice = "no"
                 
 
             if len(yourteam) == 0:
@@ -1846,9 +1888,12 @@ class Turns(Mike):
                         if currentmoves[i]== use:
                             f.damagecalc(use, currentpokemon, enemypokemon)
                             damage = movedamage
-                            f.specialeffect(use, damage, enemyspeed, enemypokemon, currentpokemon, going)
+                            f.specialeffect(use, damage, enemyspeed,currentspeed,enemypokemon, currentpokemon, going)
                             if Diduniquedamagehappen != "no":
                                 damage = uniquedamage
+
+                            if Didithittwice != "no":
+                                damage = TwoHitDamage
 
                             if damage == enemyhealth or damage > enemyhealth:
                                 damage = enemyhealth
@@ -1880,9 +1925,12 @@ class Turns(Mike):
                     Schmovin.Whosmovin(enemypokemon,currentpokemon)
                     #Mike.Raichudoing(turn)
                     f.damagecalc(enemymove, enemypokemon, currentpokemon)
-                    f.specialeffect(enemymove,damage,enemyspeed,enemypokemon,currentpokemon, going)
+                    f.specialeffect(enemymove,damage,enemyspeed,currentspeed,enemypokemon,currentpokemon, going)
                     if Diduniquedamagehappen != "no":
                         movedamage = uniquedamage
+
+                    if Didithittwice != "no":
+                        movedamage = TwoHitDamage
 
                     enemydamage = movedamage
                     #print(currenthealth, "after calc")
@@ -1945,6 +1993,7 @@ class Turns(Mike):
                     shouldiswitch = "no"
                     goingfirst = "ABBA"
                     Diduniquedamagehappen = "no"
+                    Didithittwice = "no"
 
                     if currenthealth == 0:
                         for i in range(len(yourteam)-1):
@@ -1981,9 +2030,12 @@ class Turns(Mike):
                     if shouldiswitch != "yes":
                         f.damagecalc(enemymove, enemypokemon, currentpokemon)
                         enemydamage = movedamage
-                        f.specialeffect(enemymove,enemydamage,enemyspeed,enemypokemon,currentpokemon, going)
+                        f.specialeffect(enemymove,enemydamage,enemyspeed,currentspeed,enemypokemon,currentpokemon, going)
                         if Diduniquedamagehappen != "no":
                             enemydamage = uniquedamage
+
+                        if Didithittwice != "no":
+                            enemydamage = TwoHitDamage
 
                         #enemydamage = movedamage
                         for i in range(len(userpartyhealth)):
@@ -2038,9 +2090,12 @@ class Turns(Mike):
                             if currentmoves[i] == use:
                                 f.damagecalc(use, currentpokemon, enemypokemon)
                                 damage = movedamage
-                                damage = f.specialeffect(use, damage, enemyspeed, enemypokemon, currentpokemon, going)
+                                damage = f.specialeffect(use, damage, enemyspeed,currentspeed, enemypokemon, currentpokemon, going)
                                 if Diduniquedamagehappen != "no":
                                     damage = uniquedamage
+
+                                if Didithittwice != "no":
+                                    damage = TwoHitDamage
 
                                 if damage == enemyhealth or damage > enemyhealth:
                                     damage = enemyhealth
@@ -2087,6 +2142,7 @@ class Turns(Mike):
                     shouldiswitch = "no"
                     goingfirst = "ABBA"
                     Diduniquedamagehappen = "no"
+                    Didithittwice = "no"
 
                     if currenthealth == 0:
                         for i in range(len(yourteam)):

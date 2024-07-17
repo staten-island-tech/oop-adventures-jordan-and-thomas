@@ -1,42 +1,40 @@
 [
-    "Beedrill",
+    "Caterpie",
     [
-        "Bide",
-        "Cut",
-        "Swift",
-        "Pin Missile"
+        "Tackle",
+        "String Shot"
     ],
     "Bulbasaur",
     [
         "Tackle",
+        "Mimic",
         "Rage",
-        "Bide",
-        "Rest"
-    ],
-    "Fearow",
-    [
-        "Peck",
-        "Growl",
-        "Swift",
-        "Bide"
+        "Growl"
     ],
     "Weedle",
     [
-        "Poison Sting",
-        "String Shot"
+        "String Shot",
+        "Poison Sting"
+    ],
+    "Golem",
+    [
+        "Tackle",
+        "Earthquake",
+        "Dig",
+        "Rage"
     ],
     "Seel",
     [
-        "Rage",
-        "Mimic",
         "Growl",
+        "Mimic",
+        "Toxic",
         "Rest"
     ],
-    "Golbat",
+    "Onix",
     [
-        "Bite",
-        "Leech Life",
-        "Bide",
-        "Swift"
+        "Tackle",
+        "Rage",
+        "Slam",
+        "Bide"
     ]
 ]
