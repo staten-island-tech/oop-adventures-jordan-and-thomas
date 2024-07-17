@@ -1,44 +1,42 @@
 [
-    "Nidoking",
+    "Beedrill",
     [
-        "Earthquake",
-        "Ice Beam",
-        "Surf",
-        "Thunderbolt"
+        "Bide",
+        "Cut",
+        "Swift",
+        "Pin Missile"
     ],
-    "Venusaur",
+    "Bulbasaur",
     [
-        "Razor Leaf",
-        "Mega Drain",
-        "Toxic",
+        "Tackle",
+        "Rage",
+        "Bide",
         "Rest"
     ],
-    "Snorlax",
+    "Fearow",
     [
-        "Surf",
-        "Ice Beam",
-        "Fire Blast",
-        "Thunder"
+        "Peck",
+        "Growl",
+        "Swift",
+        "Bide"
     ],
-    "Alakazam",
+    "Weedle",
     [
-        "Psychic",
-        "Flash",
+        "Poison Sting",
+        "String Shot"
+    ],
+    "Seel",
+    [
         "Rage",
-        "Dig"
+        "Mimic",
+        "Growl",
+        "Rest"
     ],
-    "Gyarados",
+    "Golbat",
     [
         "Bite",
-        "Thunderbolt",
-        "Hydro Pump",
-        "Strength"
-    ],
-    "Ekans",
-    [
-        "Wrap",
-        "Leer",
-        "Acid",
-        "Toxic"
+        "Leech Life",
+        "Bide",
+        "Swift"
     ]
 ]
