@@ -212,6 +212,20 @@ class functionality():
          #   
           #  damage = Near * oppositehealth/16
            # Near += 1
+    def speedstages(moveused, speed):
+        global used
+        global currentspeed
+        currentspeed = speed
+        used = moveused
+        
+        
+        
+
+        if used == "Counter":
+            currentspeed = 10
+            
+
+
 
     def dead(oppositehealth, oppositepokemon):
         if oppositehealth == 0:
@@ -959,7 +973,7 @@ class functionality():
         movedamage = 0
         #if typesuper == True or typesuper2 == True or typesuper1 == True:
             #print("It was supereffective!")
-    def specialeffect(specialeffect, move, damage, enemyspeedph, currentspeedph, enemypk, userpk, going):
+    def specialeffect(specialeffect, move, damage, enemyspeedph, currentspeedph, enemypk, userpk, going, previousdamage):
         global PrintPoison
         global DoDamage
         global EnemyPoisoned
@@ -975,6 +989,12 @@ class functionality():
         global Didithittwice
         Didithittwice = "no"
 
+        global fourtydamagetrue
+        fourtydamagetrue = "no"
+
+        global itcounter
+        global counterdamage
+        itcounter = "no"
 
         print(going, "going at beginning of special effect")
         print(move, "move in special effect")
@@ -1050,7 +1070,24 @@ class functionality():
             DoDamage = "no"
             Didithittwice = "yes"
             
+        if "Always40D" in moves[movenumber]["effect"]:
+            fourtydamagetrue = "yes"
 
+        if "ItCounter" in moves[movenumber]["effect"]:
+            # goes last
+            # only works if move being countered is normal or fighting
+            # deals double the damage
+            countertypes = data[usernumber]["Types"]
+            if "Normal" or "Fighting" in countertypes:
+                counterdamage = previousdamage * 2
+                itcounter = "yes"
+
+        #MissDodamage
+
+
+
+
+            
 
 
         if "Poison" in moves[movenumber]["effect"]:
@@ -1071,6 +1108,26 @@ class functionality():
             
         return damage
       
+    def Miss(move):
+        
+        global Diditmiss
+        Diditmiss = "no"
+        global runspecial
+        runspecial = "yes"
+
+        
+        if move != "Nothing":
+            for i in range(movelist):
+                if move == moves[i]["name"]:
+                    accuracy = moves[i]["accuracy"]
+            Misty = random.randrange(120)
+            print(Misty, "misty")
+            if Misty > accuracy:
+                Diditmiss = "yes"
+                runspecial = "no"
+                if move == "Hi Jump Kick":
+                    stuff = 3
+
 
 
     def checks(oppositepokemon):
@@ -1760,6 +1817,11 @@ class Turns(Mike):
         global turn
         turn = 0
 
+        global Diditmiss
+        Diditmiss = "no"
+        global runspecial
+        runspecial = "yes"
+
         global PrintPoison
         global DoDamage
         global EnemyPoisoned
@@ -1782,6 +1844,13 @@ class Turns(Mike):
         global Didithittwice
         Didithittwice = "no"
 
+        global fourtydamagetrue
+        fourtydamagetrue = "no"
+
+        global itcounter
+        global counterdamage
+        itcounter = "no"
+
         while Kaifat == "very":
             turn += 1
             #print(turn, "turn before")
@@ -1801,6 +1870,9 @@ class Turns(Mike):
                         currenthealth = userpartyhealth[i]
                         x = i
                 going = "Enemy"
+
+                
+
                 time.sleep(times)
                 #print(currentpokemon, "before whosmovin")
                 Schmovin.Whosmovin(enemypokemon, currentpokemon)
@@ -1808,7 +1880,10 @@ class Turns(Mike):
                 
                 f.damagecalc(enemymove, enemypokemon, currentpokemon)
                 damage = movedamage
-                f.specialeffect(enemymove,damage,enemyspeed,currentspeed, enemypokemon,currentpokemon, going)
+
+                functionality.Miss(enemymove)
+                if runspecial == "yes":
+                    f.specialeffect(enemymove,damage,enemyspeed,currentspeed, enemypokemon,currentpokemon, going, "placeholder")
 
                 if Diduniquedamagehappen != "no":
                     movedamage = uniquedamage
@@ -1816,12 +1891,30 @@ class Turns(Mike):
                 if Didithittwice != "no":
                     movedamage = TwoHitDamage
 
+                if fourtydamagetrue != "no":
+                    movedamage = 40
+
+                if itcounter != "no":
+                    movedamage = counterdamage
+
+
+                #move effects end here
+
                 enemydamage = movedamage
                 
                 if enemydamage == currenthealth or enemydamage > currenthealth:
                     enemydamage = currenthealth
-                    
+
+
                 print(enemypokemon, "used", enemymove)
+                time.sleep(1)
+                
+                if Diditmiss != "no":
+                    enemydamage = 0
+                    DoDamage = "no"
+                    
+                    print("but it missed!")
+
                 if PrintPoison != "no":
                         print(currentpokemon, "has been poisoned!")
                 if DoDamage == "yes":
@@ -1854,10 +1947,15 @@ class Turns(Mike):
                 DoDamage = "yes"
                 Diduniquedamagehappen = "no"
                 Didithittwice = "no"
+                fourtydamagetrue = "no"
+                itcounter = "no"
+                Diditmiss = "no"
+                runspecial = "yes"
                 
 
             if len(yourteam) == 0:
               Kaifat = "no"
+
             if userdo == "Attack" or userdo == "attack":
                 for i in range(len(userpartyhealth)):
                     if currentpokemon == userpartyhealth[i - 1]:
@@ -1868,6 +1966,7 @@ class Turns(Mike):
                         currentmoves = inputteam[i]
                         print(currentmoves)
                 use = input("Pick a move to use: ")
+                functionality.speedstages(use,currentspeed)
                 time.sleep(times)
                 print(enemyspeed, currentspeed, "enemyspeed and current speed before check")
                 Turns.speedcheck(enemyspeed, currentspeed)
@@ -1888,15 +1987,32 @@ class Turns(Mike):
                         if currentmoves[i]== use:
                             f.damagecalc(use, currentpokemon, enemypokemon)
                             damage = movedamage
-                            f.specialeffect(use, damage, enemyspeed,currentspeed,enemypokemon, currentpokemon, going)
+                            functionality.Miss(use)
+                            if runspecial == "yes":
+                                f.specialeffect(use, damage, enemyspeed,currentspeed,enemypokemon, currentpokemon, going, "placeholder")
                             if Diduniquedamagehappen != "no":
                                 damage = uniquedamage
 
                             if Didithittwice != "no":
                                 damage = TwoHitDamage
 
+                            if fourtydamagetrue != "no":
+                                damage = 40
+
+                            if itcounter != "no":
+                                damage = counterdamage
+
+
+                            #effects end here
+
                             if damage == enemyhealth or damage > enemyhealth:
                                 damage = enemyhealth
+
+                            if Diditmiss != "no":
+                                damage = 0
+                                DoDamage = "no"
+                                print("but it missed!")
+
 
                             if EnemyPoisoned != "no":
                                 print(enemypokemon, "was poisoned!")
@@ -1920,17 +2036,42 @@ class Turns(Mike):
                     #print(enemypokemon)
                     if len(Mikesdeadguys) == 6:
                       Kaifat = "no"
+
                     going = "Enemy"
+
+                    PrintPoison = "no"
+                    DoDamage = "yes"
+                    EnemyPoisoned = "no"
+                    shouldiswitch = "no"
+                    goingfirst = "ABBA"
+                    Diduniquedamagehappen = "no"
+                    Didithittwice = "no"
+                    fourtydamagetrue = "no"
+                    itcounter = "no"
+                    Diditmiss = "no"
+                    runspecial = "yes"
+
                     time.sleep(times)
                     Schmovin.Whosmovin(enemypokemon,currentpokemon)
                     #Mike.Raichudoing(turn)
                     f.damagecalc(enemymove, enemypokemon, currentpokemon)
-                    f.specialeffect(enemymove,damage,enemyspeed,currentspeed,enemypokemon,currentpokemon, going)
+                    functionality.Miss(enemymove)
+                    if runspecial == "yes":
+                        f.specialeffect(enemymove,damage,enemyspeed,currentspeed,enemypokemon,currentpokemon, going, "placeholder")
                     if Diduniquedamagehappen != "no":
                         movedamage = uniquedamage
 
                     if Didithittwice != "no":
                         movedamage = TwoHitDamage
+
+                    if fourtydamagetrue != "no":
+                        movedamage = 40
+
+                    if itcounter != "no":
+                        movedamage = counterdamage
+
+
+                    #effects end here
 
                     enemydamage = movedamage
                     #print(currenthealth, "after calc")
@@ -1942,6 +2083,14 @@ class Turns(Mike):
                         enemydamage = currenthealth
                         #print(enemydamage, "enemydamage after == or > than")
                     print(enemypokemon, "used", enemymove)
+                    time.sleep(times)
+
+                    if Diditmiss != "no":
+                        enemydamage = 0
+                        DoDamage = "no"
+                        print("but it missed!")
+
+
                     if PrintPoison != "no":
                         print(currentpokemon, "has been poisoned!")
                     if DoDamage == "yes":
@@ -1994,6 +2143,10 @@ class Turns(Mike):
                     goingfirst = "ABBA"
                     Diduniquedamagehappen = "no"
                     Didithittwice = "no"
+                    fourtydamagetrue = "no"
+                    itcounter = "no"
+                    Diditmiss = "no"
+                    runspecial = "yes"
 
                     if currenthealth == 0:
                         for i in range(len(yourteam)-1):
@@ -2030,12 +2183,20 @@ class Turns(Mike):
                     if shouldiswitch != "yes":
                         f.damagecalc(enemymove, enemypokemon, currentpokemon)
                         enemydamage = movedamage
-                        f.specialeffect(enemymove,enemydamage,enemyspeed,currentspeed,enemypokemon,currentpokemon, going)
+                        functionality.Miss(enemymove)
+                        if runspecial == "yes":
+                            f.specialeffect(enemymove,enemydamage,enemyspeed,currentspeed,enemypokemon,currentpokemon, going, "placeholder")
                         if Diduniquedamagehappen != "no":
                             enemydamage = uniquedamage
 
                         if Didithittwice != "no":
                             enemydamage = TwoHitDamage
+
+                        if fourtydamagetrue != "no":
+                            enemydamage = 40
+
+                        if itcounter != "no":
+                            enemydamage = counterdamage
 
                         #enemydamage = movedamage
                         for i in range(len(userpartyhealth)):
@@ -2044,7 +2205,15 @@ class Turns(Mike):
                                 x = i
                         if enemydamage == currenthealth or enemydamage > currenthealth:
                             enemydamage = currenthealth
-                        print(enemypokemon, "used", enemymove,)
+                        print(enemypokemon, "used", enemymove)
+                        time.sleep(times)
+
+                        if Diditmiss != "no":
+                            enemydamage = 0
+                            DoDamage = "no"
+                            print("but it missed!")
+
+
                         if PrintPoison != "no":
                             print(currentpokemon, "has been poisoned!")
                         
@@ -2080,7 +2249,21 @@ class Turns(Mike):
                             Kaifat = "no"
                     if death == False:
                         time.sleep(times)
+
                         going = "User"
+
+                        PrintPoison = "no"
+                        DoDamage = "yes"
+                        EnemyPoisoned = "no"
+                        shouldiswitch = "no"
+                        goingfirst = "ABBA"
+                        Diduniquedamagehappen = "no"
+                        Didithittwice = "no"
+                        fourtydamagetrue = "no"
+                        itcounter = "no"
+                        Diditmiss = "no"
+                        runspecial = "yes"
+
                         print("You used", use)
                         time.sleep(times)
                         # if move effect != None
@@ -2090,15 +2273,30 @@ class Turns(Mike):
                             if currentmoves[i] == use:
                                 f.damagecalc(use, currentpokemon, enemypokemon)
                                 damage = movedamage
-                                damage = f.specialeffect(use, damage, enemyspeed,currentspeed, enemypokemon, currentpokemon, going)
+                                functionality.Miss(use)
+                                if runspecial == "yes":
+                                    f.specialeffect(use, damage, enemyspeed,currentspeed, enemypokemon, currentpokemon, going, enemydamage)
                                 if Diduniquedamagehappen != "no":
                                     damage = uniquedamage
 
                                 if Didithittwice != "no":
                                     damage = TwoHitDamage
 
+                                if fourtydamagetrue != "no":
+                                    damage = 40
+
+                                if itcounter != "no":
+                                    damage = counterdamage
+
+                                #effect stuff ends here
+
                                 if damage == enemyhealth or damage > enemyhealth:
                                     damage = enemyhealth
+
+                                if Diditmiss != "no":
+                                    damage = 0
+                                    DoDamage = "no"
+                                    print("but it missed!")
                           
                                 if EnemyPoisoned != "no":
                                     print(enemypokemon,"was poisoned!")
@@ -2143,6 +2341,10 @@ class Turns(Mike):
                     goingfirst = "ABBA"
                     Diduniquedamagehappen = "no"
                     Didithittwice = "no"
+                    fourtydamagetrue = "no"
+                    itcounter = "no"
+                    Diditmiss = "no"
+                    runspecial = "yes"
 
                     if currenthealth == 0:
                         for i in range(len(yourteam)):

@@ -1,44 +1,42 @@
 [
-    "Beedrill",
+    "Snorlax",
     [
-        "Twineedle",
-        "Pin Missile",
-        "Swift",
-        "Bide"
-    ],
-    "Bulbasaur",
-    [
-        "Tackle",
-        "Rage",
-        "Mimic",
-        "Bide"
+        "Water Gun",
+        "Surf",
+        "Psychic",
+        "Rest"
     ],
     "Venusaur",
     [
-        "Tackle",
-        "Vine Whip",
-        "Razor Leaf",
-        "Rage"
-    ],
-    "Golem",
-    [
-        "Earthquake",
-        "Dig",
-        "Tackle",
-        "Mimic"
-    ],
-    "Abra",
-    [
-        "Toxic",
-        "Rest",
-        "Flash",
-        "Teleport"
-    ],
-    "Geodude",
-    [
-        "Tackle",
-        "Dig",
         "Rage",
-        "Rest"
+        "Bide",
+        "Mega Drain",
+        "Tackle"
+    ],
+    "Golbat",
+    [
+        "Rage",
+        "Bide",
+        "Swift",
+        "Haze"
+    ],
+    "Alakazam",
+    [
+        "Counter",
+        "Psychic",
+        "Rage",
+        "Dig"
+    ],
+    "Onix",
+    [
+        "Bind",
+        "Bide",
+        "Rest",
+        "Slam"
+    ],
+    "Caterpie",
+    [
+        "Tackle",
+        "String Shot"
     ]
 ]
