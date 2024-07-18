@@ -1,40 +1,44 @@
 [
-    "Caterpie",
+    "Beedrill",
     [
-        "Tackle",
-        "String Shot"
+        "Twineedle",
+        "Pin Missile",
+        "Swift",
+        "Bide"
     ],
     "Bulbasaur",
     [
         "Tackle",
-        "Mimic",
         "Rage",
-        "Growl"
+        "Mimic",
+        "Bide"
     ],
-    "Weedle",
+    "Venusaur",
     [
-        "String Shot",
-        "Poison Sting"
+        "Tackle",
+        "Vine Whip",
+        "Razor Leaf",
+        "Rage"
     ],
     "Golem",
     [
-        "Tackle",
         "Earthquake",
         "Dig",
-        "Rage"
+        "Tackle",
+        "Mimic"
     ],
-    "Seel",
+    "Abra",
     [
-        "Growl",
-        "Mimic",
         "Toxic",
-        "Rest"
+        "Rest",
+        "Flash",
+        "Teleport"
     ],
-    "Onix",
+    "Geodude",
     [
         "Tackle",
+        "Dig",
         "Rage",
-        "Slam",
-        "Bide"
+        "Rest"
     ]
 ]
