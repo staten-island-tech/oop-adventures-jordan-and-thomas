@@ -1,44 +1,44 @@
 [
     "Machamp",
     [
-        "Low Kick",
+        "Submission",
         "Dig",
-        "Mimic",
+        "Bide",
         "Rest"
     ],
     "Bulbasaur",
     [
         "Tackle",
+        "Growl",
         "Rage",
-        "Bide",
-        "Rest"
+        "Mimic"
     ],
     "Fearow",
     [
         "Peck",
         "Growl",
-        "Leer",
-        "Swift"
-    ],
-    "Golbat",
-    [
-        "Rage",
         "Mimic",
-        "Bide",
-        "Swift"
-    ],
-    "Abra",
-    [
-        "Teleport",
-        "Toxic",
-        "Rest",
-        "Flash"
+        "Bide"
     ],
     "Onix",
     [
-        "Slam",
         "Tackle",
-        "Bide",
-        "Rest"
+        "Slam",
+        "Mimic",
+        "Bind"
+    ],
+    "Golem",
+    [
+        "Tackle",
+        "Rage",
+        "Dig",
+        "Mimic"
+    ],
+    "Seel",
+    [
+        "Growl",
+        "Rage",
+        "Mimic",
+        "Bide"
     ]
 ]

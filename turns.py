@@ -223,6 +223,65 @@ class functionality():
                 if goingfirst == "User":
                     Flinching = "yes"
 
+    def Crispy(currentpokemon):
+        global enemyhealth
+        
+
+        # burn also decreases attack stat so we gotta make something hapem
+      
+        
+        for i in range(len(userpartystatus)):
+            if currentpokemon == userpartystatus[i - 1]:
+
+                if userpartystatus[i] == "Burn":
+                    
+                    for i in range(pokemonlist):
+                        if currentpokemon == data[i]["Name"]:
+                            currentpkstartinghp = data[i]["Health Stat"]
+
+                    for i in range(len(userpartyhealth)):
+                        if currentpokemon == userpartyhealth[i - 1]:
+                            currenthealth = userpartyhealth[i]
+
+                    ahhthatshot = currentpkstartinghp/8
+
+                    damage = round(ahhthatshot)
+                    if damage == currenthealth or damage > currenthealth:
+                        damage = currenthealth
+                    currenthealth -= damage
+
+                    time.sleep(1)
+                    print(currentpokemon, "took", damage, "damage due to its burn")
+                    time.sleep(1)
+                    print(currentpokemon, "has", currenthealth, "health left")
+                    for i in range(len(userpartyhealth)):
+                        if currentpokemon == userpartyhealth[i - 1]:
+                            userpartyhealth[i] = currenthealth
+                    #print(N)
+                    
+                    time.sleep(1)
+                    #return Afterhealth
+
+        for i in range(len(eliteteamstatus)):
+            
+            if enemypokemon == eliteteamstatus[i - 1]:
+                
+                if eliteteamstatus[i] == "Burn":
+                    for i in range(pokemonlist):
+                        if enemypokemon == data[i]["Name"]:
+                            enemystartinghealth = data[i]["Health Stat"]
+                    BigEburn = enemystartinghealth/16
+                    damage = round(BigEburn)
+                    if damage == enemyhealth or damage > enemyhealth:
+                        damage = enemyhealth
+                    enemyhealth = enemyhealth - damage
+                    time.sleep(1)
+                    print(enemypokemon, "took", damage, "damage due to Poison")
+                    time.sleep(1)
+                    print(enemypokemon, "has", enemyhealth, "health left")
+                    
+                    time.sleep(1)
+
 
 
     def speedstages(moveused, speed):
@@ -1100,8 +1159,22 @@ class functionality():
 
         if "Flinch13" in moves[movenumber]["effect"]:
             functionality.Flinch(3, going, goingfirst)
+        
+        if "Seismictoss" in moves[movenumber]["effect"]:
+            print("Boy i ain't coding all that")
 
-
+        if "Recoil14" in moves[movenumber]["effect"]:
+            for i in range(len(userpartyhealth)):
+                if userpk == userpartyhealth[i - 1]:
+                    currenthealth = userpartyhealth[i]
+            recoil = damage/4
+            recoil = round(recoil)
+            currenthealth = currenthealth - recoil
+            print(currenthealth, "currenthealth")
+            print(currentpokemon, "took", recoil, "damage due to recoil")
+            for i in range(len(userpartyhealth)):
+                if userpk == userpartyhealth[i - 1]:
+                    userpartyhealth[i] = currenthealth
 
 
             
@@ -1122,6 +1195,20 @@ class functionality():
                             eliteteamstatus[i] = "Poison"
                     EnemyPoisoned = "yes"
                     DoDamage = "no"
+
+        if "Burn" in moves[movenumber]["effect"]:
+            if going == "Enemy":
+                if not "Fire" in data[usernumber]["Types"]:
+                    for i in range(len(userpartystatus)):
+                        if currentpokemon == userpartystatus[i - 1]:
+                            userpartystatus[i] = "Burn"
+                    
+            if going == "User":
+                if not 'Fire' in data[enemynumber]["Types"]:
+                    for i in range(len(eliteteamstatus)):
+                        if enemypokemon == eliteteamstatus[i - 1]:
+                            eliteteamstatus[i] = "Burn"
+                    
             
         return damage
       
@@ -1705,7 +1792,7 @@ class Mike(functionality):
     def Machampdoing(currentpokemon):
         global enemymove
         global enemypokemon
-        Mmoves = ["Body Slam", "Earthquake", "Rock Slide", "Submission"]
+        Mmoves = ["Body Slam", "Earthquake", "Rock Slide", "Hyper Beam"]
         for i in range(pokemonlist):
           if data[i]["Name"] == currentpokemon:
             oscar = i
@@ -1729,9 +1816,9 @@ class Mike(functionality):
                             enemymove = "Rock Slide"
 
                         if effective != "super":
-                            functionality.supereffective("why","Submission", Alek)
+                            functionality.supereffective("why","Hyper Beam", Alek)
                             if effective == "super":
-                                enemymove = "Submission"
+                                enemymove = "Hyper Beam"
                             if effective != "super":
                                 m = random.randrange(4)
                                 if m == 1 or m == 0:
@@ -1747,7 +1834,7 @@ class Mike(functionality):
                                     #print("Raichu used Surf")
 
                                 if m == 4:
-                                    enemymove = "Submission"
+                                    enemymove = "Hyper Beam"
 
 
 
@@ -1941,10 +2028,15 @@ class Turns(Mike):
                 if PrintPoison != "no":
                         print(currentpokemon, "has been poisoned!")
                 if DoDamage == "yes":
-                    print(enemypokemon, "did", enemydamage, "damage")
+                    
                     time.sleep(1)
+                    
                     if typesuper1 == True or typesuper2 == True or typesuper == True:
                         print("It was supereffective!")
+                        time.sleep(0.5)
+                    print(enemypokemon, "did", enemydamage, "damage")
+                    if crithappen == True:
+                        print("It was a critical hit!")
                         time.sleep(0.5)
                 
                 currenthealth = currenthealth - enemydamage
@@ -2055,6 +2147,10 @@ class Turns(Mike):
                                     print("It was supereffective!")
                                     time.sleep(0.5)
                                 print("It did", damage, "damage")
+                                if crithappen == True:
+                                    print("It was a critical hit!")
+                                    time.sleep(0.5)
+                                
                             enemyhealth = enemyhealth - damage
                             time.sleep(times)
                             if enemyhealth > 0:
@@ -2136,11 +2232,16 @@ class Turns(Mike):
                         if PrintPoison != "no":
                             print(currentpokemon, "has been poisoned!")
                         if DoDamage == "yes":
-                            print(enemypokemon, "did", enemydamage, "damage")
+                            
                             time.sleep(1)
                             if typesuper1 == True or typesuper2 == True or typesuper == True:
                                 print("It was supereffective!")
                                 time.sleep(0.5)
+                            print(enemypokemon, "did", enemydamage, "damage")
+                            if crithappen == True:
+                                print("It was a critical hit!")
+                                time.sleep(0.5)
+                            
                         #health already reset at this point
                         currenthealth -= enemydamage
                         #print(currenthealth, "after")
@@ -2279,6 +2380,9 @@ class Turns(Mike):
                                 print("It was supereffective!")
                                 time.sleep(0.5)
                             print(enemypokemon, "did", enemydamage, "damage")
+                            if crithappen == True:
+                                print("It was a critical hit!")
+                                time.sleep(0.5)
                         
                         currenthealth -= enemydamage
                         time.sleep(1)
@@ -2306,6 +2410,12 @@ class Turns(Mike):
                         time.sleep(times)
 
                         going = "User"
+
+                        if itcounter == "yes":
+                            for i in range(pokemonlist):
+                                if data[i]["Name"] == currentpokemon:
+                                    currentspeed == data[i]["Speed Stat"]
+
 
                         PrintPoison = "no"
                         DoDamage = "yes"
@@ -2366,11 +2476,16 @@ class Turns(Mike):
                                     print(enemypokemon,"was poisoned!")
 
                                 if DoDamage == "yes":
-                                    print(currentpokemon, "did", damage, "damage")
+                                    
                                     time.sleep(1)
                                     if typesuper1 == True or typesuper2 == True or typesuper == True:
                                         print("It was supereffective!")
                                         time.sleep(0.5)
+                                    print(currentpokemon, "did", damage, "damage")
+                                    if crithappen == True:
+                                        print("It was a critical hit!")
+                                        time.sleep(0.5)
+
                                 enemyhealth = enemyhealth - damage
                                 time.sleep(times)
                                 if enemyhealth > 0:
@@ -2381,6 +2496,10 @@ class Turns(Mike):
                     functionality.Mikesdeadpks(enemyhealth, currentpokemon)
                     #print(enemypokemon)
 
+                    for i in range(len(userpartyhealth)):
+                        if currentpokemon == userpartyhealth[i - 1]:
+                            currenthealth = userpartyhealth[i]
+
                     functionality.afflicted(N,M, currenthealth, currentpokemon)
 
                     functionality.Mikesdeadpks(enemyhealth, currentpokemon)
@@ -2388,6 +2507,7 @@ class Turns(Mike):
                     for i in range(len(userpartystatus)):
                         if currentpokemon == userpartystatus[i - 1]:
                             if userpartystatus[i] == "Poison":
+                                
                                 currenthealth = Afterhealth
                     
                                 #print(currenthealth, "after afflicted")
