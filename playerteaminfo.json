@@ -1,42 +1,44 @@
 [
-    "Snorlax",
+    "Machamp",
     [
-        "Water Gun",
-        "Surf",
-        "Psychic",
+        "Low Kick",
+        "Dig",
+        "Mimic",
         "Rest"
     ],
-    "Venusaur",
+    "Bulbasaur",
     [
+        "Tackle",
         "Rage",
         "Bide",
-        "Mega Drain",
-        "Tackle"
+        "Rest"
+    ],
+    "Fearow",
+    [
+        "Peck",
+        "Growl",
+        "Leer",
+        "Swift"
     ],
     "Golbat",
     [
         "Rage",
+        "Mimic",
         "Bide",
-        "Swift",
-        "Haze"
+        "Swift"
     ],
-    "Alakazam",
+    "Abra",
     [
-        "Counter",
-        "Psychic",
-        "Rage",
-        "Dig"
+        "Teleport",
+        "Toxic",
+        "Rest",
+        "Flash"
     ],
     "Onix",
     [
-        "Bind",
-        "Bide",
-        "Rest",
-        "Slam"
-    ],
-    "Caterpie",
-    [
+        "Slam",
         "Tackle",
-        "String Shot"
+        "Bide",
+        "Rest"
     ]
 ]
