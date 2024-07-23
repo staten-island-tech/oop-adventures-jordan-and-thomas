@@ -1,31 +1,24 @@
 [
-    "Machamp",
+    "Charizard",
     [
-        "Submission",
-        "Dig",
-        "Bide",
-        "Rest"
+        "Growl",
+        "Fire Spin",
+        "Rest",
+        "Cut"
     ],
     "Bulbasaur",
     [
         "Tackle",
-        "Growl",
         "Rage",
-        "Mimic"
+        "Mimic",
+        "Bide"
     ],
     "Fearow",
     [
         "Peck",
         "Growl",
-        "Mimic",
+        "Swift",
         "Bide"
-    ],
-    "Onix",
-    [
-        "Tackle",
-        "Slam",
-        "Mimic",
-        "Bind"
     ],
     "Golem",
     [
@@ -34,11 +27,18 @@
         "Dig",
         "Mimic"
     ],
-    "Seel",
+    "Onix",
     [
-        "Growl",
-        "Rage",
+        "Tackle",
+        "Slam",
+        "Rest",
+        "Rage"
+    ],
+    "Beedrill",
+    [
         "Mimic",
-        "Bide"
+        "Bide",
+        "Swift",
+        "Cut"
     ]
 ]
