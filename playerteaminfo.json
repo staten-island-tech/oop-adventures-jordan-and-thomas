@@ -1,15 +1,15 @@
 [
     "Charizard",
     [
-        "Growl",
         "Fire Spin",
-        "Rest",
-        "Cut"
+        "Swift",
+        "Leer",
+        "Ember"
     ],
     "Bulbasaur",
     [
         "Tackle",
-        "Rage",
+        "Growl",
         "Mimic",
         "Bide"
     ],
@@ -18,7 +18,21 @@
         "Peck",
         "Growl",
         "Swift",
-        "Bide"
+        "Fly"
+    ],
+    "Beedrill",
+    [
+        "Mimic",
+        "Rest",
+        "Rage",
+        "Cut"
+    ],
+    "Onix",
+    [
+        "Tackle",
+        "Rage",
+        "Slam",
+        "Rest"
     ],
     "Golem",
     [
@@ -26,19 +40,5 @@
         "Rage",
         "Dig",
         "Mimic"
-    ],
-    "Onix",
-    [
-        "Tackle",
-        "Slam",
-        "Rest",
-        "Rage"
-    ],
-    "Beedrill",
-    [
-        "Mimic",
-        "Bide",
-        "Swift",
-        "Cut"
     ]
 ]
