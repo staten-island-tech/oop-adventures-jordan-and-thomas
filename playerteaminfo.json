@@ -1,44 +1,44 @@
 [
     "Charizard",
     [
-        "Fire Spin",
-        "Swift",
-        "Leer",
-        "Ember"
+        "Dig",
+        "Fly",
+        "Flamethrower",
+        "Swift"
     ],
     "Bulbasaur",
     [
         "Tackle",
-        "Growl",
         "Mimic",
-        "Bide"
+        "Bide",
+        "Rest"
     ],
     "Fearow",
     [
         "Peck",
+        "Fly",
         "Growl",
+        "Rest"
+    ],
+    "Golbat",
+    [
+        "Screech",
+        "Bite",
         "Swift",
-        "Fly"
-    ],
-    "Beedrill",
-    [
-        "Mimic",
-        "Rest",
-        "Rage",
-        "Cut"
-    ],
-    "Onix",
-    [
-        "Tackle",
-        "Rage",
-        "Slam",
         "Rest"
     ],
     "Golem",
     [
         "Tackle",
         "Rage",
-        "Dig",
-        "Mimic"
+        "Mimic",
+        "Dig"
+    ],
+    "Seel",
+    [
+        "Mimic",
+        "Bide",
+        "Rest",
+        "Rage"
     ]
 ]

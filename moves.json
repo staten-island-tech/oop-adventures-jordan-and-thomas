@@ -269,7 +269,7 @@
         "type": "Flying",
         "category": "Physical",
         "power": 70,
-        "accuracy": 95,
+        "accuracy": 120,
         "PP": 15,
         "effect": [
             "Flygimmick"

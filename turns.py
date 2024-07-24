@@ -256,14 +256,83 @@ class functionality():
                 Trapped = "no"
                 print(enemypokemon, "is no longer trapped")
 
-    def FlyandDiggimmick():
+    def FlyandDiggimmick(currentpokemon):
+        global Kaifat
         global awaybeforehit
         if awaybeforehit == "yes":
-            if turn - 2 == leavingturn:
+            if turn - 1 == leavingturn:
+                global itsfly
+                global itsdig
+
+                if itsfly == "yes":
+                    use = "Fly"
+                if itsdig == "yes":
+                    use = "Dig"
+
+                global unique
+                global meffective
+                global meffective1
+                global meffective2
+                global onetype
+                global twotype
+                global movedamage
+                global uniquedamage
+                
+
+                global Diditmiss
+                Diditmiss = "no"
+                global runspecial
+                runspecial = "yes"
+
+                global PrintPoison
+                global DoDamage
+                global EnemyPoisoned
+
+                PrintPoison = "no"
+                DoDamage = "yes"
+                EnemyPoisoned = "no"
+
+                global Afterhealth
+                Afterhealth = 0
+                
+                global shouldiswitch
+                shouldiswitch = "no"
+                global goingfirst
+                goingfirst = "ABBA"
+
+                global Diduniquedamagehappen
+                Diduniquedamagehappen = "no"
+
+                global Didithittwice
+                Didithittwice = "no"
+
+                global fourtydamagetrue
+                fourtydamagetrue = "no"
+
+                global itcounter
+                global counterdamage
+                itcounter = "no"
+
+                global Flinching
+                Flinching = "no"
+
+                global PrintBurn
+                PrintBurn = "no"
+                global EnemyBurn
+                EnemyBurn = "no"
+
+                global Trappedturns
+                global Trapped
+                Trapped = "no"
+                global startingturntrapped
+                Trappedturns = 0
+                startingturntrapped = 0
                 awaybeforehit = "no"
                 Turns.speedcheck(enemyspeed, currentspeed)
                 if goingfirst == "User":
-                    use = "Fly"
+                    global enemyhealth
+                    
+                    going = "User"
                     functionality.damagecalc(use, currentpokemon, enemypokemon)
                     damage = movedamage
                     functionality.Miss(use)
@@ -298,6 +367,7 @@ class functionality():
                         #print(enemypokemon)
                     if len(Mikesdeadguys) == 6:
                         Kaifat = "no"
+                    going = "Enemy"
                     Schmovin.Whosmovin(enemypokemon,currentpokemon)
                             #Mike.Raichudoing(turn)
                     functionality.damagecalc(enemymove, enemypokemon, currentpokemon)
@@ -391,7 +461,145 @@ class functionality():
                                 for i in range(len(userpartyhealth)):
                                     if currentpokemon == userpartyhealth[i - 1]:
                                         userpartyhealth[i] = Afterhealth
+                if goingfirst == "Enemy":
+                    
+                    
+                    time.sleep(times)
 
+                    going = "User"
+
+                    if itcounter == "yes":
+                        for i in range(pokemonlist):
+                            if data[i]["Name"] == currentpokemon:
+                                currentspeed == data[i]["Speed Stat"]
+
+
+                    PrintPoison = "no"
+                    DoDamage = "yes"
+                    EnemyPoisoned = "no"
+                    shouldiswitch = "no"
+                    goingfirst = "ABBA"
+                    Diduniquedamagehappen = "no"
+                    Didithittwice = "no"
+                    fourtydamagetrue = "no"
+                    itcounter = "no"
+                    Diditmiss = "no"
+                    runspecial = "yes"
+                    Flinching = "no"
+                    PrintBurn = "no"
+                    EnemyBurn = "no"
+                    
+
+                    print("You used", use)
+                    time.sleep(times)
+                    # if move effect != None
+                    #Do effect
+                    f = functionality()
+                    
+                    functionality.damagecalc("bruh",use, currentpokemon, enemypokemon)
+                    damage = movedamage
+                    functionality.Miss(use)
+                        
+                    
+                        
+
+                    if damage == enemyhealth or damage > enemyhealth:
+                        damage = enemyhealth
+
+                    if Diditmiss != "no":
+                        damage = 0
+                        DoDamage = "no"
+                        print("But it missed!")
+                        if use == "Hi Jump Kick" or use == "Jump Kick":
+                            functionality.damagecalc("bruh",use, currentpokemon, enemypokemon)
+                            damage = movedamage
+                            currenthealth = currenthealth - damage
+                            print(currentpokemon, "took", damage, "damage due to recoil")
+                            print(currentpokemon, "has", currenthealth, "health left")
+                        damage = 0
+                    
+                    
+
+                    if DoDamage == "yes":
+                        
+                        time.sleep(1)
+                        if typesuper1 == True or typesuper2 == True or typesuper == True:
+                            print("It was supereffective!")
+                            time.sleep(0.5)
+                        print(currentpokemon, "did", damage, "damage")
+                        if crithappen == True:
+                            print("It was a critical hit!")
+                            time.sleep(0.5)
+
+                    enemyhealth = enemyhealth - damage
+                    time.sleep(times)
+                    if enemyhealth > 0:
+                        print(enemypokemon, "has", enemyhealth, "health left")
+                    if enemyhealth == 0:
+                        print(enemypokemon, "fainted")
+                    enemypartyhealth[1] = enemyhealth
+                    functionality.Mikesdeadpks(enemyhealth, currentpokemon)
+                    #print(enemypokemon)
+
+                    for i in range(len(userpartyhealth)):
+                        if currentpokemon == userpartyhealth[i - 1]:
+                            currenthealth = userpartyhealth[i]
+
+                    functionality.afflicted(N,M, currenthealth, currentpokemon)
+                    functionality.Crispy(currentpokemon)
+
+                    functionality.Mikesdeadpks(enemyhealth, currentpokemon)
+
+                    for i in range(len(userpartystatus)):
+                        if currentpokemon == userpartystatus[i - 1]:
+                            if userpartystatus[i] == "Poison":
+                                
+                                currenthealth = Afterhealth
+                    
+                                #print(currenthealth, "after afflicted")
+                                #print(Afterhealth, "after afflicted")
+                                #dead below
+                                for i in range(len(userpartyhealth)):
+                                    if currentpokemon == userpartyhealth[i - 1]:
+                                        userpartyhealth[i] = Afterhealth
+                                
+
+                    PrintPoison = "no"
+                    DoDamage = "yes"
+                    EnemyPoisoned = "no"
+                    shouldiswitch = "no"
+                    goingfirst = "ABBA"
+                    Diduniquedamagehappen = "no"
+                    Didithittwice = "no"
+                    fourtydamagetrue = "no"
+                    itcounter = "no"
+                    Diditmiss = "no"
+                    runspecial = "yes"
+                    Flinching = "no"
+                    PrintBurn = "no"
+                    EnemyBurn = "no"
+                    
+
+                    if currenthealth == 0:
+                        for i in range(len(yourteam)):
+                            if currentpokemon == yourteam[i]:
+                                yourteam.remove(i)
+                        print(yourteam)
+                        newpk = input("Who will you switch into? ")
+                        for i in range(len(yourteam)):
+                            if newpk == yourteam[i]:
+                                currentpokemon = newpk
+                        for i in range(len(userpartyhealth)):
+                            if currentpokemon == userpartyhealth[i - 1]:
+                                currenthealth = userpartyhealth[i]
+
+                    functionality.hedobetrapped(startingturntrapped,Trappedturns,turn)
+
+                    if len(Mikesdeadguys) == 6:
+                        Kaifat = "no"
+
+                itsfly = "no"
+                itsdig = "no"
                 
 
 
@@ -449,8 +657,9 @@ class functionality():
         for i in range(len(eliteteamstatus)):
             
             if enemypokemon == eliteteamstatus[i - 1]:
-                if enemycool != 1:
-                    if eliteteamstatus[i] == "Burn":
+                
+                if eliteteamstatus[i] == "Burn":
+                    if enemycool != 1:
                         for i in range(pokemonlist):
                             if enemypokemon == data[i]["Name"]:
                                 enemystartinghealth = data[i]["Health Stat"]
@@ -465,11 +674,11 @@ class functionality():
                         print(enemypokemon, "has", enemyhealth, "health left")
                         
                         time.sleep(1)
-                if enemycool == 1:
-                    for i in range(len(eliteteamstatus)):
-                            if enemypokemon == eliteteamstatus[i-1]:
-                                eliteteamstatus[i] = "None"
-                                print(enemypokemon, "healed its burn!")
+                    if enemycool == 1:
+                        for i in range(len(eliteteamstatus)):
+                                if enemypokemon == eliteteamstatus[i-1]:
+                                    eliteteamstatus[i] = "None"
+                                    print(enemypokemon, "healed its burn!")
 
 
 
@@ -1273,6 +1482,11 @@ class functionality():
         global awaybeforehit
         global leavingturn
 
+        global itsfly
+        itsfly = "no"
+        global itsdig
+        itsdig = "no"
+
         print(going, "going at beginning of special effect")
         print(move, "move in special effect")
         movenumber = 6
@@ -1425,9 +1639,17 @@ class functionality():
         
         if "Flygimmick" in moves[movenumber]["effect"]:
             awaybeforehit = "yes"
+            itsfly = "yes"
             print(currentpokemon, "flew up high")
             DoDamage = "no"
             leavingturn = turn
+        if "Digs" in moves[movenumber]["effect"]:
+            awaybeforehit = "yes"
+            itsdig = "yes"
+            print(currentpokemon, "dug down")
+            DoDamage = "no"
+            leavingturn = turn
+            
 
 
             
@@ -2248,12 +2470,17 @@ class Turns(Mike):
         global awaybeforehit
         awaybeforehit = "no"
 
+        global itsfly
+        itsfly = "no"
+        global itsdig
+        itsdig = "no"
+
         while Kaifat == "very":
             turn += 1
             #print(turn, "turn before")
             f = functionality()
 
-            f.FlyandDiggimmick()
+            functionality.FlyandDiggimmick(currentpokemon)
 
             if awaybeforehit == "no":
                 print("Switch Out Or Attack")
