@@ -360,7 +360,7 @@
         "accuracy": 100,
         "PP": 20,
         "effect": [
-            "HealHalf"
+            "HealHalfD"
         ]
     },
     {
@@ -378,11 +378,11 @@
         "name": "Mega Drain",
         "type": "Grass",
         "category": "Special",
-        "power": 40,
+        "power": 70,
         "accuracy": 100,
         "PP": 10,
         "effect": [
-            "HealHalf"
+            "HealHalfD"
         ]
     },
     {
@@ -419,7 +419,7 @@
         ]
     },
     {
-        "name": "Solar Beam ",
+        "name": "Solar Beam",
         "type": "Grass",
         "category": "Special",
         "power": 120,
