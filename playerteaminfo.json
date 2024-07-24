@@ -3,8 +3,8 @@
     [
         "Dig",
         "Fly",
-        "Flamethrower",
-        "Swift"
+        "Mimic",
+        "Rest"
     ],
     "Bulbasaur",
     [
@@ -16,29 +16,29 @@
     "Fearow",
     [
         "Peck",
-        "Fly",
         "Growl",
-        "Rest"
+        "Leer",
+        "Bide"
     ],
     "Golbat",
     [
-        "Screech",
         "Bite",
+        "Bide",
         "Swift",
-        "Rest"
+        "Toxic"
     ],
-    "Golem",
+    "Beedrill",
     [
-        "Tackle",
-        "Rage",
         "Mimic",
-        "Dig"
+        "Rage",
+        "Cut",
+        "Harden"
     ],
     "Seel",
     [
-        "Mimic",
+        "Growl",
+        "Rage",
         "Bide",
-        "Rest",
-        "Rage"
+        "Toxic"
     ]
 ]

@@ -489,7 +489,7 @@
         "type": "Ground",
         "category": "Physical",
         "power": 100,
-        "accuracy": 100,
+        "accuracy": 120,
         "PP": 10,
         "effect": [
             "Digs"

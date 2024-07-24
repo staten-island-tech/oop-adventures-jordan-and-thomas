@@ -333,7 +333,8 @@ class functionality():
                     global enemyhealth
                     
                     going = "User"
-                    functionality.damagecalc(use, currentpokemon, enemypokemon)
+                    print(currentpokemon,"used", use)
+                    functionality.damagecalc("bruh",use, currentpokemon, enemypokemon)
                     damage = movedamage
                     functionality.Miss(use)
                     if damage == enemyhealth or damage > enemyhealth:
@@ -355,6 +356,7 @@ class functionality():
 
                     
                     enemyhealth = enemyhealth - damage
+                    print("It did", damage, "damage")
                     time.sleep(times)
                     if enemyhealth > 0:
                         print(enemypokemon, "has", enemyhealth, "health left")
@@ -370,10 +372,10 @@ class functionality():
                     going = "Enemy"
                     Schmovin.Whosmovin(enemypokemon,currentpokemon)
                             #Mike.Raichudoing(turn)
-                    functionality.damagecalc(enemymove, enemypokemon, currentpokemon)
+                    functionality.damagecalc("bruh",enemymove, enemypokemon, currentpokemon)
                     functionality.Miss(enemymove)
                     if runspecial == "yes":
-                        functionality.specialeffect(enemymove,damage,enemyspeed,currentspeed,enemypokemon,currentpokemon, going, "placeholder", turn)
+                        functionality.specialeffect("bruh",enemymove,damage,enemyspeed,currentspeed,enemypokemon,currentpokemon, going, "placeholder", turn)
                     if Diduniquedamagehappen != "no":
                         movedamage = uniquedamage
 
@@ -390,6 +392,9 @@ class functionality():
                             #effects end here
 
                     enemydamage = movedamage
+                    for i in range(len(userpartyhealth)):
+                        if currentpokemon == userpartyhealth[i - 1]:
+                            currenthealth = userpartyhealth[i]
                             #print(currenthealth, "after calc")
                             #for i in range(len(userpartyhealth)):
                             #   if currentpokemon == userpartyhealth[i - 1]:
@@ -412,17 +417,17 @@ class functionality():
                             print(enemypokemon, "took", enemydamage, "damage due to recoil")
                             print(enemypokemon, "has", enemyhealth, "health left")
                         enemydamage = 0
-                        time.sleep(1)
-                        if typesuper1 == True or typesuper2 == True or typesuper == True:
-                            print("It was supereffective!")
-                            time.sleep(0.5)
-                        print(enemypokemon, "did", enemydamage, "damage")
-                        if crithappen == True:
-                            print("It was a critical hit!")
-                            time.sleep(0.5)
+                    time.sleep(1)
+                    if typesuper1 == True or typesuper2 == True or typesuper == True:
+                        print("It was supereffective!")
+                        time.sleep(0.5)
+                    print(enemypokemon, "did", enemydamage, "damage")
+                    if crithappen == True:
+                        print("It was a critical hit!")
+                        time.sleep(0.5)
                                 
                             #health already reset at this point
-                            currenthealth -= enemydamage
+                    currenthealth -= enemydamage
                             #print(currenthealth, "after")
 
                     if Flinching != "no":
@@ -1483,9 +1488,9 @@ class functionality():
         global leavingturn
 
         global itsfly
-        itsfly = "no"
+        #itsfly = "no"
         global itsdig
-        itsdig = "no"
+        #itsdig = "no"
 
         print(going, "going at beginning of special effect")
         print(move, "move in special effect")
@@ -1643,12 +1648,14 @@ class functionality():
             print(currentpokemon, "flew up high")
             DoDamage = "no"
             leavingturn = turn
+            
         if "Digs" in moves[movenumber]["effect"]:
             awaybeforehit = "yes"
             itsdig = "yes"
             print(currentpokemon, "dug down")
             DoDamage = "no"
             leavingturn = turn
+            
             
 
 
@@ -2649,6 +2656,9 @@ class Turns(Mike):
                                 if itcounter != "no":
                                     damage = counterdamage
 
+                                if awaybeforehit == "yes":
+                                    damage = 0
+
 
                                 #effects end here
 
@@ -2735,52 +2745,58 @@ class Turns(Mike):
                             if itcounter != "no":
                                 movedamage = counterdamage
 
+                            if awaybeforehit == "no":
+                                #effects end here
 
-                            #effects end here
+                                enemydamage = movedamage
+                                #print(currenthealth, "after calc")
+                                #for i in range(len(userpartyhealth)):
+                                #   if currentpokemon == userpartyhealth[i - 1]:
+                                #      currenthealth = userpartyhealth[i]
+                                #print(enemydamage, "enemydamage after damage calc")
+                                if enemydamage == currenthealth or enemydamage > currenthealth:
+                                    enemydamage = currenthealth
+                                    #print(enemydamage, "enemydamage after == or > than")
+                                print(enemypokemon, "used", enemymove)
+                                time.sleep(times)
 
-                            enemydamage = movedamage
-                            #print(currenthealth, "after calc")
-                            #for i in range(len(userpartyhealth)):
-                            #   if currentpokemon == userpartyhealth[i - 1]:
-                            #      currenthealth = userpartyhealth[i]
-                            #print(enemydamage, "enemydamage after damage calc")
-                            if enemydamage == currenthealth or enemydamage > currenthealth:
-                                enemydamage = currenthealth
-                                #print(enemydamage, "enemydamage after == or > than")
-                            print(enemypokemon, "used", enemymove)
-                            time.sleep(times)
+                                if Diditmiss != "no":
+                                    enemydamage = 0
+                                    DoDamage = "no"
+                                    print("But it missed!")
+                                    if enemymove == "Hi Jump Kick" or use == "Jump Kick":
+                                        f.damagecalc(enemymove, enemypokemon, currentpokemon)
+                                        enemydamage = movedamage
+                                        enemyhealth = enemyhealth - enemydamage
+                                        print(enemypokemon, "took", enemydamage, "damage due to recoil")
+                                        print(enemypokemon, "has", enemyhealth, "health left")
+                                    enemydamage = 0
+                
 
-                            if Diditmiss != "no":
-                                enemydamage = 0
-                                DoDamage = "no"
-                                print("But it missed!")
-                                if enemymove == "Hi Jump Kick" or use == "Jump Kick":
-                                    f.damagecalc(enemymove, enemypokemon, currentpokemon)
-                                    enemydamage = movedamage
-                                    enemyhealth = enemyhealth - enemydamage
-                                    print(enemypokemon, "took", enemydamage, "damage due to recoil")
-                                    print(enemypokemon, "has", enemyhealth, "health left")
-                                enemydamage = 0
-            
+                                if PrintPoison != "no":
+                                    print(currentpokemon, "has been poisoned!")
+                                if PrintBurn != "no":
+                                    print(currentpokemon, "was burned!" )
+                                if DoDamage == "yes":
+                                    
+                                    time.sleep(1)
+                                    if typesuper1 == True or typesuper2 == True or typesuper == True:
+                                        print("It was supereffective!")
+                                        time.sleep(0.5)
+                                    print(enemypokemon, "did", enemydamage, "damage")
+                                    if crithappen == True:
+                                        print("It was a critical hit!")
+                                        time.sleep(0.5)
+                                    
+                                #health already reset at this point
+                                currenthealth -= enemydamage
+                                #print(currenthealth, "after")
+                            if awaybeforehit != "no":
+                                print(enemypokemon, "used", enemymove)
+                                time.sleep(times)
+                                if DoDamage == "yes":
+                                    print("But it missed!")
 
-                            if PrintPoison != "no":
-                                print(currentpokemon, "has been poisoned!")
-                            if PrintBurn != "no":
-                                print(currentpokemon, "was burned!" )
-                            if DoDamage == "yes":
-                                
-                                time.sleep(1)
-                                if typesuper1 == True or typesuper2 == True or typesuper == True:
-                                    print("It was supereffective!")
-                                    time.sleep(0.5)
-                                print(enemypokemon, "did", enemydamage, "damage")
-                                if crithappen == True:
-                                    print("It was a critical hit!")
-                                    time.sleep(0.5)
-                                
-                            #health already reset at this point
-                            currenthealth -= enemydamage
-                            #print(currenthealth, "after")
 
                         if Flinching != "no":
                             print(enemypokemon, "flinched and couldn't move")
@@ -2998,6 +3014,9 @@ class Turns(Mike):
                                     if itcounter != "no":
                                         damage = counterdamage
 
+                                    if awaybeforehit == "yes":
+                                        damage = 0
+
                                     #effect stuff ends here
 
                                     if damage == enemyhealth or damage > enemyhealth:
@@ -3098,12 +3117,14 @@ class Turns(Mike):
                         if len(Mikesdeadguys) == 6:
                             Kaifat = "no"
                         #turn += 1
-            if awaybeforehit != "no":
-                time.sleep(2)
-                Schmovin.Whosmovin(enemypokemon,currentpokemon)
-                print(enemypokemon,"used", enemymove)
-                time.sleep(times)
-                print("But it missed")
+                        if awaybeforehit != "no":
+                            time.sleep(2)
+                            Schmovin.Whosmovin(enemypokemon,currentpokemon)
+                            print(enemypokemon,"used", enemymove)
+                            if DoDamage == "yes":
+
+                                time.sleep(times)
+                                print("But it missed")
 
 
 
