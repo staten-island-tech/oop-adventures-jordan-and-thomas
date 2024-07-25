@@ -1,44 +1,44 @@
 [
-    "Charizard",
+    "Pidgeot",
     [
-        "Dig",
+        "Sky Attack",
         "Fly",
-        "Mimic",
-        "Rest"
+        "Bide",
+        "Swift"
     ],
     "Bulbasaur",
     [
         "Tackle",
+        "Growl",
         "Mimic",
-        "Bide",
-        "Rest"
+        "Bide"
     ],
     "Fearow",
     [
         "Peck",
-        "Growl",
-        "Leer",
-        "Bide"
+        "Bide",
+        "Swift",
+        "Fly"
     ],
     "Golbat",
     [
-        "Bite",
-        "Bide",
-        "Swift",
-        "Toxic"
-    ],
-    "Beedrill",
-    [
+        "Screech",
         "Mimic",
-        "Rage",
+        "Bite",
+        "Rest"
+    ],
+    "Gloom",
+    [
+        "Absorb",
+        "Rest",
         "Cut",
-        "Harden"
+        "Acid"
     ],
     "Seel",
     [
         "Growl",
-        "Rage",
-        "Bide",
+        "Mimic",
+        "Rest",
         "Toxic"
     ]
 ]
