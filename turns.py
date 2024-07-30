@@ -52,6 +52,10 @@ N = 1
 global M
 M = 1
 
+global evasive
+evasive = 0
+global enemyevasive
+enemyevasive = 0
 
 #enemyhealth = 200
 #Pokemon.teambuilder()
@@ -232,18 +236,26 @@ class functionality():
     def Paralyze(persongoing):
         pchance = random.randrange(3)
         clickclak = random.randrange(4)
+
+        
+
         global youPAR
         global enemyPAR
+        youPAR = "no"
+        enemyPAR = "no"
         for i in range(len(userpartystatus)):
             if currentpokemon == userpartystatus[i-1]:
                 if userpartystatus[i] == "Paralyzed":
                     if pchance == 1:
-                        youPAR = "yes"
+                         youPAR = "yes"
+                    
         for i in range(len(eliteteamstatus)):
             if enemypokemon == eliteteamstatus[i-1]:
                 if eliteteamstatus[i] == "Paralyzed":
+                    print(clickclak, "p number")
                     if clickclak == 1:
                         enemyPAR = "yes"
+                    
             
                     
     def Confuse(persongoing, goingsdamage):
@@ -409,7 +421,7 @@ class functionality():
                     print(currentpokemon,"used", use)
                     functionality.damagecalc("bruh",use, currentpokemon, enemypokemon)
                     damage = movedamage
-                    functionality.Miss(use)
+                    functionality.Miss(use,evasive, enemyevasive, going)
                     if damage == enemyhealth or damage > enemyhealth:
                         damage = enemyhealth
 
@@ -446,7 +458,7 @@ class functionality():
                     Schmovin.Whosmovin(enemypokemon,currentpokemon)
                             #Mike.Raichudoing(turn)
                     functionality.damagecalc("bruh",enemymove, enemypokemon, currentpokemon)
-                    functionality.Miss(enemymove)
+                    functionality.Miss(enemymove,evasive, enemyevasive, going)
                     if runspecial == "yes":
                         functionality.specialeffect("bruh",enemymove,damage,enemyspeed,currentspeed,enemypokemon,currentpokemon, going, "placeholder", turn)
                     if Diduniquedamagehappen != "no":
@@ -576,7 +588,7 @@ class functionality():
                     
                     functionality.damagecalc("bruh",use, currentpokemon, enemypokemon)
                     damage = movedamage
-                    functionality.Miss(use)
+                    functionality.Miss(use,evasive, enemyevasive, going)
                         
                     
                         
@@ -1574,6 +1586,9 @@ class functionality():
         global PrintParalyzed
         global EnemyParalyzed
 
+        global evasive
+        global enemyevasive
+
         print(going, "going at beginning of special effect")
         print(move, "move in special effect")
         movenumber = 6
@@ -1746,7 +1761,23 @@ class functionality():
             elif hitsnextturn == "yes":
                 hitsnextturn = "no"
 
+        if "LeechSeed" in moves[movenumber]["effect"]:
+            global seeded
+            seeded = "yes"
+            DoDamage = "no"
+        
+        if "AccuracyDown" in moves[movenumber]["effect"]:
+            if going == "Enemy":
+                evasive += 1
+                DoDamage = "no"
+                print(currentpokemon,"'s accuracy fell!")
+            if going == "User":
+                enemyevasive += 1
+                DoDamage = "no"
+                print(enemypokemon,"'s accuracy fell")
 
+                
+            
 
             
 
@@ -1855,15 +1886,75 @@ class functionality():
                             eliteteamstatus[i] = "Paralyzed"
                             EnemyParalyzed = "yes"
                             DoDamage = "no"
+
+        if "1in3Paralyze" in moves[movenumber]["effect"]:
+            cheese = random.randrange(3)
+            if cheese == 1:
+                if going == "Enemy":
+                
+                    for i in range(len(userpartystatus)):
+                        if currentpokemon == userpartystatus[i - 1]:
+                            if userpartystatus[i] == "Paralyzed":
+                                print(currentpokemon, "is already paralyzed")
+                            if userpartystatus[i] != "Paralyzed":
+                                oneting = currentspeedph / 100
+                                currentspeed = oneting * 25
+                                currentspeed = round(currentspeed)
+                                userpartystatus[i] = "Paralyzed"
+                                PrintParalyzed = "yes"
+                                DoDamage = "no"
+                            
+                            
+                    
+                if going == "User":
+                    
+                    for i in range(len(eliteteamstatus)):
+                        if enemypokemon == eliteteamstatus[i - 1]:
+                            if eliteteamstatus[i] == "Paralyzed":
+                                print(enemypokemon,"is already paralyzed")
+                            if eliteteamstatus[i] != "Paralyzed":
+                                baker = enemyspeedph / 100
+                                enemyspeed = baker * 25
+                                enemyspeed = round(enemyspeed)
+                                eliteteamstatus[i] = "Paralyzed"
+                                EnemyParalyzed = "yes"
+                                DoDamage = "no"
             
         return damage
       
-    def Miss(move):
+    def Miss(move, evasive, enemyevasive, going):
         
         global Diditmiss
         Diditmiss = "no"
         global runspecial
         runspecial = "yes"
+
+        mistynumber = 110
+        if going == "Enemy":
+            if enemyevasive == 1:
+                mistynumber = 140
+            if enemyevasive == 2:
+                mistynumber = 160
+            if enemyevasive == 3:
+                mistynumber = 180
+            if enemyevasive == 4:
+                mistynumber = 200
+            if enemyevasive > 4:
+                mistynumber = 220
+            
+            
+
+        if going == "User":
+            if evasive == 1:
+                mistynumber = 140
+            if evasive == 2:
+                mistynumber = 160
+            if evasive == 3:
+                mistynumber = 180
+            if evasive == 4:
+                mistynumber = 200
+            if evasive > 4:
+                mistynumber = 220
 
         
         
@@ -1871,7 +1962,7 @@ class functionality():
             for i in range(movelist):
                 if move == moves[i]["name"]:
                     accuracy = moves[i]["accuracy"]
-            Misty = random.randrange(120)
+            Misty = random.randrange(mistynumber)
             print(Misty, "misty")
             if Misty > accuracy:
                 Diditmiss = "yes"
@@ -1885,6 +1976,7 @@ class functionality():
         global enemyhealth
         global enemymove
         global shouldiswitch
+        global evasive
         if Trapped != "yes":
             print("checks is running")
             for i in range(pokemonlist):
@@ -1953,6 +2045,7 @@ class functionality():
                         print("Mike M switched into", enemypokemon)
                         shouldiswitch = "yes"
                         enemymove = "Nothing"
+                        evasive = 0
                         return enemypokemon
 
                 elif "Dragonite" not in Mikesdeadguys:
@@ -1966,6 +2059,7 @@ class functionality():
                         print(Mikesdeadguys)
                         shouldiswitch = "yes"
                         enemymove = "Nothing"
+                        evasive = 0
                         return enemypokemon
 
                 elif "Charizard" not in Mikesdeadguys:
@@ -1978,6 +2072,7 @@ class functionality():
                         print("Mike M switched into Charizard")
                         shouldiswitch = "yes"
                         enemymove = "Nothing"
+                        evasive = 0
                         return enemypokemon
 
                 elif "Gengar" not in Mikesdeadguys:
@@ -1990,6 +2085,7 @@ class functionality():
                         print("Mike M switched into Gengar")
                         shouldiswitch = "yes"
                         enemymove = "Nothing"
+                        evasive = 0
                         return enemypokemon
 
                 elif "Blastoise" not in Mikesdeadguys:
@@ -2005,6 +2101,7 @@ class functionality():
                 
                         shouldiswitch = "yes"
                         enemymove = "Nothing"
+                        evasive = 0
                         return enemypokemon
                     
 
@@ -2018,6 +2115,7 @@ class functionality():
                         print("Mike M switched into Machamp")
                         shouldiswitch = "yes"
                         enemymove = "Nothing"
+                        evasive = 0
                         return enemypokemon
         if Trapped == "yes":
             shouldiswitch = "no"
@@ -2646,15 +2744,26 @@ class Turns(Mike):
         PrintParalyzed = "no"
         EnemyParalyzed = "no"
 
+        global seeded
+        seeded = "no"
+
+        global evasive
+        global enemyevasive
+        evasive = 0
+        enemyevasive = 0
+
         while Kaifat == "very":
             turn += 1
             #print(turn, "turn before")
             f = functionality()
 
             functionality.FlyandDiggimmick(currentpokemon)
+            
 
             if awaybeforehit == "no":
                 if hitsnextturn == "no":
+                    global enemyhealth
+                    
                     print("Switch Out Or Attack")
                     userdo = input("What would you like to do: ")
                     if userdo == "Switch" or userdo == "switch" or userdo == "Switch Out" or userdo == "switch out" or userdo == "Switch out":
@@ -2665,6 +2774,7 @@ class Turns(Mike):
                         switchin = input("Pick a Pokemon to Switch into: ")
                         print("You switched into", switchin)
                         currentpokemon = switchin
+                        enemyevasive = 0
                         for i in range(len(userpartyhealth)):
                             if currentpokemon == userpartyhealth[i - 1]:
                                 currenthealth = userpartyhealth[i]
@@ -2687,7 +2797,7 @@ class Turns(Mike):
                         f.damagecalc(enemymove, enemypokemon, currentpokemon)
                         damage = movedamage
 
-                        functionality.Miss(enemymove)
+                        functionality.Miss(enemymove,evasive, enemyevasive, going)
                         if runspecial == "yes":
                             f.specialeffect(enemymove,damage,enemyspeed,currentspeed, enemypokemon,currentpokemon, going, "placeholder", turn)
                         
@@ -2771,6 +2881,35 @@ class Turns(Mike):
 
                         functionality.hedobetrapped(startingturntrapped,Trappedturns,turn)
 
+                        if seeded == "yes":
+                            for i in range(pokemonlist):
+                                if enemypokemon == data[i]["Name"]:
+                                    start = data[i]["Health Stat"]
+                            seedgaming = start/16
+                            damage = round(seedgaming)
+                            if damage == enemyhealth or damage > enemyhealth:
+                                damage = enemyhealth
+                            enemyhealth = enemyhealth - damage
+                            
+                            print(enemypokemon, "had its health sapped by Leech Seed")
+                            time.sleep(times)
+                            print(enemypokemon,"has", enemyhealth, "health left")
+
+                            for i in range(pokemonlist):
+                                if currentpokemon == data[i]["Name"]:
+                                    fail = data[i]["Health Stat"]
+                            if currenthealth != fail:
+                                currenthealth += damage
+                                if currenthealth == fail or currenthealth > fail:
+                                    currenthealth = fail
+                            print(currentpokemon, "recovered", damage,"health")
+                            time.sleep(times)
+                            print(currentpokemon, "has", currenthealth,"health")
+                            for i in range(len(userpartyhealth)):
+                                if currentpokemon == userpartyhealth[i-1]:
+                                    userpartyhealth[i] = currenthealth
+                                    
+
                         PrintPoison = "no"
                         EnemyPoisoned = "no"
                         shouldiswitch = "no"
@@ -2818,7 +2957,7 @@ class Turns(Mike):
                     if goingfirst == 'User':
 
                         functionality.Paralyze(currentpokemon)
-                        global enemyhealth
+                        
                         
                         if youPAR == "no":
                             going = "User"
@@ -2838,7 +2977,7 @@ class Turns(Mike):
                             
                                 f.damagecalc(use, currentpokemon, enemypokemon)
                                 damage = movedamage
-                                functionality.Miss(use)
+                                functionality.Miss(use,evasive, enemyevasive, going)
                                 if runspecial == "yes":
                                     f.specialeffect(use, damage, enemyspeed,currentspeed,enemypokemon, currentpokemon, going, "placeholder", turn)
                                 
@@ -2955,7 +3094,7 @@ class Turns(Mike):
                                     runspecial = "no"
                             #Mike.Raichudoing(turn)
                             f.damagecalc(enemymove, enemypokemon, currentpokemon)
-                            functionality.Miss(enemymove)
+                            functionality.Miss(enemymove,evasive, enemyevasive, going)
                             if runspecial == "yes":
                                 f.specialeffect(enemymove,damage,enemyspeed,currentspeed,enemypokemon,currentpokemon, going, "placeholder", turn)
                             
@@ -3089,6 +3228,34 @@ class Turns(Mike):
                         EnemyConfuse = "no"
                         PrintParalyzed = "no"
                         EnemyParalyzed = "no"
+
+                        if seeded == "yes":
+                            for i in range(pokemonlist):
+                                if enemypokemon == data[i]["Name"]:
+                                    start = data[i]["Health Stat"]
+                            seedgaming = start/16
+                            damage = round(seedgaming)
+                            if damage == enemyhealth or damage > enemyhealth:
+                                damage = enemyhealth
+                            enemyhealth = enemyhealth - damage
+                            
+                            print(enemypokemon, "had its health sapped by Leech Seed")
+                            time.sleep(times)
+                            print(enemypokemon,"has", enemyhealth, "health left")
+
+                            for i in range(pokemonlist):
+                                if currentpokemon == data[i]["Name"]:
+                                    fail = data[i]["Health Stat"]
+                            if currenthealth != fail:
+                                currenthealth += damage
+                                if currenthealth == fail or currenthealth > fail:
+                                    currenthealth = fail
+                            print(currentpokemon, "recovered", damage,"health")
+                            time.sleep(times)
+                            print(currentpokemon, "has", currenthealth,"health")
+                            for i in range(len(userpartyhealth)):
+                                if currentpokemon == userpartyhealth[i-1]:
+                                    userpartyhealth[i] = currenthealth
                         
 
                         if currenthealth == 0:
@@ -3133,7 +3300,7 @@ class Turns(Mike):
                         if shouldiswitch != "yes":
                             f.damagecalc(enemymove, enemypokemon, currentpokemon)
                             enemydamage = movedamage
-                            functionality.Miss(enemymove)
+                            functionality.Miss(enemymove,evasive, enemyevasive, going)
                             if runspecial == "yes":
                                 f.specialeffect(enemymove,enemydamage,enemyspeed,currentspeed,enemypokemon,currentpokemon, going, "placeholder", turn)
                             
@@ -3261,7 +3428,7 @@ class Turns(Mike):
                                 if currentmoves[i] == use:
                                     f.damagecalc(use, currentpokemon, enemypokemon)
                                     damage = movedamage
-                                    functionality.Miss(use)
+                                    functionality.Miss(use, evasive, enemyevasive, going)
                                     if runspecial == "yes":
                                         f.specialeffect(use, damage, enemyspeed,currentspeed, enemypokemon, currentpokemon, going, enemydamage, turn)
                                     
@@ -3384,6 +3551,33 @@ class Turns(Mike):
                         PrintParalyzed = "no"
                         EnemyParalyzed = "no"
                         
+                        if seeded == "yes":
+                            for i in range(pokemonlist):
+                                if enemypokemon == data[i]["Name"]:
+                                    start = data[i]["Health Stat"]
+                            seedgaming = start/16
+                            damage = round(seedgaming)
+                            if damage == enemyhealth or damage > enemyhealth:
+                                damage = enemyhealth
+                            enemyhealth = enemyhealth - damage
+                            
+                            print(enemypokemon, "had its health sapped by Leech Seed")
+                            time.sleep(times)
+                            print(enemypokemon,"has", enemyhealth, "health left")
+
+                            for i in range(pokemonlist):
+                                if currentpokemon == data[i]["Name"]:
+                                    fail = data[i]["Health Stat"]
+                            if currenthealth != fail:
+                                currenthealth += damage
+                                if currenthealth == fail or currenthealth > fail:
+                                    currenthealth = fail
+                            print(currentpokemon, "recovered", damage,"health")
+                            time.sleep(times)
+                            print(currentpokemon, "has", currenthealth,"health")
+                            for i in range(len(userpartyhealth)):
+                                if currentpokemon == userpartyhealth[i-1]:
+                                    userpartyhealth[i] = currenthealth
 
                         if currenthealth == 0:
                             for i in range(len(yourteam)):

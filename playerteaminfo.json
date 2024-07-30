@@ -1,44 +1,44 @@
 [
-    "Vileplume",
+    "Venusaur",
     [
-        "Stun Spore",
-        "Mimic",
-        "Cut",
-        "Absorb"
+        "Tackle",
+        "Growl",
+        "Rage",
+        "Vine Whip"
     ],
     "Bulbasaur",
     [
         "Tackle",
         "Growl",
-        "Mimic",
+        "Rage",
+        "Mimic"
+    ],
+    "Beedrill",
+    [
+        "Pin Missile",
+        "Twineedle",
+        "Rage",
         "Bide"
     ],
-    "Fearow",
+    "Ekans",
     [
-        "Peck",
-        "Growl",
+        "Wrap",
         "Leer",
-        "Fly"
+        "Bite",
+        "Glare"
+    ],
+    "Muk",
+    [
+        "Pound",
+        "Sludge",
+        "Harden",
+        "Toxic"
     ],
     "Golbat",
     [
         "Screech",
         "Bite",
-        "Mimic",
-        "Bide"
-    ],
-    "Golem",
-    [
-        "Tackle",
-        "Rage",
-        "Dig",
-        "Mimic"
-    ],
-    "Onix",
-    [
-        "Tackle",
-        "Slam",
-        "Harden",
-        "Toxic"
+        "Bide",
+        "Swift"
     ]
 ]
