@@ -1,17 +1,17 @@
 [
-    "Gengar",
+    "Vileplume",
     [
-        "Confuse Ray",
-        "Rest",
-        "Rage",
-        "Mega Drain"
+        "Stun Spore",
+        "Mimic",
+        "Cut",
+        "Absorb"
     ],
     "Bulbasaur",
     [
         "Tackle",
+        "Growl",
         "Mimic",
-        "Bide",
-        "Growl"
+        "Bide"
     ],
     "Fearow",
     [
@@ -20,25 +20,25 @@
         "Leer",
         "Fly"
     ],
-    "Beedrill",
+    "Golbat",
     [
-        "Rage",
-        "Pin Missile",
-        "Rest",
-        "Cut"
+        "Screech",
+        "Bite",
+        "Mimic",
+        "Bide"
     ],
     "Golem",
     [
         "Tackle",
         "Rage",
         "Dig",
-        "Toxic"
+        "Mimic"
     ],
-    "Seel",
+    "Onix",
     [
-        "Growl",
-        "Rage",
-        "Mimic",
-        "Bide"
+        "Tackle",
+        "Slam",
+        "Harden",
+        "Toxic"
     ]
 ]

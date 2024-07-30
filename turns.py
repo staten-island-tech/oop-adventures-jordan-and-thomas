@@ -599,7 +599,7 @@ class functionality():
                     
 
                     if DoDamage == "yes":
-                        f.Confuse(currentpokemon, damage)
+                        functionality.Confuse(currentpokemon, damage)
                         if hityourself == "no":
                             time.sleep(1)
                             if typesuper1 == True or typesuper2 == True or typesuper == True:
@@ -2739,7 +2739,7 @@ class Turns(Mike):
                             print(currentpokemon, "was paralyzed")
 
                         if DoDamage == "yes":
-                            f.Confuse(enemypokemon, enemydamage)
+                            functionality.Confuse(enemypokemon, enemydamage)
                             if enemyhititself == "no":
                                 time.sleep(1)
                                 
@@ -3183,7 +3183,7 @@ class Turns(Mike):
                                 print(currentpokemon, "was paralyzed")
                             
                             if DoDamage == "yes":
-                                f.Confuse(enemypokemon, enemydamage)
+                                functionality.Confuse(enemypokemon, enemydamage)
                                 if enemyhititself == "no":
                                     time.sleep(1)
                                     if typesuper1 == True or typesuper2 == True or typesuper == True:
@@ -3319,7 +3319,7 @@ class Turns(Mike):
 
 
                                     if DoDamage == "yes":
-                                        f.Confuse(currentpokemon, damage)
+                                        functionality.Confuse(currentpokemon, damage)
                                         if hityourself == "no":
                                             time.sleep(1)
                                             if typesuper1 == True or typesuper2 == True or typesuper == True:
