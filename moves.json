@@ -63,7 +63,7 @@
         "accuracy": 70,
         "PP": 10,
         "effect": [
-
+            "1in3Paralyze"
         ]
     },
     {
@@ -74,7 +74,7 @@
         "accuracy": 100,
         "PP": 15,
         "effect": [
-
+            "1in3Paralyze"
         ]
     },
     {
@@ -85,7 +85,7 @@
         "accuracy": 100,
         "PP": 30,
         "effect": [
-
+            "1in3Paralyze"
         ]
     },
     {
@@ -96,7 +96,7 @@
         "accuracy": 100,
         "PP": 20,
         "effect": [
- 
+            "Paralyze"
         ]
     },
     {
@@ -107,7 +107,7 @@
         "accuracy": 100,
         "PP": 15,
         "effect": [
-
+            "1in3Paralyze"
         ]
     },
     {
@@ -302,7 +302,7 @@
         "type": "Flying",
         "category": "Physical",
         "power": 140,
-        "accuracy": 90,
+        "accuracy": 120,
         "PP": 5,
         "effect": [
             "HitsNextTurn"
@@ -338,7 +338,7 @@
         "accuracy": 100,
         "PP": 30,
         "effect": [
-            "13Paralyze"
+            "1in3Paralyze"
         ]
     },
     {
@@ -448,7 +448,7 @@
         "accuracy": 75,
         "PP": 30,
         "effect": [
-            "AlwaysParalyze"
+            "Paralyze"
         ]
     },
     {
@@ -635,7 +635,7 @@
         "accuracy": 100,
         "PP": 15,
         "effect": [
-            "13Paralyze"
+            "1in3Paralyze"
         ]
     },
     {
@@ -822,7 +822,7 @@
         "accuracy": 75,
         "PP": 30,
         "effect": [
-            "AlwaysParalyze"
+            "Paralyze"
         ]
     },
     {

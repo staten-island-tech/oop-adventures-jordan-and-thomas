@@ -1,44 +1,44 @@
 [
-    "Pidgeot",
+    "Gengar",
     [
-        "Sky Attack",
-        "Fly",
-        "Bide",
-        "Swift"
+        "Confuse Ray",
+        "Rest",
+        "Rage",
+        "Mega Drain"
     ],
     "Bulbasaur",
     [
         "Tackle",
-        "Growl",
         "Mimic",
-        "Bide"
+        "Bide",
+        "Growl"
     ],
     "Fearow",
     [
         "Peck",
-        "Bide",
-        "Swift",
+        "Growl",
+        "Leer",
         "Fly"
     ],
-    "Golbat",
+    "Beedrill",
     [
-        "Screech",
-        "Mimic",
-        "Bite",
-        "Rest"
-    ],
-    "Gloom",
-    [
-        "Absorb",
+        "Rage",
+        "Pin Missile",
         "Rest",
-        "Cut",
-        "Acid"
+        "Cut"
+    ],
+    "Golem",
+    [
+        "Tackle",
+        "Rage",
+        "Dig",
+        "Toxic"
     ],
     "Seel",
     [
         "Growl",
+        "Rage",
         "Mimic",
-        "Rest",
-        "Toxic"
+        "Bide"
     ]
 ]
