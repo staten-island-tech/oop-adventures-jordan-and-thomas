@@ -2,43 +2,43 @@
     "Gengar",
     [
         "Hypnosis",
-        "Rage",
-        "Rest",
-        "Thunder"
+        "Dream Eater",
+        "Night Shade",
+        "Mega Drain"
     ],
     "Bulbasaur",
     [
         "Tackle",
         "Growl",
-        "Bide",
-        "Rest"
+        "Rage",
+        "Mimic"
     ],
     "Fearow",
     [
         "Peck",
         "Growl",
-        "Swift",
-        "Bide"
+        "Bide",
+        "Swift"
     ],
     "Golbat",
     [
         "Screech",
         "Bite",
         "Mimic",
-        "Rest"
-    ],
-    "Golem",
-    [
-        "Tackle",
-        "Rage",
-        "Harden",
-        "Dig"
-    ],
-    "Onix",
-    [
-        "Tackle",
-        "Slam",
-        "Bind",
         "Bide"
+    ],
+    "Beedrill",
+    [
+        "Rage",
+        "Rest",
+        "Cut",
+        "Toxic"
+    ],
+    "Seel",
+    [
+        "Growl",
+        "Rest",
+        "Toxic",
+        "Rage"
     ]
 ]

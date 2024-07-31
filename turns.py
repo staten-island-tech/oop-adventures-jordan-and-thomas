@@ -261,7 +261,17 @@ class functionality():
         print("running")
 
         memememe = random.randrange(4)
-        monke = random.randrange(2)
+        monke = random.randrange(100)
+
+        for i in range(len(userpartystatus)):
+            if currentpokemon == userpartystatus[i-1]:
+                if userpartystatus[i] != "Asleep":
+                    yousleep = "no"
+        for i in range(len(eliteteamstatus)):
+            if enemypokemon == eliteteamstatus[i-1]:
+                if eliteteamstatus[i] != "Asleep":
+                    enemysleep = "no"
+        
 
         for i in range(len(userpartystatus)):
             if currentpokemon == userpartystatus[i-1]:
@@ -459,8 +469,10 @@ class functionality():
 
                     if Diditmiss != "no":
                         damage = 0
+                        if DoDamage == "yes":
+                            print("But it missed!")
                         DoDamage = "no"
-                        print("But it missed!")
+                        
 
                     time.sleep(1)
                     if typesuper1 == True or typesuper2 == True or typesuper == True:
@@ -492,7 +504,7 @@ class functionality():
                     functionality.damagecalc("bruh",enemymove, enemypokemon, currentpokemon)
                     functionality.Miss(enemymove,evasive, enemyevasive, going)
                     if runspecial == "yes":
-                        functionality.specialeffect("bruh",enemymove,damage,enemyspeed,currentspeed,enemypokemon,currentpokemon, going, "placeholder", turn)
+                        functionality.specialeffect("bruh",enemymove,damage,enemyspeed,currentspeed,enemypokemon,currentpokemon, going, "placeholder", turn, enemyhealth)
                     if Diduniquedamagehappen != "no":
                         movedamage = uniquedamage
 
@@ -525,8 +537,10 @@ class functionality():
 
                     if Diditmiss != "no":
                         enemydamage = 0
+                        if DoDamage == "yes":
+                            print("But it missed!")
                         DoDamage = "no"
-                        print("But it missed!")
+                        
                         if enemymove == "Hi Jump Kick" or use == "Jump Kick":
                             functionality.damagecalc(enemymove, enemypokemon, currentpokemon)
                             enemydamage = movedamage
@@ -630,8 +644,10 @@ class functionality():
 
                     if Diditmiss != "no":
                         damage = 0
+                        if DoDamage == "yes":
+                            print("But it missed!")
                         DoDamage = "no"
-                        print("But it missed!")
+                        
                         if use == "Hi Jump Kick" or use == "Jump Kick":
                             functionality.damagecalc("bruh",use, currentpokemon, enemypokemon)
                             damage = movedamage
@@ -1571,7 +1587,7 @@ class functionality():
         movedamage = 0
         #if typesuper == True or typesuper2 == True or typesuper1 == True:
             #print("It was supereffective!")
-    def specialeffect(specialeffect, move, damage, enemyspeedph, currentspeedph, enemypk, userpk, going, previousdamage, turn):
+    def specialeffect(specialeffect, move, damage, enemyspeedph, currentspeedph, enemypk, userpk, going, previousdamage, turn,enemyheat):
         global PrintPoison
         global DoDamage
         global EnemyPoisoned
@@ -1628,6 +1644,8 @@ class functionality():
 
         global enemyattackup
         global userattackup
+
+        global enemyhealth
 
         print(going, "going at beginning of special effect")
         print(move, "move in special effect")
@@ -1833,7 +1851,48 @@ class functionality():
             if going == "User":
                 userattackup += 1
                 print(currentpokemon,"'s attack rose sharply")
-                        
+
+        if "DreamEatEffect" in moves[movenumber]["effect"]:
+            if going == "Enemy":
+                for i in range(len(userpartystatus)):
+                    if currentpokemon == userpartystatus[i-1]:
+                        if userpartystatus[i] == "Asleep":
+                            healing = damage/2
+                            healing = round(healing)
+                            for i in range(pokemonlist):
+                                if currentpokemon == data[i]["Name"]:
+                                    korok = data[i]["Health Stat"]
+                            currenthealth = currenthealth + healing
+                            if healing == korok or healing > korok:
+                                currenthealth = korok
+                            for i in range(len(userpartyhealth)):
+                                if currentpokemon == userpartyhealth[i-1]:
+                                    userpartyhealth[i] = currenthealth
+                        if userpartystatus[i] != "Asleep":
+                            DoDamage = "no"
+                            print("But it failed")
+                            
+            if going == "User":
+                for i in range(len(eliteteamstatus)):
+                    if enemypokemon == eliteteamstatus[i-1]:
+                        if eliteteamstatus[i] == "Asleep":
+                            healing = damage/2
+                            healing = round(healing)
+                            for i in range(pokemonlist):
+                                if enemypokemon == data[i]["Name"]:
+                                    korok = data[i]["Health Stat"]
+                            enemyhealth = enemyheat + healing
+                            if healing == korok or healing > korok:
+                                enemyhealth = korok
+                            #for i in range(len(eliteteamstatus)):
+                             #   if currentpokemon == eliteteamstatus[i-1]:
+                              #      enemypartyhealth[i] = enemyhealth
+                        else:
+                            DoDamage = "no"
+                            print("But it failed")
+                            
+
+
             
 
             
@@ -2553,9 +2612,9 @@ class Mike(functionality):
                     for i in range(len(userpartystatus)-1):
                         if currentpokemon == userpartystatus[i - 1]:
                             y = userpartystatus[i]
-                            if y == "asleep":
+                            if y == "Asleep":
                                 enemymove = "Dream Eater"
-                            if y != "asleep":
+                            if y != "Asleep":
                                 enemymove = "Hypnosis"
 
                             else:
@@ -2901,7 +2960,7 @@ class Turns(Mike):
                                 runspecial = "no"
                         if runspecial == "yes":
                             
-                            f.specialeffect(enemymove,damage,enemyspeed,currentspeed, enemypokemon,currentpokemon, going, "placeholder", turn)
+                            f.specialeffect(enemymove,damage,enemyspeed,currentspeed, enemypokemon,currentpokemon, going, "placeholder", turn, enemyhealth)
                         
                         if Diduniquedamagehappen != "no":
                             movedamage = uniquedamage
@@ -2932,9 +2991,11 @@ class Turns(Mike):
                         
                         if Diditmiss != "no":
                             enemydamage = 0
+                            if DoDamage == "yes":
+                                print("But it missed!")
                             DoDamage = "no"
                             
-                            print("But it missed!")
+                            
                         
                                 
 
@@ -3097,7 +3158,7 @@ class Turns(Mike):
                                     runspecial = "no"
                                 if runspecial == "yes":
                                     
-                                    f.specialeffect(use, damage, enemyspeed,currentspeed,enemypokemon, currentpokemon, going, "placeholder", turn)
+                                    f.specialeffect(use, damage, enemyspeed,currentspeed,enemypokemon, currentpokemon, going, "placeholder", turn, enemyhealth)
                                 
                                 if Diduniquedamagehappen != "no":
                                     damage = uniquedamage
@@ -3119,7 +3180,7 @@ class Turns(Mike):
                                     damage = movedamage
                                     print(currentpokemon, "mirrored", enemymove)
                                     use = enemymove
-                                    f.specialeffect(use, damage, enemyspeed,currentspeed, enemypokemon, currentpokemon, going, enemydamage, turn)
+                                    f.specialeffect(use, damage, enemyspeed,currentspeed, enemypokemon, currentpokemon, going, enemydamage, turn, enemyhealth)
                                     
                                     
                                 if hitsnextturn == "yes":
@@ -3133,8 +3194,10 @@ class Turns(Mike):
 
                                 if Diditmiss != "no":
                                     damage = 0
+                                    if DoDamage == "yes":
+                                        print("But it missed!")
                                     DoDamage = "no"
-                                    print("But it missed!")
+                                    
                                     if use == "Hi Jump Kick" or use == "Jump Kick":
                                         f.damagecalc(use, currentpokemon, enemypokemon)
                                         damage = movedamage
@@ -3222,7 +3285,7 @@ class Turns(Mike):
 
                             if runspecial == "yes":
                                 
-                                f.specialeffect(enemymove,damage,enemyspeed,currentspeed,enemypokemon,currentpokemon, going, "placeholder", turn)
+                                f.specialeffect(enemymove,damage,enemyspeed,currentspeed,enemypokemon,currentpokemon, going, "placeholder", turn, enemyhealth)
                             
                             if Diduniquedamagehappen != "no":
                                 movedamage = uniquedamage
@@ -3255,8 +3318,10 @@ class Turns(Mike):
 
                                 if Diditmiss != "no":
                                     enemydamage = 0
+                                    if DoDamage == "yes":
+                                        print("But it missed!")
                                     DoDamage = "no"
-                                    print("But it missed!")
+                                    
                                     if enemymove == "Hi Jump Kick" or use == "Jump Kick":
                                         f.damagecalc(enemymove, enemypokemon, currentpokemon)
                                         enemydamage = movedamage
@@ -3436,7 +3501,7 @@ class Turns(Mike):
 
                             if runspecial == "yes":
                                 
-                                f.specialeffect(enemymove,enemydamage,enemyspeed,currentspeed,enemypokemon,currentpokemon, going, "placeholder", turn)
+                                f.specialeffect(enemymove,enemydamage,enemyspeed,currentspeed,enemypokemon,currentpokemon, going, "placeholder", turn, enemyhealth)
                             
                             if Diduniquedamagehappen != "no":
                                 enemydamage = uniquedamage
@@ -3463,8 +3528,10 @@ class Turns(Mike):
 
                             if Diditmiss != "no":
                                 enemydamage = 0
+                                if DoDamage == "yes":
+                                    print("But it missed!")
                                 DoDamage = "no"
-                                print("But it missed!")
+                                
                                 if enemymove == "Hi Jump Kick" or use == "Jump Kick":
                                     f.damagecalc(enemymove, enemypokemon, currentpokemon)
                                     enemydamage = movedamage
@@ -3572,7 +3639,7 @@ class Turns(Mike):
                                         runspecial = "no"
                                     if runspecial == "yes":
                                         
-                                        f.specialeffect(use, damage, enemyspeed,currentspeed, enemypokemon, currentpokemon, going, enemydamage, turn)
+                                        f.specialeffect(use, damage, enemyspeed,currentspeed, enemypokemon, currentpokemon, going, enemydamage, turn, enemyhealth)
                                     
                                     if Diduniquedamagehappen != "no":
                                         damage = uniquedamage
@@ -3593,7 +3660,7 @@ class Turns(Mike):
                                         damage = movedamage
                                         print(currentpokemon, "mirrored", enemymove)
                                         use = enemymove
-                                        f.specialeffect(use, damage, enemyspeed,currentspeed, enemypokemon, currentpokemon, going, enemydamage, turn)
+                                        f.specialeffect(use, damage, enemyspeed,currentspeed, enemypokemon, currentpokemon, going, enemydamage, turn, enemyhealth)
                                         
 
                                     if hitsnextturn == "yes":
@@ -3607,8 +3674,10 @@ class Turns(Mike):
 
                                     if Diditmiss != "no":
                                         damage = 0
+                                        if DoDamage == "yes":
+                                            print("But it missed!")
                                         DoDamage = "no"
-                                        print("But it missed!")
+                                        
                                         if use == "Hi Jump Kick" or use == "Jump Kick":
                                             f.damagecalc(use, currentpokemon, enemypokemon)
                                             damage = movedamage
