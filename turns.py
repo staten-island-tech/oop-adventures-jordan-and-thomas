@@ -255,6 +255,38 @@ class functionality():
                     print(clickclak, "p number")
                     if clickclak == 1:
                         enemyPAR = "yes"
+    def Imatired():
+        global yousleep
+        global enemysleep
+        print("running")
+
+        memememe = random.randrange(4)
+        monke = random.randrange(2)
+
+        for i in range(len(userpartystatus)):
+            if currentpokemon == userpartystatus[i-1]:
+                if userpartystatus[i] == "Asleep":
+                    if memememe != 1:
+                        yousleep = "yes"
+                    if memememe == 1:
+                        yousleep = "no"
+                        for i in range(len(userpartystatus)):
+                            if currentpokemon == userpartystatus[i-1]:
+                                userpartystatus[i] = "None"
+                        print(currentpokemon,"woke up!")
+                    
+        for i in range(len(eliteteamstatus)):
+            if enemypokemon == eliteteamstatus[i-1]:
+                if eliteteamstatus[i] == "Asleep":
+                    print(monke, "sleep number")
+                    if monke != 1:
+                        enemysleep = "yes"
+                    if monke == 1:
+                        enemysleep = "no"
+                        for i in range(len(eliteteamstatus)):
+                            if enemypokemon == eliteteamstatus[i-1]:
+                                eliteteamstatus[i] = "None"
+                        print(enemypokemon,"woke up!")
                     
             
                     
@@ -1418,6 +1450,11 @@ class functionality():
                 enemynumber = i
         movepower = moves[movenumber]["power"]
         userattack = data[attacknumber]["Attack Stat"]
+        if currentpokemon == attackingpk:
+            userattack = userattack * userattackup
+        if enemypokemon == attackingpk:
+            userattack = userattack * enemyattackup
+
         enemydefense = data[enemynumber]["Defense Stat"]
         userspecial = data[attacknumber]["Special Stat"]
         enemyspecial = data[enemynumber]["Special Stat"]
@@ -1588,6 +1625,9 @@ class functionality():
 
         global evasive
         global enemyevasive
+
+        global enemyattackup
+        global userattackup
 
         print(going, "going at beginning of special effect")
         print(move, "move in special effect")
@@ -1777,17 +1817,45 @@ class functionality():
                 print(enemypokemon,"'s accuracy fell")
 
         if "SpeedSharpUp" in moves[movenumber]["effect"]:
+            DoDamage = "no"
             if going == "Enemy":
                 enemyspeed = enemyspeed * 2
                 print(enemypokemon,"'s speed rose sharply")
             if going == "User":
                 currentspeed = currentspeed * 2
                 print(currentpokemon,"'s speed rose sharply")
+        
+        if "AttackSharpUp" in moves[movenumber]["effect"]:
+            DoDamage = "no"
+            if going == "Enemy":
+                enemyattackup += 1
+                print(enemypokemon,"'s attack rose sharply")
+            if going == "User":
+                userattackup += 1
+                print(currentpokemon,"'s attack rose sharply")
                         
             
 
             
-
+        if "Sleep" in moves[movenumber]["effect"]:
+            if going == "Enemy":
+                for i in range(len(userpartystatus)):
+                    if currentpokemon == userpartystatus[i-1]:
+                        if userpartystatus[i] == "Asleep":
+                            print(currentpokemon,"is already asleep")
+                        if userpartystatus[i] != "Asleep":
+                            userpartystatus[i] = "Asleep"
+                            print(currentpokemon,"fell asleep!")
+                            DoDamage = "no"
+            if going == "User":
+                for i in range(len(eliteteamstatus)):
+                    if enemypokemon == eliteteamstatus[i-1]:
+                        if eliteteamstatus[i] == "Asleep":
+                            print(enemypokemon,"is already asleep")
+                        if eliteteamstatus[i] != "Asleep":
+                            eliteteamstatus[i] = "Asleep"
+                            print(enemypokemon,"fell asleep!")
+                            DoDamage = "no"
 
         if "Poison" in moves[movenumber]["effect"]:
             if going == "Enemy":
@@ -1984,6 +2052,7 @@ class functionality():
         global enemymove
         global shouldiswitch
         global evasive
+        global enemyattackup
         if Trapped != "yes":
             print("checks is running")
             for i in range(pokemonlist):
@@ -2053,6 +2122,7 @@ class functionality():
                         shouldiswitch = "yes"
                         enemymove = "Nothing"
                         evasive = 0
+                        enemyattackup = 1
                         return enemypokemon
 
                 elif "Dragonite" not in Mikesdeadguys:
@@ -2067,6 +2137,7 @@ class functionality():
                         shouldiswitch = "yes"
                         enemymove = "Nothing"
                         evasive = 0
+                        enemyattackup = 1
                         return enemypokemon
 
                 elif "Charizard" not in Mikesdeadguys:
@@ -2080,6 +2151,7 @@ class functionality():
                         shouldiswitch = "yes"
                         enemymove = "Nothing"
                         evasive = 0
+                        enemyattackup = 1
                         return enemypokemon
 
                 elif "Gengar" not in Mikesdeadguys:
@@ -2093,6 +2165,7 @@ class functionality():
                         shouldiswitch = "yes"
                         enemymove = "Nothing"
                         evasive = 0
+                        enemyattackup = 1
                         return enemypokemon
 
                 elif "Blastoise" not in Mikesdeadguys:
@@ -2109,6 +2182,7 @@ class functionality():
                         shouldiswitch = "yes"
                         enemymove = "Nothing"
                         evasive = 0
+                        enemyattackup = 1
                         return enemypokemon
                     
 
@@ -2123,6 +2197,7 @@ class functionality():
                         shouldiswitch = "yes"
                         enemymove = "Nothing"
                         evasive = 0
+                        enemyattackup = 1
                         return enemypokemon
         if Trapped == "yes":
             shouldiswitch = "no"
@@ -2759,6 +2834,18 @@ class Turns(Mike):
         evasive = 0
         enemyevasive = 0
 
+        global enemyattackup
+        enemyattackup = 1
+        global userattackup
+        userattackup = 1
+
+        global yousleep
+        global enemysleep
+        yousleep = "no"
+        enemysleep = "no"
+
+        
+
         while Kaifat == "very":
             turn += 1
             #print(turn, "turn before")
@@ -2782,6 +2869,7 @@ class Turns(Mike):
                         print("You switched into", switchin)
                         currentpokemon = switchin
                         enemyevasive = 0
+                        userattackup = 1
                         for i in range(len(userpartyhealth)):
                             if currentpokemon == userpartyhealth[i - 1]:
                                 currenthealth = userpartyhealth[i]
@@ -2790,22 +2878,29 @@ class Turns(Mike):
                         going = "Enemy"
 
                         functionality.Paralyze(enemypokemon)
+                        functionality.Imatired()
 
 
                         time.sleep(times)
                         #print(currentpokemon, "before whosmovin")
                         Schmovin.Whosmovin(enemypokemon, currentpokemon)
-                        if shouldiswitch == "no":
-                            if enemyPAR != "no":
-                                DoDamage = "no"
-                                print(enemypokemon,"was unable to move due to its paralysis")
-                                runspecial = "no"
+                        
                         
                         f.damagecalc(enemymove, enemypokemon, currentpokemon)
                         damage = movedamage
 
                         functionality.Miss(enemymove,evasive, enemyevasive, going)
+                        if shouldiswitch == "no":
+                            if enemyPAR != "no":
+                                DoDamage = "no"
+                                print(enemypokemon,"was unable to move due to its paralysis")
+                                runspecial = "no"
+                            if enemysleep != "no":
+                                DoDamage = "no"
+                                print(enemypokemon,"is fast asleep")
+                                runspecial = "no"
                         if runspecial == "yes":
+                            
                             f.specialeffect(enemymove,damage,enemyspeed,currentspeed, enemypokemon,currentpokemon, going, "placeholder", turn)
                         
                         if Diduniquedamagehappen != "no":
@@ -2830,7 +2925,7 @@ class Turns(Mike):
                         
 
 
-                        if enemyPAR == "no":
+                        if enemyPAR == "no" and enemysleep == "no":
                             print(enemypokemon, "used", enemymove)
                             time.sleep(1)
                         
@@ -2964,15 +3059,21 @@ class Turns(Mike):
                     if goingfirst == 'User':
 
                         functionality.Paralyze(currentpokemon)
+                        functionality.Imatired()
                         
                         
-                        if youPAR == "no":
+                        if youPAR == "no" and yousleep == "no":
                             going = "User"
                             print("You used", use)
 
                         if youPAR != "no":
                             DoDamage = "no"
                             print(currentpokemon,"was unable to move due to its paralysis")
+                            runspecial = "no"
+                        
+                        if yousleep != "no":
+                            DoDamage = "no"
+                            print(currentpokemon,"is fast asleep")
                             runspecial = "no"
 
                         time.sleep(times)
@@ -2985,7 +3086,17 @@ class Turns(Mike):
                                 f.damagecalc(use, currentpokemon, enemypokemon)
                                 damage = movedamage
                                 functionality.Miss(use,evasive, enemyevasive, going)
+                                if youPAR != "no":
+                                    DoDamage = "no"
+                                    print(currentpokemon,"was unable to move due to its paralysis")
+                                    runspecial = "no"
+                                
+                                if yousleep != "no":
+                                    DoDamage = "no"
+                                    print(currentpokemon,"is fast asleep")
+                                    runspecial = "no"
                                 if runspecial == "yes":
+                                    
                                     f.specialeffect(use, damage, enemyspeed,currentspeed,enemypokemon, currentpokemon, going, "placeholder", turn)
                                 
                                 if Diduniquedamagehappen != "no":
@@ -3090,19 +3201,27 @@ class Turns(Mike):
                         #Flinching = "no"
 
                         functionality.Paralyze(enemypokemon)
+                        functionality.Imatired()
 
                         time.sleep(times)
                         if Flinching == "no":
                             Schmovin.Whosmovin(enemypokemon,currentpokemon)
+                            
+                            #Mike.Raichudoing(turn)
+                            f.damagecalc(enemymove, enemypokemon, currentpokemon)
+                            functionality.Miss(enemymove,evasive, enemyevasive, going)
                             if shouldiswitch == "no":
                                 if enemyPAR != "no":
                                     DoDamage = "no"
                                     print(enemypokemon,"was unable to move due to its paralysis")
                                     runspecial = "no"
-                            #Mike.Raichudoing(turn)
-                            f.damagecalc(enemymove, enemypokemon, currentpokemon)
-                            functionality.Miss(enemymove,evasive, enemyevasive, going)
+                                if enemysleep != "no":
+                                    DoDamage = "no"
+                                    print(enemypokemon,"is fast asleep")
+                                    runspecial = "no"
+
                             if runspecial == "yes":
+                                
                                 f.specialeffect(enemymove,damage,enemyspeed,currentspeed,enemypokemon,currentpokemon, going, "placeholder", turn)
                             
                             if Diduniquedamagehappen != "no":
@@ -3130,7 +3249,7 @@ class Turns(Mike):
                                     enemydamage = currenthealth
                                     #print(enemydamage, "enemydamage after == or > than")
                                 
-                                if enemyPAR == "no":
+                                if enemyPAR == "no" and enemysleep == "no":
                                     print(enemypokemon, "used", enemymove)
                                     time.sleep(times)
 
@@ -3291,12 +3410,9 @@ class Turns(Mike):
                         #print("Before")
                         Schmovin.Whosmovin(enemypokemon,currentpokemon)
                         functionality.Paralyze(enemypokemon)
+                        functionality.Imatired()
 
-                        if shouldiswitch == "no":
-                            if enemyPAR != "no":
-                                DoDamage = "no"
-                                print(enemypokemon,"was unable to move due to its paralysis")
-                                runspecial = "no"
+                        
                     
                         #if he switches out he shouldnt also attack which is why
                         #enemymove isnt updating after the switch.
@@ -3308,7 +3424,18 @@ class Turns(Mike):
                             f.damagecalc(enemymove, enemypokemon, currentpokemon)
                             enemydamage = movedamage
                             functionality.Miss(enemymove,evasive, enemyevasive, going)
+                            if shouldiswitch == "no":
+                                if enemyPAR != "no":
+                                    DoDamage = "no"
+                                    print(enemypokemon,"was unable to move due to its paralysis")
+                                    runspecial = "no"
+                                if enemysleep != "no":
+                                    DoDamage = "no"
+                                    print(enemypokemon,"is fast asleep")
+                                    runspecial = "no"
+
                             if runspecial == "yes":
+                                
                                 f.specialeffect(enemymove,enemydamage,enemyspeed,currentspeed,enemypokemon,currentpokemon, going, "placeholder", turn)
                             
                             if Diduniquedamagehappen != "no":
@@ -3330,7 +3457,7 @@ class Turns(Mike):
                                     x = i
                             if enemydamage == currenthealth or enemydamage > currenthealth:
                                 enemydamage = currenthealth
-                            if enemyPAR == "no":
+                            if enemyPAR == "no" and enemysleep == "no":
                                 print(enemypokemon, "used", enemymove)
                                 time.sleep(times)
 
@@ -3421,13 +3548,11 @@ class Turns(Mike):
                             EnemyParalyzed = "no"
                             
                             functionality.Paralyze(currentpokemon)
-                            if youPAR == "no":
+                            functionality.Imatired()
+                            if youPAR == "no" and yousleep == "no":
                                 print("You used", use)
                                 time.sleep(times)
-                            if youPAR != "no":
-                                DoDamage = "no"
-                                print(currentpokemon,"was unable to move due to its paralysis")
-                                runspecial = "no"
+                            
                             # if move effect != None
                             #Do effect
                             f = functionality()
@@ -3436,7 +3561,17 @@ class Turns(Mike):
                                     f.damagecalc(use, currentpokemon, enemypokemon)
                                     damage = movedamage
                                     functionality.Miss(use, evasive, enemyevasive, going)
+                                    if youPAR != "no":
+                                        DoDamage = "no"
+                                        print(currentpokemon,"was unable to move due to its paralysis")
+                                        runspecial = "no"
+
+                                    if yousleep != "no":
+                                        DoDamage = "no"
+                                        print(currentpokemon,"is fast asleep")
+                                        runspecial = "no"
                                     if runspecial == "yes":
+                                        
                                         f.specialeffect(use, damage, enemyspeed,currentspeed, enemypokemon, currentpokemon, going, enemydamage, turn)
                                     
                                     if Diduniquedamagehappen != "no":

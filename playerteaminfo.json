@@ -1,44 +1,44 @@
 [
-    "Venusaur",
+    "Gengar",
     [
-        "Tackle",
-        "Growl",
+        "Hypnosis",
         "Rage",
-        "Vine Whip"
+        "Rest",
+        "Thunder"
     ],
     "Bulbasaur",
     [
         "Tackle",
         "Growl",
-        "Rage",
-        "Mimic"
+        "Bide",
+        "Rest"
     ],
-    "Beedrill",
+    "Fearow",
     [
-        "Pin Missile",
-        "Twineedle",
-        "Rage",
+        "Peck",
+        "Growl",
+        "Swift",
         "Bide"
-    ],
-    "Ekans",
-    [
-        "Wrap",
-        "Leer",
-        "Bite",
-        "Glare"
-    ],
-    "Muk",
-    [
-        "Pound",
-        "Sludge",
-        "Harden",
-        "Toxic"
     ],
     "Golbat",
     [
         "Screech",
         "Bite",
-        "Bide",
-        "Swift"
+        "Mimic",
+        "Rest"
+    ],
+    "Golem",
+    [
+        "Tackle",
+        "Rage",
+        "Harden",
+        "Dig"
+    ],
+    "Onix",
+    [
+        "Tackle",
+        "Slam",
+        "Bind",
+        "Bide"
     ]
 ]
