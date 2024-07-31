@@ -1776,7 +1776,14 @@ class functionality():
                 DoDamage = "no"
                 print(enemypokemon,"'s accuracy fell")
 
-                
+        if "SpeedSharpUp" in moves[movenumber]["effect"]:
+            if going == "Enemy":
+                enemyspeed = enemyspeed * 2
+                print(enemypokemon,"'s speed rose sharply")
+            if going == "User":
+                currentspeed = currentspeed * 2
+                print(currentpokemon,"'s speed rose sharply")
+                        
             
 
             
