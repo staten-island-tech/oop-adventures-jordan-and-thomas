@@ -261,7 +261,7 @@ class functionality():
         print("running")
 
         memememe = random.randrange(4)
-        monke = random.randrange(100)
+        monke = random.randrange(2)
 
         for i in range(len(userpartystatus)):
             if currentpokemon == userpartystatus[i-1]:
