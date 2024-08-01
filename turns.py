@@ -255,7 +255,7 @@ class functionality():
                     print(clickclak, "p number")
                     if clickclak == 1:
                         enemyPAR = "yes"
-    def Imatired():
+    def Imatired(going):
         global yousleep
         global enemysleep
         print("running")
@@ -272,32 +272,75 @@ class functionality():
                 if eliteteamstatus[i] != "Asleep":
                     enemysleep = "no"
         
+        if going == "User":
+            for i in range(len(userpartystatus)):
+                if currentpokemon == userpartystatus[i-1]:
+                    if userpartystatus[i] == "Asleep":
+                        if memememe != 1:
+                            yousleep = "yes"
+                        if memememe == 1:
+                            yousleep = "no"
+                            for i in range(len(userpartystatus)):
+                                if currentpokemon == userpartystatus[i-1]:
+                                    userpartystatus[i] = "None"
+                            print(currentpokemon,"woke up!")
+
+        if going == "Enemy":            
+            for i in range(len(eliteteamstatus)):
+                if enemypokemon == eliteteamstatus[i-1]:
+                    if eliteteamstatus[i] == "Asleep":
+                        print(monke, "sleep number")
+                        if monke != 1:
+                            enemysleep = "yes"
+                        if monke == 1:
+                            enemysleep = "no"
+                            for i in range(len(eliteteamstatus)):
+                                if enemypokemon == eliteteamstatus[i-1]:
+                                    eliteteamstatus[i] = "None"
+                            print(enemypokemon,"woke up!")
+
+    def coldgaming(going):
+        global youcold
+        global enemycold
+        print("cold running")
+
+        brrr = random.randrange(4)
+        uk = random.randrange(2)
 
         for i in range(len(userpartystatus)):
             if currentpokemon == userpartystatus[i-1]:
-                if userpartystatus[i] == "Asleep":
-                    if memememe != 1:
-                        yousleep = "yes"
-                    if memememe == 1:
-                        yousleep = "no"
-                        for i in range(len(userpartystatus)):
-                            if currentpokemon == userpartystatus[i-1]:
-                                userpartystatus[i] = "None"
-                        print(currentpokemon,"woke up!")
-                    
+                if userpartystatus[i] != "Frozen":
+                    youcold = "no"
         for i in range(len(eliteteamstatus)):
             if enemypokemon == eliteteamstatus[i-1]:
-                if eliteteamstatus[i] == "Asleep":
-                    print(monke, "sleep number")
-                    if monke != 1:
-                        enemysleep = "yes"
-                    if monke == 1:
-                        enemysleep = "no"
-                        for i in range(len(eliteteamstatus)):
-                            if enemypokemon == eliteteamstatus[i-1]:
-                                eliteteamstatus[i] = "None"
-                        print(enemypokemon,"woke up!")
-                    
+                if eliteteamstatus[i] != "Frozen":
+                    enemycold = "no"
+        
+        if going == "User":
+            for i in range(len(userpartystatus)):
+                if currentpokemon == userpartystatus[i-1]:
+                    if userpartystatus[i] == "Frozen":
+                        if brrr != 1:
+                            youcold = "yes"
+                        if brrr == 1:
+                            youcold = "no"
+                            for i in range(len(userpartystatus)):
+                                if currentpokemon == userpartystatus[i-1]:
+                                    userpartystatus[i] = "None"
+                            print(currentpokemon,"thawed out!")
+        if going == "Enemy":            
+            for i in range(len(eliteteamstatus)):
+                if enemypokemon == eliteteamstatus[i-1]:
+                    if eliteteamstatus[i] == "Frozen":
+                        print(uk, "freeze number")
+                        if uk != 1:
+                            enemycold = "yes"
+                        if uk == 1:
+                            enemycold = "no"
+                            for i in range(len(eliteteamstatus)):
+                                if enemypokemon == eliteteamstatus[i-1]:
+                                    eliteteamstatus[i] = "None"
+                            print(enemypokemon,"thawed out!")                
             
                     
     def Confuse(persongoing, goingsdamage):
@@ -740,7 +783,30 @@ class functionality():
                 itsfly = "no"
                 itsdig = "no"
                 
+    def keepusing(usingturn, gooblie):
+        global lockedin
+        global usedturn
+        
+        if lockedin == "yes" or enemylockedin == "yes":
+            if turn - gooblie == usedturn:
+                if lockedin == "yes":
+                    for i in range(len(userpartystatus)):
+                        if currentpokemon == userpartystatus[i-1]:
+                            userpartystatus[i] == "Confused"
+                    lockedin = "no"
+                    usedturn = 0
+                    print(currentpokemon,"has become confused")
+                if enemylockedin == "yes":
+                    for i in range(len(eliteteamstatus)):
+                        if enemypokemon == eliteteamstatus[i-1]:
+                            eliteteamstatus[i] == "Confused"
+                    enemylockedin == "no"
+                    print(enemypokemon,"has become confused!")
+                
 
+            
+            
+            
 
     def Crispy(currentpokemon):
         global enemyhealth
@@ -1468,8 +1534,15 @@ class functionality():
         userattack = data[attacknumber]["Attack Stat"]
         if currentpokemon == attackingpk:
             userattack = userattack * userattackup
+        if currentpokemon == attackingpk:
+            userattack = userattack / userattackdown
+            userattack = round(userattack)
+
         if enemypokemon == attackingpk:
             userattack = userattack * enemyattackup
+        if enemypokemon == attackingpk:
+            userattack = userattack / enemyattackdown
+            userattack = round(userattack)
 
         enemydefense = data[enemynumber]["Defense Stat"]
         userspecial = data[attacknumber]["Special Stat"]
@@ -1646,6 +1719,18 @@ class functionality():
         global userattackup
 
         global enemyhealth
+
+        global lockedin
+        global usedturn
+        global gooblie
+        global enemylockedin
+        global enemyusedturn
+        global fdd
+
+        global enemyattackdown
+        global userattackdown
+
+        global mistactive
 
         print(going, "going at beginning of special effect")
         print(move, "move in special effect")
@@ -1826,9 +1911,12 @@ class functionality():
         
         if "AccuracyDown" in moves[movenumber]["effect"]:
             if going == "Enemy":
-                evasive += 1
-                DoDamage = "no"
-                print(currentpokemon,"'s accuracy fell!")
+                if mistactive == "no":
+                    evasive += 1
+                    DoDamage = "no"
+                    print(currentpokemon,"'s accuracy fell!")
+                if mistactive == "yes":
+                    print(currentpokemon, "did not have its accuracy decreased due to Mist")
             if going == "User":
                 enemyevasive += 1
                 DoDamage = "no"
@@ -1891,9 +1979,66 @@ class functionality():
                             DoDamage = "no"
                             print("But it failed")
                             
-
-
+        if "PetalDance" in moves[movenumber]["effect"]:
             
+            if going == "User":
+                if lockedin == "no":
+                    gooblie = random.randrange(3)
+                    if gooblie == 0 or gooblie == 1:
+                        gooblie = 2
+                    usedturn = turn
+                    lockedin = "yes"
+
+            if going == "Enemy":
+                if enemylockedin == "no":
+                    fdd = random.randrange(3)
+                    if fdd == 0 or fdd == 1:
+                        fdd = 2
+                    enemyusedturn = turn
+                    enemylockedin = "yes"
+
+        if "MayFlinch" in moves[movenumber]["effect"]:
+            functionality.Flinch(5, going, goingfirst)  
+        
+        if "OHKO" in moves[movenumber]["effect"]:
+            damage = 1000
+            print("Its a one-hit KO!")
+        
+        if "13AttackDown" in moves[movenumber]["effect"]:
+            fork = random.randrange(3)
+            if fork == 1:
+                if going == "User":
+                    enemyattackdown += 1
+                    print(enemypokemon,"'s attack fell")
+                if going == "Enemy":
+                    if mistactive == "no":
+                        userattackdown += 1
+                        print(currentpokemon,"'s attack fell")
+                    if mistactive == "yes":
+                        print(currentpokemon, "did not have its attack decreased due to Mist")
+        
+        if "HazeEffect" in moves[movenumber]["effect"]:
+            enemyevasive = 0
+            enemyattackup = 0
+            enemyattackdown = 0
+            for i in range(pokemonlist):
+                if enemypokemon == data[i]["Name"]:
+                    enemyspeed = data[i]["Speed Stat"]
+            DoDamage = "no"
+            print(enemypokemon,"was cleared of all stat changes")
+        
+        if "MistEffect" in moves[movenumber]["effect"]:
+            mistactive = "yes"
+            
+        if "BideEffect" in moves[movenumber]["effect"]:
+            print("Why on earth are you using this move. I refuse to code this")
+            time.sleep(times)
+        if "BindEffect" in moves[movenumber]["effect"]:
+            print("it did 1000000 damage!")
+            time.sleep(1)
+            print("did you believe it?")
+            time.sleep(1)
+            print("hopefully not :)")
 
             
         if "Sleep" in moves[movenumber]["effect"]:
@@ -1905,7 +2050,7 @@ class functionality():
                         if userpartystatus[i] != "Asleep":
                             userpartystatus[i] = "Asleep"
                             print(currentpokemon,"fell asleep!")
-                            DoDamage = "no"
+                            
             if going == "User":
                 for i in range(len(eliteteamstatus)):
                     if enemypokemon == eliteteamstatus[i-1]:
@@ -1914,7 +2059,27 @@ class functionality():
                         if eliteteamstatus[i] != "Asleep":
                             eliteteamstatus[i] = "Asleep"
                             print(enemypokemon,"fell asleep!")
-                            DoDamage = "no"
+                            
+        
+        if "Freeze" in moves[movenumber]["effect"]:
+            if going == "Enemy":
+                for i in range(len(userpartystatus)):
+                    if currentpokemon == userpartystatus[i-1]:
+                        if userpartystatus[i] == "Frozen":
+                            print(currentpokemon,"is already frozen")
+                        if userpartystatus[i] != "Frozen":
+                            userpartystatus[i] = "Frozen"
+                            print(currentpokemon,"is frozen!")
+                            
+            if going == "User":
+                for i in range(len(eliteteamstatus)):
+                    if enemypokemon == eliteteamstatus[i-1]:
+                        if eliteteamstatus[i] == "Frozen":
+                            print(enemypokemon,"is already frozen")
+                        if eliteteamstatus[i] != "Frozen":
+                            eliteteamstatus[i] = "Frozen"
+                            print(enemypokemon,"is frozen!")
+                            
 
         if "Poison" in moves[movenumber]["effect"]:
             if going == "Enemy":
@@ -1926,7 +2091,7 @@ class functionality():
                             if userpartystatus[i] != "Poison":
                                 userpartystatus[i] = "Poison"
                                 PrintPoison = "yes"
-                                DoDamage = "no"
+                                
                             
             if going == "User":
                 if not 'Poison' in data[enemynumber]["Types"]:
@@ -1937,7 +2102,7 @@ class functionality():
                             if eliteteamstatus[i] != "Poison":
                                 eliteteamstatus[i] = "Poison"
                                 EnemyPoisoned = "yes"
-                                DoDamage = "no"
+                                
                             
 
         if "Burn" in moves[movenumber]["effect"]:
@@ -1950,7 +2115,7 @@ class functionality():
                             if userpartystatus[i] != "Burn":
                                 userpartystatus[i] = "Burn"
                                 PrintBurn = "yes"
-                                DoDamage = "no"
+                                
                             
                             
                     
@@ -1963,7 +2128,7 @@ class functionality():
                             if eliteteamstatus[i] != "Burn":
                                 eliteteamstatus[i] = "Burn"
                                 EnemyBurn = "yes"
-                                DoDamage = "no"
+                                
                             
         if "Confuses" in moves[movenumber]["effect"]:
             if going == "Enemy":
@@ -1975,7 +2140,7 @@ class functionality():
                         if userpartystatus[i] != "Confused":
                             userpartystatus[i] = "Confused"
                             PrintConfuse = "yes"
-                            DoDamage = "no"
+                            
                             
                             
                     
@@ -1988,7 +2153,7 @@ class functionality():
                         if eliteteamstatus[i] != "Confused":
                             eliteteamstatus[i] = "Confused"
                             EnemyConfuse = "yes"
-                            DoDamage = "no"
+                            
         
         if "Paralyze" in moves[movenumber]["effect"]:
             if going == "Enemy":
@@ -2003,7 +2168,7 @@ class functionality():
                             currentspeed = round(currentspeed)
                             userpartystatus[i] = "Paralyzed"
                             PrintParalyzed = "yes"
-                            DoDamage = "no"
+                            
                             
                             
                     
@@ -2019,7 +2184,7 @@ class functionality():
                             enemyspeed = round(enemyspeed)
                             eliteteamstatus[i] = "Paralyzed"
                             EnemyParalyzed = "yes"
-                            DoDamage = "no"
+                            
 
         if "1in3Paralyze" in moves[movenumber]["effect"]:
             cheese = random.randrange(3)
@@ -2036,7 +2201,7 @@ class functionality():
                                 currentspeed = round(currentspeed)
                                 userpartystatus[i] = "Paralyzed"
                                 PrintParalyzed = "yes"
-                                DoDamage = "no"
+                                
                             
                             
                     
@@ -2052,7 +2217,7 @@ class functionality():
                                 enemyspeed = round(enemyspeed)
                                 eliteteamstatus[i] = "Paralyzed"
                                 EnemyParalyzed = "yes"
-                                DoDamage = "no"
+                            
             
         return damage
       
@@ -2112,6 +2277,7 @@ class functionality():
         global shouldiswitch
         global evasive
         global enemyattackup
+        global enemyattackdown
         if Trapped != "yes":
             print("checks is running")
             for i in range(pokemonlist):
@@ -2182,6 +2348,7 @@ class functionality():
                         enemymove = "Nothing"
                         evasive = 0
                         enemyattackup = 1
+                        enemyattackdown = 1
                         return enemypokemon
 
                 elif "Dragonite" not in Mikesdeadguys:
@@ -2197,6 +2364,7 @@ class functionality():
                         enemymove = "Nothing"
                         evasive = 0
                         enemyattackup = 1
+                        enemyattackdown = 1
                         return enemypokemon
 
                 elif "Charizard" not in Mikesdeadguys:
@@ -2211,6 +2379,7 @@ class functionality():
                         enemymove = "Nothing"
                         evasive = 0
                         enemyattackup = 1
+                        enemyattackdown = 1
                         return enemypokemon
 
                 elif "Gengar" not in Mikesdeadguys:
@@ -2225,6 +2394,7 @@ class functionality():
                         enemymove = "Nothing"
                         evasive = 0
                         enemyattackup = 1
+                        enemyattackdown = 1
                         return enemypokemon
 
                 elif "Blastoise" not in Mikesdeadguys:
@@ -2242,6 +2412,7 @@ class functionality():
                         enemymove = "Nothing"
                         evasive = 0
                         enemyattackup = 1
+                        enemyattackdown = 1
                         return enemypokemon
                     
 
@@ -2257,6 +2428,7 @@ class functionality():
                         enemymove = "Nothing"
                         evasive = 0
                         enemyattackup = 1
+                        enemyattackdown = 1
                         return enemypokemon
         if Trapped == "yes":
             shouldiswitch = "no"
@@ -2898,10 +3070,36 @@ class Turns(Mike):
         global userattackup
         userattackup = 1
 
+        global enemyattackdown
+        enemyattackdown = 1
+        global userattackdown
+        userattackdown = 1
+
         global yousleep
         global enemysleep
         yousleep = "no"
         enemysleep = "no"
+
+        global lockedin
+        global usedturn
+        global gooblie
+        global enemylockedin
+        global enemyusedturn
+        global fdd
+        lockedin = "no"
+        usedturn = 0
+        gooblie = 0
+        enemylockedin = "no"
+        enemyusedturn = 0
+        fdd = 0
+
+        global enemycold
+        enemycold = "no"
+        global youcold
+        youcold = "no"
+
+        global mistactive
+        mistactive = "no"
 
         
 
@@ -2916,9 +3114,11 @@ class Turns(Mike):
             if awaybeforehit == "no":
                 if hitsnextturn == "no":
                     global enemyhealth
-                    
-                    print("Switch Out Or Attack")
-                    userdo = input("What would you like to do: ")
+                    if lockedin == "no":
+                        print("Switch Out Or Attack")
+                        userdo = input("What would you like to do: ")
+                    if lockedin == "yes":
+                        userdo = "Attack"
                     if userdo == "Switch" or userdo == "switch" or userdo == "Switch Out" or userdo == "switch out" or userdo == "Switch out":
                         for i in range(len(userpartyhealth)):
                             if currentpokemon == userpartyhealth[i - 1]:
@@ -2929,6 +3129,8 @@ class Turns(Mike):
                         currentpokemon = switchin
                         enemyevasive = 0
                         userattackup = 1
+                        userattackdown = 1
+                        mistactive = "no"
                         for i in range(len(userpartyhealth)):
                             if currentpokemon == userpartyhealth[i - 1]:
                                 currenthealth = userpartyhealth[i]
@@ -2937,7 +3139,8 @@ class Turns(Mike):
                         going = "Enemy"
 
                         functionality.Paralyze(enemypokemon)
-                        functionality.Imatired()
+                        functionality.Imatired(going)
+                        functionality.coldgaming(going)
 
 
                         time.sleep(times)
@@ -2957,6 +3160,10 @@ class Turns(Mike):
                             if enemysleep != "no":
                                 DoDamage = "no"
                                 print(enemypokemon,"is fast asleep")
+                                runspecial = "no"
+                            if enemycold != "no":
+                                DoDamage ="no"
+                                print(enemypokemon, "is frozen solid")
                                 runspecial = "no"
                         if runspecial == "yes":
                             
@@ -2984,7 +3191,7 @@ class Turns(Mike):
                         
 
 
-                        if enemyPAR == "no" and enemysleep == "no":
+                        if enemyPAR == "no" and enemysleep == "no" and enemycold == "no":
                             print(enemypokemon, "used", enemymove)
                             time.sleep(1)
                         
@@ -3106,24 +3313,29 @@ class Turns(Mike):
                             currenthealth = userpartyhealth[i]
                     #print(currenthealth, "start")
                     if hitsnextturn == "no":
-                        for i in range(inputteamlist):
-                            if currentpokemon == inputteam[i - 1]:
-                                currentmoves = inputteam[i]
-                                print(currentmoves)
+                        if lockedin == "no":
+                            for i in range(inputteamlist):
+                                if currentpokemon == inputteam[i - 1]:
+                                    currentmoves = inputteam[i]
+                                    print(currentmoves)
                         
-                        use = input("Pick a move to use: ")
-                        functionality.speedstages(use,currentspeed)
+                            use = input("Pick a move to use: ")
+                            functionality.speedstages(use,currentspeed)
+                        
+
                     time.sleep(times)
                     print(enemyspeed, currentspeed, "enemyspeed and current speed before check")
                     Turns.speedcheck(enemyspeed, currentspeed)
 
                     if goingfirst == 'User':
+                        going = "User"
 
                         functionality.Paralyze(currentpokemon)
-                        functionality.Imatired()
+                        functionality.Imatired(going)
+                        functionality.coldgaming(going)
                         
                         
-                        if youPAR == "no" and yousleep == "no":
+                        if youPAR == "no" and yousleep == "no" and youcold == "no":
                             going = "User"
                             print("You used", use)
 
@@ -3135,6 +3347,11 @@ class Turns(Mike):
                         if yousleep != "no":
                             DoDamage = "no"
                             print(currentpokemon,"is fast asleep")
+                            runspecial = "no"
+                        
+                        if youcold != "no":
+                            DoDamage = "no"
+                            print(currentpokemon, "is frozen solid")
                             runspecial = "no"
 
                         time.sleep(times)
@@ -3156,6 +3373,12 @@ class Turns(Mike):
                                     DoDamage = "no"
                                     print(currentpokemon,"is fast asleep")
                                     runspecial = "no"
+                                
+                                if youcold != "no":
+                                    DoDamage = "no"
+                                    print(currentpokemon, "is frozen solid")
+                                    runspecial = "no"
+
                                 if runspecial == "yes":
                                     
                                     f.specialeffect(use, damage, enemyspeed,currentspeed,enemypokemon, currentpokemon, going, "placeholder", turn, enemyhealth)
@@ -3186,6 +3409,8 @@ class Turns(Mike):
                                 if hitsnextturn == "yes":
                                     if use == "Sky Attack":
                                         print(currentpokemon, "started to glow!")
+                                    if use == "Solar Beam":
+                                        print(currentpokemon,"is absorbing sunlight")
 
                                 #effects end here
 
@@ -3241,7 +3466,7 @@ class Turns(Mike):
                         #print(enemypokemon)
                         if len(Mikesdeadguys) == 6:
                             Kaifat = "no"
-
+                        functionality.keepusing(usedturn, gooblie)
                         going = "Enemy"
 
                         PrintPoison = "no"
@@ -3264,7 +3489,8 @@ class Turns(Mike):
                         #Flinching = "no"
 
                         functionality.Paralyze(enemypokemon)
-                        functionality.Imatired()
+                        functionality.Imatired(going)
+                        functionality.coldgaming(going)
 
                         time.sleep(times)
                         if Flinching == "no":
@@ -3281,6 +3507,10 @@ class Turns(Mike):
                                 if enemysleep != "no":
                                     DoDamage = "no"
                                     print(enemypokemon,"is fast asleep")
+                                    runspecial = "no"
+                                if enemycold != "no":
+                                    DoDamage = "no"
+                                    print(enemypokemon, "is frozen solid")
                                     runspecial = "no"
 
                             if runspecial == "yes":
@@ -3312,7 +3542,7 @@ class Turns(Mike):
                                     enemydamage = currenthealth
                                     #print(enemydamage, "enemydamage after == or > than")
                                 
-                                if enemyPAR == "no" and enemysleep == "no":
+                                if enemyPAR == "no" and enemysleep == "no" and enemycold == "no":
                                     print(enemypokemon, "used", enemymove)
                                     time.sleep(times)
 
@@ -3475,7 +3705,8 @@ class Turns(Mike):
                         #print("Before")
                         Schmovin.Whosmovin(enemypokemon,currentpokemon)
                         functionality.Paralyze(enemypokemon)
-                        functionality.Imatired()
+                        functionality.Imatired(going)
+                        functionality.coldgaming(going)
 
                         
                     
@@ -3497,6 +3728,10 @@ class Turns(Mike):
                                 if enemysleep != "no":
                                     DoDamage = "no"
                                     print(enemypokemon,"is fast asleep")
+                                    runspecial = "no"
+                                if enemycold != "no":
+                                    DoDamage = "no"
+                                    print(enemypokemon,"is frozen solid")
                                     runspecial = "no"
 
                             if runspecial == "yes":
@@ -3522,7 +3757,7 @@ class Turns(Mike):
                                     x = i
                             if enemydamage == currenthealth or enemydamage > currenthealth:
                                 enemydamage = currenthealth
-                            if enemyPAR == "no" and enemysleep == "no":
+                            if enemyPAR == "no" and enemysleep == "no" and enemycold == "no":
                                 print(enemypokemon, "used", enemymove)
                                 time.sleep(times)
 
@@ -3615,8 +3850,9 @@ class Turns(Mike):
                             EnemyParalyzed = "no"
                             
                             functionality.Paralyze(currentpokemon)
-                            functionality.Imatired()
-                            if youPAR == "no" and yousleep == "no":
+                            functionality.Imatired(going)
+                            functionality.coldgaming(going)
+                            if youPAR == "no" and yousleep == "no" and youcold == "no":
                                 print("You used", use)
                                 time.sleep(times)
                             
@@ -3637,6 +3873,11 @@ class Turns(Mike):
                                         DoDamage = "no"
                                         print(currentpokemon,"is fast asleep")
                                         runspecial = "no"
+                                    if youcold != "no":
+                                        DoDamage = "no"
+                                        print(currentpokemon, "is frozen solid")
+                                        runspecial = "no"
+
                                     if runspecial == "yes":
                                         
                                         f.specialeffect(use, damage, enemyspeed,currentspeed, enemypokemon, currentpokemon, going, enemydamage, turn, enemyhealth)
@@ -3666,6 +3907,8 @@ class Turns(Mike):
                                     if hitsnextturn == "yes":
                                         if use == "Sky Attack":
                                             print(currentpokemon, "started to glow!")
+                                        if use == "Solar Beam":
+                                            print(currentpokemon,"is absorbing sunlight")
 
                                     #effect stuff ends here
 
@@ -3724,6 +3967,8 @@ class Turns(Mike):
 
                         functionality.afflicted(N,M, currenthealth, currentpokemon)
                         functionality.Crispy(currentpokemon)
+
+                        functionality.keepusing(usedturn, gooblie)
 
                         functionality.Mikesdeadpks(enemyhealth, currentpokemon)
 

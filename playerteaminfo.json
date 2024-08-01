@@ -1,10 +1,10 @@
 [
-    "Gengar",
+    "Tentacruel",
     [
-        "Hypnosis",
-        "Dream Eater",
-        "Night Shade",
-        "Mega Drain"
+        "Blizzard",
+        "Cut",
+        "Acid",
+        "Surf"
     ],
     "Bulbasaur",
     [
@@ -27,18 +27,18 @@
         "Mimic",
         "Bide"
     ],
-    "Beedrill",
+    "Golem",
     [
+        "Tackle",
         "Rage",
-        "Rest",
-        "Cut",
-        "Toxic"
+        "Dig",
+        "Mimic"
     ],
-    "Seel",
+    "Onix",
     [
-        "Growl",
-        "Rest",
-        "Toxic",
-        "Rage"
+        "Tackle",
+        "Rage",
+        "Bind",
+        "Rest"
     ]
 ]
