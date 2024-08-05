@@ -1546,10 +1546,26 @@ class functionality():
 
         enemydefense = data[enemynumber]["Defense Stat"]
         userspecial = data[attacknumber]["Special Stat"]
+        
+        
+
+        userspecial = userspecial / userspecialdown
+
+        enemyspecial = data[enemynumber]["Special Stat"]
+
         if attackingpk == enemypokemon:
             if Lightscreen == "yes":
-                userspecial = userspecial * 2
-        enemyspecial = data[enemynumber]["Special Stat"]
+                enemyspecial = enemyspecial * 2
+            if Reflect == "yes":
+                enemydefense = enemydefense * 2
+            userspecial = userspecial / enemyspecialdown
+            enemyspecial = enemyspecial / userspecialdown
+            enemydefense = enemydefense * userdefenseup
+
+        if attackingpk == currentpokemon:
+            userspecial = userspecial / userspecialdown
+            enemyspecial = enemyspecial / enemyspecialdown
+
         if moves[movenumber]["category"] == "Physical":
             global attackingpower
             global defendingpower
@@ -1563,7 +1579,11 @@ class functionality():
             defendingpower = enemydefense
         userspeed = data[attacknumber]["Speed Stat"]
         threshold = userspeed / decimal.Decimal(8)
-        critchance = random.randint(0,255)
+        donut = 255
+        for i in range(movelist):
+            if "HighCrit" in moves[movenumber]["effect"]:
+                donut = 180
+        critchance = random.randint(0,donut)
         if threshold > critchance:
             attackingpower *= 1.5
             global crithappen
@@ -1736,9 +1756,12 @@ class functionality():
         global mistactive
 
         global Lightscreen
+        global Reflect
 
         global userspecialdown
         global enemyspecialdown
+
+        global userdefenseup
 
         print(going, "going at beginning of special effect")
         print(move, "move in special effect")
@@ -2059,6 +2082,10 @@ class functionality():
         if "LightScreenEffect" in moves[movenumber]["effect"]:
             DoDamage = "no"
             Lightscreen = "yes"
+
+        if "ReflectEffect" in moves[movenumber]["effect"]:
+            DoDamage = "no"
+            Reflect = "yes"
         
         if "AttackUp" in moves[movenumber]["effect"]:
             if going == "Enemy":
@@ -2101,6 +2128,45 @@ class functionality():
                     userspecialdown += 1
                 if going == "User":
                     enemyspecialdown += 1
+        
+        if "FullRestore" in moves[movenumber]["effect"]:
+            for i in range(pokemonlist):
+                if userpk == data[i]["Name"]:
+                    fullhealth = data[i]["Health Stat"]
+            for i in range(len(userpartyhealth)):
+                if userpk == userpartyhealth[i - 1]:
+                    currenthealth = userpartyhealth[i]
+            currenthealth = fullhealth
+            print(currentpokemon, "healed all of its health!")
+            time.sleep(1)
+            for i in range(len(userpartystatus)):
+                    if currentpokemon == userpartystatus[i-1]:
+                        if userpartystatus[i] == "Asleep":
+                            print(currentpokemon,"is already asleep")
+                        if userpartystatus[i] != "Asleep":
+                            userpartystatus[i] = "Asleep"
+                            print(currentpokemon,"fell asleep!")
+
+        if "WrapEffect" in move[movenumber]["effect"]:
+            print("this effect way too broken.\n no handouts\n be better")
+            time.sleep(times)
+        
+        if "SwitchTypetoTarget" in moves[movenumber]["effect"]:
+            for i in range(pokemonlist):
+                if enemypokemon == data[i]["Name"]:
+                    datypes = data[i]["Types"]
+            print(currentpokemon, "now identifies as", datypes)
+        
+        if "DefenseUp" in moves[movenumber]["effect"]:
+            
+            if going == "User":
+                userdefenseup += 1
+        
+        if "DisableMove" in moves[movenumber]["effect"]:
+            print(currentpokemon,"disabled", enemymove)
+            time.sleep(1)
+            print("But Mike used his mystic powers to counter it!")
+        
 
 
             
@@ -3166,11 +3232,16 @@ class Turns(Mike):
 
         global Lightscreen
         Lightscreen = "no"
+        global Reflect
+        Reflect = "no"
 
         global userspecialdown
         userspecialdown = 0
         global enemyspecialdown
         enemyspecialdown = 0
+
+        global userdefenseup
+        userdefenseup = 0
 
         
 

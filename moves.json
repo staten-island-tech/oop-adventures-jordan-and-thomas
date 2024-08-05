@@ -745,7 +745,7 @@
         "accuracy": 100,
         "PP": 15,
         "effect": [
-            "14DamageBack"
+            "Recoil14"
         ]
     },
     {
