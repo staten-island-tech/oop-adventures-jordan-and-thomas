@@ -1654,11 +1654,11 @@
         "name": "Psywave",
         "type": "Psychic",
         "category": "Special",
-        "power": 0,
+        "power": 100,
         "accuracy": 80,
         "PP": 15,
         "effect": [
-            "PsywaveEffect"
+            "None"
         ]
     },
     {

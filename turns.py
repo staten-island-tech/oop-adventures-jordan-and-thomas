@@ -1546,6 +1546,9 @@ class functionality():
 
         enemydefense = data[enemynumber]["Defense Stat"]
         userspecial = data[attacknumber]["Special Stat"]
+        if attackingpk == enemypokemon:
+            if Lightscreen == "yes":
+                userspecial = userspecial * 2
         enemyspecial = data[enemynumber]["Special Stat"]
         if moves[movenumber]["category"] == "Physical":
             global attackingpower
@@ -1731,6 +1734,11 @@ class functionality():
         global userattackdown
 
         global mistactive
+
+        global Lightscreen
+
+        global userspecialdown
+        global enemyspecialdown
 
         print(going, "going at beginning of special effect")
         print(move, "move in special effect")
@@ -1934,10 +1942,10 @@ class functionality():
         if "AttackSharpUp" in moves[movenumber]["effect"]:
             DoDamage = "no"
             if going == "Enemy":
-                enemyattackup += 1
+                enemyattackup += 2
                 print(enemypokemon,"'s attack rose sharply")
             if going == "User":
-                userattackup += 1
+                userattackup += 2
                 print(currentpokemon,"'s attack rose sharply")
 
         if "DreamEatEffect" in moves[movenumber]["effect"]:
@@ -2039,6 +2047,61 @@ class functionality():
             print("did you believe it?")
             time.sleep(1)
             print("hopefully not :)")
+
+        if "1in3SpeedDown" in moves[movenumber]["effect"]:
+            if going == "User":
+                enemyspeed = enemyspeed / 2
+                print(enemypokemon,"'s speed fell")
+            if going == "Enemy":
+                currentspeed = currentspeed / 2
+                print(currentpokemon,"'s speed fell")
+        
+        if "LightScreenEffect" in moves[movenumber]["effect"]:
+            DoDamage = "no"
+            Lightscreen = "yes"
+        
+        if "AttackUp" in moves[movenumber]["effect"]:
+            if going == "Enemy":
+                enemyattackup += 1
+                print(enemypokemon,"'s attack rose sharply")
+            if going == "User":
+                userattackup += 1
+                print(currentpokemon,"'s attack rose sharply")
+        
+        if "1in10Confuse" in moves[movenumber]["effect"]:
+            find = random.randrange(10)
+            if find == 1:
+                if going == "Enemy":
+                
+                    for i in range(len(userpartystatus)):
+                        if currentpokemon == userpartystatus[i - 1]:
+                            if userpartystatus[i] == "Confused":
+                                print(currentpokemon, "is already confused")
+                            if userpartystatus[i] != "Confused":
+                                userpartystatus[i] = "Confused"
+                                PrintConfuse = "yes"
+                                
+                                
+                                
+                        
+                if going == "User":
+                    
+                    for i in range(len(eliteteamstatus)):
+                        if enemypokemon == eliteteamstatus[i - 1]:
+                            if eliteteamstatus[i] == "Confused":
+                                print(enemypokemon,"is already confused")
+                            if eliteteamstatus[i] != "Confused":
+                                eliteteamstatus[i] = "Confused"
+                                EnemyConfuse = "yes"
+        
+        if "1in3SpecialDown" in moves[movenumber]["effect"]:
+            annbalin = random.randrange(3)
+            if annbalin == 1:
+                if going == "Enemy":
+                    userspecialdown += 1
+                if going == "User":
+                    enemyspecialdown += 1
+
 
             
         if "Sleep" in moves[movenumber]["effect"]:
@@ -3101,6 +3164,14 @@ class Turns(Mike):
         global mistactive
         mistactive = "no"
 
+        global Lightscreen
+        Lightscreen = "no"
+
+        global userspecialdown
+        userspecialdown = 0
+        global enemyspecialdown
+        enemyspecialdown = 0
+
         
 
         while Kaifat == "very":
@@ -3131,6 +3202,7 @@ class Turns(Mike):
                         userattackup = 1
                         userattackdown = 1
                         mistactive = "no"
+                        Lightscreen = "no"
                         for i in range(len(userpartyhealth)):
                             if currentpokemon == userpartyhealth[i - 1]:
                                 currenthealth = userpartyhealth[i]
