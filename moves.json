@@ -789,7 +789,7 @@
         "accuracy": 100,
         "PP": 30,
         "effect": [
-            "CritChanceUp"
+            "HighCrit"
         ]
     },
     {
@@ -888,7 +888,7 @@
         "accuracy": 100,
         "PP": 15,
         "effect": [
-            "13Flinch"
+            "Flinch13"
         ]
     },
     {

@@ -1561,10 +1561,15 @@ class functionality():
             userspecial = userspecial / enemyspecialdown
             enemyspecial = enemyspecial / userspecialdown
             enemydefense = enemydefense * userdefenseup
+            enemyspecial = enemyspecial * userspecialup
+            userspecial = userspecial * enemyspecialup
+
 
         if attackingpk == currentpokemon:
             userspecial = userspecial / userspecialdown
             enemyspecial = enemyspecial / enemyspecialdown
+            enemyspecial = enemyspecial * enemyspecialup
+            userspecial = userspecial * userspecialup
 
         if moves[movenumber]["category"] == "Physical":
             global attackingpower
@@ -1762,6 +1767,9 @@ class functionality():
         global enemyspecialdown
 
         global userdefenseup
+
+        global userspecialup
+        global enemyspecialup
 
         print(going, "going at beginning of special effect")
         print(move, "move in special effect")
@@ -2131,12 +2139,15 @@ class functionality():
         
         if "FullRestore" in moves[movenumber]["effect"]:
             for i in range(pokemonlist):
-                if userpk == data[i]["Name"]:
+                if currentpokemon == data[i]["Name"]:
                     fullhealth = data[i]["Health Stat"]
             for i in range(len(userpartyhealth)):
-                if userpk == userpartyhealth[i - 1]:
+                if currentpokemon == userpartyhealth[i - 1]:
                     currenthealth = userpartyhealth[i]
             currenthealth = fullhealth
+            for i in range(len(userpartyhealth)):
+                if currentpokemon == userpartyhealth[i-1]:
+                    userpartyhealth[i] = currenthealth            
             print(currentpokemon, "healed all of its health!")
             time.sleep(1)
             for i in range(len(userpartystatus)):
@@ -2147,7 +2158,7 @@ class functionality():
                             userpartystatus[i] = "Asleep"
                             print(currentpokemon,"fell asleep!")
 
-        if "WrapEffect" in move[movenumber]["effect"]:
+        if "WrapEffect" in moves[movenumber]["effect"]:
             print("this effect way too broken.\n no handouts\n be better")
             time.sleep(times)
         
@@ -2166,6 +2177,28 @@ class functionality():
             print(currentpokemon,"disabled", enemymove)
             time.sleep(1)
             print("But Mike used his mystic powers to counter it!")
+        
+        if "AttackDown" in moves[movenumber]["effect"]:
+            if going == "User":
+                    enemyattackdown += 1
+                    print(enemypokemon,"'s attack fell")
+            if going == "Enemy":
+                if mistactive == "no":
+                    userattackdown += 1
+                    print(currentpokemon,"'s attack fell")
+                if mistactive == "yes":
+                    print(currentpokemon, "did not have its attack decreased due to Mist")
+        
+        if "SpecialUp" in moves[movenumber]["effect"]:
+            if going == "Enemy":
+                userspecialup += 1
+            if going == "User":
+                enemyspecialup += 1
+        
+
+        
+
+        
         
 
 
@@ -3236,12 +3269,17 @@ class Turns(Mike):
         Reflect = "no"
 
         global userspecialdown
-        userspecialdown = 0
+        userspecialdown = 1
         global enemyspecialdown
-        enemyspecialdown = 0
+        enemyspecialdown = 1
 
         global userdefenseup
-        userdefenseup = 0
+        userdefenseup = 1
+
+        global userspecialup
+        global enemyspecialup
+        userspecialup = 1
+        enemyspecialup = 1
 
         
 
@@ -3274,6 +3312,8 @@ class Turns(Mike):
                         userattackdown = 1
                         mistactive = "no"
                         Lightscreen = "no"
+                        userspecialdown = 1
+                        userspecialup = 1
                         for i in range(len(userpartyhealth)):
                             if currentpokemon == userpartyhealth[i - 1]:
                                 currenthealth = userpartyhealth[i]
@@ -3597,6 +3637,23 @@ class Turns(Mike):
                                             time.sleep(0.5)
                                         
                                         enemyhealth = enemyhealth - damage
+                                        if use == "Explosion":
+                                            currenthealth = 0
+                                            print(currentpokemon,"died because it exploded")
+                                            time.sleep(1)
+                                            if currenthealth == 0:
+                                                for i in range(len(yourteam)-1):
+                                                    if currentpokemon == yourteam[i]:
+                                                        yourteam.remove(currentpokemon)
+                                                print(yourteam)
+                                                newpk = input("Who will you switch into? ")
+                                                for i in range(len(yourteam)):
+                                                    if newpk == yourteam[i]:
+                                                        currentpokemon = newpk
+                                                for i in range(len(userpartyhealth)):
+                                                    if currentpokemon == userpartyhealth[i - 1]:
+                                                        currenthealth = userpartyhealth[i]
+
                                 time.sleep(times)
                                 if enemyhealth > 0:
                                     print(enemypokemon, "has", enemyhealth, "health left")
@@ -4093,6 +4150,22 @@ class Turns(Mike):
                                             if crithappen == True:
                                                 print("It was a critical hit!")
                                                 time.sleep(0.5)
+                                            if use == "Explosion":
+                                                
+                                                currenthealth = 0
+                                                print(currentpokemon,"died because it exploded")
+                                                if currenthealth == 0:
+                                                    for i in range(len(yourteam)):
+                                                        if currentpokemon == yourteam[i]:
+                                                            yourteam.remove(i)
+                                                    print(yourteam)
+                                                    newpk = input("Who will you switch into? ")
+                                                    for i in range(len(yourteam)):
+                                                        if newpk == yourteam[i]:
+                                                            currentpokemon = newpk
+                                                    for i in range(len(userpartyhealth)):
+                                                        if currentpokemon == userpartyhealth[i - 1]:
+                                                            currenthealth = userpartyhealth[i]
 
                                             enemyhealth = enemyhealth - damage
                                     time.sleep(times)

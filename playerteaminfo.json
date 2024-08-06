@@ -1,44 +1,44 @@
 [
-    "Tentacruel",
-    [
-        "Blizzard",
-        "Cut",
-        "Acid",
-        "Surf"
-    ],
-    "Bulbasaur",
+    "Venusaur",
     [
         "Tackle",
-        "Growl",
-        "Rage",
-        "Mimic"
+        "Rest",
+        "Bide",
+        "Cut"
+    ],
+    "Gloom",
+    [
+        "Absorb",
+        "Bide",
+        "Rest",
+        "Acid"
     ],
     "Fearow",
     [
         "Peck",
         "Growl",
-        "Bide",
-        "Swift"
+        "Rest",
+        "Fly"
     ],
     "Golbat",
     [
         "Screech",
         "Bite",
         "Mimic",
-        "Bide"
-    ],
-    "Golem",
-    [
-        "Tackle",
-        "Rage",
-        "Dig",
-        "Mimic"
-    ],
-    "Onix",
-    [
-        "Tackle",
-        "Rage",
-        "Bind",
         "Rest"
+    ],
+    "Beedrill",
+    [
+        "Bide",
+        "Swift",
+        "Rest",
+        "Cut"
+    ],
+    "Seel",
+    [
+        "Growl",
+        "Rest",
+        "Toxic",
+        "Bide"
     ]
 ]
