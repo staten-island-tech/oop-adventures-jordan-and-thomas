@@ -1771,6 +1771,9 @@ class functionality():
         global userspecialup
         global enemyspecialup
 
+        global Recharging
+        global previousturn
+
         print(going, "going at beginning of special effect")
         print(move, "move in special effect")
         movenumber = 6
@@ -2195,6 +2198,12 @@ class functionality():
             if going == "User":
                 enemyspecialup += 1
         
+        if "Recharge" in moves[movenumber]["effect"]:
+            Recharging = "yes"
+            print("recharging runnin")
+            previousturn = turn
+            if turn - previousturn == 1:
+                Recharging = "no"
 
         
 
@@ -3281,6 +3290,11 @@ class Turns(Mike):
         userspecialup = 1
         enemyspecialup = 1
 
+        global Recharging
+        Recharging = "no"
+        global previousturn
+        previousturn = 0
+
         
 
         while Kaifat == "very":
@@ -3293,217 +3307,229 @@ class Turns(Mike):
 
             if awaybeforehit == "no":
                 if hitsnextturn == "no":
-                    global enemyhealth
-                    if lockedin == "no":
-                        print("Switch Out Or Attack")
-                        userdo = input("What would you like to do: ")
-                    if lockedin == "yes":
-                        userdo = "Attack"
-                    if userdo == "Switch" or userdo == "switch" or userdo == "Switch Out" or userdo == "switch out" or userdo == "Switch out":
-                        for i in range(len(userpartyhealth)):
-                            if currentpokemon == userpartyhealth[i - 1]:
-                                currenthealth = userpartyhealth[i]
-                        print(yourteam)
-                        switchin = input("Pick a Pokemon to Switch into: ")
-                        print("You switched into", switchin)
-                        currentpokemon = switchin
-                        enemyevasive = 0
-                        userattackup = 1
-                        userattackdown = 1
-                        mistactive = "no"
-                        Lightscreen = "no"
-                        userspecialdown = 1
-                        userspecialup = 1
-                        for i in range(len(userpartyhealth)):
-                            if currentpokemon == userpartyhealth[i - 1]:
-                                currenthealth = userpartyhealth[i]
-                                x = i
-                                
-                        going = "Enemy"
-
-                        functionality.Paralyze(enemypokemon)
-                        functionality.Imatired(going)
-                        functionality.coldgaming(going)
-
-
-                        time.sleep(times)
-                        #print(currentpokemon, "before whosmovin")
-                        Schmovin.Whosmovin(enemypokemon, currentpokemon)
-                        
-                        
-                        f.damagecalc(enemymove, enemypokemon, currentpokemon)
-                        damage = movedamage
-
-                        functionality.Miss(enemymove,evasive, enemyevasive, going)
-                        if shouldiswitch == "no":
-                            if enemyPAR != "no":
-                                DoDamage = "no"
-                                print(enemypokemon,"was unable to move due to its paralysis")
-                                runspecial = "no"
-                            if enemysleep != "no":
-                                DoDamage = "no"
-                                print(enemypokemon,"is fast asleep")
-                                runspecial = "no"
-                            if enemycold != "no":
-                                DoDamage ="no"
-                                print(enemypokemon, "is frozen solid")
-                                runspecial = "no"
-                        if runspecial == "yes":
-                            
-                            f.specialeffect(enemymove,damage,enemyspeed,currentspeed, enemypokemon,currentpokemon, going, "placeholder", turn, enemyhealth)
-                        
-                        if Diduniquedamagehappen != "no":
-                            movedamage = uniquedamage
-
-                        if Didithittwice != "no":
-                            movedamage = TwoHitDamage
-
-                        if fourtydamagetrue != "no":
-                            movedamage = 40
-
-                        if itcounter != "no":
-                            movedamage = counterdamage
-
-
-                        #move effects end here
-
-                        enemydamage = movedamage
-                        
-                        if enemydamage == currenthealth or enemydamage > currenthealth:
-                            enemydamage = currenthealth
-                        
-
-
-                        if enemyPAR == "no" and enemysleep == "no" and enemycold == "no":
-                            print(enemypokemon, "used", enemymove)
-                            time.sleep(1)
-                        
-                        
-                        if Diditmiss != "no":
-                            enemydamage = 0
-                            if DoDamage == "yes":
-                                print("But it missed!")
-                            DoDamage = "no"
-                            
-                            
-                        
-                                
-
-
-
-                        if PrintPoison != "no":
-                                print(currentpokemon, "has been poisoned!")
-
-                        if PrintBurn != "no":
-                            print(currentpokemon, "was burned!" )
-                        if PrintConfuse != "no":
-                            print(currentpokemon, "is confused!")
-                        if PrintParalyzed != "no":
-                            print(currentpokemon, "was paralyzed")
-
-                        if DoDamage == "yes":
-                            functionality.Confuse(enemypokemon, enemydamage)
-                            if enemyhititself == "no":
-                                time.sleep(1)
-                                
-                                if typesuper1 == True or typesuper2 == True or typesuper == True:
-                                    print("It was supereffective!")
-                                    time.sleep(0.5)
-                                print(enemypokemon, "did", enemydamage, "damage")
-                                if crithappen == True:
-                                    print("It was a critical hit!")
-                                    time.sleep(0.5)
-                        
-                                currenthealth = currenthealth - enemydamage
-                        print(currentpokemon, "has", currenthealth, "health left")
-                        userpartyhealth[x] = currenthealth
-                        if currenthealth == 0:
-                            
-                            for i in range(len(yourteam)-1):
-                                if currentpokemon == yourteam[i]:
-                                    yourteam.remove(currentpokemon)
-                                
-                            print(yourteam)
-                            newpk = input("Who will you switch into? ")
-                            for i in range(len(yourteam)):
-                                if newpk == yourteam[i]:
-                                    currentpokemon = newpk
+                    
+                    if Recharging == "no":
+                        global enemyhealth
+                        if lockedin == "no":
+                            print("Switch Out Or Attack")
+                            userdo = input("What would you like to do: ")
+                        if lockedin == "yes":
+                            userdo = "Attack"
+                        if userdo == "Switch" or userdo == "switch" or userdo == "Switch Out" or userdo == "switch out" or userdo == "Switch out":
                             for i in range(len(userpartyhealth)):
                                 if currentpokemon == userpartyhealth[i - 1]:
                                     currenthealth = userpartyhealth[i]
-
-                        functionality.hedobetrapped(startingturntrapped,Trappedturns,turn)
-
-                        if seeded == "yes":
-                            for i in range(pokemonlist):
-                                if enemypokemon == data[i]["Name"]:
-                                    start = data[i]["Health Stat"]
-                            seedgaming = start/16
-                            damage = round(seedgaming)
-                            if damage == enemyhealth or damage > enemyhealth:
-                                damage = enemyhealth
-                            enemyhealth = enemyhealth - damage
-                            
-                            print(enemypokemon, "had its health sapped by Leech Seed")
-                            time.sleep(times)
-                            print(enemypokemon,"has", enemyhealth, "health left")
-
-                            for i in range(pokemonlist):
-                                if currentpokemon == data[i]["Name"]:
-                                    fail = data[i]["Health Stat"]
-                            if currenthealth != fail:
-                                currenthealth += damage
-                                if currenthealth == fail or currenthealth > fail:
-                                    currenthealth = fail
-                            print(currentpokemon, "recovered", damage,"health")
-                            time.sleep(times)
-                            print(currentpokemon, "has", currenthealth,"health")
+                            print(yourteam)
+                            switchin = input("Pick a Pokemon to Switch into: ")
+                            print("You switched into", switchin)
+                            currentpokemon = switchin
+                            enemyevasive = 0
+                            userattackup = 1
+                            userattackdown = 1
+                            mistactive = "no"
+                            Lightscreen = "no"
+                            userspecialdown = 1
+                            userspecialup = 1
                             for i in range(len(userpartyhealth)):
-                                if currentpokemon == userpartyhealth[i-1]:
-                                    userpartyhealth[i] = currenthealth
+                                if currentpokemon == userpartyhealth[i - 1]:
+                                    currenthealth = userpartyhealth[i]
+                                    x = i
+                                    
+                            going = "Enemy"
+
+                            functionality.Paralyze(enemypokemon)
+                            functionality.Imatired(going)
+                            functionality.coldgaming(going)
+
+
+                            time.sleep(times)
+                            #print(currentpokemon, "before whosmovin")
+                            Schmovin.Whosmovin(enemypokemon, currentpokemon)
+                            
+                            
+                            f.damagecalc(enemymove, enemypokemon, currentpokemon)
+                            damage = movedamage
+
+                            functionality.Miss(enemymove,evasive, enemyevasive, going)
+                            if shouldiswitch == "no":
+                                if enemyPAR != "no":
+                                    DoDamage = "no"
+                                    print(enemypokemon,"was unable to move due to its paralysis")
+                                    runspecial = "no"
+                                if enemysleep != "no":
+                                    DoDamage = "no"
+                                    print(enemypokemon,"is fast asleep")
+                                    runspecial = "no"
+                                if enemycold != "no":
+                                    DoDamage ="no"
+                                    print(enemypokemon, "is frozen solid")
+                                    runspecial = "no"
+                            if runspecial == "yes":
+                                
+                                f.specialeffect(enemymove,damage,enemyspeed,currentspeed, enemypokemon,currentpokemon, going, "placeholder", turn, enemyhealth)
+                            
+                            if Diduniquedamagehappen != "no":
+                                movedamage = uniquedamage
+
+                            if Didithittwice != "no":
+                                movedamage = TwoHitDamage
+
+                            if fourtydamagetrue != "no":
+                                movedamage = 40
+
+                            if itcounter != "no":
+                                movedamage = counterdamage
+
+
+                            #move effects end here
+
+                            enemydamage = movedamage
+                            
+                            if enemydamage == currenthealth or enemydamage > currenthealth:
+                                enemydamage = currenthealth
+                            
+
+
+                            if enemyPAR == "no" and enemysleep == "no" and enemycold == "no":
+                                print(enemypokemon, "used", enemymove)
+                                time.sleep(1)
+                            
+                            
+                            if Diditmiss != "no":
+                                enemydamage = 0
+                                if DoDamage == "yes":
+                                    print("But it missed!")
+                                DoDamage = "no"
+                                
+                                
+                            
                                     
 
-                        PrintPoison = "no"
-                        EnemyPoisoned = "no"
-                        shouldiswitch = "no"
-                        DoDamage = "yes"
-                        Diduniquedamagehappen = "no"
-                        Didithittwice = "no"
-                        fourtydamagetrue = "no"
-                        itcounter = "no"
-                        Diditmiss = "no"
-                        runspecial = "yes"
-                        Flinching = "no"
-                        PrintBurn = "no"
-                        EnemyBurn = "no"
-                        hityourself = "no"
-                        enemyhititself = "no"
-                        PrintConfuse = "no"
-                        EnemyConfuse = "no"
-                        PrintParalyzed = "no"
-                        EnemyParalyzed = "no"
-                        
-                        
-                        
 
-                    if len(yourteam) == 0:
-                        Kaifat = "no"
+
+                            if PrintPoison != "no":
+                                    print(currentpokemon, "has been poisoned!")
+
+                            if PrintBurn != "no":
+                                print(currentpokemon, "was burned!" )
+                            if PrintConfuse != "no":
+                                print(currentpokemon, "is confused!")
+                            if PrintParalyzed != "no":
+                                print(currentpokemon, "was paralyzed")
+
+                            if DoDamage == "yes":
+                                functionality.Confuse(enemypokemon, enemydamage)
+                                if enemyhititself == "no":
+                                    time.sleep(1)
+                                    
+                                    if typesuper1 == True or typesuper2 == True or typesuper == True:
+                                        print("It was supereffective!")
+                                        time.sleep(0.5)
+                                    print(enemypokemon, "did", enemydamage, "damage")
+                                    if crithappen == True:
+                                        print("It was a critical hit!")
+                                        time.sleep(0.5)
+                            
+                                    currenthealth = currenthealth - enemydamage
+                            print(currentpokemon, "has", currenthealth, "health left")
+                            userpartyhealth[x] = currenthealth
+                            if currenthealth == 0:
+                                
+                                for i in range(len(yourteam)-1):
+                                    if currentpokemon == yourteam[i]:
+                                        yourteam.remove(currentpokemon)
+                                    
+                                print(yourteam)
+                                newpk = input("Who will you switch into? ")
+                                for i in range(len(yourteam)):
+                                    if newpk == yourteam[i]:
+                                        currentpokemon = newpk
+                                for i in range(len(userpartyhealth)):
+                                    if currentpokemon == userpartyhealth[i - 1]:
+                                        currenthealth = userpartyhealth[i]
+
+                            functionality.hedobetrapped(startingturntrapped,Trappedturns,turn)
+
+                            if seeded == "yes":
+                                for i in range(pokemonlist):
+                                    if enemypokemon == data[i]["Name"]:
+                                        start = data[i]["Health Stat"]
+                                seedgaming = start/16
+                                damage = round(seedgaming)
+                                if damage == enemyhealth or damage > enemyhealth:
+                                    damage = enemyhealth
+                                enemyhealth = enemyhealth - damage
+                                
+                                print(enemypokemon, "had its health sapped by Leech Seed")
+                                time.sleep(times)
+                                print(enemypokemon,"has", enemyhealth, "health left")
+
+                                for i in range(pokemonlist):
+                                    if currentpokemon == data[i]["Name"]:
+                                        fail = data[i]["Health Stat"]
+                                if currenthealth != fail:
+                                    currenthealth += damage
+                                    if currenthealth == fail or currenthealth > fail:
+                                        currenthealth = fail
+                                print(currentpokemon, "recovered", damage,"health")
+                                time.sleep(times)
+                                print(currentpokemon, "has", currenthealth,"health")
+                                for i in range(len(userpartyhealth)):
+                                    if currentpokemon == userpartyhealth[i-1]:
+                                        userpartyhealth[i] = currenthealth
+                                        
+
+                            PrintPoison = "no"
+                            EnemyPoisoned = "no"
+                            shouldiswitch = "no"
+                            DoDamage = "yes"
+                            Diduniquedamagehappen = "no"
+                            Didithittwice = "no"
+                            fourtydamagetrue = "no"
+                            itcounter = "no"
+                            Diditmiss = "no"
+                            runspecial = "yes"
+                            Flinching = "no"
+                            PrintBurn = "no"
+                            EnemyBurn = "no"
+                            hityourself = "no"
+                            enemyhititself = "no"
+                            PrintConfuse = "no"
+                            EnemyConfuse = "no"
+                            PrintParalyzed = "no"
+                            EnemyParalyzed = "no"
+                            
+                            
+                            
+
+                        if len(yourteam) == 0:
+                            Kaifat = "no"
+                    
+
                 if hitsnextturn != "no":
                     userdo = "Attack"
+                if Recharging == "yes":
+                        
+                    userdo = "Atatck"
+                    print(currentpokemon,"has to recharge")
+                
                 if userdo == "Attack" or userdo == "attack":
                     for i in range(len(userpartyhealth)):
                         if currentpokemon == userpartyhealth[i - 1]:
                             currenthealth = userpartyhealth[i]
                     #print(currenthealth, "start")
                     if hitsnextturn == "no":
-                        if lockedin == "no":
-                            for i in range(inputteamlist):
-                                if currentpokemon == inputteam[i - 1]:
-                                    currentmoves = inputteam[i]
-                                    print(currentmoves)
-                        
-                            use = input("Pick a move to use: ")
-                            functionality.speedstages(use,currentspeed)
+                        if Recharging == "no":
+                            if lockedin == "no":
+                                for i in range(inputteamlist):
+                                    if currentpokemon == inputteam[i - 1]:
+                                        currentmoves = inputteam[i]
+                                        print(currentmoves)
+                            
+                                use = input("Pick a move to use: ")
+                                functionality.speedstages(use,currentspeed)
+                        if Recharging == "yes":
+                            DoDamage = "no"
                         
 
                     time.sleep(times)

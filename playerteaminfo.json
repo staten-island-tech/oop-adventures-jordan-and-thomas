@@ -1,17 +1,17 @@
 [
     "Venusaur",
     [
-        "Tackle",
-        "Rest",
+        "Hyper Beam",
         "Bide",
-        "Cut"
+        "Rest",
+        "Mimic"
     ],
-    "Gloom",
+    "Beedrill",
     [
-        "Absorb",
-        "Bide",
-        "Rest",
-        "Acid"
+        "Rage",
+        "Toxic",
+        "Harden",
+        "Cut"
     ],
     "Fearow",
     [
@@ -24,21 +24,22 @@
     [
         "Screech",
         "Bite",
-        "Mimic",
+        "Haze",
         "Rest"
-    ],
-    "Beedrill",
-    [
-        "Bide",
-        "Swift",
-        "Rest",
-        "Cut"
     ],
     "Seel",
     [
-        "Growl",
         "Rest",
+        "Rest",
+        "Water Gun",
         "Toxic",
-        "Bide"
+        "Rage"
+    ],
+    "Abra",
+    [
+        "Teleport",
+        "Toxic",
+        "Flash",
+        "Rest"
     ]
 ]
