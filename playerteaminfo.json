@@ -1,45 +1,44 @@
 [
-    "Venusaur",
+    "Primeape",
     [
-        "Hyper Beam",
-        "Mega Drain",
-        "Bide",
-        "Rest"
+        "Metronome",
+        "Mimic",
+        "Dig",
+        "Bide"
     ],
-    "Gloom",
+    "Bulbasaur",
     [
-        "Absorb",
-        "Acid",
+        "Tackle",
+        "Growl",
         "Toxic",
         "Rage"
     ],
     "Fearow",
     [
         "Peck",
-        "Fly",
-        "Rest",
-        "Toxic"
+        "Growl",
+        "Leer",
+        "Fly"
     ],
     "Golbat",
     [
+        "Screech",
         "Bite",
+        "Toxic",
+        "Rage"
+    ],
+    "Beedrill",
+    [
         "Rest",
-        "Swift",
+        "Mimic",
+        "Rage",
         "Toxic"
     ],
-    "Golem",
+    "Gloom",
     [
-        "Rage",
-        "Dig",
-        "Bide",
+        "Absorb",
+        "Cut",
+        "Acid",
         "Rest"
-    ],
-    "Onix",
-    [
-        "Rage",
-        "Rage",
-        "Slam",
-        "Tackle",
-        "Harden"
     ]
 ]

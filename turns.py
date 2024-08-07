@@ -1570,6 +1570,7 @@ class functionality():
             enemyspecial = enemyspecial / enemyspecialdown
             enemyspecial = enemyspecial * enemyspecialup
             userspecial = userspecial * userspecialup
+            enemydefense = enemydefense / enemydefensedown
 
         if moves[movenumber]["category"] == "Physical":
             global attackingpower
@@ -1773,6 +1774,8 @@ class functionality():
 
         global Recharging
         global previousturn
+
+        global enemydefensedown
 
         print(going, "going at beginning of special effect")
         print(move, "move in special effect")
@@ -2199,11 +2202,29 @@ class functionality():
                 enemyspecialup += 1
         
         if "Recharge" in moves[movenumber]["effect"]:
-            Recharging = "yes"
+            
             print("recharging runnin")
-            previousturn = turn
-            if turn - previousturn == 1:
-                Recharging = "no"
+            
+
+            if Recharging == "no":
+                previousturn = turn
+                Recharging = "yes"
+                print(previousturn, "previous turn in == no")
+
+            elif Recharging == "yes":
+                DoDamage = "no"
+                if turn - previousturn >= 1:
+                    Recharging = "no"
+                    print(previousturn, "buffet")
+
+        if "1in10Flinch" in moves[movenumber]["effect"]:
+            functionality.Flinch(10, going, goingfirst) 
+        
+        if "DefenseDown"  in moves[movenumber]["effect"]:
+            if going == "User":
+                enemydefensedown += 1
+        
+        
 
         
 
@@ -3295,6 +3316,9 @@ class Turns(Mike):
         global previousturn
         previousturn = 0
 
+        global enemydefensedown
+        enemydefensedown = 1
+
         
 
         while Kaifat == "very":
@@ -3506,7 +3530,7 @@ class Turns(Mike):
                             Kaifat = "no"
                     elif Recharging == "yes":
                         
-                        userdo = "Atatck"
+                        userdo = "Attack"
                         print(currentpokemon,"has to recharge")
 
                 if hitsnextturn != "no":
@@ -3528,8 +3552,8 @@ class Turns(Mike):
                             
                                 use = input("Pick a move to use: ")
                                 functionality.speedstages(use,currentspeed)
-                        if Recharging == "yes":
-                            DoDamage = "no"
+                        
+                            
                         
 
                     time.sleep(times)
@@ -3547,6 +3571,11 @@ class Turns(Mike):
                         if youPAR == "no" and yousleep == "no" and youcold == "no":
                             going = "User"
                             print("You used", use)
+
+                        if use == "Metronome":
+                            metro = random.randrange(1,160)
+                            use = moves[metro]["name"]
+                            print(use)
 
                         if youPAR != "no":
                             DoDamage = "no"
