@@ -3504,14 +3504,14 @@ class Turns(Mike):
 
                         if len(yourteam) == 0:
                             Kaifat = "no"
-                    
+                    elif Recharging == "yes":
+                        
+                        userdo = "Atatck"
+                        print(currentpokemon,"has to recharge")
 
                 if hitsnextturn != "no":
                     userdo = "Attack"
-                if Recharging == "yes":
-                        
-                    userdo = "Atatck"
-                    print(currentpokemon,"has to recharge")
+                
                 
                 if userdo == "Attack" or userdo == "attack":
                     for i in range(len(userpartyhealth)):

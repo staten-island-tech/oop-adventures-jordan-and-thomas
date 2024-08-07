@@ -2,44 +2,44 @@
     "Venusaur",
     [
         "Hyper Beam",
+        "Mega Drain",
         "Bide",
-        "Rest",
-        "Mimic"
+        "Rest"
     ],
-    "Beedrill",
+    "Gloom",
     [
-        "Rage",
+        "Absorb",
+        "Acid",
         "Toxic",
-        "Harden",
-        "Cut"
+        "Rage"
     ],
     "Fearow",
     [
         "Peck",
-        "Growl",
+        "Fly",
         "Rest",
-        "Fly"
+        "Toxic"
     ],
     "Golbat",
     [
-        "Screech",
         "Bite",
-        "Haze",
+        "Rest",
+        "Swift",
+        "Toxic"
+    ],
+    "Golem",
+    [
+        "Rage",
+        "Dig",
+        "Bide",
         "Rest"
     ],
-    "Seel",
+    "Onix",
     [
-        "Rest",
-        "Rest",
-        "Water Gun",
-        "Toxic",
-        "Rage"
-    ],
-    "Abra",
-    [
-        "Teleport",
-        "Toxic",
-        "Flash",
-        "Rest"
+        "Rage",
+        "Rage",
+        "Slam",
+        "Tackle",
+        "Harden"
     ]
 ]
