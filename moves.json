@@ -1075,7 +1075,7 @@
         "accuracy": 75,
         "PP": 10,
         "effect": [
-            "HitNextTurn"
+            "HitsNextTurn"
         ]
     },
     {
@@ -1130,7 +1130,7 @@
         "accuracy": 85,
         "PP": 40,
         "effect": [
-            "DefenseSharpDown"
+            "DefenseDown"
         ]
     },
     {
@@ -1262,7 +1262,7 @@
         "accuracy": 100,
         "PP": 20,
         "effect": [
-            "13Flinch"
+            "Flinch13"
         ]
     },
     {
@@ -1372,7 +1372,7 @@
         "accuracy": 85,
         "PP": 20,
         "effect": [
-            "QuarterDHitsYou"
+            "Recoil14"
         ]
     },
     {
@@ -1449,7 +1449,7 @@
         "accuracy": 100,
         "PP": 30,
         "effect": [
-            "1in3DefenseDown"
+            "DefenseDown"
         ]
     },
     {
@@ -1460,7 +1460,7 @@
         "accuracy": 100,
         "PP": 40,
         "effect": [
-            "DefenseSharpUp"
+            "DefenseUp"
         ]
     },
     {
@@ -1482,7 +1482,7 @@
         "accuracy": 75,
         "PP": 35,
         "effect": [
-            "AlwaysPoison"
+            "Poison"
         ]
     },
     {
@@ -1548,7 +1548,7 @@
         "accuracy": 100,
         "PP": 20,
         "effect": [
-            "SpecialSharpUp"
+            "SpecialUp"
         ]
     },
     {
@@ -1559,7 +1559,7 @@
         "accuracy": 100,
         "PP": 30,
         "effect": [
-            "DefenseSharpUp"
+            "DefenseUp"
         ]
     },
     {

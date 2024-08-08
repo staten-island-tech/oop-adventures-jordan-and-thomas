@@ -1,44 +1,45 @@
 [
-    "Primeape",
+    "Charizard",
     [
-        "Metronome",
-        "Mimic",
+        "Ember",
+        "Fly",
+        "Flamethrower",
+        "Rest"
+    ],
+    "Arbok",
+    [
         "Dig",
-        "Bide"
+        "Mega Drain",
+        "Rock Slide",
+        "Double Team"
     ],
-    "Bulbasaur",
+    "Ekans",
     [
-        "Tackle",
-        "Growl",
-        "Toxic",
-        "Rage"
-    ],
-    "Fearow",
-    [
-        "Peck",
-        "Growl",
+        "Wrap",
         "Leer",
-        "Fly"
-    ],
-    "Golbat",
-    [
-        "Screech",
-        "Bite",
-        "Toxic",
-        "Rage"
+        "Rest",
+        "Acid"
     ],
     "Beedrill",
     [
-        "Rest",
-        "Mimic",
         "Rage",
-        "Toxic"
-    ],
-    "Gloom",
-    [
-        "Absorb",
         "Cut",
-        "Acid",
-        "Rest"
+        "Pin Missile",
+        "Harden"
+    ],
+    "Seel",
+    [
+        "Growl",
+        "Ice Beam",
+        "Rage",
+        "Mimic"
+    ],
+    "Snorlax",
+    [
+        "Rest",
+        "Rest",
+        "Solar Beam",
+        "Surf",
+        "Ice Beam"
     ]
 ]
